@@ -246,6 +246,13 @@ export default function Hero() {
                 </div>
                 </div>
               </div>
+
+              {/* 안내 문구 - 우측 하단 */}
+              <div className="mt-8 text-right">
+                <p className="text-sm text-gray-500 italic">
+                  제목을 클릭하면 자세한 설명을 보실 수 있습니다.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -346,7 +353,7 @@ export default function Hero() {
                   감으로 지도하는 시대는 끝났습니다.
                 </p>
                 <p className="text-2xl md:text-3xl font-bold text-gray-900">
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">AI</span>와 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">데이터</span>로 초개인화된 학습관리를 국내 최초로 도입합니다
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">AI</span>와 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">데이터</span>로 초개인화된 학습관리로 K-교육을 혁신하겠습니다.
                 </p>
               </div>
             </div>
