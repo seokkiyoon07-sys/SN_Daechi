@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* 로고 */}
           <div className="flex-shrink-0">
-            <a href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/image/sn-logo.png"
                 alt="SN Logo"
@@ -25,7 +26,7 @@ export default function Header() {
                 <span className="text-lg font-medium text-gray-900">고요의숲 대치</span>
                 <span className="text-xs text-gray-600">독학관리</span>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* 데스크톱 메뉴 */}

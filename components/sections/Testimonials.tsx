@@ -79,7 +79,7 @@ export default function Testimonials() {
 
               {/* 후기 내용 */}
               <p className="text-gray-700 mb-6 leading-relaxed">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
 
               {/* 학생 정보 */}
