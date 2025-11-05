@@ -29,7 +29,7 @@ export default function Programs() {
     },
     {
       name: 'SNarGEN',
-      description: '평가원급 난이도의 수학 문제를 자동으로 생성하는 AI 기반 수학 문제 생성기로, 문제은행 수준의 품질을 제공합니다.',
+      description: 'AI가 평가원급 수학 문제를 생성·검산·해설까지 완전 자동화합니다. 단순히 숫자만 바꾸는 문제은행을 뛰어넘는 완전한 새 문제를 만들어냅니다.',
       color: 'blue',
       upcoming: true
     }
@@ -774,7 +774,7 @@ export default function Programs() {
                               <div className="flex-1">
                                 <h6 className="font-bold text-green-900 mb-2">SNarGPT</h6>
                                 <p className="text-gray-800 mb-3">
-                                  SN고요의숲 내부의 실제 학습 데이터, 시험결과, 오답노트, 방화벽 로그를 실시간으로 반영합니다.
+                                  SN독학기숙학원, SN고요의숲, SNarGPT 내부의 실제 학습 데이터, 시험결과, 오답노트, 방화벽 로그를 실시간으로 반영합니다.
                                 </p>
                                 <div className="bg-white rounded-lg p-4 border border-green-200">
                                   <p className="text-sm text-gray-700">
@@ -955,7 +955,7 @@ export default function Programs() {
                             <div className="flex-1 flex items-center justify-center">
                               <div className="max-w-full max-h-[350px] flex items-center justify-center">
                                 <img
-                                  src="/image/snargpt/OCR.png"
+                                  src="/image/snargpt/ocr.png"
                                   alt="SNarOCR 오답 분석"
                                   className="max-w-full max-h-[350px] rounded-lg shadow-xl cursor-pointer hover:opacity-90 transition-opacity"
                                   onClick={() => setIsDetailedAnalysisOpen(true)}
