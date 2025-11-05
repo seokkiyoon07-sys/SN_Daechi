@@ -1,11 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSitesOpen, setIsSitesOpen] = useState(false);
+  const sitesRef = useRef<HTMLDivElement>(null);
+
+  // 외부 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (sitesRef.current && !sitesRef.current.contains(event.target as Node)) {
+        setIsSitesOpen(false);
+      }
+    }
+
+    if (isSitesOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isSitesOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -48,14 +67,59 @@ export default function Header() {
             </a>
           </div>
 
-          {/* CTA 버튼 */}
+          {/* CTA 버튼 및 SN 사이트 토글 */}
           <div className="hidden md:flex md:items-center md:space-x-4">
-            <a
-              href="#contact"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            >
-              로그인
-            </a>
+            {/* SN 사이트 토글 */}
+            <div className="relative" ref={sitesRef}>
+              <button
+                onClick={() => setIsSitesOpen(!isSitesOpen)}
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-1"
+              >
+                SN 사이트
+                <svg
+                  className={`w-4 h-4 transition-transform ${isSitesOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* 드롭다운 메뉴 */}
+              {isSitesOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                  <a
+                    href="https://www.snacademy.co.kr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIsSitesOpen(false)}
+                  >
+                    SN독학기숙학원(남학생캠퍼스)
+                  </a>
+                  <a
+                    href="https://snargpt.ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIsSitesOpen(false)}
+                  >
+                    SNargpt.ai
+                  </a>
+                  <a
+                    href="https://blog.snacademy.co.kr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                    onClick={() => setIsSitesOpen(false)}
+                  >
+                    SN 블로그
+                  </a>
+                </div>
+              )}
+            </div>
+            
             <a
               href="#contact"
               className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
@@ -136,13 +200,66 @@ export default function Header() {
               >
                 공지사항
               </a>
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-gray-900 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                로그인
-              </a>
+              
+              {/* SN 사이트 토글 */}
+              <div className="border-t border-gray-200 pt-4 mt-4">
+                <button
+                  onClick={() => setIsSitesOpen(!isSitesOpen)}
+                  className="w-full flex items-center justify-between text-gray-700 hover:text-gray-900 transition-colors"
+                >
+                  <span className="text-sm font-medium">SN 사이트</span>
+                  <svg
+                    className={`w-4 h-4 transition-transform ${isSitesOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                
+                {isSitesOpen && (
+                  <div className="mt-2 space-y-2 pl-4">
+                    <a
+                      href="https://www.snacademy.co.kr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsSitesOpen(false);
+                      }}
+                    >
+                      SN독학기숙학원(남학생캠퍼스)
+                    </a>
+                    <a
+                      href="https://snargpt.ai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsSitesOpen(false);
+                      }}
+                    >
+                      SNargpt.ai
+                    </a>
+                    <a
+                      href="https://blog.snacademy.co.kr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        setIsSitesOpen(false);
+                      }}
+                    >
+                      SN 블로그
+                    </a>
+                  </div>
+                )}
+              </div>
+              
               <a
                 href="#contact"
                 className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors text-center"
