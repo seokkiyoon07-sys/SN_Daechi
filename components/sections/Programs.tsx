@@ -376,7 +376,7 @@ export default function Programs() {
                                           <BlockMath math="\int_1^2 H'(x)\,dx = \int_1^2 g(x)\,dx = 34 = H(2)-H(1)" />
                                         </div>
                                         <p className="pl-3">따라서 그래프 상에서 <InlineMath math="x=1 \to 2" /> 구간 아래 넓이가 <InlineMath math="34" />이면서, 동시에 <strong>높이 차이</strong> <InlineMath math="H(2)-H(1)=34" />가 나와야 합니다.</p>
-                                        <p className="pl-3">→ 이는 곡선과 그 아래 영역이 '높이 = 넓이'로 딱 맞아떨어지는 <em>특수한 모양</em>을 갖는다는 뜻입니다.</p>
+                                        <p className="pl-3">→ 이는 곡선과 그 아래 영역이 &apos;높이 = 넓이&apos;로 딱 맞아떨어지는 <em>특수한 모양</em>을 갖는다는 뜻입니다.</p>
 
                                         <p className="mt-3">• 모멘트 관계와 부분적분:</p>
                                         <div className="pl-3">
@@ -492,7 +492,7 @@ export default function Programs() {
                                     {/* 5번 문항 */}
                                     <div className="border-l-2 border-purple-500/50 pl-3">
                                       <p className="font-bold text-purple-200 mb-2">5) 2025년 3월 학력평가 미적분 28번(교육청)</p>
-                                      <p className="text-purple-100">• 핵심 아이디어: 극한 정의 함수의 구간별 분해와 "한 점 접함" 조건으로 파라미터를 결정</p>
+                                      <p className="text-purple-100">• 핵심 아이디어: 극한 정의 함수의 구간별 분해와 &quot;한 점 접함&quot; 조건으로 파라미터를 결정</p>
                                       <p className="text-purple-100">• 한 줄 요약: <InlineMath math="|x|" />범위별 <InlineMath math="g(x)" />를 정리 → <InlineMath math="y=2" />와 정확히 1점 조건으로 극대값 맞추기 → 값 계산</p>
                                       <p className="text-purple-100">• 정답: <span className="font-bold text-purple-300"><InlineMath math="9\sqrt{3}" /></span></p>
                                     </div>
@@ -569,7 +569,7 @@ export default function Programs() {
                                     <div className="text-purple-100 pl-3">
                                       <p>• 돈육김치찌개</p>
                                       <p>• 우불당면볶음</p>
-                                      <p>• 군만두(메뉴 표기상 '무침만두'로 보임)</p>
+                                      <p>• 군만두(메뉴 표기상 &apos;무침만두&apos;로 보임)</p>
                                       <p>• 건파래튀각</p>
                                       <p>• 배추김치</p>
                                       <p>• 쌀밥</p>
@@ -644,11 +644,11 @@ export default function Programs() {
                       {/* 핵심 답변 */}
                       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-8 border-l-4 border-blue-600">
                         <p className="text-xl font-bold text-gray-900 mb-3">
-                          "ChatGPT는 세상을 아는 AI, SNarGPT는 학생을 아는 AI입니다."
+                          &quot;ChatGPT는 세상을 아는 AI, SNarGPT는 학생을 아는 AI입니다.&quot;
                         </p>
                         <p className="text-gray-700 leading-relaxed">
                           SNarGPT는 범용 GPT 엔진을 교육 데이터와 알고리즘으로 재설계하여,
-                          <span className="font-bold text-blue-700"> 한국 수능에 최적화된 '교육 수직 AI(Vertical AI)'</span>입니다.
+                          <span className="font-bold text-blue-700"> 한국 수능에 최적화된 &apos;교육 수직 AI(Vertical AI)&apos;</span>입니다.
                         </p>
                       </div>
 
@@ -712,7 +712,7 @@ export default function Programs() {
                               GPT-5 같은 대형 언어모델 하나로 다양한 분야를 커버합니다.
                             </p>
                             <div className="bg-white rounded-lg p-3 border border-gray-300">
-                              <p className="text-sm text-gray-600">→ <span className="font-semibold">"넓게 얕은"</span> 형태의 지능</p>
+                              <p className="text-sm text-gray-600">→ <span className="font-semibold">&quot;넓게 얕은&quot;</span> 형태의 지능</p>
                             </div>
                           </div>
 
@@ -778,7 +778,7 @@ export default function Programs() {
                                 </p>
                                 <div className="bg-white rounded-lg p-4 border border-green-200">
                                   <p className="text-sm text-gray-700">
-                                    → 학생마다 다른 수준과 습관을 분석해 <span className="font-bold text-green-700">"개인 맞춤형 난이도와 해설"</span>을 제공합니다.
+                                    → 학생마다 다른 수준과 습관을 분석해 <span className="font-bold text-green-700">&quot;개인 맞춤형 난이도와 해설&quot;</span>을 제공합니다.
                                   </p>
                                 </div>
                               </div>
@@ -798,7 +798,7 @@ export default function Programs() {
                 <div className="mb-12 text-center">
                   <blockquote className="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 shadow-lg border border-blue-100">
                     <p className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                      "What gets measured gets improved."
+                      &quot;What gets measured gets improved.&quot;
                     </p>
                     <p className="text-2xl sm:text-3xl font-bold text-gray-700 mb-4">
                       측정할 수 없다면, 개선할 수 없다.
