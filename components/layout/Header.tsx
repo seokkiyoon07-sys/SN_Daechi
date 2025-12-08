@@ -39,25 +39,25 @@ export default function Header() {
 
           {/* 데스크톱 메뉴 */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <a href="/about" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+            <a href="/about" className="relative text-gray-700 hover:text-sn-green transition-colors group">
               학원소개
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/programs" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+            <a href="/programs" className="relative text-gray-700 hover:text-sn-green transition-colors group">
               프로그램
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/campus" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+            <a href="/campus" className="relative text-gray-700 hover:text-sn-green transition-colors group">
               학원생활
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/results" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+            <a href="/results" className="relative text-gray-700 hover:text-sn-green transition-colors group">
               합격실적/후기
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/facility" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+            <a href="/facility" className="relative text-gray-700 hover:text-sn-green transition-colors group">
               시설안내
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
             </a>
           </div>
 
@@ -67,7 +67,7 @@ export default function Header() {
             <div className="relative">
               <button
                 onClick={() => setIsSiteDropdownOpen(!isSiteDropdownOpen)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2 border border-gray-300 rounded-lg hover:border-blue-600"
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2 border border-gray-300 rounded-lg hover:border-sn-green"
               >
                 <span>다른 사이트</span>
                 <svg className={`w-4 h-4 transition-transform ${isSiteDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -83,7 +83,7 @@ export default function Header() {
                       href={site.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 transition-all"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all"
                       onClick={() => setIsSiteDropdownOpen(false)}
                     >
                       {site.name}
@@ -182,7 +182,7 @@ export default function Header() {
                     href={site.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block py-2 text-gray-700 hover:text-blue-600 transition-colors"
+                    className="block py-2 text-gray-700 hover:text-sn-green transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {site.name}

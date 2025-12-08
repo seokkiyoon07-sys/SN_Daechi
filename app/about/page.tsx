@@ -24,7 +24,7 @@ export default function AboutPage() {
             </p>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green/30 my-12" />
+          <hr className="border-t-2 border-dashed border-sn-green my-12" />
 
           {/* Mission Section */}
           <section id="mission" className="mb-16">
@@ -32,7 +32,7 @@ export default function AboutPage() {
               <span className="w-1.5 h-6 bg-sn-green rounded-full"></span>
               Our Mission
             </h2>
-            <div className="bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/40 shadow-sm">
+            <div className="bg-white rounded-xl p-6 border-2 border-dashed border-sn-green shadow-sm">
               <p className="text-gray-700 leading-relaxed mb-4">
                 SN 대치는 학생의 하루를 학습·생활 데이터로 분석하고, 이를 AI가 정밀하게 해석합니다.
               </p>
@@ -42,7 +42,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green/30 my-12" />
+          <hr className="border-t-2 border-dashed border-sn-green my-12" />
 
           {/* Philosophy Section */}
           <section id="philosophy" className="mb-16">
@@ -51,7 +51,7 @@ export default function AboutPage() {
               Education Philosophy
             </h2>
             <div className="space-y-4">
-              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/30 hover:border-sn-green/60 hover:shadow-md transition-all">
+              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-sn-green text-white rounded-full flex items-center justify-center font-bold text-lg">1</span>
                   <div>
@@ -65,7 +65,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/30 hover:border-sn-green/60 hover:shadow-md transition-all">
+              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-sn-green text-white rounded-full flex items-center justify-center font-bold text-lg">2</span>
                   <div>
@@ -79,7 +79,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/30 hover:border-sn-green/60 hover:shadow-md transition-all">
+              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-sn-green text-white rounded-full flex items-center justify-center font-bold text-lg">3</span>
                   <div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green/30 my-12" />
+          <hr className="border-t-2 border-dashed border-sn-green my-12" />
 
           {/* Features Section */}
           <section id="features" className="mb-16">
@@ -107,7 +107,7 @@ export default function AboutPage() {
               </h2>
               <span className="inline-block px-3 py-1 bg-sn-green text-white text-sm font-semibold rounded-full">AI</span>
             </div>
-            <div className="rounded-xl overflow-hidden border-2 border-dashed border-sn-green/40 shadow-sm">
+            <div className="rounded-xl overflow-hidden border-2 border-dashed border-sn-green shadow-sm">
               <img
                 src="/image/ai-learning-system.png"
                 alt="AI 학습 관리 프로그램 - 학습 엔진 & 문제풀이 AI"
@@ -116,7 +116,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green/30 my-12" />
+          <hr className="border-t-2 border-dashed border-sn-green my-12" />
 
           {/* Stats Section */}
           <section id="stats" className="mb-16">
@@ -125,22 +125,22 @@ export default function AboutPage() {
               Statistics
             </h2>
             <div className="grid grid-cols-3 gap-4">
-              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/30 hover:border-sn-green/60 hover:shadow-md transition-all">
+              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
                 <div className="text-3xl font-bold text-sn-green mb-1">11+</div>
                 <div className="text-sm text-gray-500">Years Experience</div>
               </div>
-              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/30 hover:border-sn-green/60 hover:shadow-md transition-all">
+              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
                 <div className="text-3xl font-bold text-sn-green mb-1">99.9%</div>
                 <div className="text-sm text-gray-500">수능 수학 AI 풀이 정확도</div>
               </div>
-              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/30 hover:border-sn-green/60 hover:shadow-md transition-all">
+              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
                 <div className="text-3xl font-bold text-sn-green mb-1">1,000+</div>
                 <div className="text-sm text-gray-500">대학합격자 명단</div>
               </div>
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green/30 my-12" />
+          <hr className="border-t-2 border-dashed border-sn-green my-12" />
 
           {/* Values Section */}
           <section id="values" className="mb-16">
@@ -149,7 +149,7 @@ export default function AboutPage() {
               Core Values
             </h2>
             <div className="space-y-3">
-              <div className="bg-white rounded-xl p-5 border-l-4 border-sn-green hover:shadow-md transition-all">
+              <div className="bg-white rounded-xl p-5 border-l-4 border-sn-main hover:shadow-md transition-all">
                 <h3 className="font-semibold text-sn-green mb-1">
                   Transparency
                 </h3>
@@ -157,7 +157,7 @@ export default function AboutPage() {
                   학습 진도와 성과를 투명하게 공유하며 정기적인 상담을 진행합니다.
                 </p>
               </div>
-              <div className="bg-white rounded-xl p-5 border-l-4 border-sn-green hover:shadow-md transition-all">
+              <div className="bg-white rounded-xl p-5 border-l-4 border-sn-main hover:shadow-md transition-all">
                 <h3 className="font-semibold text-sn-green mb-1">
                   Innovation
                 </h3>
@@ -165,7 +165,7 @@ export default function AboutPage() {
                   최신 AI 기술을 교육에 접목하여 효율적인 학습을 지원합니다.
                 </p>
               </div>
-              <div className="bg-white rounded-xl p-5 border-l-4 border-sn-green hover:shadow-md transition-all">
+              <div className="bg-white rounded-xl p-5 border-l-4 border-sn-main hover:shadow-md transition-all">
                 <h3 className="font-semibold text-sn-green mb-1">
                   Excellence
                 </h3>
@@ -177,7 +177,7 @@ export default function AboutPage() {
           </section>
 
           {/* Closing Statement */}
-          <div className="py-10 my-12 bg-sn-green/10 rounded-2xl border-2 border-dashed border-sn-green/40">
+          <div className="py-10 my-12 bg-sn-green/10 rounded-2xl border-2 border-dashed border-sn-green">
             <p className="text-lg font-medium text-gray-700 leading-relaxed text-center px-6">
               우리는 규모보다 의미 있는 성장을 추구하는 팀이며,
               <br />
@@ -185,7 +185,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <hr className="border-t-2 border-dashed border-sn-green/30 my-12" />
+          <hr className="border-t-2 border-dashed border-sn-green my-12" />
 
           {/* Contact Section */}
           <section id="contact" className="mb-16">
