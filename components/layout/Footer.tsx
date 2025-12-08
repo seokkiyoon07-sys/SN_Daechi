@@ -11,8 +11,8 @@ export default function Footer() {
       { name: "N수생 특별반", href: "#programs" }
     ],
     support: [
-      { name: "공지사항", href: "#news" },
-      { name: "합격 후기", href: "#testimonials" },
+      { name: "공지사항", href: "/news" },
+      { name: "합격 후기", href: "/testimonials" },
       { name: "자주 묻는 질문", href: "#faq" }
     ],
     contact: [
@@ -26,7 +26,7 @@ export default function Footer() {
     <footer id="contact" className="bg-gray-900 text-gray-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* 상단 영역 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           {/* 학원 정보 */}
           <div className="lg:col-span-2">
             <div className="mb-4">
@@ -91,7 +91,20 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">고객지원</h4>
+            <h4 className="text-white font-semibold mb-4">지원</h4>
+            <ul className="space-y-2">
+              {footerLinks.support.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="text-sm hover:text-white transition-colors">
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-4">상담</h4>
             <ul className="space-y-2">
               {footerLinks.contact.map((link, index) => (
                 <li key={index}>
@@ -105,7 +118,7 @@ export default function Footer() {
         </div>
 
         {/* 구분선 */}
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-sn-main/40 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* 저작권 */}
             <div className="text-sm text-gray-500">

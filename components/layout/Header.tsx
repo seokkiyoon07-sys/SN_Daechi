@@ -6,6 +6,14 @@ import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSiteDropdownOpen, setIsSiteDropdownOpen] = useState(false);
+
+  const sites = [
+    { name: 'SN고요의숲(대치)', url: 'https://daechi.snacademy.co.kr' },
+    { name: 'SN독학기숙학원', url: 'https://www.snacademy.co.kr' },
+    { name: 'SNarGPT', url: 'https://snargpt.ai' },
+    { name: 'SN블로그', url: 'https://blog.snacademy.co.kr' }
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -31,31 +39,60 @@ export default function Header() {
 
           {/* 데스크톱 메뉴 */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <a href="/about" className="text-gray-700 hover:text-gray-900 transition-colors">
+            <a href="/about" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
               학원소개
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/programs" className="text-gray-700 hover:text-gray-900 transition-colors">
+            <a href="/programs" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
               프로그램
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/results" className="text-gray-700 hover:text-gray-900 transition-colors">
-              합격실적
+            <a href="/campus" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+              학원생활
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/testimonials" className="text-gray-700 hover:text-gray-900 transition-colors">
-              수강후기
+            <a href="/results" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+              합격실적/후기
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="/news" className="text-gray-700 hover:text-gray-900 transition-colors">
-              공지사항
+            <a href="/facility" className="relative text-gray-700 hover:text-blue-600 transition-colors group">
+              시설안내
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
             </a>
           </div>
 
           {/* CTA 버튼 */}
           <div className="hidden md:flex md:items-center md:space-x-4">
-            <a
-              href="#contact"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            >
-              로그인
-            </a>
+            {/* 사이트 선택 드롭다운 */}
+            <div className="relative">
+              <button
+                onClick={() => setIsSiteDropdownOpen(!isSiteDropdownOpen)}
+                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors flex items-center gap-2 border border-gray-300 rounded-lg hover:border-blue-600"
+              >
+                <span>다른 사이트</span>
+                <svg className={`w-4 h-4 transition-transform ${isSiteDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {isSiteDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50">
+                  {sites.map((site, index) => (
+                    <a
+                      key={index}
+                      href={site.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-3 text-sm text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-blue-600 transition-all"
+                      onClick={() => setIsSiteDropdownOpen(false)}
+                    >
+                      {site.name}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <a
               href="#contact"
               className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors"
@@ -116,33 +153,42 @@ export default function Header() {
                 프로그램
               </a>
               <a
+                href="/campus"
+                className="text-gray-700 hover:text-gray-900 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                학원생활
+              </a>
+              <a
                 href="/results"
                 className="text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                합격실적
+                합격실적/후기
               </a>
               <a
-                href="/testimonials"
+                href="/facility"
                 className="text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                수강후기
+                시설안내
               </a>
-              <a
-                href="/news"
-                className="text-gray-700 hover:text-gray-900 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                공지사항
-              </a>
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-gray-900 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                로그인
-              </a>
+              {/* 사이트 링크 */}
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-xs text-gray-500 mb-2 font-semibold">다른 사이트로 이동</p>
+                {sites.map((site, index) => (
+                  <a
+                    key={index}
+                    href={site.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block py-2 text-gray-700 hover:text-blue-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {site.name}
+                  </a>
+                ))}
+              </div>
               <a
                 href="#contact"
                 className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors text-center"
