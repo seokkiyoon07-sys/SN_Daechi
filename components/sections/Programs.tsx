@@ -336,12 +336,21 @@ export default function Programs() {
 
           {activeTab === 'data' && (
             <div className="max-w-5xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">SN Data 시스템</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">온라인 학습량 데이터</h4>
-                  <p className="text-gray-700 text-sm">학생의 접속 시간, 학습 패턴, 집중 구간 등을 정량화하여 학습 효율을 데이터로 분석합니다.</p>
-                </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">SN DATA 시스템</h3>
+              <p className="text-gray-600 text-center mb-6">우리는 학생의 학습데이터를 정확히 측정, 평가 하고, 이를 피드백 합니다.</p>
+
+              {/* 온라인 학습량 데이터 - 전체 너비 */}
+              <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow mb-4">
+                <h4 className="font-bold text-lg text-gray-900 mb-3">온라인 학습량 데이터</h4>
+                <p className="text-gray-700 text-sm mb-4">학생의 접속 시간, 학습 패턴, 집중 구간 등을 정량화하여 학습 효율을 데이터로 분석합니다.</p>
+                <img
+                  src="/image/programs/SN_gant.png"
+                  alt="SN 학습량 데이터 간트 차트"
+                  className="w-full rounded-lg"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green-light hover:shadow-lg transition-shadow">
                   <h4 className="font-bold text-lg text-gray-900 mb-2">SN 문제 데이터</h4>
                   <p className="text-gray-700 text-sm">수능 및 모의고사 문제 중 인터넷에 있는 모든 문제는 AI가 검색을 통해 찾아 줍니다. (저작권 있는 문제 제외)</p>

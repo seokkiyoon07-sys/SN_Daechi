@@ -1,30 +1,37 @@
+'use client';
+
+import { useEffect } from 'react';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export default function AboutPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      <main className="pt-24 pb-16">
+      <main className="pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Overview Section */}
           <section id="overview" className="mb-16">
             <div className="flex items-center gap-3 mb-6">
               <span className="inline-block px-3 py-1 bg-sn-green text-white text-sm font-semibold rounded-full">About</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-10">
               SN 고요의숲 대치
             </h1>
-            <p className="text-lg text-gray-600 leading-relaxed mb-4">
-              SN은 학생의 하루와 학습을 데이터를 통해 읽고, 과학적으로 성장 흐름을 설계하는 학습 시스템입니다.
+            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              SN은 학생의 하루와 학습을 데이터를 통해 읽고,<br />과학적으로 성장 흐름을 설계하는 학습 시스템입니다.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              SN 대치는 여기에 대치동 전문 강사진과 선생님들의 밀착 지도를 더해, 학생마다 다른 <span className="text-sn-green font-semibold">&apos;성장 알고리즘&apos;</span>을 완성합니다.
+              SN 대치는 여기에 대치동 전문 강사진과 선생님들의 밀착 지도를 더해,<br />학생마다 다른 <span className="text-sn-green font-semibold">&apos;성장 알고리즘&apos;</span>을 완성합니다.
             </p>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green my-12" />
+          <hr className="border-t-2 border-solid border-sn-green my-12" />
 
           {/* Mission Section */}
           <section id="mission" className="mb-16">
@@ -32,7 +39,7 @@ export default function AboutPage() {
               <span className="w-1.5 h-6 bg-sn-green rounded-full"></span>
               Our Mission
             </h2>
-            <div className="bg-white rounded-xl p-6 border-2 border-dashed border-sn-green shadow-sm">
+            <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
               <p className="text-gray-700 leading-relaxed mb-4">
                 SN 대치는 학생의 하루를 학습·생활 데이터로 분석하고, 이를 AI가 정밀하게 해석합니다.
               </p>
@@ -42,7 +49,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green my-12" />
+          <hr className="border-t-2 border-solid border-sn-green my-12" />
 
           {/* Philosophy Section */}
           <section id="philosophy" className="mb-16">
@@ -51,7 +58,7 @@ export default function AboutPage() {
               Education Philosophy
             </h2>
             <div className="space-y-4">
-              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
+              <div className="group bg-white rounded-xl p-6 border border-gray-200 hover:border-sn-green/50 hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-sn-green text-white rounded-full flex items-center justify-center font-bold text-lg">1</span>
                   <div>
@@ -65,7 +72,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
+              <div className="group bg-white rounded-xl p-6 border border-gray-200 hover:border-sn-green/50 hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-sn-green text-white rounded-full flex items-center justify-center font-bold text-lg">2</span>
                   <div>
@@ -79,7 +86,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              <div className="group bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
+              <div className="group bg-white rounded-xl p-6 border border-gray-200 hover:border-sn-green/50 hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <span className="flex-shrink-0 w-10 h-10 bg-sn-green text-white rounded-full flex items-center justify-center font-bold text-lg">3</span>
                   <div>
@@ -96,7 +103,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green my-12" />
+          <hr className="border-t-2 border-solid border-sn-green my-12" />
 
           {/* Features Section */}
           <section id="features" className="mb-16">
@@ -107,7 +114,7 @@ export default function AboutPage() {
               </h2>
               <span className="inline-block px-3 py-1 bg-sn-green text-white text-sm font-semibold rounded-full">AI</span>
             </div>
-            <div className="rounded-xl overflow-hidden border-2 border-dashed border-sn-green shadow-sm">
+            <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
               <img
                 src="/image/ai-learning-system.png"
                 alt="AI 학습 관리 프로그램 - 학습 엔진 & 문제풀이 AI"
@@ -116,7 +123,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green my-12" />
+          <hr className="border-t-2 border-solid border-sn-green my-12" />
 
           {/* Stats Section */}
           <section id="stats" className="mb-16">
@@ -125,22 +132,22 @@ export default function AboutPage() {
               Statistics
             </h2>
             <div className="grid grid-cols-3 gap-4">
-              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
+              <div className="text-center bg-white rounded-xl p-6 border border-gray-200 hover:border-sn-green/50 hover:shadow-md transition-all">
                 <div className="text-3xl font-bold text-sn-green mb-1">11+</div>
                 <div className="text-sm text-gray-500">Years Experience</div>
               </div>
-              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
+              <div className="text-center bg-white rounded-xl p-6 border border-gray-200 hover:border-sn-green/50 hover:shadow-md transition-all">
                 <div className="text-3xl font-bold text-sn-green mb-1">99.9%</div>
                 <div className="text-sm text-gray-500">수능 수학 AI 풀이 정확도</div>
               </div>
-              <div className="text-center bg-white rounded-xl p-6 border-2 border-dashed border-sn-green/70 hover:border-sn-main hover:shadow-md transition-all">
+              <div className="text-center bg-white rounded-xl p-6 border border-gray-200 hover:border-sn-green/50 hover:shadow-md transition-all">
                 <div className="text-3xl font-bold text-sn-green mb-1">1,000+</div>
                 <div className="text-sm text-gray-500">대학합격자 명단</div>
               </div>
             </div>
           </section>
 
-          <hr className="border-t-2 border-dashed border-sn-green my-12" />
+          <hr className="border-t-2 border-solid border-sn-green my-12" />
 
           {/* Values Section */}
           <section id="values" className="mb-16">
@@ -177,7 +184,7 @@ export default function AboutPage() {
           </section>
 
           {/* Closing Statement */}
-          <div className="py-10 my-12 bg-sn-green/10 rounded-2xl border-2 border-dashed border-sn-green">
+          <div className="py-10 my-12 bg-sn-green/10 rounded-2xl border border-sn-green/30">
             <p className="text-lg font-medium text-gray-700 leading-relaxed text-center px-6">
               우리는 규모보다 의미 있는 성장을 추구하는 팀이며,
               <br />
@@ -185,7 +192,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <hr className="border-t-2 border-dashed border-sn-green my-12" />
+          <hr className="border-t-2 border-solid border-sn-green my-12" />
 
           {/* Contact Section */}
           <section id="contact" className="mb-16">
@@ -205,7 +212,7 @@ export default function AboutPage() {
               </a>
               <a
                 href="/programs"
-                className="px-6 py-3 border-2 border-dashed border-sn-green text-sn-green font-medium rounded-lg hover:bg-sn-green/10 transition-colors"
+                className="px-6 py-3 border border-gray-300 text-sn-green font-medium rounded-lg hover:bg-sn-green/10 hover:border-sn-green/50 transition-colors"
               >
                 프로그램 보기
               </a>
