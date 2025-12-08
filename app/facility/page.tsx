@@ -202,16 +202,25 @@ export default function FacilityPage() {
           <div className="mt-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">오시는 길</h2>
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-              {/* 네이버 지도 */}
-              <iframe
-                src="https://map.naver.com/p/entry/place/1100410920?c=15.00,0,0,0,dh&placePath=/home"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                title="SN고요의숲(대치) 위치"
-              ></iframe>
+              {/* 지도 링크 */}
+              <a
+                href="https://map.naver.com/p/entry/place/1100410920?c=15.00,0,0,0,dh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative bg-gray-100 h-[300px] md:h-[400px] group"
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-600 group-hover:text-sn-green transition-colors">
+                  <svg className="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <p className="text-lg font-semibold mb-2">SN 고요의숲 대치</p>
+                  <p className="text-sm text-gray-500 mb-4">서울특별시 강남구 대치동 447</p>
+                  <span className="px-4 py-2 bg-sn-green text-white rounded-lg text-sm font-medium group-hover:bg-sn-green-dark transition-colors">
+                    네이버 지도에서 보기
+                  </span>
+                </div>
+              </a>
 
               {/* 주소 정보 */}
               <div className="p-6 bg-gray-50 border-t border-gray-200">

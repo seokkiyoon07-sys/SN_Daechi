@@ -3,6 +3,19 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SN-고요의숲 대치 | AI 기반 독학관리 학원",
+  icons: {
+    icon: [
+      { url: "/image/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/image/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/image/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { rel: "icon", url: "/image/android-chrome-192x192.png", sizes: "192x192" },
+      { rel: "icon", url: "/image/android-chrome-512x512.png", sizes: "512x512" },
+    ],
+  },
   description: "SNarGPT, SNarVIS, SNarGEN 등 최첨단 AI 시스템으로 수능 학습을 완벽하게 관리하는 대치동 독학재수학원. 데이터 기반 성적 분석, 오답 관리, 12시간 집중 학습 시스템을 제공합니다.",
   keywords: [
     "독학재수학원",
@@ -72,8 +85,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body>
+    <html lang="ko" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         {children}
       </body>
     </html>
