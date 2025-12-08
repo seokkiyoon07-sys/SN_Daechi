@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
@@ -115,9 +116,11 @@ export default function AboutPage() {
               <span className="inline-block px-3 py-1 bg-sn-green text-white text-sm font-semibold rounded-full">AI</span>
             </div>
             <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <img
+              <Image
                 src="/image/ai-learning-system.png"
                 alt="AI 학습 관리 프로그램 - 학습 엔진 & 문제풀이 AI"
+                width={1200}
+                height={600}
                 className="w-full h-auto"
               />
             </div>

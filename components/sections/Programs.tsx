@@ -319,7 +319,7 @@ export default function Programs() {
                   </div>
                   <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green-light hover:shadow-lg transition-shadow">
                     <h4 className="font-bold text-lg text-gray-900 mb-2">SNarVIS</h4>
-                    <p className="text-gray-700 text-sm">아이언맨의 '자비스(JARVIS)'처럼 학생의 학습 일정, 오답 관리, 성적 분석까지 전담하는 수능 전문 AI 비서입니다.</p>
+                    <p className="text-gray-700 text-sm">아이언맨의 &apos;자비스(JARVIS)&apos;처럼 학생의 학습 일정, 오답 관리, 성적 분석까지 전담하는 수능 전문 AI 비서입니다.</p>
                   </div>
                   <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow">
                     <h4 className="font-bold text-lg text-gray-900 mb-2">SNarlink</h4>
@@ -343,9 +343,11 @@ export default function Programs() {
               <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow mb-4">
                 <h4 className="font-bold text-lg text-gray-900 mb-3">온라인 학습량 데이터</h4>
                 <p className="text-gray-700 text-sm mb-4">학생의 접속 시간, 학습 패턴, 집중 구간 등을 정량화하여 학습 효율을 데이터로 분석합니다.</p>
-                <img
+                <Image
                   src="/image/programs/SN_gant.png"
                   alt="SN 학습량 데이터 간트 차트"
+                  width={1200}
+                  height={400}
                   className="w-full rounded-lg"
                 />
               </div>
