@@ -11,6 +11,13 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'sn-bg': '#F3F7F3',
+        'sn-bg-light': '#f8faf8',
+        'sn-bg-dark': '#e8ede8',
+        'sn-green': '#4a7c59',
+        'sn-green-light': '#5d9a6e',
+        'sn-green-dark': '#3d6649',
+        'sn-main': '#2b422e',
       },
       keyframes: {
         'fade-in-up': {

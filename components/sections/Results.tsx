@@ -48,7 +48,7 @@ export default function Results() {
               key={index}
               className="text-center p-6 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+              <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-sn-green to-sn-green-light bg-clip-text text-transparent mb-2">
                 {stat.number}
               </div>
               <div className="text-lg font-semibold text-gray-900 mb-1">
@@ -70,7 +70,7 @@ export default function Results() {
             {universities.map((university, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 text-center font-medium text-gray-700 hover:shadow-md hover:scale-105 transition-all duration-300 border border-gray-200"
+                className="bg-white rounded-lg p-6 text-center font-medium text-gray-700 hover:shadow-md hover:scale-105 transition-all duration-300 border border-sn-main/20 hover:border-sn-main"
               >
                 {university}
               </div>

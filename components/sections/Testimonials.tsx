@@ -62,7 +62,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-200"
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-sn-main/20"
             >
               {/* 별점 */}
               <div className="flex mb-4">
@@ -83,9 +83,9 @@ export default function Testimonials() {
               </p>
 
               {/* 학생 정보 */}
-              <div className="border-t pt-6 border-gray-200">
+              <div className="border-t pt-6 border-sn-main/30">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg mr-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sn-green to-sn-green-light flex items-center justify-center text-white font-bold text-lg mr-4">
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
@@ -106,16 +106,16 @@ export default function Testimonials() {
         </div>
 
         {/* 하단 CTA */}
-        <div className="mt-16 text-center bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+        <div className="mt-16 text-center bg-gradient-to-br from-sn-green to-sn-green-light rounded-2xl p-12 text-white">
           <h3 className="text-2xl sm:text-3xl font-bold mb-4">
             다음 합격 주인공은 바로 당신입니다
           </h3>
-          <p className="text-lg mb-8 text-blue-100">
+          <p className="text-lg mb-8 text-green-100">
             지금 바로 상담 신청하고 합격의 첫 걸음을 시작하세요
           </p>
           <a
             href="#contact"
-            className="inline-flex items-center px-8 py-4 text-base font-medium text-blue-600 bg-white rounded-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
+            className="inline-flex items-center px-8 py-4 text-base font-medium text-sn-green bg-white rounded-lg hover:bg-gray-100 transition-all hover:scale-105 shadow-lg"
           >
             무료 상담 신청하기
             <svg

@@ -48,25 +48,25 @@ export default function News() {
           {news.map((item, index) => (
             <div
               key={index}
-              className="group bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-300 cursor-pointer"
+              className="group bg-white border border-sn-main/20 rounded-xl p-6 hover:shadow-lg hover:border-sn-main transition-all duration-300 cursor-pointer"
             >
               {/* 상단 메타 정보 */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center space-x-3">
-                  <span className="text-sm font-medium text-blue-600">
+                  <span className="text-sm font-medium text-sn-green">
                     {item.category}
                   </span>
                   <span className="text-sm text-gray-500">
                     {item.date}
                   </span>
                 </div>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">
+                <span className="px-3 py-1 bg-sn-green/10 text-sn-green text-xs font-semibold rounded-full">
                   {item.tag}
                 </span>
               </div>
 
               {/* 제목 */}
-              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-sn-green transition-colors">
                 {item.title}
               </h3>
 
@@ -76,7 +76,7 @@ export default function News() {
               </p>
 
               {/* 더보기 링크 */}
-              <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
+              <div className="flex items-center text-sn-green font-medium group-hover:translate-x-2 transition-transform">
                 자세히 보기
                 <svg
                   className="ml-2 w-4 h-4"
@@ -100,7 +100,7 @@ export default function News() {
         <div className="text-center">
           <a
             href="#more-news"
-            className="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-400 transition-all"
+            className="inline-flex items-center px-6 py-3 border border-sn-main/40 rounded-lg text-gray-700 font-medium hover:bg-sn-main/5 hover:border-sn-main transition-all"
           >
             더 많은 소식 보기
             <svg
