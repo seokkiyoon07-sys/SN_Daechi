@@ -1,9 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    reactCompiler: false // React 19 호환성을 위해 추가
-  },
+  reactCompiler: false, // Next.js 16에서 experimental에서 이동
   typescript: {
     // React 19 타입 호환성
     ignoreBuildErrors: false
