@@ -1,16 +1,56 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import 'katex/dist/katex.min.css';
-import { InlineMath, BlockMath } from 'react-katex';
+import katex from 'katex';
+
+// KaTeX 렌더링을 위한 간단한 컴포넌트
+function InlineMath({ math }: { math: string }) {
+  const [html, setHtml] = useState('');
+
+  useEffect(() => {
+    try {
+      setHtml(katex.renderToString(math, { throwOnError: false }));
+    } catch {
+      setHtml(math);
+    }
+  }, [math]);
+
+  return <span className="inline-block max-w-full overflow-x-auto align-middle" style={{ fontSize: '0.9em' }} dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+function BlockMath({ math }: { math: string }) {
+  const [html, setHtml] = useState('');
+
+  useEffect(() => {
+    try {
+      setHtml(katex.renderToString(math, { throwOnError: false, displayMode: true }));
+    } catch {
+      setHtml(math);
+    }
+  }, [math]);
+
+  return <div className="overflow-x-auto max-w-full" style={{ fontSize: '0.85em' }} dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 export default function Programs() {
   const [activeTab, setActiveTab] = useState('ai');
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [snargptView, setSnargptView] = useState<'question' | 'search' | 'info' | 'school'>('question');
   const [dataView, setDataView] = useState<'snarlink' | 'wrong' | 'admission'>('snarlink');
   const [currentSampleIndex, setCurrentSampleIndex] = useState(0);
+
+  const openImageModal = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setIsImageModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalOpen(false);
+    setSelectedImage(null);
+  };
 
   const aiSystems = [
     {
@@ -48,7 +88,7 @@ export default function Programs() {
     {
       badge: "추천",
       title: "프리미엄 수학 관리반",
-      description: "소수정예 집중 관리로 확실한 성적 향상",
+      description: "대치 박진모 원장의 전담 관리로 확실한 성적 향상",
       features: [
         "1:1 개인 맞춤 케어",
         "매일 학습 진도 체크",
@@ -103,20 +143,7 @@ export default function Programs() {
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-sn-green"></span>
               )}
             </button>
-            <button
-              onClick={() => setActiveTab('life')}
-              className={`px-6 py-4 font-semibold text-base transition-all relative ${
-                activeTab === 'life'
-                  ? 'text-sn-green'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              SN 생활관리 시스템
-              {activeTab === 'life' && (
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-sn-green"></span>
-              )}
-            </button>
-          </div>
+                      </div>
         </div>
 
         {/* 탭 콘텐츠 */}
@@ -246,12 +273,12 @@ export default function Programs() {
                           <>
                             {/* 사용자 메시지 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p className="mb-3">@snargo 님, 이 문제 좀 풀어주세요.</p>
                                 {/* 썸네일 이미지 */}
                                 <div
                                   className="bg-gray-800/50 border border-gray-700 rounded-lg p-2 w-1/4 cursor-pointer hover:border-green-500 transition-colors"
-                                  onClick={() => setIsImageModalOpen(true)}
+                                  onClick={() => openImageModal('/image/snargpt/6959-1.png')}
                                 >
                                   <img
                                     src="/image/snargpt/6959-1.png"
@@ -264,7 +291,7 @@ export default function Programs() {
 
                             {/* AI 응답 */}
                             <div className="flex justify-start">
-                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] overflow-hidden break-words">
                                 <p className="font-semibold mb-3 text-purple-200">(From SNarGo) SNarGo 입니다. 안녕하세요. 문제와 풀이를 정리해 드리겠습니다.</p>
 
                                 <div className="space-y-3 text-sm">
@@ -321,14 +348,14 @@ export default function Programs() {
 
                             {/* 두 번째 사용자 메시지 (후속 질문) */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>다른 풀이 방법도 보여줘 (그래프로 푸는 버전)</p>
                               </div>
                             </div>
 
                             {/* 두 번째 AI 응답 - 그래프 풀이 */}
                             <div className="flex justify-start">
-                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] overflow-hidden break-words">
                                 <p className="font-semibold mb-3 text-purple-200">(SNarGo) 네, 그래프로 푸는 방법을 보여드릴게요!</p>
 
                                 <div className="space-y-3 text-sm">
@@ -376,7 +403,8 @@ export default function Programs() {
                                     <img
                                       src="/image/snargpt/20251105_200318_24562090.png"
                                       alt="그래프 해설"
-                                      className="w-full rounded"
+                                      className="w-full rounded cursor-pointer hover:opacity-80 transition-opacity"
+                                      onClick={() => openImageModal('/image/snargpt/20251105_200318_24562090.png')}
                                     />
                                     <p className="text-xs text-purple-200 mt-2 px-2">위 그래프에서 <InlineMath math="y=H(x)=xe^{f(x)}" /> 곡선 아래 넓이(초록 영역)와 높이 증가(빨강 화살표)가 일치하는 구조를 확인할 수 있습니다.</p>
                                   </div>
@@ -399,14 +427,14 @@ export default function Programs() {
                           <>
                             {/* 첫 번째 사용자 메시지 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>인터넷에서 2026학년도 9월 평가원 모의고사 수학 미적 과목 답안지 좀 찾아서 30번 문제 정답 좀 알려주세요.</p>
                               </div>
                             </div>
 
                             {/* 첫 번째 AI 응답 */}
                             <div className="flex justify-start">
-                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] overflow-hidden break-words">
                                 <p className="font-semibold mb-3 text-purple-200">(SNARVIS) 반가워요! 요청하신 내용 찾아 확인했어요.</p>
 
                                 <div className="space-y-2 text-sm">
@@ -420,14 +448,14 @@ export default function Programs() {
 
                             {/* 두 번째 사용자 메시지 (후속 질문) */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>이 문제랑 비슷한 기출 5개 찾아줘</p>
                               </div>
                             </div>
 
                             {/* 두 번째 AI 응답 */}
                             <div className="flex justify-start">
-                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] overflow-hidden break-words">
                                 <p className="font-semibold mb-3 text-purple-200">(SNARVIS) 좋아요, B안(지수-로그식에서 지수화 후 곱의 미분으로 적분을 설계하는 유형)으로 최근 3년, 난이도 상, 평가원+교육청에서 유사도가 높은 문항 5개를 골랐어요.</p>
 
                                 <div className="space-y-4 text-sm">
@@ -490,35 +518,35 @@ export default function Programs() {
                           <>
                             {/* 첫 번째 질문 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>내 오답 중에서 미적분 관련 문제만 분석해줘</p>
                               </div>
                             </div>
 
                             {/* 두 번째 질문 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>내가 자주 틀리는 유형이 뭐야?</p>
                               </div>
                             </div>
 
                             {/* 세 번째 질문 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>최근 3년간 수학 29번에서 자주 나온 유형 알려줘</p>
                               </div>
                             </div>
 
                             {/* 네 번째 질문 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>22~25 수능 기준으로 킬러문항의 주제 변화가 어떻게 돼?</p>
                               </div>
                             </div>
 
                             {/* 다섯 번째 질문 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>26학년도 9월 모의고사 미적 중에 오답률 높은 문제 10개 추려봐</p>
                               </div>
                             </div>
@@ -529,14 +557,14 @@ export default function Programs() {
                           <>
                             {/* 사용자 메시지 */}
                             <div className="flex justify-end">
-                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%]">
+                              <div className="bg-green-600/20 border border-green-500/50 text-green-100 rounded-2xl rounded-tr-sm px-4 py-3 max-w-[70%] overflow-hidden break-words">
                                 <p>오늘 SN독학기숙학원 점심 알려줘</p>
                               </div>
                             </div>
 
                             {/* AI 응답 */}
                             <div className="flex justify-start">
-                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
+                              <div className="bg-purple-600/20 border border-purple-500/50 text-purple-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%] overflow-hidden break-words">
                                 <p className="font-semibold mb-3 text-purple-200">SNARVIS입니다. 안녕하세요! 오늘(11/03, 월) SN독학기숙학원 점심 메뉴는 다음과 같습니다.</p>
 
                                 <div className="space-y-2 text-sm">
@@ -650,7 +678,7 @@ export default function Programs() {
                             <tr className="hover:bg-gray-50">
                               <td className="border border-gray-300 px-4 py-3 font-semibold text-gray-700">학습 데이터</td>
                               <td className="border border-gray-300 px-4 py-3 text-gray-700">인터넷 전체(백과사전·뉴스·포럼 등)</td>
-                              <td className="border border-gray-300 px-4 py-3 bg-sn-bg font-semibold text-sn-main">한국 수능 기출, 모의고사, 평가원 문항, 학생 학습 로그 등 3만 문항</td>
+                              <td className="border border-gray-300 px-4 py-3 bg-sn-bg font-semibold text-sn-main">한국 수능 기출, 모의고사, 평가원 등 5만 문항, 학생 학습 로그, 질문</td>
                             </tr>
                             <tr className="hover:bg-gray-50">
                               <td className="border border-gray-300 px-4 py-3 font-semibold text-gray-700">언어 이해 방식</td>
@@ -776,42 +804,10 @@ export default function Programs() {
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">SN DATA 시스템</h3>
-              <p className="text-gray-600 text-center mb-6">우리는 학생의 학습데이터를 정확히 측정, 평가 하고, 이를 피드백 합니다.</p>
-
-              {/* 온라인 학습량 데이터 - 전체 너비 */}
-              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow mb-4">
-                <h4 className="font-bold text-lg text-gray-900 mb-3">1. 온라인 학습량 데이터</h4>
-                <p className="text-gray-700 text-sm mb-4">학생의 접속 시간, 학습 패턴, 집중 구간 등을 정량화하여 학습 효율을 데이터로 분석합니다.</p>
-                <Image
-                  src="/image/programs/SN_gant.png"
-                  alt="SN 학습량 데이터 간트 차트"
-                  width={1200}
-                  height={400}
-                  className="w-full rounded-lg"
-                />
-                <p className="text-gray-600 text-sm mt-4 text-center">
-                  SNarlink AI 방화벽 시스템을 통해 학생들의 온라인 로그를 측정 분석하여, 개인별 학습량을 산출해 냅니다.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-                <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green-light hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">SN 문제 데이터</h4>
-                  <p className="text-gray-700 text-sm">수능 및 모의고사 문제 중 인터넷에 있는 모든 문제는 AI가 검색을 통해 찾아 줍니다. (저작권 있는 문제 제외)</p>
-                </div>
-                <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">오답 데이터</h4>
-                  <p className="text-gray-700 text-sm">SNarOCR을 통해 모의고사 답안지를 스캔하고, 학생별 오답 패턴을 자동 분석하여 맞춤형 피드백을 제공합니다.</p>
-                </div>
-                <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green-light hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">입시 데이터</h4>
-                  <p className="text-gray-700 text-sm">공공 입시 데이터를 기반으로 AI가 개인의 성적, 목표 대학, 학습 패턴을 분석하여 초개인화 입시 전략을 제시합니다.</p>
-                </div>
-              </div>
+              <p className="text-gray-600 text-center mb-8">우리는 학생의 학습데이터를 정확히 측정, 평가 하고, 이를 피드백 합니다.</p>
 
               {/* 맥북 브라우저 UI - 학습 데이터 시연 */}
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">학습 데이터 분석</h3>
+              <div className="mb-12">
 
                 {/* 데이터 뷰 탭 */}
                 <div className="flex justify-center mb-8 border-b border-gray-200 max-w-4xl mx-auto">
@@ -912,7 +908,8 @@ export default function Programs() {
                               <img
                                 src={`/image/snargpt/sample${currentSampleIndex + 1}.gif`}
                                 alt={`학습 데이터 샘플 ${currentSampleIndex + 1}`}
-                                className="max-w-full max-h-[400px] rounded-lg shadow-xl"
+                                className="max-w-full max-h-[400px] rounded-lg shadow-xl cursor-pointer hover:opacity-80 transition-opacity"
+                                onClick={() => openImageModal(`/image/snargpt/sample${currentSampleIndex + 1}.gif`)}
                               />
                             </div>
 
@@ -953,7 +950,8 @@ export default function Programs() {
                               <img
                                 src="/image/snargpt/ocr.png"
                                 alt="SNarOCR 오답 분석"
-                                className="max-w-full max-h-[350px] rounded-lg shadow-xl"
+                                className="max-w-full max-h-[350px] rounded-lg shadow-xl cursor-pointer hover:opacity-80 transition-opacity"
+                                onClick={() => openImageModal('/image/snargpt/ocr.png')}
                               />
                             </div>
                           </div>
@@ -975,29 +973,42 @@ export default function Programs() {
                   <div className="h-2 bg-gradient-to-b from-gray-300 to-transparent rounded-b-3xl"></div>
                 </div>
               </div>
-            </div>
-          )}
 
-          {activeTab === 'life' && (
-            <div className="max-w-5xl mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">SN 생활관리 시스템</h3>
+              {/* 온라인 학습량 데이터 - 전체 너비 */}
+              <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow mb-4">
+                <h4 className="font-bold text-lg text-gray-900 mb-3">1. 온라인 학습량 데이터</h4>
+                <p className="text-gray-700 text-sm mb-4">학생의 접속 시간, 학습 패턴, 집중 구간 등을 정량화하여 학습 효율을 데이터로 분석합니다.</p>
+                <Image
+                  src="/image/programs/SN_gant.png"
+                  alt="SN 학습량 데이터 간트 차트"
+                  width={1200}
+                  height={400}
+                  className="w-full rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
+                  onClick={() => openImageModal('/image/programs/SN_gant.png')}
+                />
+                <p className="text-gray-600 text-sm mt-4 text-center">
+                  SNarlink AI 방화벽 시스템을 통해 학생들의 온라인 로그를 측정 분석하여, 개인별 학습량을 산출해 냅니다.
+                </p>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green-light hover:shadow-lg transition-shadow">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">SN 문제 데이터</h4>
+                  <p className="text-gray-700 text-sm">수능 및 모의고사 문제 중 인터넷에 있는 모든 문제는 AI가 검색을 통해 찾아 줍니다. (저작권 있는 문제 제외)</p>
+                </div>
                 <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">12시간 집중 학습 관리</h4>
-                  <p className="text-gray-700 text-sm">하루 12시간 이상 학습이 가능한 체계적인 타임테이블과 생활 루틴을 운영합니다.</p>
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">오답 데이터</h4>
+                  <p className="text-gray-700 text-sm">SNarOCR을 통해 모의고사 답안지를 스캔하고, 학생별 오답 패턴을 자동 분석하여 맞춤형 피드백을 제공합니다.</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green-light hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">최신 시설의 신축 캠퍼스</h4>
-                  <p className="text-gray-700 text-sm">최신식 학습·생활 공간과 쾌적한 환경을 갖춘 신축 건물에서 운영됩니다.</p>
-                </div>
-                <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-sn-green hover:shadow-lg transition-shadow">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">대치역 도보 3분 거리</h4>
-                  <p className="text-gray-700 text-sm">접근성과 안전성을 모두 갖춘 최적의 입지로, 통학 및 학부모 방문이 편리합니다.</p>
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">입시 데이터</h4>
+                  <p className="text-gray-700 text-sm">공공 입시 데이터를 기반으로 AI가 개인의 성적, 목표 대학, 학습 패턴을 분석하여 초개인화 입시 전략을 제시합니다.</p>
                 </div>
               </div>
             </div>
           )}
 
+          
         </div>
 
         {/* 프로그램 카드 */}
@@ -1132,6 +1143,35 @@ export default function Programs() {
           </div>
         </div>
       </div>
+
+      {/* 이미지 확대 모달 */}
+      {isImageModalOpen && selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={closeImageModal}
+        >
+          <div className="relative max-w-4xl max-h-[90vh] w-full">
+            {/* 닫기 버튼 */}
+            <button
+              onClick={closeImageModal}
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+              aria-label="닫기"
+            >
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* 이미지 */}
+            <img
+              src={selectedImage}
+              alt="확대 이미지"
+              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
