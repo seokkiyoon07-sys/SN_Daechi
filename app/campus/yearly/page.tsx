@@ -344,12 +344,12 @@ export default function YearlyPage() {
             {/* PDF 인쇄 버튼 */}
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors"
+              className="p-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors"
+              title="PDF 인쇄"
             >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
               </svg>
-              PDF 인쇄
             </button>
           </div>
 
@@ -602,7 +602,7 @@ export default function YearlyPage() {
               {/* 캘린더 헤더 */}
               <div className="grid grid-cols-7 bg-sn-green text-white">
                 {weekDays.map((day, index) => (
-                  <div key={index} className={`py-3 text-center text-sm font-semibold ${index === 0 ? 'text-red-300' : ''}`}>
+                  <div key={index} className="py-3 text-center text-sm font-semibold">
                     {day}
                   </div>
                 ))}
