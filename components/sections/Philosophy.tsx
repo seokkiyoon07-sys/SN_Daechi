@@ -65,9 +65,9 @@ export default function Philosophy() {
       number: '01',
       title: '이곳은 몰입의 공간입니다',
       subtitle: "",
-      content: "단순히 핸드폰을 걷고 자리에 앉히는 것은 관리가 아닙니다. SN은 학생이 공부 외의 선택을 고민할 필요조차 없도록, '결정 피로도'가 발생하지 않는 환경을 설계합니다.",
+      content: "SN의 학생들은 하루에 오랜 시간 공부합니다. 하지만 그것은 의지로 버티기 때문이 아닙니다.",
       highlight: '의지는 소모되는 자원입니다. 그래서 SN은 의지에 기대지 않습니다.',
-      detail: "수학적 동선 설계와 인지 심리학 기반의 환경을 통해, 학생의 에너지가 오직 학습에만 사용되도록 훈련합니다.",
+      detail: "하루의 흐름을 먼저 설계합니다. 수학적 동선 설계와 인지 심리학 기반의 환경을 통해, 학생의 에너지가 오직 학습에만 사용되도록 훈련합니다.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />

@@ -49,7 +49,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-24">
           {/* 로고 */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/about/philosophy" className="flex items-center gap-2">
               <Image
                 src="/image/sn-logo.png"
                 alt="SN Logo"
@@ -81,6 +81,9 @@ export default function Header() {
                 </a>
                 <a href="/about/ai-center" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   AI특화관
+                </a>
+                <a href="/about/team" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  강사/멘토진
                 </a>
                 <a href="/about" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   About Us
@@ -131,7 +134,7 @@ export default function Header() {
 
             {/* 4. 입학 안내 드롭다운 */}
             <div className="relative group">
-              <a href="/admission" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
+              <a href="/programs" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
                 입학 안내
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
@@ -147,7 +150,7 @@ export default function Header() {
 
             {/* 5. 인사이트 드롭다운 */}
             <div className="relative group">
-              <a href="/insights" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
+              <a href="/community/notices" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
                 인사이트
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
@@ -282,6 +285,13 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   AI특화관
+                </a>
+                <a
+                  href="/about/team"
+                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  강사/멘토진
                 </a>
                 <a
                   href="/about"
