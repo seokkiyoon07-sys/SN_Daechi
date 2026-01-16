@@ -86,7 +86,7 @@ export default function Header() {
                   강사/멘토진
                 </a>
                 <a href="/about" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  About Us
+                  About SN
                 </a>
               </div>
             </div>
@@ -301,7 +301,7 @@ export default function Header() {
                   className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  About Us
+                  About SN
                 </a>
               </div>
 
