@@ -170,7 +170,7 @@ export default function AICenter() {
         </div>
       </section>
 
-      {/* Section 3: AI 삼총사 */}
+      {/* Section 3: AI 드림팀 */}
       <section className="bg-[#1a1f2e]" aria-labelledby="ai-team-title">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
           {/* Section Header */}
@@ -182,13 +182,13 @@ export default function AICenter() {
             }`}
           >
             <p className="text-sm tracking-[0.15em] text-[#7fa892] mb-6">
-              SN의 AI 삼총사
+              SN의 AI 드림팀
             </p>
             <h2 id="ai-team-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-4">
               우리 학생을 위한 &apos;드림팀&apos;
             </h2>
             <p className="text-gray-400">
-              학부모님, 어려운 기술은 저희가 맡겠습니다. 학생은 그저 이 세 친구와 함께 즐겁게 공부하면 됩니다.
+              학부모님, 어려운 기술은 저희가 맡겠습니다. 학생은 그저 이 네 친구와 함께 즐겁게 공부하면 됩니다.
             </p>
           </div>
 
