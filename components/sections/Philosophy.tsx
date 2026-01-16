@@ -7,6 +7,7 @@ export default function Philosophy() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [activeTableRow, setActiveTableRow] = useState(-1);
   const [imageError, setImageError] = useState(false);
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
   const tableRef = useRef<HTMLDivElement>(null);
   const hasAnimatedTableRef = useRef(false);
 
@@ -107,11 +108,9 @@ export default function Philosophy() {
     },
     {
       number: '04',
-      title: '휴먼-AI 하이브리드 케어',
-      subtitle: '전문가와 AI 비서 군단의 밀착 마크',
-      content: '분당 연 250명의 성공 신화를 쓴 수학 강사 출신 원장님의 날카로운 직관과, AI 비서(SNARVIS) 및 학습 데이터 링크(SNarLink) 시스템이 결합하여 학생을 다각도로 케어합니다.',
-      highlight: "'완벽한 하이브리드 관리'를 실현합니다",
-      detail: "원장님이 설계한 필승 알고리즘 위에서 AI 비서 군단이 학생의 24시간을 밀착 보좌합니다. 슬럼프는 데이터로 미리 감지하고, 학습 공백은 원장님이 직접 전략적으로 개입하여 메웁니다.",
+      title: '휴먼–AI 하이브리드 케어',
+      content: '분당에서 연 250명의 성공을 만들어온 수학 강사 출신 원장님의 날카로운 직관과,\nAI 비서(SNARVIS), 학습 데이터 링크(SNarLink),\n그리고 현장을 밀착 지원하는 대학생 멘토 시스템이 결합되어\n학생을 입체적으로 케어합니다.',
+      highlight: "'완벽한 하이브리드 관리'를 실현합니다.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -134,10 +133,23 @@ export default function Philosophy() {
     <div className="bg-white">
       {/* Section 1: Hero - Minimal Institutional Style */}
       <section
-        className="relative min-h-[85vh] flex items-center bg-[#1a1f2e]"
+        className="relative min-h-[85vh] flex items-center"
         aria-labelledby="philosophy-hero-title"
       >
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/image/24.12-03724.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-[#1a1f2e]/85" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
           {/* Badge */}
           <p
             id="hero-label"
@@ -175,7 +187,7 @@ export default function Philosophy() {
         </div>
 
         {/* Minimal Scroll Indicator */}
-        <div className="absolute bottom-12 left-6 sm:left-8 lg:left-12" aria-hidden="true">
+        <div className="absolute bottom-12 left-6 sm:left-8 lg:left-12 z-10" aria-hidden="true">
           <div className="flex items-center gap-3 text-gray-500 text-sm">
             <span className="w-8 h-px bg-gray-600" />
             <span>Scroll</span>
@@ -237,17 +249,33 @@ export default function Philosophy() {
                     {pillar.detail}
                   </p>
 
-                  {/* Notes (SNarGen only) */}
+                  {/* Notes (SNarGen only) - 토글 */}
                   {pillar.notes && (
                     <div className="mt-6 pt-6 border-t border-gray-100">
-                      <ul className="space-y-3">
-                        {pillar.notes.map((note: string, noteIndex: number) => (
-                          <li key={noteIndex} className="flex gap-3 text-sm text-gray-400 leading-relaxed">
-                            <span className="text-gray-300 flex-shrink-0">·</span>
-                            <span>{note}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <button
+                        onClick={() => setIsNotesOpen(!isNotesOpen)}
+                        className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                      >
+                        <svg
+                          className={`w-4 h-4 transition-transform duration-200 ${isNotesOpen ? 'rotate-90' : ''}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                        <span>{isNotesOpen ? '상세 안내 접기' : '상세 안내 보기'}</span>
+                      </button>
+                      {isNotesOpen && (
+                        <ul className="space-y-3 mt-4">
+                          {pillar.notes.map((note: string, noteIndex: number) => (
+                            <li key={noteIndex} className="flex gap-3 text-sm text-gray-400 leading-relaxed">
+                              <span className="text-gray-300 flex-shrink-0">·</span>
+                              <span>{note}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   )}
                 </div>
@@ -324,8 +352,20 @@ export default function Philosophy() {
       </section>
 
       {/* Section 4: Director's Message - Minimal Institutional Style */}
-      <section className="bg-[#1a1f2e]" aria-labelledby="director-title">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+      <section className="relative" aria-labelledby="director-title">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/image/24.12-03681.jpg"
+            alt=""
+            fill
+            className="object-cover"
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-[#1a1f2e]/85" />
+        </div>
+
+        <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
           <div
             id="director-section"
             data-animate

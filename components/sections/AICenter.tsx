@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function AICenter() {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -26,6 +27,15 @@ export default function AICenter() {
   const aiTeam = [
     {
       number: '01',
+      name: '스나링크 & 스나키퍼',
+      nameEn: 'The Iron Shield',
+      role: '학습 수호자',
+      tagline: "딴짓은 지능적으로 막고, 공부량은 데이터로 증명하는 철통 보안 시스템",
+      description: "인터넷 강의를 듣는 줄 알았는데 혹시 딴짓을 하지는 않을까 걱정되시죠? SNarLink & SNarKeeper는 이중으로 학생의 학습 환경을 지켜주는 강력한 보안 시스템입니다.\n\n• 스나키퍼(Keeper): AI가 학생의 질문 의도를 파악하여, 학습과 무관한 부적절한 요청을 자동으로 차단합니다.\n\n• 스나링크(Link): 학생이 주고받는 데이터 트래픽을 분석하여, 공부 외 접속 시도를 0.02초 만에 감지하고 차단합니다.\n\n또한 실제로 어디서 얼마나 공부했는지 정밀하게 측정하여 투명한 학습 리포트를 제공합니다.",
+      highlight: "\"열심히 했다\"는 막연한 말 대신, 스나링크가 내놓는 투명한 데이터 리포트로 학생의 진짜 몰입 시간을 확인하세요."
+    },
+    {
+      number: '02',
       name: '스나비스',
       nameEn: 'SNARVIS',
       role: '24시간 밀착 비서',
@@ -34,31 +44,13 @@ export default function AICenter() {
       highlight: "엄마보다 더 꼼꼼하게 학생의 학습 상황을 기록하고 보고합니다."
     },
     {
-      number: '02',
-      name: '스나고',
-      nameEn: 'SNarGo',
-      role: '수학 해결사',
-      tagline: "아무리 어려운 수학 문제도 가장 쉽고 논리적으로 풀어주는 수학 천재",
-      description: "수학 강사 출신 원장님의 노하우가 그대로 담긴 스나고는 고난도 킬러 문항도 막힘없이 풀어냅니다. 단순히 답만 알려주는 게 아니라, 학생의 눈높이에서 '왜 이렇게 풀어야 하는지' 그 논리적인 과정을 아주 쉽게 설명해 줍니다.",
-      highlight: "학생이 수학의 벽에 부딪혔을 때, 가장 든든한 해결사가 되어줍니다."
-    },
-    {
       number: '03',
-      name: '스나겐',
-      nameEn: 'SNarGen',
-      role: '문제를 만드는 요정',
-      tagline: "틀린 문제와 똑같은 원리의 '새로운 문제'를 즉석에서 만들어주는 친구",
-      description: "보통 틀린 문제를 다시 풀라고 하면 학생들은 답을 외워서 맞힙니다. 하지만 스나겐은 학생이 틀린 문제의 핵심 원리만 쏙 뽑아내서, 숫자가 바뀌고 형태가 바뀐 '세상에 하나뿐인 맞춤형 문제'를 그 자리에서 만들어줍니다.",
-      highlight: "약점이 완전히 사라질 때까지 스나겐이 문제를 공급합니다."
-    },
-    {
-      number: '04',
-      name: '스나링크',
-      nameEn: 'SNarLink',
-      role: '철통 방어 수호자',
-      tagline: "딴짓은 막아주고 공부량은 데이터로 증명하는 철통 방어 수호자",
-      description: "인터넷 강의를 듣는 줄 알았는데 혹시 딴짓을 하지는 않을까 걱정되시죠? 스나링크는 강력한 차세대 '학습 전용 방화벽'입니다. 공부 외의 모든 유혹을 원천 차단함은 물론, 학생이 주고받는 데이터(트래픽)를 분석하여 실제로 어디서 얼마나 공부했는지 정밀하게 측정합니다.",
-      highlight: "\"열심히 했다\"는 말 대신, 스나링크가 내놓는 투명한 리포트로 학생의 진짜 학습량을 확인하세요."
+      name: '스나고 & 스나겐',
+      nameEn: 'SNarGo & SNarGen',
+      role: '학습 전문가',
+      tagline: "어려운 문제는 쉽게 풀어주고, 약점은 맞춤 문제로 훈련시키는 학습 파트너",
+      description: "• 스나고(SNarGo): 수학 강사 출신 원장님의 노하우가 담긴 스나고는 고난도 킬러 문항도 막힘없이 풀어냅니다. 단순히 답만 알려주는 게 아니라, '왜 이렇게 풀어야 하는지' 논리적인 과정을 학생 눈높이에서 쉽게 설명해 줍니다.\n\n• 스나겐(SNarGen): 틀린 문제를 다시 풀라고 하면 학생들은 답을 외워서 맞힙니다. 스나겐은 틀린 문제의 핵심 원리만 쏙 뽑아내서, 숫자와 형태가 바뀐 '세상에 하나뿐인 맞춤형 문제'를 즉석에서 만들어줍니다.",
+      highlight: "수학의 벽에 부딪혔을 때 스나고가 해결하고, 약점이 사라질 때까지 스나겐이 훈련시킵니다."
     }
   ];
 
@@ -85,10 +77,23 @@ export default function AICenter() {
     <div className="bg-white">
       {/* Section 1: Hero - AI 특화관 */}
       <section
-        className="relative min-h-[85vh] flex items-center bg-[#1a1f2e]"
+        className="relative min-h-[85vh] flex items-center"
         aria-labelledby="ai-center-hero-title"
       >
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/image/24.12-03653.jpg"
+            alt=""
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-[#1a1f2e]/85" />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
           {/* Badge */}
           <p
             id="hero-label"
@@ -126,7 +131,7 @@ export default function AICenter() {
         </div>
 
         {/* Minimal Scroll Indicator */}
-        <div className="absolute bottom-12 left-6 sm:left-8 lg:left-12" aria-hidden="true">
+        <div className="absolute bottom-12 left-6 sm:left-8 lg:left-12 z-10" aria-hidden="true">
           <div className="flex items-center gap-3 text-gray-500 text-sm">
             <span className="w-8 h-px bg-gray-600" />
             <span>Scroll</span>
@@ -222,7 +227,7 @@ export default function AICenter() {
                     &quot;{member.tagline}&quot;
                   </p>
 
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-gray-400 leading-relaxed whitespace-pre-line">
                     {member.description}
                   </p>
 
