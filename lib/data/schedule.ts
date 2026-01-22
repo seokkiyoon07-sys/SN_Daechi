@@ -1,0 +1,82 @@
+// 시간표 데이터 - PPT와 /campus/schedule 페이지에서 공유
+export const scheduleData = [
+  {
+    period: '1교시',
+    time: '08:00 ~ 08:50',
+    weekday: '자기주도학습\n(지각 및 미입실시 출입통제)',
+    saturday: '자기주도학습\n(지각 및 미입실시 출입통제)',
+    sunday: '09:00 오픈\n자율학습\n(학습시 상점부여)',
+    rowSpan: 3,
+  },
+  {
+    period: '2교시',
+    time: '09:00 ~ 10:15',
+    weekday: null,
+    saturday: null,
+    sunday: null,
+  },
+  {
+    period: '3교시',
+    time: '10:30 ~ 12:00',
+    weekday: null,
+    saturday: null,
+    sunday: null,
+  },
+  {
+    period: '점심시간',
+    time: '12:00 ~ 13:00',
+    weekday: '식사 / 휴게실 내 휴대폰 사용 가능',
+    saturday: '식사 / 휴게실 내 휴대폰 사용 가능',
+    sunday: '식사 / 휴게실 내 휴대폰 사용 가능',
+    isBreak: true,
+    colSpan: 3,
+  },
+  {
+    period: '4교시',
+    time: '13:00 ~ 14:30',
+    weekday: '자기주도학습\n(지각 및 미입실시 출입통제)',
+    saturday: '자기주도학습\n(지각 및 미입실시 출입통제)',
+    sunday: '자율학습\n(학습시 상점부여)',
+    rowSpan: 2,
+  },
+  {
+    period: '5교시',
+    time: '14:45 ~ 16:15',
+    weekday: null,
+    saturday: null,
+    sunday: null,
+  },
+  {
+    period: '6교시',
+    time: '16:30 ~ 18:00',
+    weekday: '자기주도학습\n(지각 및 미입실시 출입통제)',
+    saturday: '자율 학습\n(희망자에 한함)',
+    sunday: '자율학습\n(학습시 상점부여)',
+  },
+  {
+    period: '저녁시간',
+    time: '18:10 ~ 19:10',
+    weekday: '외출 가능 / 휴게실 내 휴대폰 사용 가능',
+    saturday: '외출 가능 / 휴게실 내 휴대폰 사용 가능',
+    sunday: '외출 가능 / 휴게실 내 휴대폰 사용 가능',
+    isBreak: true,
+    colSpan: 3,
+  },
+  {
+    period: '7교시',
+    time: '19:10 ~ 20:40',
+    weekday: '자기주도학습\n(지각 및 미입실시 출입통제)',
+    saturday: '자율 학습\n(희망자에 한함)',
+    sunday: '-\n(18시 운영 종료)',
+    rowSpan: 2,
+  },
+  {
+    period: '8교시',
+    time: '20:55 ~ 22:00',
+    weekday: null,
+    saturday: null,
+    sunday: null,
+  },
+];
+
+export type ScheduleItem = (typeof scheduleData)[number];

@@ -67,7 +67,7 @@ export default function SchedulePage() {
       period: "1교시",
       time: "08:00 ~ 08:50",
       activity: "자기주도학습\n(지각 및 미입실시 출입통제)",
-      sunday: "자율학습\n(학습시 상점부여)",
+      sunday: "09:00 오픈\n자율학습\n(학습시 상점부여)",
       rowSpan: 3,
       colSpan: 2,
       sunRowSpan: 3
@@ -124,7 +124,7 @@ export default function SchedulePage() {
       time: "19:10 ~ 20:40",
       weekday: "자기주도학습\n(지각 및 미입실시 출입통제)",
       saturday: "자율 학습\n(희망자에 한함)",
-      sunday: "자율학습\n(학습시 상점부여)",
+      sunday: "-\n(18시 운영 종료)",
       rowSpan: 2,
       sunRowSpan: 2,
       hasSeparate: true
@@ -190,7 +190,7 @@ export default function SchedulePage() {
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>1교시</td>
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>08:00 ~ 08:50</td>
                   <td rowSpan={3} colSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자기주도학습{'\n'}(지각 및 미입실시 출입통제)</td>
-                  <td rowSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자율학습{'\n'}(학습시 상점부여)</td>
+                  <td rowSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>09:00 오픈{'\n'}자율학습{'\n'}(학습시 상점부여)</td>
                 </tr>
                 <tr>
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>2교시</td>
@@ -229,7 +229,7 @@ export default function SchedulePage() {
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>19:10 ~ 20:40</td>
                   <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자기주도학습{'\n'}(지각 및 미입실시 출입통제)</td>
                   <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자율 학습{'\n'}(희망자에 한함)</td>
-                  <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자율학습{'\n'}(학습시 상점부여)</td>
+                  <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#666', whiteSpace: 'pre-line' }}>-{'\n'}(18시 운영 종료)</td>
                 </tr>
                 <tr>
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>8교시</td>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { penaltiesData } from '@/lib/data/penalties';
 
 export default function RulesPage() {
   const [showPenaltyTable, setShowPenaltyTable] = useState(false);
@@ -45,16 +46,7 @@ export default function RulesPage() {
     }
   ];
 
-  const penaltyData = [
-    { category: "결석", unauthorized: 10, excused: 5 },
-    { category: "조퇴", unauthorized: 5, excused: 3 },
-    { category: "지각", unauthorized: 5, excused: 3 },
-    { category: "외출", unauthorized: 3, excused: 1 },
-    { category: "수면", unauthorized: 3, excused: "-" },
-    { category: "졸음", unauthorized: 1, excused: "-" },
-    { category: "핸드폰 미제출", unauthorized: 10, excused: "-" },
-    { category: "교직원의 정당한 지시 불이행", unauthorized: 10, excused: "-" },
-  ];
+  const penaltyData = penaltiesData;
 
   return (
     <div className="min-h-screen bg-gray-50">

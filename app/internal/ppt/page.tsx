@@ -2,10 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { programsData } from '@/lib/data/programs';
+import { typedScholarshipsData as scholarshipsData } from '@/lib/data/scholarships';
+import { penaltiesData } from '@/lib/data/penalties';
+import { scheduleData } from '@/lib/data/schedule';
 
 export default function AdmissionPPT() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 18;
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const totalSlides = 21;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -603,6 +608,7 @@ export default function AdmissionPPT() {
                     <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
                   </td>
                   <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--text-dark)', verticalAlign: 'middle' }}>
+                    <div className="font-medium text-xs" style={{ color: 'var(--accent-teal)' }}>09:00 오픈</div>
                     <div className="font-medium">자율학습</div>
                     <div className="text-xs mt-1" style={{ color: 'var(--accent-teal)' }}>(학습시 상점부여)</div>
                   </td>
@@ -672,9 +678,9 @@ export default function AdmissionPPT() {
                     <div className="font-medium">자율 학습</div>
                     <div className="text-xs mt-1">(희망자에 한함)</div>
                   </td>
-                  <td className="py-3 px-3" rowSpan={2} style={{ color: 'var(--text-dark)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자율학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--accent-teal)' }}>(학습시 상점부여)</div>
+                  <td className="py-3 px-3" rowSpan={2} style={{ color: 'var(--text-muted)', verticalAlign: 'middle' }}>
+                    <div className="font-medium">-</div>
+                    <div className="text-xs mt-1">(18시 운영 종료)</div>
                   </td>
                 </tr>
                 {/* 8교시 */}
@@ -708,46 +714,13 @@ export default function AdmissionPPT() {
                 </tr>
               </thead>
               <tbody>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>결석</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>10</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>5</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>조퇴</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>5</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>3</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>지각</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>5</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>3</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>외출</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>3</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>1</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>수면</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>3</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>-</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>졸음</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>1</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>-</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>핸드폰 미제출</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>10</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>-</td>
-                </tr>
-                <tr>
-                  <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>교직원의 정당한 지시 불이행</td>
-                  <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>10</td>
-                  <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>-</td>
-                </tr>
+                {penaltiesData.map((penalty, idx) => (
+                  <tr key={idx} style={{ borderBottom: idx < penaltiesData.length - 1 ? '1px solid var(--gray-light)' : 'none' }}>
+                    <td className="py-4 px-6 font-medium" style={{ color: 'var(--text-dark)' }}>{penalty.category}</td>
+                    <td className="py-4 px-6 font-bold text-lg" style={{ color: 'var(--green-deep)' }}>{penalty.unauthorized}</td>
+                    <td className="py-4 px-6" style={{ color: 'var(--text-muted)' }}>{penalty.excused}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -848,8 +821,107 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
+      {/* Slide 3-6: 수강료 */}
+      <Slide index={15}>
+        <div className="w-full max-w-5xl px-8">
+          <Tag>Fees</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
+            수강료 안내
+          </h2>
+          <div className="grid grid-cols-3 gap-4">
+            {programsData.map((program, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl"
+                style={{
+                  backgroundColor: 'white',
+                  border: idx === 1 ? '2px solid var(--mint-dark)' : '1px solid var(--gray-light)',
+                }}
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  <span
+                    className="text-xs px-2 py-1 rounded-full font-medium"
+                    style={{
+                      backgroundColor: idx === 1 ? 'var(--mint-dark)' : 'var(--mint-light)',
+                      color: idx === 1 ? 'white' : 'var(--green-deep)',
+                    }}
+                  >
+                    {program.badge}
+                  </span>
+                  <h3 className="font-bold text-lg" style={{ color: 'var(--green-deep)' }}>
+                    {program.title}
+                  </h3>
+                </div>
+                <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>
+                  {program.description}
+                </p>
+                <ul className="space-y-2 mb-6">
+                  {program.features.map((feature, i) => (
+                    <li key={i} className="text-sm flex items-center gap-2" style={{ color: 'var(--text-dark)' }}>
+                      <span style={{ color: 'var(--mint-dark)' }}>✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div className="pt-4 border-t" style={{ borderColor: 'var(--gray-light)' }}>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>월 수강료</p>
+                  <p className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>
+                    {program.price}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-sm mt-6" style={{ color: 'var(--text-muted)' }}>
+            * 자세한 수강료 문의는 상담 시 안내드립니다
+          </p>
+        </div>
+      </Slide>
+
+      {/* Slide 3-7: 장학금 */}
+      <Slide index={16}>
+        <div className="w-full max-w-5xl px-8">
+          <Tag>Scholarship</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
+            장학금 제도
+          </h2>
+          <div className="grid grid-cols-2 gap-6">
+            {scholarshipsData.map((scholarship, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl"
+                style={{
+                  backgroundColor: 'white',
+                  border: idx === 0 ? '2px solid var(--mint-dark)' : '1px solid var(--gray-light)',
+                }}
+              >
+                <h3 className="font-bold text-lg mb-5" style={{ color: 'var(--green-deep)' }}>
+                  {scholarship.title}
+                </h3>
+                <div className="space-y-4">
+                  {scholarship.items.map((item, i) => (
+                    <div key={i} className="flex justify-between items-start py-3 border-b" style={{ borderColor: 'var(--gray-light)' }}>
+                      <div className="flex flex-col">
+                        <span className="text-sm" style={{ color: 'var(--text-dark)' }}>{item.grade}</span>
+                        {item.note && <span className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{item.note}</span>}
+                      </div>
+                      <span className="text-sm font-semibold whitespace-nowrap ml-4" style={{ color: 'var(--mint-dark)' }}>{item.benefit}</span>
+                    </div>
+                  ))}
+                </div>
+                {scholarship.note && (
+                  <p className="text-xs mt-4" style={{ color: 'var(--text-muted)' }}>
+                    {scholarship.note}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </Slide>
+
       {/* Slide 4: Roadmap - Title */}
-      <Slide index={15} dark>
+      <Slide index={17} dark>
         <div className="text-center px-8 max-w-4xl">
           <Tag dark>Section 4</Tag>
           <h1 className="text-4xl md:text-5xl font-black mb-6 text-white" style={{ lineHeight: 1.3 }}>
@@ -866,7 +938,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 4-1~4: 프로세스 타임라인 */}
-      <Slide index={16}>
+      <Slide index={18}>
         <div className="w-full max-w-5xl px-8">
           <Tag>Roadmap</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
@@ -925,8 +997,136 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
+      {/* Slide 6: FAQ */}
+      <Slide index={20}>
+        <div className="w-full max-w-4xl px-8 h-full flex flex-col">
+          <Tag>FAQ</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
+            자주 묻는 질문
+          </h2>
+          <div className="space-y-3 overflow-y-auto flex-1 pr-2" style={{ maxHeight: 'calc(100vh - 200px)' }}>
+            {[
+              {
+                q: 'Q1. AI가 공부를 대신 가르쳐주는 건가요?',
+                a: '아닙니다. AI는 정답을 대신 알려주는 존재가 아니라, 아이의 사고 과정과 학습 행동을 분석해 \'방향\'을 잡아주는 역할입니다.',
+                highlight: '👉 "AI는 판단을 돕고, 사람은 결정을 합니다."',
+              },
+              {
+                q: 'Q2. 그럼 선생님 수업은 없는 건가요?',
+                a: '독학 베이스로 운영됩니다. 수학 수업은 있지만 목적이 다릅니다.',
+                list: ['시간을 채우는 수업 ❌', '개념 정리 + 사고 구조를 잡아주는 수업 ⭕'],
+              },
+              {
+                q: 'Q3. 독학이면 학생이 느슨해지지 않나요?',
+                a: '그래서 \'지능형 관리\'가 필요합니다. 완전 방임형 독학이 아닙니다.',
+                list: ['학습 기록 자동 수집', '행동 패턴 추적', '루틴 붕괴 시 즉각 개입'],
+                highlight: '👉 공부는 혼자 하지만, 관리는 시스템이 합니다.',
+              },
+              {
+                q: 'Q4. 이미 학원을 다니고 있는데, 병행이 가능한가요?',
+                a: '학생 상황에 따라 단과 외출이 가능합니다.',
+                list: ['시대인재 등 학원 수업 + 고요의 숲 독학', '과목별 병행 / 특정 기간 집중 관리'],
+                note: '입학 전 진단에서 가장 효율적인 조합을 제안드립니다.',
+              },
+              {
+                q: 'Q5. SNarGPT랑 ChatGPT, Gemini는 뭐가 다른가요?',
+                a: 'ChatGPT와 Gemini는 \'범용 AI\'이고, SNarGPT는 \'수능·학습을 위해 설계된 전용 AI 시스템\'입니다.',
+                sections: [
+                  {
+                    title: '1️⃣ 출발점이 다릅니다 (목적의 차이)',
+                    compare: [
+                      { label: 'ChatGPT / Gemini', items: ['전 세계 모든 사용자를 위한 범용 인공지능', '질문 → 답변 중심', '검색, 글쓰기, 요약, 번역 등 다목적'] },
+                      { label: 'SNarGPT', items: ['수능·내신 학습만을 위해 설계된 전용 AI', '질문 → 사고 분석 → 학습 처방', '목표: 성적 상승 구조를 만드는 것'] },
+                    ],
+                    point: '👉 누구나 쓰는 AI vs \'공부 성과\'를 내기 위해 만든 AI',
+                  },
+                  {
+                    title: '2️⃣ "정답"을 다루는 방식이 다릅니다',
+                    compare: [
+                      { label: 'ChatGPT / Gemini', items: ['질문에 대해 가장 그럴듯한 답을 제공', '사고 과정은 사용자에게 보이지 않음', '틀려도 "왜 틀렸는지"를 추적하지 않음'] },
+                      { label: 'SNarGPT', items: ['정답보다 사고 과정을 분석', '왜 이 선택을 했는지, 어느 단계에서 개념이 흔들렸는지', '오답 패턴을 누적 관리'] },
+                    ],
+                    point: '👉 답을 주는 AI vs 생각을 들여다보는 AI',
+                  },
+                  {
+                    title: '3️⃣ "기억"과 "관리"의 차이',
+                    compare: [
+                      { label: 'ChatGPT / Gemini', items: ['대화가 끝나면 학습 이력은 거의 남지 않음', '다음 질문은 사실상 \'새 출발\''] },
+                      { label: 'SNarGPT', items: ['학생별 학습 이력 누적', '오답 유형, 실수 패턴, 취약 개념 축적', '장기적인 학습 추적과 비교 가능'] },
+                    ],
+                    point: '👉 일회성 대화 vs 지속적으로 아이를 아는 AI',
+                  },
+                  {
+                    title: '4️⃣ 학생에게 미치는 실제 영향',
+                    compare: [
+                      { label: 'ChatGPT / Gemini', items: ['순간적인 이해는 도움', '의존 위험, 사고력 대신 \'복붙 학습\'', '성적 관리 시스템 부재'] },
+                      { label: 'SNarGPT', items: ['AI가 대신 풀어주지 않음', '스스로 생각하도록 유도', '틀리는 이유를 알게 됨, 공부 루틴이 무너지기 어려움'] },
+                    ],
+                    point: '👉 똑똑해 보이게 만드는 AI vs 진짜 실력을 키우는 AI',
+                  },
+                ],
+              },
+            ].map((faq, idx) => (
+              <div
+                key={idx}
+                className="rounded-xl overflow-hidden"
+                style={{ backgroundColor: 'white', border: openFaq === idx ? '2px solid var(--mint-dark)' : '1px solid var(--gray-light)' }}
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full p-4 flex items-center justify-between text-left"
+                >
+                  <span className="font-bold text-sm" style={{ color: 'var(--green-deep)' }}>{faq.q}</span>
+                  <span className="text-xl" style={{ color: 'var(--mint-dark)' }}>{openFaq === idx ? '−' : '+'}</span>
+                </button>
+                {openFaq === idx && (
+                  <div className="px-4 pb-4 overflow-y-auto" style={{ maxHeight: '50vh' }}>
+                    <p className="text-sm mb-3" style={{ color: 'var(--text-dark)' }}>{faq.a}</p>
+                    {faq.list && (
+                      <div className="text-sm space-y-1 mb-2" style={{ color: 'var(--text-muted)' }}>
+                        {faq.list.map((item: string, i: number) => <p key={i}>• {item}</p>)}
+                      </div>
+                    )}
+                    {faq.sections && (
+                      <div className="space-y-4 mt-3">
+                        {faq.sections.map((section: { title: string; compare: { label: string; items: string[] }[]; point: string }, si: number) => (
+                          <div key={si} className="p-3 rounded-lg" style={{ backgroundColor: 'var(--bg-cream)', border: '1px solid var(--gray-light)' }}>
+                            <p className="font-bold text-xs mb-2" style={{ color: 'var(--green-deep)' }}>{section.title}</p>
+                            <div className="grid grid-cols-2 gap-2 mb-2">
+                              {section.compare.map((comp, ci: number) => (
+                                <div key={ci} className="p-2 rounded" style={{ backgroundColor: ci === 1 ? 'var(--mint-light)' : 'white' }}>
+                                  <p className="text-xs font-semibold mb-1" style={{ color: ci === 1 ? 'var(--green-deep)' : 'var(--text-muted)' }}>{comp.label}</p>
+                                  {comp.items.map((item, ii: number) => (
+                                    <p key={ii} className="text-xs" style={{ color: 'var(--text-dark)' }}>• {item}</p>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
+                            <p className="text-xs px-2 py-1 rounded text-center" style={{ backgroundColor: 'var(--mint-dark)', color: 'white' }}>
+                              {section.point}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {faq.highlight && (
+                      <p className="text-sm px-3 py-2 rounded-lg mt-2" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)' }}>
+                        {faq.highlight}
+                      </p>
+                    )}
+                    {faq.note && (
+                      <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>{faq.note}</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </Slide>
+
       {/* Slide 5: Closing */}
-      <Slide index={17} dark>
+      <Slide index={19} dark>
         <div className="text-center px-8 max-w-4xl">
           <Tag dark>Closing</Tag>
           <h1 className="text-3xl md:text-4xl font-bold mb-8 text-white" style={{ lineHeight: 1.4 }}>

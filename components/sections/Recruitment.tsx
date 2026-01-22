@@ -1,34 +1,9 @@
 'use client';
 
+import { programsData } from '@/lib/data/programs';
+
 export default function Recruitment() {
-  const programs = [
-    {
-      badge: "인기",
-      title: "정규 독학재수반",
-      description: "완벽한 학습 환경과 체계적인 관리 시스템",
-      features: [
-        "개인별 맞춤 학습 플랜",
-        "주간/월간 성적 분석",
-        "전담 멘토 배정",
-        "24시간 자습실 이용"
-      ],
-      price: "800,000 원",
-      priceLabel: "수강료 안내"
-    },
-    {
-      badge: "추천",
-      title: "프리미엄 수학 관리반",
-      description: "대치 박진모 원장의 전담 관리로 확실한 성적 향상",
-      features: [
-        "1:1 개인 맞춤 케어",
-        "매일 학습 진도 체크",
-        "실시간 질의응답",
-        "학부모 상담 서비스"
-      ],
-      price: "750,000 원 + 300,000 원",
-      priceLabel: "수강료 안내"
-    }
-  ];
+  const programs = programsData;
 
   return (
     <section id="recruitment" className="py-24 bg-gray-50">
@@ -45,12 +20,12 @@ export default function Recruitment() {
         </div>
 
         {/* 프로그램 카드 */}
-        <div className="mx-auto" style={{ maxWidth: '900px' }}>
+        <div className="mx-auto" style={{ maxWidth: '1100px' }}>
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="w-1.5 h-6 bg-sn-green rounded-full"></span>
             <h3 className="text-2xl font-bold text-gray-900">프로그램 선택</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {programs.map((program, index) => (
               <div
                 key={index}
