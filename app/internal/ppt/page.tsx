@@ -933,9 +933,9 @@ export default function AdmissionPPT() {
             고요의 숲은
           </h1>
           <div className="p-8 rounded-2xl mb-8" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-            <p className="text-2xl md:text-3xl font-bold text-white leading-relaxed">
-              &ldquo;공부를 대신해주지 않습니다.<br />
-              <span style={{ color: 'var(--mint)' }}>대신, 공부가 실패하지 않게<br />설계합니다.</span>&rdquo;
+            <p className="text-2xl md:text-3xl font-bold text-white" style={{ lineHeight: '2' }}>
+              &ldquo;공부를 대신해주지 않습니다.<br /><br />
+              <span style={{ color: 'var(--mint)' }}>대신, 공부가 실패하지 않게 설계합니다.</span>&rdquo;
             </p>
           </div>
           <Divider dark />
