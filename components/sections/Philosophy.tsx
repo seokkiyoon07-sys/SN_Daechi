@@ -382,16 +382,16 @@ export default function Philosophy() {
             <div className="flex flex-col md:flex-row gap-12 md:gap-16 items-start">
               {/* Director Image */}
               <figure className="flex-shrink-0">
-                <div className="w-40 h-40 md:w-48 md:h-48 bg-gray-800 overflow-hidden">
+                <div className="w-56 h-72 md:w-72 md:h-96 bg-gray-800 overflow-hidden">
                   {imageError ? (
                     <DirectorImagePlaceholder />
                   ) : (
                     <Image
-                      src="/image/director.png"
+                      src="/image/jinmo.png"
                       alt="박진모 원장"
-                      width={192}
-                      height={192}
-                      className="w-full h-full object-cover grayscale"
+                      width={288}
+                      height={384}
+                      className="w-full h-full object-cover object-top grayscale"
                       onError={() => setImageError(true)}
                     />
                   )}
