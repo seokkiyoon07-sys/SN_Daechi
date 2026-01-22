@@ -23,8 +23,16 @@ export default function FaqPage() {
     },
     {
       question: "중도 환불이 가능한가요?",
-      answer: "네, 가능합니다. 학원 환불 규정에 따라 수업 진행 일수를 기준으로 환불 금액이 산정됩니다. 자세한 내용은 행정실로 문의해 주세요."
+      answer: "네, 가능합니다. 「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 별표 4에 따른 환불 규정이 적용됩니다.",
+      hasRefundTable: true
     }
+  ];
+
+  const refundData = [
+    { period: '수업 시작 전', refund: '전액 환불' },
+    { period: '총 교습시간 1/3 경과 전', refund: '납부액의 2/3 환불' },
+    { period: '총 교습시간 1/2 경과 전', refund: '납부액의 1/2 환불' },
+    { period: '총 교습시간 1/2 경과 후', refund: '환불 불가' },
   ];
 
   return (
@@ -63,7 +71,32 @@ export default function FaqPage() {
                     </svg>
                   </summary>
                   <div className="px-4 pb-4 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
-                    {faq.answer}
+                    <p>{faq.answer}</p>
+                    {faq.hasRefundTable && (
+                      <div className="mt-4">
+                        <table className="w-full border-collapse rounded-lg overflow-hidden">
+                          <thead>
+                            <tr className="bg-sn-green text-white">
+                              <th className="px-4 py-2 text-left text-sm font-semibold">수업 진행 기준</th>
+                              <th className="px-4 py-2 text-right text-sm font-semibold">환불 금액</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {refundData.map((row, ri) => (
+                              <tr key={ri} className={ri % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                                <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200">{row.period}</td>
+                                <td className={`px-4 py-2 text-sm text-right font-semibold border-t border-gray-200 ${ri === 3 ? 'text-gray-400' : 'text-sn-green'}`}>{row.refund}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        <div className="mt-3 space-y-1 text-xs text-gray-500">
+                          <p>• 환불 사유 발생일로부터 5일 이내 환불 처리</p>
+                          <p>• 환불 신청은 행정실로 문의해 주세요</p>
+                        </div>
+                        <p className="mt-2 text-xs text-gray-400">※ 법적 근거: 학원의 설립·운영 및 과외교습에 관한 법률 제18조, 동법 시행령 별표 4</p>
+                      </div>
+                    )}
                   </div>
                 </details>
               ))}

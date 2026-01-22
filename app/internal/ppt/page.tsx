@@ -1066,6 +1066,21 @@ export default function AdmissionPPT() {
                   },
                 ],
               },
+              {
+                q: 'Q6. 중도 환불이 가능한가요?',
+                a: '네, 가능합니다. 「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 별표 4에 따른 환불 규정이 적용됩니다.',
+                refundTable: [
+                  { period: '수업 시작 전', refund: '전액 환불' },
+                  { period: '총 교습시간 1/3 경과 전', refund: '납부액의 2/3 환불' },
+                  { period: '총 교습시간 1/2 경과 전', refund: '납부액의 1/2 환불' },
+                  { period: '총 교습시간 1/2 경과 후', refund: '환불 불가' },
+                ],
+                list: [
+                  '환불 사유 발생일로부터 5일 이내 환불 처리',
+                  '환불 신청은 행정실로 문의해 주세요',
+                ],
+                note: '※ 법적 근거: 학원의 설립·운영 및 과외교습에 관한 법률 제18조, 동법 시행령 별표 4',
+              },
             ].map((faq, idx) => (
               <div
                 key={idx}
@@ -1082,6 +1097,26 @@ export default function AdmissionPPT() {
                 {openFaq === idx && (
                   <div className="px-4 pb-4 overflow-y-auto" style={{ maxHeight: '50vh' }}>
                     <p className="text-sm mb-3" style={{ color: 'var(--text-dark)' }}>{faq.a}</p>
+                    {faq.refundTable && (
+                      <div className="mb-3 rounded-lg overflow-hidden" style={{ border: '1px solid var(--gray-light)' }}>
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr style={{ backgroundColor: 'var(--mint-dark)', color: 'white' }}>
+                              <th className="px-3 py-2 text-left font-semibold">수업 진행 기준</th>
+                              <th className="px-3 py-2 text-right font-semibold">환불 금액</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {faq.refundTable.map((row: { period: string; refund: string }, ri: number) => (
+                              <tr key={ri} style={{ backgroundColor: ri % 2 === 0 ? 'white' : 'var(--bg-cream)', borderTop: '1px solid var(--gray-light)' }}>
+                                <td className="px-3 py-2" style={{ color: 'var(--text-dark)' }}>{row.period}</td>
+                                <td className="px-3 py-2 text-right font-semibold" style={{ color: ri === 3 ? 'var(--text-muted)' : 'var(--green-deep)' }}>{row.refund}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
                     {faq.list && (
                       <div className="text-sm space-y-1 mb-2" style={{ color: 'var(--text-muted)' }}>
                         {faq.list.map((item: string, i: number) => <p key={i}>• {item}</p>)}
