@@ -1,5 +1,6 @@
 export interface Column {
   id: number;
+  slug: string;
   title: string;
   date: string;
   author: string;
@@ -12,6 +13,7 @@ export interface Column {
 export const columns: Column[] = [
   {
     id: 1,
+    slug: "goyoui-sup-first-step",
     title: "고요의 숲 – 교육의 게임 체인저를 향한 첫걸음",
     date: "2025.01.23",
     author: "윤석기 대표",
@@ -140,6 +142,7 @@ AI는 단순한 자동화 도구가 아니라,
   },
   {
     id: 2,
+    slug: "sn-economi-son",
     title: "SN이 손에잡히는경제에 나왔습니다.",
     date: "2025.01.23",
     author: "SN독학기숙학원",

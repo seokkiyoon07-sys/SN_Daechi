@@ -22,8 +22,8 @@ function formatText(text: string) {
 
 export default function ColumnDetailPage() {
   const params = useParams();
-  const id = Number(params.id);
-  const column = columns.find(c => c.id === id);
+  const slug = params.slug as string;
+  const column = columns.find(c => c.slug === slug);
 
   if (!column) {
     return (

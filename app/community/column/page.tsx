@@ -27,7 +27,7 @@ export default function ColumnPage() {
             {columns.map((column) => (
               <Link
                 key={column.id}
-                href={`/community/column/${column.id}`}
+                href={`/community/column/${column.slug}`}
                 className="block bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:border-sn-green/30 hover:shadow-md transition-all"
               >
                 <div className="flex items-center gap-2 mb-3">
