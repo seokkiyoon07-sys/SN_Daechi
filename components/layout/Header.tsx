@@ -14,8 +14,8 @@
  *    - 서브: 성공스토리, 입결 데이터
  *
  * 3. 캠퍼스 라이프
- *    - 학원생활 + 시설안내 + 도시락 (학생이 가장 궁금해하는 곳)
- *    - 서브: 생활관리, 학습시간표, 학사일정, 시설안내, 도시락 메뉴
+ *    - 학원생활 + 시설안내 (학생이 가장 궁금해하는 곳)
+ *    - 서브: 생활관리, 학습시간표, 학사일정, 시설안내
  *
  * 4. 입학 안내
  *    - 모집요강 + 방문상담 예약 (Action Item)
@@ -93,16 +93,16 @@ export default function Header() {
 
             {/* 2. 성적 변화의 증거 드롭다운 */}
             <div className="relative group">
-              <a href="/results" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
+              <a href="/results/data" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
                 성적 변화의 증거
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <a href="/success-stories" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  성공스토리
-                </a>
                 <a href="/results/data" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   입결 데이터
+                </a>
+                <a href="/success-stories" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  성공스토리
                 </a>
               </div>
             </div>
@@ -125,9 +125,6 @@ export default function Header() {
                 </a>
                 <a href="/facility" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   시설안내
-                </a>
-                <a href="/campus/menu" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  도시락 메뉴
                 </a>
               </div>
             </div>
@@ -158,11 +155,11 @@ export default function Header() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <a href="/community/column" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  SN대치 칼럼
-                </a>
                 <a href="/community/notices" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   공지사항
+                </a>
+                <a href="/community/column" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  SN대치 칼럼
                 </a>
                 <a href="/community/faq" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   자주 묻는 질문
@@ -309,18 +306,18 @@ export default function Header() {
               <div className="space-y-2">
                 <p className="text-gray-900 font-medium">성적 변화의 증거</p>
                 <a
-                  href="/success-stories"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  성공스토리
-                </a>
-                <a
                   href="/results/data"
                   className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   입결 데이터
+                </a>
+                <a
+                  href="/success-stories"
+                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  성공스토리
                 </a>
               </div>
 
@@ -355,13 +352,6 @@ export default function Header() {
                 >
                   시설안내
                 </a>
-                <a
-                  href="/campus/menu"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  도시락 메뉴
-                </a>
               </div>
 
               {/* 4. 입학 안내 */}
@@ -394,18 +384,18 @@ export default function Header() {
               <div className="space-y-2">
                 <p className="text-gray-900 font-medium">인사이트</p>
                 <a
-                  href="/community/column"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  SN대치 칼럼
-                </a>
-                <a
                   href="/community/notices"
                   className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   공지사항
+                </a>
+                <a
+                  href="/community/column"
+                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  SN대치 칼럼
                 </a>
                 <a
                   href="/community/faq"
