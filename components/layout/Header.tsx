@@ -35,6 +35,11 @@ import Link from 'next/link';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSiteDropdownOpen, setIsSiteDropdownOpen] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
+
+  const toggleSubmenu = (menuName: string) => {
+    setExpandedMenu(expandedMenu === menuName ? null : menuName);
+  };
 
   const sites = [
     { name: 'SN고요의숲(대치)', url: 'https://daechi.snacademy.co.kr' },
@@ -264,171 +269,201 @@ export default function Header() {
         </div>
 
         {/* ============================================
-         * 새로운 메뉴 구조 (5개 메뉴) - 모바일
+         * 새로운 메뉴 구조 (5개 메뉴) - 모바일 (아코디언)
          * ============================================ */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
+          <div className="md:hidden py-4 border-t border-gray-200 max-h-[calc(100vh-6rem)] overflow-y-auto">
+            <div className="flex flex-col">
               {/* 1. THE SYSTEM */}
-              <div className="space-y-2">
-                <p className="text-gray-900 font-medium">THE SYSTEM</p>
-                <a
-                  href="/about/philosophy"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('system')}
+                  className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
                 >
-                  관리 철학/시스템
-                </a>
-                <a
-                  href="/about/ai-center"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  AI특화관
-                </a>
-                <a
-                  href="/about/team"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  강사/멘토진
-                </a>
-                <a
-                  href="/about"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  About SN
-                </a>
+                  <span>THE SYSTEM</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'system' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'system' ? 'max-h-48 pb-3' : 'max-h-0'}`}>
+                  <a href="/about/philosophy" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    관리 철학/시스템
+                  </a>
+                  <a href="/about/ai-center" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    AI특화관
+                  </a>
+                  <a href="/about/team" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    강사/멘토진
+                  </a>
+                  <a href="/about" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    About SN
+                  </a>
+                </div>
               </div>
 
               {/* 2. 성적 변화의 증거 */}
-              <div className="space-y-2">
-                <p className="text-gray-900 font-medium">성적 변화의 증거</p>
-                <a
-                  href="/results/data"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('results')}
+                  className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
                 >
-                  입결 데이터
-                </a>
-                <a
-                  href="/success-stories"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  성공스토리
-                </a>
+                  <span>성적 변화의 증거</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'results' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'results' ? 'max-h-24 pb-3' : 'max-h-0'}`}>
+                  <a href="/results/data" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    입결 데이터
+                  </a>
+                  <a href="/success-stories" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    성공스토리
+                  </a>
+                </div>
               </div>
 
               {/* 3. 캠퍼스 라이프 */}
-              <div className="space-y-2">
-                <p className="text-gray-900 font-medium">캠퍼스 라이프</p>
-                <a
-                  href="/campus/rules"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('campus')}
+                  className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
                 >
-                  생활관리
-                </a>
-                <a
-                  href="/campus/schedule"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  학습시간표
-                </a>
-                <a
-                  href="/campus/yearly"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  학사일정
-                </a>
-                <a
-                  href="/facility"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  시설안내
-                </a>
+                  <span>캠퍼스 라이프</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'campus' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'campus' ? 'max-h-48 pb-3' : 'max-h-0'}`}>
+                  <a href="/campus/rules" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    생활관리
+                  </a>
+                  <a href="/campus/schedule" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    학습시간표
+                  </a>
+                  <a href="/campus/yearly" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    학사일정
+                  </a>
+                  <a href="/facility" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    시설안내
+                  </a>
+                </div>
               </div>
 
               {/* 4. 입학 안내 */}
-              <div className="space-y-2">
-                <p className="text-gray-900 font-medium">입학 안내</p>
-                <a
-                  href="/programs"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('admission')}
+                  className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
                 >
-                  모집요강
-                </a>
-                <a
-                  href="/admission/scholarship"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  장학금
-                </a>
-                <a
-                  href="/admission/visit"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  방문상담 예약
-                </a>
+                  <span>입학 안내</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'admission' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'admission' ? 'max-h-36 pb-3' : 'max-h-0'}`}>
+                  <a href="/programs" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    모집요강
+                  </a>
+                  <a href="/admission/scholarship" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    장학금
+                  </a>
+                  <a href="/admission/visit" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    방문상담 예약
+                  </a>
+                </div>
               </div>
 
               {/* 5. 인사이트 */}
-              <div className="space-y-2">
-                <p className="text-gray-900 font-medium">인사이트</p>
-                <a
-                  href="/community/notices"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('insight')}
+                  className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
                 >
-                  공지사항
-                </a>
-                <a
-                  href="/community/column"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  SN대치 칼럼
-                </a>
-                <a
-                  href="/community/faq"
-                  className="block pl-4 text-gray-600 hover:text-sn-green transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  자주 묻는 질문
-                </a>
+                  <span>인사이트</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'insight' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'insight' ? 'max-h-36 pb-3' : 'max-h-0'}`}>
+                  <a href="/community/notices" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    공지사항
+                  </a>
+                  <a href="/community/column" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    SN대치 칼럼
+                  </a>
+                  <a href="/community/faq" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    자주 묻는 질문
+                  </a>
+                </div>
               </div>
 
               {/* 사이트 링크 */}
-              <div className="pt-4 border-t border-gray-200">
-                <p className="text-xs text-gray-500 mb-2 font-semibold">다른 사이트로 이동</p>
-                {sites.map((site, index) => (
-                  <a
-                    key={index}
-                    href={site.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block py-2 text-gray-700 hover:text-sn-green transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('sites')}
+                  className="w-full flex items-center justify-between py-4 text-gray-500 text-sm font-medium"
+                >
+                  <span>다른 사이트</span>
+                  <svg
+                    className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${expandedMenu === 'sites' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    {site.name}
-                  </a>
-                ))}
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'sites' ? 'max-h-48 pb-3' : 'max-h-0'}`}>
+                  {sites.map((site, index) => (
+                    <a
+                      key={index}
+                      href={site.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {site.name}
+                    </a>
+                  ))}
+                </div>
               </div>
-              <a
-                href="#contact"
-                className="px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                상담신청
-              </a>
+
+              {/* 상담신청 버튼 */}
+              <div className="pt-4">
+                <a
+                  href="/programs#contact"
+                  className="block px-4 py-3 text-sm font-medium text-white bg-gray-900 rounded-lg hover:bg-gray-800 transition-colors text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  상담신청
+                </a>
+              </div>
             </div>
           </div>
         )}

@@ -8,6 +8,7 @@ export interface Column {
   content: string;
   category: "대치 칼럼" | "SN 칼럼";
   externalUrl?: string;
+  thumbnail?: string;
 }
 
 export const columns: Column[] = [
@@ -19,6 +20,7 @@ export const columns: Column[] = [
     author: "윤석기 대표",
     excerpt: "SN독학기숙학원 12년의 경험과 AI 기반 초개인화 학습 시스템을 대치동에 접목한 새로운 도전, 고요의 숲을 소개합니다.",
     category: "대치 칼럼",
+    thumbnail: "/image/OGimage.png",
     content: `SN독학기숙학원을 시작한 지 12년이 지났습니다.
 그동안 우리는 수많은 도전을 했고, 많은 학생들의 삶 속에서 성공의 경험을 만들어 왔습니다.
 
@@ -148,6 +150,7 @@ AI는 단순한 자동화 도구가 아니라,
     author: "SN독학기숙학원",
     excerpt: "SN독학기숙학원이 손에잡히는경제에 소개되었습니다. 자세한 내용은 원문에서 확인하세요.",
     category: "SN 칼럼",
+    thumbnail: "/image/economyson.jpg",
     externalUrl: "https://blog.snacademy.co.kr/columns/economi-son",
     content: `SN독학기숙학원이 손에잡히는경제에 소개되었습니다.
 

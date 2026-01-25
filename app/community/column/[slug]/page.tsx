@@ -2,6 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { columns } from "@/data/columns";
@@ -59,8 +60,22 @@ export default function ColumnDetailPage() {
           </Link>
 
           {/* 칼럼 헤더 */}
-          <article className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
-            <div className="flex items-center gap-2 mb-4">
+          <article className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            {/* 썸네일 이미지 */}
+            {column.thumbnail && (
+              <div className="relative w-full aspect-[16/9]">
+                <Image
+                  src={column.thumbnail}
+                  alt={`${column.title} 대표 이미지`}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+
+            <div className="p-8">
+              <div className="flex items-center gap-2 mb-4">
               <span className="px-3 py-1 text-sm font-medium rounded-full bg-sn-green/10 text-sn-green">
                 {column.category}
               </span>
@@ -114,6 +129,7 @@ export default function ColumnDetailPage() {
                 </a>
               </div>
             )}
+            </div>
           </article>
         </div>
       </main>

@@ -1,7 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { OrganizationJsonLd, LocalBusinessJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://daechi.snacademy.co.kr"),
   title: "대치 고요의 숲 | AI 기반 독학관리학원",
   icons: {
     icon: [
@@ -66,11 +74,6 @@ export const metadata: Metadata = {
     description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
     images: ["/image/OGimage.png"],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
   verification: {
     google: "your-google-verification-code",
     other: {
@@ -86,6 +89,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
+      <head>
+        <OrganizationJsonLd />
+        <LocalBusinessJsonLd />
+        <WebSiteJsonLd />
+      </head>
       <body suppressHydrationWarning>
         {children}
       </body>
