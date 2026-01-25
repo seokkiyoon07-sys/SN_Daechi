@@ -52,7 +52,7 @@ export default function Header() {
             <Link href="/about/philosophy" className="flex items-center gap-2">
               <Image
                 src="/image/sn-logo.png"
-                alt="SN Logo"
+                alt="대치 고요의 숲 AI 독학관리학원 로고"
                 width={40}
                 height={40}
                 className="h-10 w-auto"

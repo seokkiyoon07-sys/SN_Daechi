@@ -84,7 +84,7 @@ export default function AICenter() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03653.jpg"
-            alt=""
+            alt="SNarGPT AI 학습 시스템 운영 공간"
             fill
             className="object-cover"
             priority
@@ -113,9 +113,9 @@ export default function AICenter() {
               visibleSections.has('ai-center-hero-title') ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            데이터로 진단하고
+            SNarGPT 기반
             <br />
-            <span className="block mt-2 md:mt-4">AI로 훈련하는 <span className="text-[#7fa892]">&apos;지능형 학습 센터&apos;</span></span>
+            <span className="block mt-2 md:mt-4"><span className="text-[#7fa892]">AI 학습 시스템</span></span>
           </h1>
 
           {/* Subtitle */}
@@ -153,9 +153,9 @@ export default function AICenter() {
               AI 철학
             </p>
             <h2 id="philosophy-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed mb-10">
-              AI를 도입한 이유는 단 하나,
+              대치동 AI 독학관리,
               <br />
-              <span className="block mt-2">학생의 성공을 구조로 만들기 위해서입니다.</span>
+              <span className="block mt-2">왜 SNarGPT인가</span>
             </h2>
 
             <div className="space-y-6 text-gray-600 leading-relaxed">
@@ -190,7 +190,7 @@ export default function AICenter() {
               SN의 AI 드림팀
             </p>
             <h2 id="ai-team-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-4">
-              우리 학생을 위한 &apos;드림팀&apos;
+              SNarGPT·SNarVIS·SNarGEN AI 학습팀
             </h2>
             <p className="text-gray-400">
               학부모님, 어려운 기술은 저희가 맡겠습니다. 학생은 그저 이 네 친구와 함께 즐겁게 공부하면 됩니다.
@@ -262,7 +262,7 @@ export default function AICenter() {
               TRAINING CYCLE
             </p>
             <h2 id="daily-flow-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed mb-4">
-              SN의 학습 사이클
+              개인 맞춤 학습 리포트 시스템
             </h2>
             <p className="text-gray-600">
               SN의 학습은 진단 → 훈련 → 해결 → 검증, 이 사이클로 반복됩니다.
@@ -319,9 +319,9 @@ export default function AICenter() {
             </p>
 
             <h2 id="closing-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-10">
-              기술은 차갑지만,
+              AI와 멘토가 함께하는
               <br />
-              <span className="block mt-2">관리는 따뜻합니다.</span>
+              <span className="block mt-2">하이브리드 학습관리</span>
             </h2>
 
             <div className="space-y-6 text-gray-400 leading-relaxed">
@@ -342,7 +342,7 @@ export default function AICenter() {
       <section className="py-16 bg-sn-green" aria-labelledby="cta-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 id="cta-title" className="text-2xl md:text-3xl font-bold text-white mb-4">
-            AI와 함께하는 학습, 직접 경험해보세요
+            SNarGPT 무료 체험 상담
           </h2>
           <p className="text-white/80 mb-8">
             무료 학습 상담을 통해 우리 학생에게 맞는 AI 학습 시스템을 확인하세요

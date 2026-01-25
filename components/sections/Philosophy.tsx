@@ -140,7 +140,7 @@ export default function Philosophy() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03724.jpg"
-            alt=""
+            alt="대치 고요의 숲 몰입형 독학관리 학습 공간"
             fill
             className="object-cover"
             priority
@@ -169,9 +169,9 @@ export default function Philosophy() {
               visibleSections.has('philosophy-hero-title') ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            관리의 본질은 &apos;감시&apos;가 아니라
+            대치 고요의 숲 –
             <br />
-            <span className="block mt-2 md:mt-4"><span className="text-[#5a7d6a]">데이터를 통한 훈련</span>에 있습니다</span>
+            <span className="block mt-2 md:mt-4"><span className="text-[#5a7d6a]">AI 기반 지능형 독학관리</span></span>
           </h1>
 
           {/* Subtitle */}
@@ -210,7 +210,7 @@ export default function Philosophy() {
               핵심 시스템
             </p>
             <h2 id="pillars-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed">
-              SN만의 4가지 핵심 시스템
+              왜 지금 대치동에 고요의 숲인가
             </h2>
           </div>
 
@@ -305,7 +305,7 @@ export default function Philosophy() {
               비교 분석
             </p>
             <h2 id="comparison-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed">
-              타 학원과의 차별점
+              SNarGPT 기반 학습 시스템
             </h2>
           </div>
 
@@ -357,7 +357,7 @@ export default function Philosophy() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03681.jpg"
-            alt=""
+            alt="대치동 독학재수학원 자습실 내부"
             fill
             className="object-cover"
           />
@@ -388,7 +388,7 @@ export default function Philosophy() {
                   ) : (
                     <Image
                       src="/image/jinmo.png"
-                      alt="박진모 원장"
+                      alt="대치 고요의 숲 박진모 원장 - 수학 전문 독학관리"
                       width={288}
                       height={384}
                       className="w-full h-full object-cover object-top grayscale"
@@ -405,9 +405,9 @@ export default function Philosophy() {
               {/* Message */}
               <div className="flex-1">
                 <h2 id="director-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-8">
-                  공부의 감을 훈련으로 바꾸는 곳,
+                  몰입을 설계한 공간,
                   <br />
-                  <span className="block mt-2">SN 고요의숲 입니다.</span>
+                  <span className="block mt-2">대치 고요의 숲</span>
                 </h2>
 
                 <div className="space-y-6 text-gray-400 leading-relaxed">
@@ -441,7 +441,7 @@ export default function Philosophy() {
       <section className="py-16 bg-sn-green" aria-labelledby="cta-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 id="cta-title" className="text-2xl md:text-3xl font-bold text-white mb-4">
-            데이터로 증명하는 관리, 직접 경험해보세요
+            대치동 독학관리학원, 무료 상담 신청
           </h2>
           <p className="text-white/80 mb-8">
             무료 학습 상담을 통해 우리 아이에게 맞는 관리 시스템을 확인하세요
