@@ -15,13 +15,24 @@ interface ConsultationData {
 }
 
 async function appendToGoogleSheets(data: ConsultationData) {
-  const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  let privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY;
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
 
+  // 디버깅 로그
+  console.log('Google Sheets Config:', {
+    hasPrivateKey: !!privateKey,
+    privateKeyLength: privateKey?.length,
+    clientEmail,
+    spreadsheetId,
+  });
+
   if (!privateKey || !clientEmail || !spreadsheetId) {
-    throw new Error('Google Sheets credentials not configured');
+    throw new Error(`Google Sheets credentials not configured: privateKey=${!!privateKey}, clientEmail=${!!clientEmail}, spreadsheetId=${!!spreadsheetId}`);
   }
+
+  // \n 처리 - 리터럴 \n과 이스케이프된 \\n 모두 처리
+  privateKey = privateKey.replace(/\\n/g, '\n');
 
   const auth = new google.auth.JWT({
     email: clientEmail,
@@ -122,7 +133,13 @@ export async function POST(request: NextRequest) {
     }
 
     if (sheetsResult.status === 'rejected') {
-      console.error('Google Sheets failed:', sheetsResult.reason);
+      const error = sheetsResult.reason as Error & { code?: number; status?: number };
+      console.error('Google Sheets failed:', {
+        message: error.message,
+        code: error.code,
+        status: error.status,
+        stack: error.stack,
+      });
     }
 
     // 둘 다 실패한 경우에만 에러 반환
