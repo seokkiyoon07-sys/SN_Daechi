@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about/ai-center',
     '/programs',
     '/admission/scholarship',
+    '/admission/visit',
     '/results',
     '/results/data',
     '/facility',
