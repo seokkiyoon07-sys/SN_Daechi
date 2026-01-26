@@ -78,7 +78,15 @@ export default function VisitConsultation() {
         }),
       });
 
+      const responseData = await response.json();
+      console.log('API Response:', responseData);
+
       if (response.ok) {
+        // 임시: Sheets 실패 시 알림
+        if (responseData.debug?.sheetsStatus === 'rejected') {
+          console.error('Sheets Error:', responseData.debug.sheetsError);
+          alert('구글 시트 저장 실패: ' + responseData.debug.sheetsError);
+        }
         setSubmitStatus('success');
         setFormData({
           name: '',
