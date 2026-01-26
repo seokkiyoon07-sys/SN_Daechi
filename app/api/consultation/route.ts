@@ -179,11 +179,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({
+      success: true,
+      debug: {
+        jandiStatus: jandiResult.status,
+        sheetsStatus: sheetsResult.status,
+        sheetsError: sheetsResult.status === 'rejected' ? (sheetsResult.reason as Error).message : null,
+      }
+    });
   } catch (error) {
     console.error('Consultation submission error:', error);
     return NextResponse.json(
-      { error: '신청 처리 중 오류가 발생했습니다.' },
+      {
+        error: '신청 처리 중 오류가 발생했습니다.',
+        debug: (error as Error).message,
+      },
       { status: 500 }
     );
   }
