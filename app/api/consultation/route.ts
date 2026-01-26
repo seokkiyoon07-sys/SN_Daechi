@@ -19,20 +19,29 @@ async function appendToGoogleSheets(data: ConsultationData) {
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
   const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
 
-  // 디버깅 로그
-  console.log('Google Sheets Config:', {
-    hasPrivateKey: !!privateKey,
-    privateKeyLength: privateKey?.length,
-    clientEmail,
-    spreadsheetId,
-  });
-
   if (!privateKey || !clientEmail || !spreadsheetId) {
-    throw new Error(`Google Sheets credentials not configured: privateKey=${!!privateKey}, clientEmail=${!!clientEmail}, spreadsheetId=${!!spreadsheetId}`);
+    console.error('Google Sheets credentials missing:', {
+      hasPrivateKey: !!privateKey,
+      hasClientEmail: !!clientEmail,
+      hasSpreadsheetId: !!spreadsheetId,
+    });
+    throw new Error(`Google Sheets credentials not configured`);
   }
 
-  // \n 처리 - 리터럴 \n과 이스케이프된 \\n 모두 처리
-  privateKey = privateKey.replace(/\\n/g, '\n');
+  // Private key 처리 - 여러 형식 지원
+  // 1. JSON 이스케이프된 형식: \\n -> \n
+  // 2. 리터럴 \n 문자열: \n -> 실제 줄바꿈
+  privateKey = privateKey
+    .replace(/\\\\n/g, '\n')  // \\n -> \n (JSON 이스케이프)
+    .replace(/\\n/g, '\n');   // \n -> 실제 줄바꿈
+
+  // 디버깅: 키 형식 확인
+  console.log('Private key debug:', {
+    startsWithBegin: privateKey.startsWith('-----BEGIN'),
+    endsWithEnd: privateKey.includes('-----END'),
+    hasNewlines: privateKey.includes('\n'),
+    length: privateKey.length,
+  });
 
   const auth = new google.auth.JWT({
     email: clientEmail,
@@ -58,14 +67,25 @@ async function appendToGoogleSheets(data: ConsultationData) {
     ],
   ];
 
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range: 'reservation!A:H',
-    valueInputOption: 'USER_ENTERED',
-    requestBody: {
-      values,
-    },
-  });
+  try {
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: 'reservation!A:H',
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values,
+      },
+    });
+    console.log('Google Sheets append successful');
+  } catch (error) {
+    const e = error as Error & { code?: number; response?: { data?: unknown } };
+    console.error('Google Sheets API error:', {
+      message: e.message,
+      code: e.code,
+      responseData: e.response?.data,
+    });
+    throw error;
+  }
 }
 
 async function sendToJandi(data: ConsultationData) {
