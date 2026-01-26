@@ -1,10 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-// 잔디 웹훅 URL
-const WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/13116580/11853050951612bffd7a7748a2fab30e';
+// 랜덤 숫자 생성 함수
+const generateCaptcha = () => {
+  const num1 = Math.floor(Math.random() * 10) + 1;
+  const num2 = Math.floor(Math.random() * 10) + 1;
+  return { num1, num2, answer: num1 + num2 };
+};
 
 interface FormData {
   name: string;
@@ -28,6 +32,14 @@ export default function VisitConsultation() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [captcha, setCaptcha] = useState({ num1: 0, num2: 0, answer: 0 });
+  const [captchaInput, setCaptchaInput] = useState('');
+  const [captchaError, setCaptchaError] = useState(false);
+
+  // 컴포넌트 마운트 시 캡차 생성
+  useEffect(() => {
+    setCaptcha(generateCaptcha());
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -36,41 +48,34 @@ export default function VisitConsultation() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 캡차 검증
+    if (parseInt(captchaInput) !== captcha.answer) {
+      setCaptchaError(true);
+      setCaptcha(generateCaptcha());
+      setCaptchaInput('');
+      return;
+    }
+
+    setCaptchaError(false);
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // 잔디 웹훅 포맷
-      const jandiPayload = {
-        body: '📋 새로운 방문 상담 신청이 접수되었습니다.',
-        connectColor: '#2E7D32',
-        connectInfo: [
-          {
-            title: '신청자 정보',
-            description: `이름: ${formData.name}\n연락처: ${formData.phone}${formData.email ? `\n이메일: ${formData.email}` : ''}`,
-          },
-          {
-            title: '학생 정보',
-            description: `학년/상태: ${formData.studentGrade}`,
-          },
-          {
-            title: '희망 방문 일시',
-            description: `${formData.preferredDate} ${formData.preferredTime}`,
-          },
-          ...(formData.message ? [{
-            title: '문의 내용',
-            description: formData.message,
-          }] : []),
-        ],
-      };
-
-      const response = await fetch(WEBHOOK_URL, {
+      const response = await fetch('/api/consultation', {
         method: 'POST',
         headers: {
-          'Accept': 'application/vnd.tosslab.jandi-v2+json',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(jandiPayload),
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          studentGrade: formData.studentGrade,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime,
+          message: formData.message,
+        }),
       });
 
       if (response.ok) {
@@ -84,6 +89,8 @@ export default function VisitConsultation() {
           preferredTime: '',
           message: '',
         });
+        setCaptcha(generateCaptcha());
+        setCaptchaInput('');
       } else {
         setSubmitStatus('error');
       }
@@ -306,6 +313,51 @@ export default function VisitConsultation() {
                   className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sn-green focus:border-sn-green transition-colors resize-none"
                   placeholder="상담 시 궁금하신 점이나 요청사항을 입력해주세요."
                 />
+              </div>
+
+              {/* 사람 확인 (캡차) */}
+              <div>
+                <label htmlFor="captcha" className="block text-sm font-medium text-gray-700 mb-2">
+                  사람 확인 <span className="text-red-500">*</span>
+                </label>
+                <div className="flex items-center gap-3">
+                  <div className="px-4 py-3 bg-gray-100 rounded-lg font-mono text-lg font-bold text-gray-700 select-none">
+                    {captcha.num1} + {captcha.num2} = ?
+                  </div>
+                  <input
+                    type="number"
+                    id="captcha"
+                    required
+                    value={captchaInput}
+                    onChange={(e) => {
+                      setCaptchaInput(e.target.value);
+                      setCaptchaError(false);
+                    }}
+                    className={`w-24 px-4 py-3 rounded-lg border ${
+                      captchaError ? 'border-red-500 bg-red-50' : 'border-gray-300'
+                    } focus:ring-2 focus:ring-sn-green focus:border-sn-green transition-colors text-center font-mono text-lg`}
+                    placeholder="답"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCaptcha(generateCaptcha());
+                      setCaptchaInput('');
+                      setCaptchaError(false);
+                    }}
+                    className="px-3 py-3 text-gray-500 hover:text-sn-green transition-colors"
+                    title="새로운 문제"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                  </button>
+                </div>
+                {captchaError && (
+                  <p className="mt-1.5 text-xs text-red-500">
+                    정답이 틀렸습니다. 다시 시도해주세요.
+                  </p>
+                )}
               </div>
 
               {submitStatus === 'error' && (

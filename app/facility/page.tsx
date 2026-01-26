@@ -202,25 +202,19 @@ export default function FacilityPage() {
           <div className="mt-16">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">오시는 길</h2>
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-              {/* 지도 링크 */}
-              <a
-                href="https://map.naver.com/p/entry/place/1100410920?c=15.00,0,0,0,dh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative bg-gray-100 h-[300px] md:h-[400px] group"
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-600 group-hover:text-sn-green transition-colors">
-                  <svg className="w-16 h-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <p className="text-lg font-semibold mb-2">SN 고요의숲 대치</p>
-                  <p className="text-sm text-gray-500 mb-4">서울특별시 강남구 대치동 447</p>
-                  <span className="px-4 py-2 bg-sn-green text-white rounded-lg text-sm font-medium group-hover:bg-sn-green-dark transition-colors">
-                    네이버 지도에서 보기
-                  </span>
-                </div>
-              </a>
+              {/* 네이버 지도 iframe */}
+              <div className="relative h-[300px] md:h-[400px]">
+                <iframe
+                  src="https://map.naver.com/p/search/서울%20강남구%20대치동%20447"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="SN-고요의숲 대치 위치"
+                />
+              </div>
 
               {/* 주소 정보 */}
               <div className="p-6 bg-gray-50 border-t border-gray-200">
@@ -242,7 +236,7 @@ export default function FacilityPage() {
                     </svg>
                     <div>
                       <p className="font-medium text-gray-900">전화번호</p>
-                      <p className="text-gray-600 text-sm">02-XXX-XXXX</p>
+                      <a href="tel:010-5862-3838" className="text-gray-600 text-sm hover:text-sn-green">010-5862-3838</a>
                     </div>
                   </div>
 
@@ -252,8 +246,8 @@ export default function FacilityPage() {
                     </svg>
                     <div>
                       <p className="font-medium text-gray-900">운영시간</p>
-                      <p className="text-gray-600 text-sm">월-토 08:00 ~ 22:00</p>
-                      <p className="text-gray-600 text-sm">일 휴무</p>
+                      <p className="text-gray-600 text-sm">월~토: 08:00 ~ 22:00</p>
+                      <p className="text-gray-600 text-sm">일: 09:00 ~ 18:00</p>
                     </div>
                   </div>
 
@@ -263,7 +257,7 @@ export default function FacilityPage() {
                     </svg>
                     <div>
                       <p className="font-medium text-gray-900">대중교통</p>
-                      <p className="text-gray-600 text-sm">대치역 도보 5분</p>
+                      <p className="text-gray-600 text-sm">대치역 도보 3분</p>
                     </div>
                   </div>
                 </div>
@@ -279,7 +273,7 @@ export default function FacilityPage() {
             </p>
             <div className="mt-4 text-center">
               <a
-                href="/programs#contact"
+                href="/admission/visit"
                 className="inline-block px-6 py-2.5 bg-sn-green text-white font-medium rounded-lg hover:bg-sn-green-dark transition-colors"
               >
                 방문 상담 예약

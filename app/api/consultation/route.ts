@@ -1,0 +1,144 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { google } from 'googleapis';
+
+// 잔디 웹훅 URL
+const JANDI_WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/13116580/11853050951612bffd7a7748a2fab30e';
+
+interface ConsultationData {
+  name: string;
+  phone: string;
+  email?: string;
+  studentGrade: string;
+  preferredDate: string;
+  preferredTime: string;
+  message?: string;
+}
+
+async function appendToGoogleSheets(data: ConsultationData) {
+  const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
+  const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
+
+  if (!privateKey || !clientEmail || !spreadsheetId) {
+    throw new Error('Google Sheets credentials not configured');
+  }
+
+  const auth = new google.auth.JWT({
+    email: clientEmail,
+    key: privateKey,
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+  });
+
+  const sheets = google.sheets({ version: 'v4', auth });
+
+  const now = new Date();
+  const timestamp = now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
+
+  const values = [
+    [
+      timestamp,
+      data.name,
+      data.phone,
+      data.email || '',
+      data.studentGrade,
+      data.preferredDate,
+      data.preferredTime,
+      data.message || '',
+    ],
+  ];
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: 'reservation!A:H',
+    valueInputOption: 'USER_ENTERED',
+    requestBody: {
+      values,
+    },
+  });
+}
+
+async function sendToJandi(data: ConsultationData) {
+  const jandiPayload = {
+    body: '새로운 방문 상담 신청이 접수되었습니다.',
+    connectColor: '#2E7D32',
+    connectInfo: [
+      {
+        title: '신청자 정보',
+        description: `이름: ${data.name}\n연락처: ${data.phone}${data.email ? `\n이메일: ${data.email}` : ''}`,
+      },
+      {
+        title: '학생 정보',
+        description: `학년/상태: ${data.studentGrade}`,
+      },
+      {
+        title: '희망 방문 일시',
+        description: `${data.preferredDate} ${data.preferredTime}`,
+      },
+      ...(data.message ? [{
+        title: '문의 내용',
+        description: data.message,
+      }] : []),
+    ],
+  };
+
+  const response = await fetch(JANDI_WEBHOOK_URL, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/vnd.tosslab.jandi-v2+json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(jandiPayload),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to send to Jandi');
+  }
+}
+
+export async function POST(request: NextRequest) {
+  try {
+    const data: ConsultationData = await request.json();
+
+    // 필수 필드 검증
+    if (!data.name || !data.phone || !data.studentGrade || !data.preferredDate || !data.preferredTime) {
+      return NextResponse.json(
+        { error: '필수 항목을 모두 입력해주세요.' },
+        { status: 400 }
+      );
+    }
+
+    // 병렬로 잔디와 구글 시트에 전송
+    const results = await Promise.allSettled([
+      sendToJandi(data),
+      appendToGoogleSheets(data),
+    ]);
+
+    // 결과 확인
+    const jandiResult = results[0];
+    const sheetsResult = results[1];
+
+    if (jandiResult.status === 'rejected') {
+      console.error('Jandi webhook failed:', jandiResult.reason);
+    }
+
+    if (sheetsResult.status === 'rejected') {
+      console.error('Google Sheets failed:', sheetsResult.reason);
+    }
+
+    // 둘 다 실패한 경우에만 에러 반환
+    if (jandiResult.status === 'rejected' && sheetsResult.status === 'rejected') {
+      return NextResponse.json(
+        { error: '신청 처리 중 오류가 발생했습니다.' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('Consultation submission error:', error);
+    return NextResponse.json(
+      { error: '신청 처리 중 오류가 발생했습니다.' },
+      { status: 500 }
+    );
+  }
+}
