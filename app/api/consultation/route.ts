@@ -127,8 +127,17 @@ async function sendToJandi(data: ConsultationData) {
 }
 
 export async function POST(request: NextRequest) {
+  console.log('=== Consultation API called ===');
+  console.log('ENV check:', {
+    hasPrivateKey: !!process.env.GOOGLE_SHEETS_PRIVATE_KEY,
+    privateKeyLength: process.env.GOOGLE_SHEETS_PRIVATE_KEY?.length,
+    clientEmail: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
+    spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID,
+  });
+
   try {
     const data: ConsultationData = await request.json();
+    console.log('Request data received:', { name: data.name, phone: data.phone });
 
     // 필수 필드 검증
     if (!data.name || !data.phone || !data.studentGrade || !data.preferredDate || !data.preferredTime) {
