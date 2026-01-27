@@ -7,15 +7,30 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Column } from "@/data/columns";
 
-// 텍스트 포맷팅 처리 (볼드, 하이라이트)
-function formatText(text: string) {
-  const parts = text.split(/(==.*?==|\*\*.*?\*\*)/g);
+// 텍스트 포맷팅 처리 (볼드, 하이라이트, 링크)
+function formatText(text: string): React.ReactNode[] {
+  const parts = text.split(/(==.*?==|\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
   return parts.map((part, i) => {
     if (part.startsWith('==') && part.endsWith('==')) {
       return <mark key={i} className="bg-yellow-100 px-1 rounded">{part.slice(2, -2)}</mark>;
     }
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    // 마크다운 링크 [text](url) 처리
+    const linkMatch = part.match(/^\[(.*?)\]\((.*?)\)$/);
+    if (linkMatch) {
+      return (
+        <a
+          key={i}
+          href={linkMatch[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline font-semibold"
+        >
+          {linkMatch[1]}
+        </a>
+      );
     }
     return part;
   });

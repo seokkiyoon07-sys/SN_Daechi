@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
     images: [
       {
-        url: "/image/OGimage.png",
+        url: "/image/thumbnail/daechi_goyuuiseup.png",
         width: 1200,
         height: 630,
         alt: "대치 고요의 숲 AI 독학관리학원",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "대치 고요의 숲 | AI 독학관리의 새로운 기준",
     description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
-    images: ["/image/OGimage.png"],
+    images: ["/image/thumbnail/daechi_goyuuiseup.png"],
   },
   verification: {
     google: "y8r6AnO1o2fT-oJBgtO-RYGK6qn5UFva36Xj_ijM5-M",
