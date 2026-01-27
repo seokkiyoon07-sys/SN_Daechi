@@ -10,6 +10,7 @@ export interface Column {
   externalUrl?: string;
   thumbnail?: string;
   authorImage?: string;
+  ogImage?: string;
 }
 
 export const columns: Column[] = [
@@ -167,6 +168,7 @@ AI는 단순한 자동화 도구가 아니라,
     category: "대치 칼럼",
     thumbnail: "/image/thumbnail/math-grade-1-study-method-no-secret.png",
     authorImage: "/image/thumbnail/jinmopark1.png",
+    ogImage: "/image/thumbnail/daechi_goyuuiseup.png",
     content: `## 수학 1등급 비법? 없습니다. 대신 원칙은 있습니다.
 
 15년간 수능 수학을 가르치면서 "성적 올리는 특별한 방법 없나요?"라는 질문을 셀 수 없이 받았습니다.
