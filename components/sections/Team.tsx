@@ -46,7 +46,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: "권도훈",
-    role: "SN 대치 멘토",
+    role: "SN 대치 멘토 · 서울대 경제학과 정시",
     title: "스스로 공부하는 힘을 길러주는 멘토",
     image: "/image/thumbnail/kwandohun.jpg",
     highlight: "Keep going, never give up",
