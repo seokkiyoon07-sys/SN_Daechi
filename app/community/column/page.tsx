@@ -25,7 +25,7 @@ export default function ColumnPage() {
 
           {/* 칼럼 목록 */}
           <div className="space-y-4">
-            {columns.map((column) => (
+            {[...columns].reverse().map((column) => (
               <Link
                 key={column.id}
                 href={`/community/column/${column.slug}`}

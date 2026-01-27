@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,6 +26,7 @@ export default function ColumnDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
   const column = columns.find(c => c.slug === slug);
+  const [showImageModal, setShowImageModal] = useState(false);
 
   if (!column) {
     return (
@@ -87,6 +89,54 @@ export default function ColumnDetailPage() {
             <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
               {column.title}
             </h1>
+
+            {/* 저자 프로필 이미지 */}
+            {column.authorImage && (
+              <div className="flex items-center gap-4 mb-8 p-4 bg-gray-50 rounded-xl">
+                <button
+                  onClick={() => setShowImageModal(true)}
+                  className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 cursor-pointer hover:ring-2 hover:ring-sn-green transition-all"
+                >
+                  <Image
+                    src={column.authorImage}
+                    alt={`${column.author} 프로필`}
+                    fill
+                    className="object-cover"
+                  />
+                </button>
+                <div>
+                  <p className="font-semibold text-gray-900">{column.author}</p>
+                  <p className="text-sm text-gray-500">고요의 숲 총 원장</p>
+                </div>
+              </div>
+            )}
+
+            {/* 이미지 모달 */}
+            {showImageModal && column.authorImage && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+                onClick={() => setShowImageModal(false)}
+              >
+                <div className="relative max-w-lg w-full mx-4">
+                  <button
+                    onClick={() => setShowImageModal(false)}
+                    className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
+                  >
+                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                  <Image
+                    src={column.authorImage}
+                    alt={`${column.author} 프로필`}
+                    width={500}
+                    height={500}
+                    className="w-full h-auto rounded-xl"
+                  />
+                  <p className="text-center text-white mt-4 text-lg font-medium">{column.author}</p>
+                </div>
+              </div>
+            )}
 
             {/* 칼럼 본문 */}
             <div className="prose prose-lg max-w-none">
