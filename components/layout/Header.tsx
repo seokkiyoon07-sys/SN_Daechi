@@ -54,7 +54,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-24">
           {/* 로고 */}
           <div className="flex-shrink-0">
-            <Link href="/about/philosophy" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/image/sn-logo.png"
                 alt="대치 고요의 숲 AI 독학관리학원 로고"
@@ -81,9 +81,6 @@ export default function Header() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <a href="/about/philosophy" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  관리 철학/시스템
-                </a>
                 <a href="/about/ai-center" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   AI특화관
                 </a>
@@ -152,6 +149,9 @@ export default function Header() {
                 </a>
                 <a href="/admission/visit" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   방문상담 예약
+                </a>
+                <a href="/campus/transport" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  오시는 길
                 </a>
               </div>
             </div>
@@ -293,10 +293,7 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'system' ? 'max-h-48 pb-3' : 'max-h-0'}`}>
-                  <a href="/about/philosophy" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    관리 철학/시스템
-                  </a>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'system' ? 'max-h-36 pb-3' : 'max-h-0'}`}>
                   <a href="/about/ai-center" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     AI특화관
                   </a>
@@ -386,7 +383,7 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'admission' ? 'max-h-36 pb-3' : 'max-h-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'admission' ? 'max-h-48 pb-3' : 'max-h-0'}`}>
                   <a href="/programs" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     모집요강
                   </a>
@@ -395,6 +392,9 @@ export default function Header() {
                   </a>
                   <a href="/admission/visit" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     방문상담 예약
+                  </a>
+                  <a href="/campus/transport" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    오시는 길
                   </a>
                 </div>
               </div>

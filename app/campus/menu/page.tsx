@@ -1,95 +1,91 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Script from 'next/script';
+import NaverMap, { MapMarker } from "@/components/NaverMap";
 
-declare global {
-  interface Window {
-    naver: any;
-  }
+interface Restaurant {
+  id: number;
+  name: string;
+  category: string;
+  walkTime: number; // 분
+  rating: number; // 5점 만점
+  priceRange: string;
+  description: string;
+  recommendation: string;
+  address: string;
+  naverMapUrl: string;
+  lat: number;
+  lng: number;
 }
 
+// 학원 위치: 대치동 447
+const ACADEMY_LAT = 37.496898;
+const ACADEMY_LNG = 127.061648;
+
+const restaurants: Restaurant[] = [
+  // 음식점 데이터 추가 예정
+];
+
 export default function MenuPage() {
-  const mapRef = useRef<HTMLDivElement>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("전체");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const initMap = () => {
-    if (!mapRef.current || !window.naver) return;
+  const categories = ["전체", "한식", "중식", "일식", "양식", "분식", "카페"];
 
-    // 네이버 지도 생성 - 주소 기반
-    const mapOptions = {
-      center: new window.naver.maps.LatLng(37.4946, 127.0586), // 대치동 대략적 좌표
-      zoom: 16,
-      mapTypeControl: true,
-      mapTypeControlOptions: {
-        style: window.naver.maps.MapTypeControlStyle.BUTTON,
-        position: window.naver.maps.Position.TOP_RIGHT
-      },
-      zoomControl: true,
-      zoomControlOptions: {
-        style: window.naver.maps.ZoomControlStyle.SMALL,
-        position: window.naver.maps.Position.TOP_RIGHT
-      }
-    };
+  const filteredRestaurants = selectedCategory === "전체"
+    ? restaurants
+    : restaurants.filter(r => r.category === selectedCategory);
 
-    const map = new window.naver.maps.Map(mapRef.current, mapOptions);
+  // 지도에 표시할 마커 데이터
+  const mapMarkers: MapMarker[] = filteredRestaurants.map(r => ({
+    id: r.id,
+    name: r.name,
+    lat: r.lat,
+    lng: r.lng,
+    category: r.category,
+    walkTime: r.walkTime,
+  }));
 
-    // 학원 위치 마커
-    const marker = new window.naver.maps.Marker({
-      position: new window.naver.maps.LatLng(37.4946, 127.0586),
-      map: map,
-      title: 'SN 고요의숲 대치'
-    });
+  const renderStars = (rating: number) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-    // 주소로 좌표 검색 (Geocoding)
-    window.naver.maps.Service.geocode(
-      { query: '서울특별시 강남구 대치동 447' },
-      function(status: any, response: any) {
-        if (status !== window.naver.maps.Service.Status.OK) {
-          console.log('Geocoding error');
-          return;
-        }
-
-        const result = response.v2.addresses[0];
-        if (result) {
-          const point = new window.naver.maps.LatLng(result.y, result.x);
-          map.setCenter(point);
-          marker.setPosition(point);
-        }
-      }
+    return (
+      <div className="flex items-center gap-0.5">
+        {[...Array(fullStars)].map((_, i) => (
+          <svg key={`full-${i}`} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        ))}
+        {hasHalfStar && (
+          <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+            <defs>
+              <linearGradient id="halfGrad">
+                <stop offset="50%" stopColor="currentColor" />
+                <stop offset="50%" stopColor="#D1D5DB" />
+              </linearGradient>
+            </defs>
+            <path fill="url(#halfGrad)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        )}
+        {[...Array(emptyStars)].map((_, i) => (
+          <svg key={`empty-${i}`} className="w-4 h-4 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        ))}
+        <span className="ml-1 text-sm text-gray-600">{rating.toFixed(1)}</span>
+      </div>
     );
-
-    // 인포윈도우
-    const infoWindow = new window.naver.maps.InfoWindow({
-      content: `
-        <div style="padding: 15px; min-width: 200px;">
-          <h3 style="margin: 0 0 8px; font-weight: bold; color: #1a1a1a;">SN 고요의숲 대치</h3>
-          <p style="margin: 0; font-size: 13px; color: #666;">서울특별시 강남구 대치동 447</p>
-        </div>
-      `
-    });
-
-    window.naver.maps.Event.addListener(marker, 'click', function() {
-      if (infoWindow.getMap()) {
-        infoWindow.close();
-      } else {
-        infoWindow.open(map, marker);
-      }
-    });
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Script
-        src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=39m5xtkj2f&submodules=geocoder`}
-        strategy="afterInteractive"
-        onLoad={initMap}
-      />
       <Header />
 
       <main className="pt-32 pb-16">
@@ -101,51 +97,116 @@ export default function MenuPage() {
               대치동 맛집지도
             </h1>
             <p className="text-lg text-gray-600">
-              학원 주변 추천 맛집을 확인하세요
+              학원에서 도보로 갈 수 있는 맛집을 소개합니다
             </p>
           </div>
 
-          {/* 네이버 지도 */}
-          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden mb-8">
-            <div
-              ref={mapRef}
-              className="w-full h-[400px] md:h-[500px]"
-              style={{ minHeight: '400px' }}
+          {/* 지도 섹션 */}
+          <div className="mb-8">
+            <NaverMap
+              markers={mapMarkers}
+              centerLat={ACADEMY_LAT}
+              centerLng={ACADEMY_LNG}
+              zoom={16}
+              height="500px"
             />
+            <p className="text-sm text-gray-500 mt-2 text-center">
+              📍 녹색 마커: SN-고요의숲 대치 | 🍽️ 빨간 마커: 맛집
+            </p>
           </div>
 
-          {/* 학원 위치 안내 */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-sn-green/10 rounded-xl flex items-center justify-center text-sn-green">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <h2 className="text-lg font-bold text-gray-900 mb-1">SN 고요의숲 대치</h2>
-                <p className="text-gray-600">서울특별시 강남구 대치동 447</p>
-                <a
-                  href="https://map.naver.com/p/search/서울특별시 강남구 대치동 447"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-2 text-sm text-sn-green hover:underline"
+          {/* 카테고리 필터 */}
+          <div className="flex flex-wrap gap-2 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  selectedCategory === category
+                    ? "bg-sn-green text-white"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-sn-green hover:text-sn-green"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* 맛집 리스트 */}
+          {filteredRestaurants.length > 0 ? (
+            <div className="space-y-4">
+              {filteredRestaurants.map((restaurant) => (
+                <div
+                  key={restaurant.id}
+                  className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
                 >
-                  네이버 지도에서 보기
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
+                  <div className="p-6">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                      {/* 왼쪽: 기본 정보 */}
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <h3 className="text-xl font-bold text-gray-900">{restaurant.name}</h3>
+                          <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">
+                            {restaurant.category}
+                          </span>
+                        </div>
 
-          {/* 맛집 정보 안내 */}
-          <div className="bg-sn-green/10 rounded-xl border border-sn-green/30 p-6">
+                        {/* 별점 */}
+                        <div className="mb-3">
+                          {renderStars(restaurant.rating)}
+                        </div>
+
+                        <p className="text-gray-600 text-sm mb-2">{restaurant.description}</p>
+                        <p className="text-sn-green text-sm font-medium">{restaurant.recommendation}</p>
+                      </div>
+
+                      {/* 오른쪽: 도보 시간 & 가격 */}
+                      <div className="flex md:flex-col items-center md:items-end gap-4 md:gap-2">
+                        {/* 도보 시간 */}
+                        <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-lg">
+                          <svg className="w-5 h-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                          </svg>
+                          <span className="text-blue-700 font-bold">{restaurant.walkTime}분</span>
+                        </div>
+
+                        {/* 가격대 */}
+                        <div className="text-sm text-gray-500">
+                          {restaurant.priceRange}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 하단: 주소 & 지도 링크 */}
+                    <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <span className="text-sm text-gray-500">{restaurant.address}</span>
+                      <a
+                        href={restaurant.naverMapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-sn-green hover:underline"
+                      >
+                        네이버 지도에서 보기
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
+              <p className="text-gray-500">해당 카테고리의 맛집이 없습니다.</p>
+            </div>
+          )}
+
+          {/* 안내 */}
+          <div className="mt-12 p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">
             <p className="text-center text-gray-700">
-              <span className="font-semibold text-sn-green">맛집 정보 준비중</span><br />
-              <span className="text-sm">학원 주변 추천 맛집 정보가 곧 업데이트될 예정입니다.</span>
+              <span className="font-semibold text-sn-green">맛집 정보 업데이트 예정</span><br />
+              <span className="text-sm">학생들의 추천을 받아 지속적으로 업데이트됩니다. 추천하고 싶은 맛집이 있다면 행정실에 알려주세요!</span>
             </p>
           </div>
         </div>
