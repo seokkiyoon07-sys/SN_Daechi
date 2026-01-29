@@ -42,6 +42,7 @@ interface NaverMarkerOptions {
   position: NaverLatLng;
   map: NaverMapInstance;
   title?: string;
+  zIndex?: number;
   icon?: {
     content: string;
     anchor: { x: number; y: number };
@@ -102,6 +103,7 @@ export default function NaverMap({
   const [error, setError] = useState<string | null>(null);
   const mapInstanceRef = useRef<NaverMapInstance | null>(null);
   const markersRef = useRef<NaverMarker[]>([]);
+  const currentInfoWindowRef = useRef<NaverInfoWindow | null>(null);
 
   useEffect(() => {
     const clientId = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
@@ -163,42 +165,7 @@ export default function NaverMap({
       const map = new window.naver.maps.Map(mapRef.current, mapOptions);
       mapInstanceRef.current = map;
 
-      // 학원 위치 마커 (메인 마커)
-      new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(centerLat, centerLng),
-        map: map,
-        title: 'SN고요의숲',
-        icon: {
-          content: `
-            <div style="
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-            ">
-              <div style="
-                background: #16A34A;
-                color: white;
-                padding: 6px 12px;
-                border-radius: 8px;
-                font-size: 13px;
-                font-weight: 600;
-                white-space: nowrap;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-              ">SN고요의숲</div>
-              <div style="
-                width: 0;
-                height: 0;
-                border-left: 8px solid transparent;
-                border-right: 8px solid transparent;
-                border-top: 8px solid #16A34A;
-              "></div>
-            </div>
-          `,
-          anchor: { x: 50, y: 45 },
-        },
-      });
-
-      // 마커들 추가
+      // 마커들 먼저 추가 (음식점/교통)
       markers.forEach((markerData) => {
         // 카테고리별 색상 및 아이콘 설정
         const getMarkerStyle = (category: string) => {
@@ -207,8 +174,20 @@ export default function NaverMap({
               return { bg: '#3B82F6', icon: '🚇' };
             case '버스':
               return { bg: '#F97316', icon: '🚌' };
+            case '한식':
+              return { bg: '#DC2626', icon: '🍚' };
+            case '중식':
+              return { bg: '#EA580C', icon: '🥢' };
+            case '일식':
+              return { bg: '#0891B2', icon: '🍣' };
+            case '양식':
+              return { bg: '#7C3AED', icon: '🍝' };
+            case '분식':
+              return { bg: '#DB2777', icon: '🍜' };
+            case '카페':
+              return { bg: '#92400E', icon: '☕' };
             default:
-              return { bg: '#FF6B6B', icon: '🍽️' };
+              return { bg: '#6B7280', icon: '🍽️' };
           }
         };
 
@@ -218,6 +197,7 @@ export default function NaverMap({
           position: new window.naver.maps.LatLng(markerData.lat, markerData.lng),
           map: map,
           title: markerData.name,
+          zIndex: 10,
           icon: {
             content: `<div style="
               background: ${style.bg};
@@ -257,11 +237,68 @@ export default function NaverMap({
         });
 
         window.naver.maps.Event.addListener(marker, 'click', () => {
-          infoWindow.open(map, marker);
+          // 같은 인포윈도우를 다시 클릭하면 닫기
+          if (currentInfoWindowRef.current === infoWindow) {
+            infoWindow.close();
+            currentInfoWindowRef.current = null;
+          } else {
+            // 다른 인포윈도우가 열려있으면 닫기
+            if (currentInfoWindowRef.current) {
+              currentInfoWindowRef.current.close();
+            }
+            infoWindow.open(map, marker);
+            currentInfoWindowRef.current = infoWindow;
+          }
           if (onMarkerClick) {
             onMarkerClick(markerData);
           }
         });
+      });
+
+      // 학원 위치 마커 (메인 마커) - 가장 나중에 추가하여 항상 위에 표시
+      new window.naver.maps.Marker({
+        position: new window.naver.maps.LatLng(centerLat, centerLng),
+        map: map,
+        title: 'SN고요의숲',
+        zIndex: 100,
+        icon: {
+          content: `
+            <div style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            ">
+              <div style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 2px solid #16A34A;
+                overflow: hidden;
+                background: url('/image/인테리어/SNAI_outerior.png') top center / cover no-repeat;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                margin-bottom: 3px;
+              "></div>
+              <div style="
+                background: #16A34A;
+                color: white;
+                padding: 4px 10px;
+                border-radius: 6px;
+                font-size: 11px;
+                font-weight: 600;
+                white-space: nowrap;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+              ">SN고요의숲</div>
+              <div style="
+                width: 0;
+                height: 0;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-top: 8px solid #16A34A;
+              "></div>
+            </div>
+          `,
+          anchor: { x: 40, y: 80 },
+        },
       });
 
     } catch (err) {

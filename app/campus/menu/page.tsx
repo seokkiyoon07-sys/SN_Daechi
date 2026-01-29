@@ -25,7 +25,48 @@ const ACADEMY_LAT = 37.496898;
 const ACADEMY_LNG = 127.061648;
 
 const restaurants: Restaurant[] = [
-  // 음식점 데이터 추가 예정
+  {
+    id: 1,
+    name: "하이보",
+    category: "중식",
+    walkTime: 0.5,
+    rating: 4.0,
+    priceRange: "10,000~20,000원",
+    description: "",
+    recommendation: "",
+    address: "대치동",
+    naverMapUrl: "",
+    lat: 37.497030,
+    lng: 127.061380,
+  },
+  {
+    id: 2,
+    name: "영가츠",
+    category: "일식",
+    walkTime: 3,
+    rating: 3.5,
+    priceRange: "10,000~20,000원",
+    description: "",
+    recommendation: "",
+    address: "대치동",
+    naverMapUrl: "",
+    lat: 37.496322,
+    lng: 127.060372,
+  },
+  {
+    id: 3,
+    name: "정성담은 라밥",
+    category: "한식",
+    walkTime: 3,
+    rating: 5.0,
+    priceRange: "~10,000원",
+    description: "",
+    recommendation: "",
+    address: "대치동",
+    naverMapUrl: "",
+    lat: 37.498384,
+    lng: 127.060854,
+  },
 ];
 
 export default function MenuPage() {
@@ -41,6 +82,14 @@ export default function MenuPage() {
     ? restaurants
     : restaurants.filter(r => r.category === selectedCategory);
 
+  // 별점 문자열 생성 함수
+  const getStarString = (rating: number) => {
+    const full = Math.floor(rating);
+    const half = rating % 1 >= 0.5 ? 1 : 0;
+    const empty = 5 - full - half;
+    return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
+  };
+
   // 지도에 표시할 마커 데이터
   const mapMarkers: MapMarker[] = filteredRestaurants.map(r => ({
     id: r.id,
@@ -49,6 +98,14 @@ export default function MenuPage() {
     lng: r.lng,
     category: r.category,
     walkTime: r.walkTime,
+    infoContent: `
+      <div style="padding: 12px; min-width: 150px;">
+        <h4 style="margin: 0 0 6px 0; font-size: 14px; font-weight: bold;">${r.name}</h4>
+        <p style="margin: 0 0 4px 0; color: #666; font-size: 12px;">${r.category}</p>
+        <p style="margin: 0 0 4px 0; color: #16A34A; font-size: 12px; font-weight: 500;">${r.priceRange}</p>
+        <div style="margin-top: 4px; color: #F59E0B;">${getStarString(r.rating)}</div>
+      </div>
+    `,
   }));
 
   const renderStars = (rating: number) => {
@@ -111,7 +168,7 @@ export default function MenuPage() {
               height="500px"
             />
             <p className="text-sm text-gray-500 mt-2 text-center">
-              📍 녹색 마커: SN-고요의숲 대치 | 🍽️ 빨간 마커: 맛집
+              📍 SN고요의숲 | 🍚 한식 | 🥢 중식 | 🍣 일식 | 🍝 양식 | 🍜 분식 | ☕ 카페
             </p>
           </div>
 
