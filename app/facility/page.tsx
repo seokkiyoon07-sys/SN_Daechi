@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -18,7 +18,101 @@ interface FacilityCardProps {
 }
 
 function FacilityCard({ item }: FacilityCardProps) {
-  const [localImageIndex, setLocalImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentTranslate, setCurrentTranslate] = useState(0);
+  const [prevTranslate, setPrevTranslate] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number | null>(null);
+
+  const imageCount = item.images?.length || 0;
+
+  // 인덱스 변경 시 위치 업데이트
+  useEffect(() => {
+    if (!isDragging) {
+      const containerWidth = containerRef.current?.offsetWidth || 0;
+      setPrevTranslate(-currentIndex * containerWidth);
+      setCurrentTranslate(-currentIndex * containerWidth);
+    }
+  }, [currentIndex, isDragging]);
+
+  const getPositionX = (e: React.MouseEvent | React.TouchEvent) => {
+    return 'touches' in e ? e.touches[0].clientX : e.clientX;
+  };
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    if (imageCount <= 1) return;
+    setIsDragging(true);
+    setStartX(getPositionX(e));
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    const currentPosition = getPositionX(e);
+    const diff = currentPosition - startX;
+
+    // 저항감 적용 (끝에서 당길 때)
+    const containerWidth = containerRef.current?.offsetWidth || 0;
+    const maxTranslate = 0;
+    const minTranslate = -(imageCount - 1) * containerWidth;
+    let newTranslate = prevTranslate + diff;
+
+    // 양쪽 끝에서 러버밴드 효과
+    if (newTranslate > maxTranslate) {
+      newTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.3;
+    } else if (newTranslate < minTranslate) {
+      newTranslate = minTranslate + (newTranslate - minTranslate) * 0.3;
+    }
+
+    setCurrentTranslate(newTranslate);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    const containerWidth = containerRef.current?.offsetWidth || 0;
+    const movedBy = currentTranslate - prevTranslate;
+
+    // 스와이프 감도 조절 (20% 이상 이동하면 전환)
+    const threshold = containerWidth * 0.2;
+
+    if (movedBy < -threshold && currentIndex < imageCount - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else if (movedBy > threshold && currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else {
+      // 원래 위치로 스냅백
+      setCurrentTranslate(-currentIndex * containerWidth);
+      setPrevTranslate(-currentIndex * containerWidth);
+    }
+  };
+
+  const goToIndex = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else {
+      // 첫 번째에서 마지막으로 (무한 루프)
+      setCurrentIndex(imageCount - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentIndex < imageCount - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      // 마지막에서 첫 번째로 (무한 루프)
+      setCurrentIndex(0);
+    }
+  };
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
@@ -27,29 +121,57 @@ function FacilityCard({ item }: FacilityCardProps) {
         <div className={`bg-gray-100 min-h-[300px] md:min-h-[400px] relative ${item.reverseLayout ? 'md:order-2' : 'md:order-1'}`}>
           {item.images && item.images.length > 0 ? (
             <>
-              <div className="relative h-full min-h-[300px] md:min-h-[400px]">
-                <Image
-                  src={item.images[localImageIndex]}
-                  alt={`${item.name} ${localImageIndex + 1}`}
-                  fill
-                  className="object-cover"
-                />
+              <div
+                ref={containerRef}
+                className={`relative h-full min-h-[300px] md:min-h-[400px] overflow-hidden ${imageCount > 1 ? 'cursor-grab active:cursor-grabbing' : ''}`}
+                onMouseDown={handleDragStart}
+                onMouseMove={handleDragMove}
+                onMouseUp={handleDragEnd}
+                onMouseLeave={handleDragEnd}
+                onTouchStart={handleDragStart}
+                onTouchMove={handleDragMove}
+                onTouchEnd={handleDragEnd}
+              >
+                <div
+                  className="flex h-full select-none"
+                  style={{
+                    transform: `translateX(${currentTranslate}px)`,
+                    transition: isDragging ? 'none' : 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    width: `${imageCount * 100}%`
+                  }}
+                >
+                  {item.images.map((src, idx) => (
+                    <div
+                      key={idx}
+                      className="relative h-full min-h-[300px] md:min-h-[400px] flex-shrink-0"
+                      style={{ width: `${100 / imageCount}%` }}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${item.name} ${idx + 1}`}
+                        fill
+                        className="object-cover pointer-events-none"
+                        draggable={false}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* 네비게이션 버튼 (이미지 2개 이상일 때만) */}
-              {item.images.length > 1 && (
+              {imageCount > 1 && (
                 <>
                   <button
-                    onClick={() => setLocalImageIndex(prev => prev === 0 ? item.images.length - 1 : prev - 1)}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                    onClick={handlePrev}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all z-10 hover:scale-105 active:scale-95"
                   >
                     <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                   </button>
                   <button
-                    onClick={() => setLocalImageIndex(prev => prev === item.images.length - 1 ? 0 : prev + 1)}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                    onClick={handleNext}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all z-10 hover:scale-105 active:scale-95"
                   >
                     <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -57,13 +179,13 @@ function FacilityCard({ item }: FacilityCardProps) {
                   </button>
 
                   {/* 인디케이터 */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                     {item.images.map((_, idx) => (
                       <button
                         key={idx}
-                        onClick={() => setLocalImageIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all ${
-                          idx === localImageIndex ? 'bg-white w-4' : 'bg-white/50'
+                        onClick={() => goToIndex(idx)}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          idx === currentIndex ? 'bg-white w-6' : 'bg-white/50 w-2 hover:bg-white/70'
                         }`}
                       />
                     ))}

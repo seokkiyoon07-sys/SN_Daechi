@@ -49,7 +49,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "윤문희",
     role: "SN대치 부원장",
-    title: "20년간 학원강사의 노하우로 학생의 하루, 마음의 온도까지 관리합니다. 엄마같은 마음으로 곁에 있겠습니다.",
+    title: "흔들릴 땐 바로 잡고, 포기하지 않게 붙잡겠습니다. 따뜻한 마음으로, 원칙 있게 관리합니다.",
     image: "/image/thumbnail/yoonmunhee.jpg",
     highlight: "20년, 한결같이 학생 곁을 지켜온 시간",
     content: [
