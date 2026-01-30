@@ -4,24 +4,41 @@ import Footer from "@/components/layout/Footer";
 import Philosophy from "@/components/sections/Philosophy";
 
 export const metadata: Metadata = {
-  title: "SN-고요의숲 대치",
-  description: "관리의 본질은 '감시'가 아니라 '데이터를 통한 변화'에 있습니다. 대한민국 최초, 독보적인 AI 데이터 분석과 창의적 콘텐츠 엔진 SNarGen을 통해, 공부의 '감'을 '실전적 훈련'으로 바꾸는 SN의 관리 철학을 소개합니다.",
+  title: "대치 고요의숲 | AI 기반 독학관리학원 - 대치동 재수학원",
+  description: "대치동 최초 AI 기반 독학관리 시스템. SNarGPT와 SNarGen으로 학습의 전 과정을 통합(Full-Stack) 관리합니다. 몰입 환경, 개인 맞춤 학습 리포트, 초개인화된 관리로 성적을 설계합니다. 2~3월 신규등록 50% 할인.",
   keywords: [
-    "독학관리",
-    "AI 학습",
-    "SNarGen",
+    "대치동 독학재수학원",
+    "AI 독학관리",
     "SNarGPT",
-    "데이터 기반 관리",
+    "SNarGen",
     "대치동 재수학원",
     "관리형 학원",
-    "맞춤형 학습",
-    "오답 분석",
-    "학습 시스템"
+    "독학재수",
+    "수능 AI",
+    "오답 분석 AI",
+    "대치 고요의숲",
+    "SN대치",
+    "프리미엄 수학관리반",
+    "Full-Stack AI 학습"
   ],
   openGraph: {
-    title: "SN-고요의숲 대치",
-    description: "관리의 본질은 '감시'가 아니라 '데이터를 통한 변화'에 있습니다.",
-    url: "https://sn-daechi.vercel.app/",
+    title: "대치 고요의숲 | AI 기반 독학관리학원",
+    description: "학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐. 초개인화된 관리로 성적을 설계합니다.",
+    url: "https://daechi.snacademy.co.kr",
+    images: [
+      {
+        url: "/image/thumbnail/daechi_goyuuiseup.png",
+        width: 1200,
+        height: 630,
+        alt: "대치 고요의숲 AI 독학관리학원",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "대치 고요의숲 | AI 기반 독학관리학원",
+    description: "학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐.",
+    images: ["/image/thumbnail/daechi_goyuuiseup.png"],
   },
 };
 
