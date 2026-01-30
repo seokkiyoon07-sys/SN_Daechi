@@ -21,13 +21,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ogImage = column.ogImage || column.thumbnail || '/image/OGimage.png';
 
+  const canonicalUrl = `https://daechi.snacademy.co.kr/community/column/${slug}`;
+
   return {
     title: `${column.title} | 대치 고요의 숲`,
     description: column.excerpt,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: column.title,
       description: column.excerpt,
       type: 'article',
+      url: canonicalUrl,
       publishedTime: column.date,
       authors: [column.author],
       images: [
