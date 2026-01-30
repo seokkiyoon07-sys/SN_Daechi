@@ -214,7 +214,7 @@ export default function Philosophy() {
               <span className="text-gray-600">무엇이 다른가요?</span>
             </h2>
             <p className="text-gray-600 leading-relaxed">
-              많은 곳에서 AI를 말하지만, <span className="relative inline"><span className="absolute inset-x-0 bottom-0 h-[40%] bg-yellow-300/70"></span><span className="relative">학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐</span></span>입니다.
+              많은 곳에서 AI를 말하지만, <span className="relative inline-block"><span className="absolute inset-x-0 bottom-0 h-[40%] bg-yellow-300/70"></span><span className="relative">학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐</span></span>입니다.
             </p>
             <div className="mt-4 inline-block px-4 py-2 bg-gray-900 text-white text-sm font-medium">
               고요의숲 AI특화관의 차별점은 <span className="text-[#7fa892]">&apos;초개인화된 관리&apos;</span>에 있습니다.
