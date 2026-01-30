@@ -1,8 +1,116 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+
+interface FacilityItem {
+  name: string;
+  description: string;
+  features: string[];
+  images: string[];
+  reverseLayout?: boolean;
+}
+
+interface FacilityCardProps {
+  item: FacilityItem;
+}
+
+function FacilityCard({ item }: FacilityCardProps) {
+  const [localImageIndex, setLocalImageIndex] = useState(0);
+
+  return (
+    <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="grid md:grid-cols-2 gap-0">
+        {/* 이미지 영역 - 캐러셀 */}
+        <div className={`bg-gray-100 min-h-[300px] md:min-h-[400px] relative ${item.reverseLayout ? 'md:order-2' : 'md:order-1'}`}>
+          {item.images && item.images.length > 0 ? (
+            <>
+              <div className="relative h-full min-h-[300px] md:min-h-[400px]">
+                <Image
+                  src={item.images[localImageIndex]}
+                  alt={`${item.name} ${localImageIndex + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* 네비게이션 버튼 (이미지 2개 이상일 때만) */}
+              {item.images.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setLocalImageIndex(prev => prev === 0 ? item.images.length - 1 : prev - 1)}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                  >
+                    <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setLocalImageIndex(prev => prev === item.images.length - 1 ? 0 : prev + 1)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                  >
+                    <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  {/* 인디케이터 */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {item.images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setLocalImageIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          idx === localImageIndex ? 'bg-white w-4' : 'bg-white/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
+          ) : (
+            <div className="flex items-center justify-center h-full min-h-[300px] md:min-h-[400px]">
+              <div className="text-center text-gray-400 p-8">
+                <svg className="w-16 h-16 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="text-sm">{item.name} 이미지</p>
+                <p className="text-xs mt-1">실제 이미지로 교체 예정</p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* 정보 영역 */}
+        <div className={`p-8 ${item.reverseLayout ? 'md:order-1' : 'md:order-2'}`}>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            {item.name}
+          </h2>
+          <p className="text-gray-600 mb-6">
+            {item.description}
+          </p>
+
+          <h3 className="text-sm font-semibold text-sn-green mb-3 uppercase tracking-wide">
+            주요 특징
+          </h3>
+          <ul className="space-y-3">
+            {item.features.map((feature, index) => (
+              <li key={index} className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-sn-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function FacilityPage() {
   const [activeTab, setActiveTab] = useState(0);
@@ -13,15 +121,47 @@ export default function FacilityPage() {
 
   const facilities = [
     {
-      name: "자습실",
-      description: "개인 독서실 형태의 1인 1좌석 자습실",
-      features: [
-        "개인 칸막이 책상으로 집중력 향상",
-        "개인 조명 및 콘센트 완비",
-        "냉난방 완비로 쾌적한 학습 환경",
-        "CCTV를 통한 학습 관리"
-      ],
-      images: ["/image/facility/study-room-1.jpg", "/image/facility/study-room-2.jpg"]
+      name: "몰입존",
+      tabName: "몰입존",
+      isMultiple: true,
+      subItems: [
+        {
+          name: "3F 자습실",
+          description: "개인 독서실 형태의 1인 1좌석 자습실",
+          features: [
+            "개인 칸막이 책상으로 집중력 향상",
+            "개인 조명 및 콘센트 완비",
+            "냉난방 완비로 쾌적한 학습 환경",
+            "CCTV를 통한 학습 관리"
+          ],
+          images: ["/image/facility/3Fstudy_room.jpg", "/image/facility/3Fstudy_room1.jpg"],
+          reverseLayout: false
+        },
+        {
+          name: "4F 자습실",
+          description: "프리미엄 환경의 집중 학습 공간",
+          features: [
+            "넓은 개인 공간 제공",
+            "프리미엄 의자 및 책상",
+            "최적의 조명 환경",
+            "조용한 학습 분위기"
+          ],
+          images: ["/image/facility/4Fstudy_room.jpg", "/image/facility/4FpremiumZone.jpg"],
+          reverseLayout: true
+        },
+        {
+          name: "스탠딩 책상",
+          description: "서서 학습할 수 있는 스탠딩 책상",
+          features: [
+            "자세 변화로 집중력 향상",
+            "오래 앉아있을 때 휴식 대안",
+            "건강한 학습 습관 형성",
+            "자유로운 이용 가능"
+          ],
+          images: ["/image/facility/standing_table.jpg", "/image/facility/standing_table1.jpg"],
+          reverseLayout: false
+        }
+      ]
     },
     {
       name: "상담실",
@@ -32,10 +172,10 @@ export default function FacilityPage() {
         "학부모 상담 가능",
         "편안한 분위기의 인테리어"
       ],
-      images: ["/image/facility/counseling-room.jpg"]
+      images: ["/image/facility/counseling_room.jpg"]
     },
     {
-      name: "휴게실",
+      name: "프린트 카페",
       description: "학습 중간 휴식을 위한 편안한 공간",
       features: [
         "편안한 소파 및 테이블 구비",
@@ -43,21 +183,21 @@ export default function FacilityPage() {
         "휴대폰 사용 허용 (지정 시간)",
         "자연 채광으로 밝은 분위기"
       ],
-      images: ["/image/facility/lounge.jpg"]
+      images: ["/image/facility/print_cafe.jpg"]
     },
     {
-      name: "식당",
-      description: "건강한 식사를 위한 쾌적한 식사 공간",
+      name: "강의실",
+      description: "실전모의고사 실",
       features: [
-        "위생적인 식사 환경",
-        "도시락 배식 공간",
-        "깨끗한 테이블 및 의자",
-        "정기적인 청소 및 소독"
+        "실제 수능과 동일한 환경",
+        "정숙한 시험 분위기",
+        "시간표에 따른 모의고사 진행",
+        "성적 분석 및 피드백 제공"
       ],
-      images: ["/image/facility/cafeteria.jpg"]
+      images: ["/image/facility/lectureroom.jpg", "/image/facility/lectureroom2.jpg"]
     },
     {
-      name: "행정실",
+      name: "인포메이션",
       description: "학원 운영 및 학생 관리를 위한 공간",
       features: [
         "출결 관리 시스템 운영",
@@ -65,7 +205,18 @@ export default function FacilityPage() {
         "학원 행정 업무 처리",
         "비상 상황 대응 센터"
       ],
-      images: ["/image/facility/admin-office.jpg"]
+      images: ["/image/facility/information_room.jpg"]
+    },
+    {
+      name: "테라스",
+      description: "야외에서 휴식을 취할 수 있는 공간",
+      features: [
+        "탁 트인 야외 공간",
+        "자연 환기와 햇빛",
+        "휴식 및 간단한 대화 가능",
+        "쾌적한 휴식 환경"
+      ],
+      images: ["/image/facility/terrace.jpg"]
     }
   ];
 
@@ -152,118 +303,35 @@ export default function FacilityPage() {
                       : 'bg-white text-gray-700 border border-gray-200 hover:border-sn-green hover:text-sn-green'
                   }`}
                 >
-                  {facility.name}
+                  {facility.tabName || facility.name}
                 </button>
               ))}
             </div>
           </div>
 
           {/* 선택된 시설 상세 */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* 이미지 영역 */}
-              <div className="bg-gray-100 min-h-[300px] md:min-h-[400px] flex items-center justify-center">
-                <div className="text-center text-gray-400 p-8">
-                  <svg className="w-16 h-16 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <p className="text-sm">{facilities[activeTab].name} 이미지</p>
-                  <p className="text-xs mt-1">실제 이미지로 교체 예정</p>
-                </div>
-              </div>
-
-              {/* 정보 영역 */}
-              <div className="p-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {facilities[activeTab].name}
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  {facilities[activeTab].description}
-                </p>
-
-                <h3 className="text-sm font-semibold text-sn-green mb-3 uppercase tracking-wide">
-                  주요 특징
-                </h3>
-                <ul className="space-y-3">
-                  {facilities[activeTab].features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <svg className="w-5 h-5 text-sn-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* 위치 안내 */}
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">오시는 길</h2>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-              {/* 네이버 지도 iframe */}
-              <div className="relative h-[300px] md:h-[400px]">
-                <iframe
-                  src="https://map.naver.com/p/search/서울%20강남구%20대치동%20447"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="SN-고요의숲 대치 위치"
+          {facilities[activeTab].isMultiple && facilities[activeTab].subItems ? (
+            // 몰입존처럼 여러 시설을 포함하는 경우
+            <div className="space-y-8">
+              {facilities[activeTab].subItems.map((subItem, subIndex) => (
+                <FacilityCard
+                  key={subIndex}
+                  item={subItem}
                 />
-              </div>
-
-              {/* 주소 정보 */}
-              <div className="p-6 bg-gray-50 border-t border-gray-200">
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-sn-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                    <div>
-                      <p className="font-medium text-gray-900">주소</p>
-                      <p className="text-gray-600 text-sm">서울특별시 강남구 대치동 447</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-sn-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <div>
-                      <p className="font-medium text-gray-900">전화번호</p>
-                      <a href="tel:010-5862-3838" className="text-gray-600 text-sm hover:text-sn-green">010-5862-3838</a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-sn-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div>
-                      <p className="font-medium text-gray-900">운영시간</p>
-                      <p className="text-gray-600 text-sm">월~토: 08:00 ~ 22:00</p>
-                      <p className="text-gray-600 text-sm">일: 09:00 ~ 18:00</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-sn-green flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                    </svg>
-                    <div>
-                      <p className="font-medium text-gray-900">대중교통</p>
-                      <p className="text-gray-600 text-sm">대치역 도보 3분</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
+          ) : (
+            // 단일 시설인 경우
+            <FacilityCard
+              item={{
+                name: facilities[activeTab].name,
+                description: facilities[activeTab].description || '',
+                features: facilities[activeTab].features || [],
+                images: facilities[activeTab].images || [],
+                reverseLayout: false
+              }}
+            />
+          )}
 
           {/* 상담 안내 */}
           <div className="mt-12 p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">

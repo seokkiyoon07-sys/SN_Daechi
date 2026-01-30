@@ -129,33 +129,51 @@ export default function VisitConsultation() {
 
         {/* 위치 정보 */}
         <div className="bg-white rounded-2xl p-6 shadow-lg border-2 border-sn-main/20 mb-8">
-          <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-              <Image
-                src="/image/navermap.webp"
-                alt="위치"
-                width={48}
-                height={48}
-                className="object-cover"
-              />
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* 주소 */}
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                <Image
+                  src="/image/navermap.webp"
+                  alt="위치"
+                  width={48}
+                  height={48}
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900">SN-고요의숲 대치</h3>
+                <p className="text-gray-600 text-sm">서울 강남구 대치동 447</p>
+                <p className="text-sn-green text-sm font-medium mb-2">대치역 도보 3분</p>
+                <a
+                  href="https://map.naver.com/p/search/서울%20강남구%20대치동%20447"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sn-green hover:underline text-sm font-medium"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  네이버 지도에서 보기
+                </a>
+              </div>
             </div>
-            <div>
-              <h3 className="font-bold text-gray-900">SN-고요의숲 대치</h3>
-              <p className="text-gray-600 text-sm">서울 강남구 대치동 447</p>
-              <p className="text-sn-green text-sm font-medium">대치역 도보 3분</p>
+
+            {/* 운영시간 */}
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-sn-green/10 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-sn-green" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="font-bold text-gray-900">운영시간</h3>
+                <p className="text-gray-600 text-sm">월~토: 08:00 ~ 22:00</p>
+                <p className="text-gray-600 text-sm">일: 09:00 ~ 18:00</p>
+                <p className="text-gray-500 text-xs mt-1">(설날, 추석 당일 휴무)</p>
+              </div>
             </div>
           </div>
-          <a
-            href="https://map.naver.com/p/search/서울%20강남구%20대치동%20447"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sn-green hover:underline text-sm font-medium"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-            네이버 지도에서 보기
-          </a>
         </div>
 
         {/* 상담 신청 폼 */}

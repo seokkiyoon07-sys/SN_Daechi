@@ -116,6 +116,9 @@ export default function Header() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                <a href="/facility" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  시설안내
+                </a>
                 <a href="/campus/rules" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   생활관리
                 </a>
@@ -124,9 +127,6 @@ export default function Header() {
                 </a>
                 <a href="/campus/yearly" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   학사일정
-                </a>
-                <a href="/facility" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  시설안내
                 </a>
                 <a href="/campus/menu" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   대치동 맛집지도
@@ -349,6 +349,9 @@ export default function Header() {
                   </svg>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'campus' ? 'max-h-60 pb-3' : 'max-h-0'}`}>
+                  <a href="/facility" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    시설안내
+                  </a>
                   <a href="/campus/rules" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     생활관리
                   </a>
@@ -357,9 +360,6 @@ export default function Header() {
                   </a>
                   <a href="/campus/yearly" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     학사일정
-                  </a>
-                  <a href="/facility" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    시설안내
                   </a>
                   <a href="/campus/menu" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     대치동 맛집지도

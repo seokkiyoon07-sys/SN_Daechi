@@ -57,18 +57,34 @@ export default function AICenter() {
   const dailyFlow = [
     {
       step: '진단',
+      icon: '🔍',
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
       description: "AI가 오늘 푼 문제, 질문, 인강 중 학생이 헷갈려 하는 '진짜 약점'을 찾아냅니다."
     },
     {
       step: '훈련',
+      icon: '📝',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'bg-orange-50',
+      borderColor: 'border-orange-200',
       description: "스나겐이 그 약점을 극복할 수 있는 맞춤형 훈련지를 생성합니다."
     },
     {
       step: '해결',
+      icon: '💡',
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200',
       description: "공부하다 막히면 스나고와 스나비스에게 즉시 도움을 받습니다."
     },
     {
       step: '검증',
+      icon: '✅',
+      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
       description: "훈련 결과를 데이터로 검증하고, 다음 학습 방향을 설계합니다."
     }
   ];
@@ -269,7 +285,7 @@ export default function AICenter() {
             </p>
           </div>
 
-          {/* Daily Flow */}
+          {/* Daily Flow - Infographic */}
           <div
             id="daily-flow-content"
             data-animate
@@ -277,28 +293,88 @@ export default function AICenter() {
               visibleSections.has('daily-flow-content') ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {dailyFlow.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative pl-16"
-                >
-                  {/* Step Number */}
-                  <div className="absolute left-0 top-0 w-10 h-10 flex items-center justify-center bg-sn-green text-white font-bold rounded-lg">
-                    {index + 1}
-                  </div>
+            {/* Cycle Infographic */}
+            <div className="relative">
+              {/* Desktop: Horizontal Flow */}
+              <div className="hidden md:block">
+                <div className="flex items-center justify-between relative">
+                  {/* Connecting Line */}
+                  <div className="absolute top-16 left-[12%] right-[12%] h-1 bg-gradient-to-r from-blue-300 via-orange-300 via-purple-300 to-green-300 rounded-full z-0" />
 
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {item.step}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
+                  {dailyFlow.map((item, index) => (
+                    <div key={index} className="relative z-10 flex flex-col items-center w-1/4">
+                      {/* Icon Circle */}
+                      <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg mb-4`}>
+                        <span className="text-5xl">{item.icon}</span>
+                      </div>
+
+                      {/* Step Number & Title */}
+                      <div className="text-center mb-3">
+                        <span className="inline-block px-3 py-1 bg-gray-900 text-white text-xs font-bold rounded-full mb-2">
+                          STEP {index + 1}
+                        </span>
+                        <h3 className="text-xl font-bold text-gray-900">{item.step}</h3>
+                      </div>
+
+                      {/* Description Card */}
+                      <div className={`${item.bgColor} ${item.borderColor} border rounded-xl p-4 text-center max-w-[200px]`}>
+                        <p className="text-sm text-gray-700 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {/* Arrow (except last) */}
+                      {index < dailyFlow.length - 1 && (
+                        <div className="absolute top-16 -right-4 text-2xl text-gray-400 hidden lg:block">
+                          →
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Cycle Arrow */}
+                <div className="flex justify-center mt-8">
+                  <div className="flex items-center gap-2 text-sn-green">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    <span className="text-sm font-medium">매일 반복되는 학습 사이클</span>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Mobile: Vertical Flow */}
+              <div className="md:hidden space-y-6">
+                {dailyFlow.map((item, index) => (
+                  <div key={index} className="relative">
+                    {/* Connecting Line */}
+                    {index < dailyFlow.length - 1 && (
+                      <div className="absolute left-8 top-20 w-0.5 h-full bg-gray-200 z-0" />
+                    )}
+
+                    <div className="flex gap-4 relative z-10">
+                      {/* Icon */}
+                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                        <span className="text-2xl">{item.icon}</span>
+                      </div>
+
+                      {/* Content */}
+                      <div className={`flex-1 ${item.bgColor} ${item.borderColor} border rounded-xl p-4`}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="px-2 py-0.5 bg-gray-900 text-white text-xs font-bold rounded">
+                            {index + 1}
+                          </span>
+                          <h3 className="font-bold text-gray-900">{item.step}</h3>
+                        </div>
+                        <p className="text-sm text-gray-700 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

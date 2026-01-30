@@ -7,19 +7,24 @@ export default function FaqPage() {
   const faqs = [
     {
       question: "입학 상담은 어떻게 신청하나요?",
-      answer: "홈페이지 상단의 '상담신청' 버튼을 클릭하시거나, 전화(02-XXX-XXXX)로 문의해 주시면 됩니다. 방문 상담도 가능하며, 사전 예약을 권장드립니다."
+      answer: "홈페이지 상단의 '상담신청' 버튼을 클릭하시거나, 전화(010-5862-3838)로 문의해 주시면 됩니다. 방문 상담도 가능하며, 사전 예약을 권장드립니다."
     },
     {
       question: "수업료 납부 방법은 어떻게 되나요?",
       answer: "수업료는 매월 25일 자동이체 또는 카드결제로 납부하실 수 있습니다. 자세한 내용은 상담 시 안내드립니다."
     },
     {
-      question: "자습실 이용 시간은 어떻게 되나요?",
-      answer: "자습실은 평일 오전 7시부터 밤 12시까지 운영됩니다. 주말에도 동일하게 이용 가능하며, 시험 기간에는 연장 운영됩니다."
+      question: "자습실(몰입존) 이용 시간은 어떻게 되나요?",
+      answer: "몰입존은 월~토 08:00 ~ 24:00 까지 운영하며, 일요일은 09:00 ~ 18:00 까지 운영합니다. 시험 기간에는 연장 운영됩니다."
     },
     {
       question: "AI 학습 시스템은 어떻게 이용하나요?",
       answer: "입학 후 개인 계정이 발급되며, SNarGPT와 SNarVIS 등 모든 AI 학습 도구를 무료로 이용하실 수 있습니다. 사용법은 오리엔테이션에서 안내드립니다."
+    },
+    {
+      question: "AI특화관, 말뿐인 마케팅 아닌가요? 무엇이 다른가요?",
+      answer: "많은 곳에서 AI를 말하지만, 학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐입니다. 고요의숲 AI특화관의 차별점은 '초개인화된 관리'에 있습니다.",
+      hasAIDetails: true
     },
     {
       question: "중도 환불이 가능한가요?",
@@ -72,6 +77,23 @@ export default function FaqPage() {
                   </summary>
                   <div className="px-4 pb-4 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
                     <p>{faq.answer}</p>
+                    {faq.hasAIDetails && (
+                      <div className="mt-4 space-y-3">
+                        <div className="border-l-2 border-gray-300 pl-4 py-1">
+                          <h4 className="font-medium text-gray-800 mb-1">기록의 연속성</h4>
+                          <p className="text-gray-600 text-sm">멘토 선생님이 수백 명의 학생과 상담내역을 모두 기억할 수 없지만, 고요의숲의 AI는 학생과의 첫 대화부터 마지막 오답까지 모든 맥락을 기억합니다. 1년의 학습 흐름을 꿰뚫고 있는 AI 비서가 곁에 있는 것과 같습니다. AI는 반복작업과 데이터를 측정, 분석하고 전문 선생님과 멘토가 이를 코칭합니다.</p>
+                        </div>
+                        <div className="border-l-2 border-gray-300 pl-4 py-1">
+                          <h4 className="font-medium text-gray-800 mb-1">보이지 않는 관리</h4>
+                          <p className="text-gray-600 text-sm">SNarLink 방화벽과 AI 모니터링은 단순히 딴짓을 막는 것을 넘어, 학생의 학습 패턴이 무너지는 신호를 가장 먼저 감지하여 관리자에게 알립니다.</p>
+                        </div>
+                        <div className="border-l-2 border-gray-300 pl-4 py-1">
+                          <h4 className="font-medium text-gray-800 mb-1">전문가의 도구</h4>
+                          <p className="text-gray-600 text-sm">AI가 모든 것을 대신하는 것이 아닙니다. AI가 정리한 정밀한 데이터를 바탕으로, 대치동 최고의 전략 담임들이 훨씬 더 깊이 있고 날카로운 입시 컨설팅을 제공합니다.</p>
+                        </div>
+                        <p className="text-gray-700 text-sm mt-3 pt-3 border-t border-gray-200">기술은 거들 뿐, 본질은 학생의 성적 향상입니다. 고요의숲은 AI라는 가장 강력한 도구를 제대로 쓸 줄 아는 유일한 학습 공간입니다.</p>
+                      </div>
+                    )}
                     {faq.hasRefundTable && (
                       <div className="mt-4">
                         <table className="w-full border-collapse rounded-lg overflow-hidden">
@@ -114,7 +136,7 @@ export default function FaqPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="tel:02-XXX-XXXX"
+                  href="tel:010-5862-3838"
                   className="inline-flex items-center justify-center px-6 py-3 bg-white text-sn-green font-medium rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
