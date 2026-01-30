@@ -18,10 +18,13 @@ export const metadata: Metadata = {
     "오답 분석",
     "학습 시스템"
   ],
+  alternates: {
+    canonical: "https://daechi.snacademy.co.kr/about/philosophy",
+  },
   openGraph: {
     title: "관리 철학 | SN-고요의숲 대치",
     description: "관리의 본질은 '감시'가 아니라 '데이터를 통한 변화'에 있습니다.",
-    url: "https://sn-daechi.vercel.app/about/philosophy",
+    url: "https://daechi.snacademy.co.kr/about/philosophy",
   },
 };
 

@@ -42,8 +42,8 @@ export default function CampusPage() {
       )
     },
     {
-      title: "도시락 메뉴",
-      description: "매주 업데이트되는 점심·저녁 식단표",
+      title: "대치동 맛집지도",
+      description: "학원 근처 추천 맛집 정보",
       href: "/campus/menu",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

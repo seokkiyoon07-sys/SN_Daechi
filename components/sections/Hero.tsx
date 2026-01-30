@@ -281,7 +281,7 @@ export default function Hero() {
                 <div className="relative h-[280px] md:h-[350px]">
                   <Image
                     src="/image/director-park.png"
-                    alt="박진모 원장"
+                    alt="대치 고요의 숲 박진모 원장 - 수학 전문 독학관리"
                     fill
                     className="object-cover object-top"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

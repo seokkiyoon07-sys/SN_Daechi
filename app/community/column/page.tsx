@@ -1,40 +1,12 @@
 'use client';
 
+import Link from 'next/link';
+import Image from 'next/image';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { columns } from "@/data/columns";
 
 export default function ColumnPage() {
-  const columns = [
-    {
-      id: 1,
-      title: "수능 D-100, 효율적인 시간 관리 전략",
-      date: "2024.12.05",
-      author: "박원장",
-      excerpt: "수능까지 100일, 가장 중요한 것은 시간 관리입니다. 효율적인 학습 계획 수립 방법을 알아봅니다."
-    },
-    {
-      id: 2,
-      title: "AI 학습 도구의 올바른 활용법",
-      date: "2024.11.28",
-      author: "김학습코치",
-      excerpt: "SNarGPT를 비롯한 AI 학습 도구를 어떻게 활용해야 효과적인지 살펴봅니다."
-    },
-    {
-      id: 3,
-      title: "재수생을 위한 멘탈 관리 가이드",
-      date: "2024.11.20",
-      author: "이상담사",
-      excerpt: "재수 생활에서 가장 중요한 멘탈 관리. 흔들리지 않는 마음가짐을 만드는 방법을 공유합니다."
-    },
-    {
-      id: 4,
-      title: "데이터 기반 학습의 힘",
-      date: "2024.11.15",
-      author: "박원장",
-      excerpt: "왜 데이터 기반 학습이 중요한지, SN만의 학습 분석 시스템을 소개합니다."
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -52,27 +24,52 @@ export default function ColumnPage() {
           </div>
 
           {/* 칼럼 목록 */}
-          <div className="space-y-6">
-            {columns.map((column) => (
-              <div
+          <div className="space-y-4">
+            {[...columns].reverse().map((column) => (
+              <Link
                 key={column.id}
-                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:border-sn-green/30 hover:shadow-md transition-all cursor-pointer"
+                href={`/community/column/${column.slug}`}
+                className="block bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:border-sn-green/30 hover:shadow-md transition-all"
               >
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="px-2 py-0.5 text-xs font-medium rounded bg-sn-green/10 text-sn-green">
-                    칼럼
-                  </span>
-                  <span className="text-xs text-gray-500">{column.date}</span>
-                  <span className="text-xs text-gray-400">|</span>
-                  <span className="text-xs text-gray-500">{column.author}</span>
+                <div className="flex flex-col sm:flex-row">
+                  {/* 썸네일 */}
+                  {column.thumbnail && (
+                    <div className="relative w-full sm:w-48 h-40 sm:h-32 flex-shrink-0">
+                      <Image
+                        src={column.thumbnail}
+                        alt={`${column.title} 썸네일`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+
+                  {/* 내용 */}
+                  <div className="flex-1 p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="px-2 py-0.5 text-xs font-medium rounded bg-sn-green/10 text-sn-green">
+                        {column.category}
+                      </span>
+                      <span className="text-xs text-gray-500">{column.date}</span>
+                      <span className="text-xs text-gray-400">|</span>
+                      <span className="text-xs text-gray-500">{column.author}</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      {column.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+                      {column.excerpt}
+                    </p>
+                  </div>
+
+                  {/* 화살표 */}
+                  <div className="hidden sm:flex items-center pr-5">
+                    <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {column.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {column.excerpt}
-                </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

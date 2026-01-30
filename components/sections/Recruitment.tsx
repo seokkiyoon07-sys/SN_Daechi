@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { programsData } from '@/lib/data/programs';
 
 export default function Recruitment() {
@@ -9,7 +10,7 @@ export default function Recruitment() {
     <section id="recruitment" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 섹션 헤더 */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Recruitment</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             모집요강
@@ -17,6 +18,19 @@ export default function Recruitment() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             학생의 상황과 목표에 맞는 <span className="text-sn-green font-semibold">최적의 프로그램</span>을 선택하세요
           </p>
+        </div>
+
+        {/* 할인 배너 */}
+        <div className="mb-12 mx-auto" style={{ maxWidth: '1100px' }}>
+          <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-xl p-6 text-white text-center">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="text-2xl">🎉</span>
+              <span className="text-xl font-bold">2~3월 등록 특별 할인</span>
+              <span className="text-2xl">🎉</span>
+            </div>
+            <p className="text-lg font-medium mb-1">첫 달 수강료 <span className="text-yellow-300 font-bold text-2xl">50% OFF</span></p>
+            <p className="text-sm text-white/80">* 2~3월 신규 등록자 한정, 첫 달만 적용</p>
+          </div>
         </div>
 
         {/* 프로그램 카드 */}
@@ -73,9 +87,25 @@ export default function Recruitment() {
                 {/* 가격 */}
                 <div className="border-t-2 pt-4 mb-4 border-sn-main/20">
                   <div className="text-xs text-sn-green font-medium mb-1">수강료 안내</div>
-                  <div className="text-xl font-bold text-sn-green">
-                    {program.price}
-                  </div>
+                  {program.discountPrice ? (
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-sm text-gray-400 line-through">{program.originalPrice}</span>
+                        <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded">{program.discountRate}</span>
+                      </div>
+                      <div className="text-xl font-bold text-red-500">
+                        {program.discountPrice}
+                        <span className="text-xs text-gray-500 font-normal ml-1">(첫 달)</span>
+                      </div>
+                      {program.discountNote && (
+                        <div className="text-sm text-gray-600 mt-1">{program.discountNote}</div>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="text-xl font-bold text-sn-green">
+                      {program.price}
+                    </div>
+                  )}
                 </div>
 
                 {/* CTA 버튼 */}
@@ -104,44 +134,55 @@ export default function Recruitment() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* 전화 상담 */}
-            <div className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20">
-              <div className="w-14 h-14 mx-auto mb-4 bg-sn-green rounded-full flex items-center justify-center shadow-md">
-                <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
+            <a href="tel:010-5862-3838" className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20 block">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/image/phone.png"
+                  alt="전화 상담"
+                  width={56}
+                  height={56}
+                  className="object-cover"
+                />
               </div>
               <h4 className="font-bold text-gray-900 mb-2">전화 상담</h4>
-              <a href="tel:02-XXX-XXXX" className="text-sn-green font-medium hover:underline">
-                02-XXX-XXXX
-              </a>
-            </div>
+              <span className="text-sn-green font-medium hover:underline">
+                010-5862-3838
+              </span>
+            </a>
 
             {/* 카카오톡 상담 */}
-            <div className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20">
-              <div className="w-14 h-14 mx-auto mb-4 bg-sn-green rounded-full flex items-center justify-center shadow-md">
-                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 3c-5.5 0-10 3.58-10 8 0 2.82 1.83 5.29 4.59 6.69-.17.64-.63 2.36-.72 2.73-.12.49.18.48.38.35.15-.1 2.45-1.64 3.44-2.31.74.11 1.51.17 2.31.17 5.5 0 10-3.58 10-8s-4.5-8-10-8z"/>
-                </svg>
+            <a href="https://pf.kakao.com/_xelXhX/chat" target="_blank" rel="noopener noreferrer" className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20 block">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/image/KakaoTalk.png"
+                  alt="카카오톡 상담"
+                  width={56}
+                  height={56}
+                  className="object-cover"
+                />
               </div>
               <h4 className="font-bold text-gray-900 mb-2">카카오톡 상담</h4>
-              <a href="#" className="text-sn-green font-medium hover:underline">
+              <span className="text-sn-green font-medium hover:underline">
                 @SN대치
-              </a>
-            </div>
+              </span>
+            </a>
 
             {/* 방문 상담 */}
-            <div className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20">
-              <div className="w-14 h-14 mx-auto mb-4 bg-sn-green rounded-full flex items-center justify-center shadow-md">
-                <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
+            <a href="/admission/visit" className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20 block">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/image/navermap.webp"
+                  alt="방문 상담"
+                  width={56}
+                  height={56}
+                  className="object-cover"
+                />
               </div>
               <h4 className="font-bold text-gray-900 mb-2">방문 상담</h4>
               <p className="text-gray-600 text-sm">
                 대치역 도보 3분
               </p>
-            </div>
+            </a>
           </div>
 
           <div className="text-center">

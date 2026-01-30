@@ -57,18 +57,34 @@ export default function AICenter() {
   const dailyFlow = [
     {
       step: '진단',
+      icon: '🔍',
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'border-blue-200',
       description: "AI가 오늘 푼 문제, 질문, 인강 중 학생이 헷갈려 하는 '진짜 약점'을 찾아냅니다."
     },
     {
       step: '훈련',
+      icon: '📝',
+      color: 'from-orange-500 to-orange-600',
+      bgColor: 'bg-orange-50',
+      borderColor: 'border-orange-200',
       description: "스나겐이 그 약점을 극복할 수 있는 맞춤형 훈련지를 생성합니다."
     },
     {
       step: '해결',
+      icon: '💡',
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'border-purple-200',
       description: "공부하다 막히면 스나고와 스나비스에게 즉시 도움을 받습니다."
     },
     {
       step: '검증',
+      icon: '✅',
+      color: 'from-green-500 to-green-600',
+      bgColor: 'bg-green-50',
+      borderColor: 'border-green-200',
       description: "훈련 결과를 데이터로 검증하고, 다음 학습 방향을 설계합니다."
     }
   ];
@@ -84,7 +100,7 @@ export default function AICenter() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03653.jpg"
-            alt=""
+            alt="SNarGPT AI 학습 시스템 운영 공간"
             fill
             className="object-cover"
             priority
@@ -113,9 +129,9 @@ export default function AICenter() {
               visibleSections.has('ai-center-hero-title') ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            데이터로 진단하고
+            SNarGPT 기반
             <br />
-            <span className="block mt-2 md:mt-4">AI로 훈련하는 <span className="text-[#7fa892]">&apos;지능형 학습 센터&apos;</span></span>
+            <span className="block mt-2 md:mt-4"><span className="text-[#7fa892]">AI 학습 시스템</span></span>
           </h1>
 
           {/* Subtitle */}
@@ -153,9 +169,9 @@ export default function AICenter() {
               AI 철학
             </p>
             <h2 id="philosophy-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed mb-10">
-              AI를 도입한 이유는 단 하나,
+              대치동 AI 독학관리,
               <br />
-              <span className="block mt-2">학생의 성공을 구조로 만들기 위해서입니다.</span>
+              <span className="block mt-2">왜 SNarGPT인가</span>
             </h2>
 
             <div className="space-y-6 text-gray-600 leading-relaxed">
@@ -190,7 +206,7 @@ export default function AICenter() {
               SN의 AI 드림팀
             </p>
             <h2 id="ai-team-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-4">
-              우리 학생을 위한 &apos;드림팀&apos;
+              SNarGPT·SNarVIS·SNarGEN AI 학습팀
             </h2>
             <p className="text-gray-400">
               학부모님, 어려운 기술은 저희가 맡겠습니다. 학생은 그저 이 네 친구와 함께 즐겁게 공부하면 됩니다.
@@ -262,14 +278,14 @@ export default function AICenter() {
               TRAINING CYCLE
             </p>
             <h2 id="daily-flow-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed mb-4">
-              SN의 학습 사이클
+              개인 맞춤 학습 리포트 시스템
             </h2>
             <p className="text-gray-600">
               SN의 학습은 진단 → 훈련 → 해결 → 검증, 이 사이클로 반복됩니다.
             </p>
           </div>
 
-          {/* Daily Flow */}
+          {/* Daily Flow - Infographic */}
           <div
             id="daily-flow-content"
             data-animate
@@ -277,28 +293,88 @@ export default function AICenter() {
               visibleSections.has('daily-flow-content') ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {dailyFlow.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative pl-16"
-                >
-                  {/* Step Number */}
-                  <div className="absolute left-0 top-0 w-10 h-10 flex items-center justify-center bg-sn-green text-white font-bold rounded-lg">
-                    {index + 1}
-                  </div>
+            {/* Cycle Infographic */}
+            <div className="relative">
+              {/* Desktop: Horizontal Flow */}
+              <div className="hidden md:block">
+                <div className="flex items-center justify-between relative">
+                  {/* Connecting Line */}
+                  <div className="absolute top-16 left-[12%] right-[12%] h-1 bg-gradient-to-r from-blue-300 via-orange-300 via-purple-300 to-green-300 rounded-full z-0" />
 
-                  {/* Content */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {item.step}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {item.description}
-                    </p>
+                  {dailyFlow.map((item, index) => (
+                    <div key={index} className="relative z-10 flex flex-col items-center w-1/4">
+                      {/* Icon Circle */}
+                      <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg mb-4`}>
+                        <span className="text-5xl">{item.icon}</span>
+                      </div>
+
+                      {/* Step Number & Title */}
+                      <div className="text-center mb-3">
+                        <span className="inline-block px-3 py-1 bg-gray-900 text-white text-xs font-bold rounded-full mb-2">
+                          STEP {index + 1}
+                        </span>
+                        <h3 className="text-xl font-bold text-gray-900">{item.step}</h3>
+                      </div>
+
+                      {/* Description Card */}
+                      <div className={`${item.bgColor} ${item.borderColor} border rounded-xl p-4 text-center max-w-[200px]`}>
+                        <p className="text-sm text-gray-700 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      {/* Arrow (except last) */}
+                      {index < dailyFlow.length - 1 && (
+                        <div className="absolute top-16 -right-4 text-2xl text-gray-400 hidden lg:block">
+                          →
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Cycle Arrow */}
+                <div className="flex justify-center mt-8">
+                  <div className="flex items-center gap-2 text-sn-green">
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    <span className="text-sm font-medium">매일 반복되는 학습 사이클</span>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Mobile: Vertical Flow */}
+              <div className="md:hidden space-y-6">
+                {dailyFlow.map((item, index) => (
+                  <div key={index} className="relative">
+                    {/* Connecting Line */}
+                    {index < dailyFlow.length - 1 && (
+                      <div className="absolute left-8 top-20 w-0.5 h-full bg-gray-200 z-0" />
+                    )}
+
+                    <div className="flex gap-4 relative z-10">
+                      {/* Icon */}
+                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg flex-shrink-0`}>
+                        <span className="text-2xl">{item.icon}</span>
+                      </div>
+
+                      {/* Content */}
+                      <div className={`flex-1 ${item.bgColor} ${item.borderColor} border rounded-xl p-4`}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="px-2 py-0.5 bg-gray-900 text-white text-xs font-bold rounded">
+                            {index + 1}
+                          </span>
+                          <h3 className="font-bold text-gray-900">{item.step}</h3>
+                        </div>
+                        <p className="text-sm text-gray-700 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -319,9 +395,9 @@ export default function AICenter() {
             </p>
 
             <h2 id="closing-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-10">
-              기술은 차갑지만,
+              AI와 멘토가 함께하는
               <br />
-              <span className="block mt-2">관리는 따뜻합니다.</span>
+              <span className="block mt-2">하이브리드 학습관리</span>
             </h2>
 
             <div className="space-y-6 text-gray-400 leading-relaxed">
@@ -342,7 +418,7 @@ export default function AICenter() {
       <section className="py-16 bg-sn-green" aria-labelledby="cta-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 id="cta-title" className="text-2xl md:text-3xl font-bold text-white mb-4">
-            AI와 함께하는 학습, 직접 경험해보세요
+            SNarGPT 무료 체험 상담
           </h2>
           <p className="text-white/80 mb-8">
             무료 학습 상담을 통해 우리 학생에게 맞는 AI 학습 시스템을 확인하세요

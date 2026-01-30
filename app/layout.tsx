@@ -1,8 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { OrganizationJsonLd, LocalBusinessJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
-  title: "SN-고요의숲 대치 | AI 기반 독학관리 학원",
+  metadataBase: new URL("https://daechi.snacademy.co.kr"),
+  title: "대치 고요의 숲 | AI 기반 독학관리학원",
   icons: {
     icon: [
       { url: "/image/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -16,7 +24,7 @@ export const metadata: Metadata = {
       { rel: "icon", url: "/image/android-chrome-512x512.png", sizes: "512x512" },
     ],
   },
-  description: "SNarGPT, SNarVIS, SNarGEN 등 최첨단 AI 시스템으로 수능 학습을 완벽하게 관리하는 대치동 독학재수학원. 데이터 기반 성적 분석, 오답 관리, 12시간 집중 학습 시스템을 제공합니다.",
+  description: "대치동 최초 AI 기반 독학관리 시스템. 몰입 환경, 개인 맞춤 학습 리포트, SNarGPT로 성적을 설계합니다.",
   keywords: [
     "독학재수학원",
     "대치동 학원",
@@ -30,9 +38,9 @@ export const metadata: Metadata = {
     "재수학원",
     "대치학원"
   ],
-  authors: [{ name: "SN-고요의숲 대치" }],
-  creator: "SN-고요의숲 대치",
-  publisher: "SN-고요의숲 대치",
+  authors: [{ name: "대치 고요의 숲" }],
+  creator: "대치 고요의 숲",
+  publisher: "대치 고요의 숲",
   robots: {
     index: true,
     follow: true,
@@ -47,34 +55,29 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://sn-daechi.vercel.app",
-    siteName: "SN-고요의숲 대치",
-    title: "SN-고요의숲 대치 | AI 기반 독학관리 학원",
-    description: "SNarGPT, SNarVIS, SNarGEN 등 최첨단 AI 시스템으로 수능 학습을 완벽하게 관리하는 대치동 독학재수학원",
+    url: "https://daechi.snacademy.co.kr",
+    siteName: "대치 고요의 숲",
+    title: "대치 고요의 숲 | AI 독학관리의 새로운 기준",
+    description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/image/thumbnail/daechi_goyuuiseup.png",
         width: 1200,
         height: 630,
-        alt: "SN-고요의숲 대치",
+        alt: "대치 고요의 숲 AI 독학관리학원",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SN-고요의숲 대치 | AI 기반 독학관리 학원",
-    description: "최첨단 AI 시스템으로 수능 학습을 완벽하게 관리하는 대치동 독학재수학원",
-    images: ["/og-image.png"],
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
+    title: "대치 고요의 숲 | AI 독학관리의 새로운 기준",
+    description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
+    images: ["/image/thumbnail/daechi_goyuuiseup.png"],
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "y8r6AnO1o2fT-oJBgtO-RYGK6qn5UFva36Xj_ijM5-M",
     other: {
-      "naver-site-verification": "your-naver-verification-code",
+      "naver-site-verification": "674fc4da21ffde6c047b784ebaadb9cddccc5f92",
     },
   },
 };
@@ -86,6 +89,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
+      <head>
+        <OrganizationJsonLd />
+        <LocalBusinessJsonLd />
+        <WebSiteJsonLd />
+      </head>
       <body suppressHydrationWarning>
         {children}
       </body>

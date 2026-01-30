@@ -107,7 +107,7 @@ export default function Programs() {
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Programs</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            프로그램 안내
+            대치동 독학재수학원 모집요강
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             학생의 상황과 목표에 맞는 <span className="text-sn-green font-semibold">최적의 프로그램</span>을 선택하세요
@@ -282,7 +282,7 @@ export default function Programs() {
                                 >
                                   <img
                                     src="/image/snargpt/6959-1.png"
-                                    alt="문제 이미지"
+                                    alt="SNarGPT 수능 수학 킬러문항 풀이 예시"
                                     className="w-full h-auto rounded"
                                   />
                                 </div>
@@ -402,7 +402,7 @@ export default function Programs() {
                                     <p className="text-xs text-purple-300 mb-2 px-2">그래프 해석</p>
                                     <img
                                       src="/image/snargpt/20251105_200318_24562090.png"
-                                      alt="그래프 해설"
+                                      alt="SNarGPT AI 수학 그래프 해석 및 풀이"
                                       className="w-full rounded cursor-pointer hover:opacity-80 transition-opacity"
                                       onClick={() => openImageModal('/image/snargpt/20251105_200318_24562090.png')}
                                     />
@@ -907,7 +907,7 @@ export default function Programs() {
                             <div className="max-w-full max-h-[400px] flex items-center justify-center">
                               <img
                                 src={`/image/snargpt/sample${currentSampleIndex + 1}.gif`}
-                                alt={`학습 데이터 샘플 ${currentSampleIndex + 1}`}
+                                alt={`SNarlink AI 학습량 분석 리포트 샘플 ${currentSampleIndex + 1}`}
                                 className="max-w-full max-h-[400px] rounded-lg shadow-xl cursor-pointer hover:opacity-80 transition-opacity"
                                 onClick={() => openImageModal(`/image/snargpt/sample${currentSampleIndex + 1}.gif`)}
                               />
@@ -949,7 +949,7 @@ export default function Programs() {
                             <div className="max-w-full max-h-[350px] flex items-center justify-center">
                               <img
                                 src="/image/snargpt/ocr.png"
-                                alt="SNarOCR 오답 분석"
+                                alt="SNarOCR AI 오답 분석 및 성적 데이터 시스템"
                                 className="max-w-full max-h-[350px] rounded-lg shadow-xl cursor-pointer hover:opacity-80 transition-opacity"
                                 onClick={() => openImageModal('/image/snargpt/ocr.png')}
                               />
@@ -980,7 +980,7 @@ export default function Programs() {
                 <p className="text-gray-700 text-sm mb-4">학생의 접속 시간, 학습 패턴, 집중 구간 등을 정량화하여 학습 효율을 데이터로 분석합니다.</p>
                 <Image
                   src="/image/programs/SN_gant.png"
-                  alt="SN 학습량 데이터 간트 차트"
+                  alt="대치 고요의 숲 SNarlink 개인 맞춤 학습 리포트"
                   width={1200}
                   height={400}
                   className="w-full rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
@@ -1087,7 +1087,7 @@ export default function Programs() {
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Contact</span>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              상담 신청하기
+              대치동 독학관리학원 무료 상담
             </h3>
             <p className="text-gray-600">
               프로그램에 대한 자세한 상담이 필요하신가요? 아래 연락처로 문의해주세요.

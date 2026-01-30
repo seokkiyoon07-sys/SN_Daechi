@@ -1,46 +1,13 @@
 'use client';
 
+import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { noticesData } from "@/lib/data/notices";
 
 export default function NoticesPage() {
-  const notices = [
-    {
-      id: 1,
-      title: "2025학년도 신입생 모집 안내",
-      date: "2024.12.01",
-      category: "공지",
-      isImportant: true
-    },
-    {
-      id: 2,
-      title: "겨울방학 특강 프로그램 안내",
-      date: "2024.11.28",
-      category: "공지",
-      isImportant: true
-    },
-    {
-      id: 3,
-      title: "12월 모의고사 일정 안내",
-      date: "2024.11.25",
-      category: "일정",
-      isImportant: false
-    },
-    {
-      id: 4,
-      title: "학원 운영시간 변경 안내 (12월)",
-      date: "2024.11.20",
-      category: "공지",
-      isImportant: false
-    },
-    {
-      id: 5,
-      title: "SNarGPT 업데이트 안내 (v0.4)",
-      date: "2024.11.15",
-      category: "소식",
-      isImportant: false
-    }
-  ];
+  const notices = noticesData;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -59,31 +26,54 @@ export default function NoticesPage() {
           </div>
 
           {/* 공지사항 목록 */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
-            <div className="space-y-4">
-              {notices.map((notice) => (
-                <div
-                  key={notice.id}
-                  className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-sn-green/30"
-                >
-                  <span className={`px-2 py-0.5 text-xs font-medium rounded ${
-                    notice.isImportant
-                      ? 'bg-red-100 text-red-600'
-                      : notice.category === '일정'
-                        ? 'bg-blue-100 text-blue-600'
-                        : 'bg-gray-100 text-gray-600'
-                  }`}>
-                    {notice.category}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className={`text-sm truncate ${notice.isImportant ? 'font-semibold text-gray-900' : 'text-gray-700'}`}>
+          <div className="space-y-4">
+            {notices.map((notice) => (
+              <Link
+                key={notice.id}
+                href={`/community/notices/${notice.slug}`}
+                className="block bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md hover:border-sn-green/30 transition-all"
+              >
+                <div className="flex flex-col sm:flex-row">
+                  {/* 썸네일 */}
+                  {notice.thumbnail && (
+                    <div className="relative w-full sm:w-48 h-40 sm:h-32 flex-shrink-0">
+                      <Image
+                        src={notice.thumbnail}
+                        alt={notice.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+
+                  {/* 내용 */}
+                  <div className="flex-1 p-5 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-2.5 py-1 text-xs font-semibold rounded-full ${
+                        notice.isImportant
+                          ? 'bg-sn-green text-white'
+                          : notice.category === '일정'
+                            ? 'bg-blue-100 text-blue-600'
+                            : 'bg-gray-100 text-gray-600'
+                      }`}>
+                        {notice.category}
+                      </span>
+                      <span className="text-sm text-gray-500">{notice.date}</span>
+                    </div>
+                    <h2 className={`text-lg ${notice.isImportant ? 'font-semibold text-gray-900' : 'text-gray-700'}`}>
                       {notice.title}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">{notice.date}</p>
+                    </h2>
+                  </div>
+
+                  {/* 화살표 */}
+                  <div className="hidden sm:flex items-center pr-5">
+                    <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </div>
                 </div>
-              ))}
-            </div>
+              </Link>
+            ))}
           </div>
         </div>
       </main>

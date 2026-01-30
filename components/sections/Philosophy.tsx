@@ -140,7 +140,7 @@ export default function Philosophy() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03724.jpg"
-            alt=""
+            alt="대치 고요의 숲 몰입형 독학관리 학습 공간"
             fill
             className="object-cover"
             priority
@@ -169,9 +169,9 @@ export default function Philosophy() {
               visibleSections.has('philosophy-hero-title') ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            관리의 본질은 &apos;감시&apos;가 아니라
+            대치 고요의 숲 –
             <br />
-            <span className="block mt-2 md:mt-4"><span className="text-[#5a7d6a]">데이터를 통한 훈련</span>에 있습니다</span>
+            <span className="block mt-2 md:mt-4"><span className="text-[#5a7d6a]">AI 기반 지능형 독학관리</span></span>
           </h1>
 
           {/* Subtitle */}
@@ -195,6 +195,76 @@ export default function Philosophy() {
         </div>
       </section>
 
+      {/* AI 특화관 차별점 섹션 */}
+      <section className="bg-[#f8f9fa]" aria-labelledby="ai-difference-title">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
+          {/* Section Header */}
+          <div
+            id="ai-difference-header"
+            data-animate
+            className={`mb-12 transition-opacity duration-500 ${
+              visibleSections.has('ai-difference-header') ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <p className="text-sm tracking-[0.15em] text-gray-500 mb-6">
+              AI 특화관
+            </p>
+            <h2 id="ai-difference-title" className="text-xl md:text-2xl font-semibold text-gray-900 leading-relaxed mb-4">
+              AI특화관, 말뿐인 마케팅 아닌가요?<br />
+              <span className="text-gray-600">무엇이 다른가요?</span>
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              많은 곳에서 AI를 말하지만, <span className="relative inline-block"><span className="absolute inset-x-0 bottom-0 h-[40%] bg-yellow-300/70"></span><span className="relative">학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐</span></span>입니다.
+            </p>
+            <div className="mt-4 inline-block px-4 py-2 bg-gray-900 text-white text-sm font-medium">
+              고요의숲 AI특화관의 차별점은 <span className="text-[#7fa892]">&apos;초개인화된 관리&apos;</span>에 있습니다.
+            </div>
+          </div>
+
+          {/* AI 차별점 리스트 */}
+          <div
+            id="ai-difference-list"
+            data-animate
+            className={`space-y-6 transition-opacity duration-500 ${
+              visibleSections.has('ai-difference-list') ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {/* 기록의 연속성 */}
+            <div className="border-l-2 border-gray-400 pl-6 py-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">기록의 연속성</h3>
+              <p className="text-gray-600 leading-relaxed">
+                멘토 선생님이 수백 명의 학생과 상담내역을 모두 기억할 수 없지만, 고요의숲의 AI는 학생과의 첫 대화부터 마지막 오답까지 모든 맥락을 기억합니다. 1년의 학습 흐름을 꿰뚫고 있는 AI 비서가 곁에 있는 것과 같습니다. AI는 반복작업과 데이터를 측정, 분석하고 전문 선생님과 멘토가 이를 코칭합니다.
+              </p>
+            </div>
+
+            {/* 보이지 않는 관리 */}
+            <div className="border-l-2 border-gray-400 pl-6 py-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">보이지 않는 관리</h3>
+              <p className="text-gray-600 leading-relaxed">
+                SNarLink 방화벽과 AI 모니터링은 단순히 딴짓을 막는 것을 넘어, 학생의 학습 패턴이 무너지는 신호를 가장 먼저 감지하여 관리자에게 알립니다.
+              </p>
+            </div>
+
+            {/* 전문가의 도구 */}
+            <div className="border-l-2 border-gray-400 pl-6 py-2">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">전문가의 도구</h3>
+              <p className="text-gray-600 leading-relaxed">
+                AI가 모든 것을 대신하는 것이 아닙니다. AI가 정리한 정밀한 데이터를 바탕으로, 대치동 최고의 전략 담임들이 훨씬 더 깊이 있고 날카로운 입시 컨설팅을 제공합니다.
+              </p>
+            </div>
+
+            {/* 결론 */}
+            <div className="mt-8 pt-8 border-t border-gray-300">
+              <p className="text-gray-800 font-medium leading-relaxed">
+                <span className="relative inline"><span className="absolute inset-x-0 bottom-0 h-[40%] bg-yellow-300/70"></span><span className="relative">기술은 거들 뿐, 본질은 학생의 성적 향상입니다.</span></span>
+                <br />
+                <span className="text-gray-900">고요의숲은 AI라는 가장 강력한 도구를 제대로 쓸 줄 아는 유일한 학습 공간입니다.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section 2: Four Core Pillars - Minimal Institutional Style */}
       <section className="bg-white" aria-labelledby="pillars-title">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
@@ -210,7 +280,7 @@ export default function Philosophy() {
               핵심 시스템
             </p>
             <h2 id="pillars-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed">
-              SN만의 4가지 핵심 시스템
+              왜 지금 대치동에 고요의 숲인가
             </h2>
           </div>
 
@@ -305,7 +375,7 @@ export default function Philosophy() {
               비교 분석
             </p>
             <h2 id="comparison-title" className="text-2xl md:text-3xl font-semibold text-gray-900 leading-relaxed">
-              타 학원과의 차별점
+              SNarGPT 기반 학습 시스템
             </h2>
           </div>
 
@@ -357,7 +427,7 @@ export default function Philosophy() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03681.jpg"
-            alt=""
+            alt="대치동 독학재수학원 자습실 내부"
             fill
             className="object-cover"
           />
@@ -388,7 +458,7 @@ export default function Philosophy() {
                   ) : (
                     <Image
                       src="/image/jinmo.png"
-                      alt="박진모 원장"
+                      alt="대치 고요의 숲 박진모 원장 - 수학 전문 독학관리"
                       width={288}
                       height={384}
                       className="w-full h-full object-cover object-top grayscale"
@@ -405,25 +475,27 @@ export default function Philosophy() {
               {/* Message */}
               <div className="flex-1">
                 <h2 id="director-title" className="text-2xl md:text-3xl font-semibold text-white leading-relaxed mb-8">
-                  공부의 감을 훈련으로 바꾸는 곳,
+                  몰입을 설계한 공간,
                   <br />
-                  <span className="block mt-2">SN 고요의숲 입니다.</span>
+                  <span className="block mt-2">대치 고요의 숲</span>
                 </h2>
 
                 <div className="space-y-6 text-gray-400 leading-relaxed">
                   <p>
-                    분당에서 한해 250명의 학생을 성공시키며 한 가지 결론에 도달했습니다.
-                    학생들은 머리가 나빠서가 아니라, 자신에게 맞는 처방과 그것을 지속할 훈련이 없어서 실패합니다.
+                    분당에서 한 해 250명의 학생을 성공시키며 우리는 한 가지 결론에 도달했습니다.
+                    학생들은 머리가 나빠서 실패하는 것이 아니라,
+                    자신에게 맞는 처방과 그것을 끝까지 지속할 훈련이 없어서 무너집니다.
                   </p>
                   <p>
-                    수학 강사로서 오답 로직을 집요하게 파고들던 그 눈으로,
-                    이제는 AI 엔진과 데이터 시스템을 통해 학습 습관 전체를 정밀하게 관리합니다.
+                    수학 강사로서 오답의 로직을 집요하게 파고들던 그 시선으로,
+                    이제는 AI 엔진과 데이터 시스템을 통해
+                    공부 시간, 학습 습관, 사고 방식 전체를 정밀하게 관리합니다.
                   </p>
                   <p className="text-white">
                     단순히 앉아만 있는 관리는 끝났습니다.
                   </p>
                   <p className="text-white font-medium">
-                    시간을 관리하는 학원과 사고를 훈련하는 학원은 결과가 다릅니다.
+                    시간을 관리하는 학원과, 사고를 훈련하는 학원은 결과가 다릅니다.
                   </p>
                 </div>
 
@@ -441,7 +513,7 @@ export default function Philosophy() {
       <section className="py-16 bg-sn-green" aria-labelledby="cta-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 id="cta-title" className="text-2xl md:text-3xl font-bold text-white mb-4">
-            데이터로 증명하는 관리, 직접 경험해보세요
+            대치동 독학관리학원, 무료 상담 신청
           </h2>
           <p className="text-white/80 mb-8">
             무료 학습 상담을 통해 우리 아이에게 맞는 관리 시스템을 확인하세요

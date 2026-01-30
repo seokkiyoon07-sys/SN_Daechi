@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "googleapis": "^170.1.0",
     "katex": "^0.16.27",
     "next": "^16.0.7",
     "react": "^19.2.1",

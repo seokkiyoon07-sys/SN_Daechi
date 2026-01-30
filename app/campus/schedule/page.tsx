@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export default function SchedulePage() {
   const printRef = useRef<HTMLDivElement>(null);
+  const [activeTab, setActiveTab] = useState<'weekday' | 'saturday' | 'sunday'>('weekday');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,6 +61,41 @@ export default function SchedulePage() {
     printWindow.onload = () => {
       printWindow.print();
     };
+  };
+
+  // 모바일용 간단한 시간표 데이터
+  const mobileSchedule = {
+    weekday: [
+      { period: "1교시", time: "08:00 ~ 08:50", activity: "자기주도학습" },
+      { period: "2교시", time: "09:00 ~ 10:15", activity: "자기주도학습" },
+      { period: "3교시", time: "10:30 ~ 12:00", activity: "자기주도학습" },
+      { period: "점심", time: "12:00 ~ 13:10", activity: "외출 가능", isBreak: true },
+      { period: "4교시", time: "13:10 ~ 14:30", activity: "자기주도학습" },
+      { period: "5교시", time: "14:45 ~ 16:15", activity: "자기주도학습" },
+      { period: "6교시", time: "16:30 ~ 18:00", activity: "자기주도학습" },
+      { period: "저녁", time: "18:10 ~ 19:10", activity: "외출 가능", isBreak: true },
+      { period: "7교시", time: "19:10 ~ 20:40", activity: "자기주도학습" },
+      { period: "8교시", time: "20:55 ~ 22:00", activity: "자기주도학습" },
+    ],
+    saturday: [
+      { period: "1교시", time: "08:00 ~ 08:50", activity: "자기주도학습" },
+      { period: "2교시", time: "09:00 ~ 10:15", activity: "자기주도학습" },
+      { period: "3교시", time: "10:30 ~ 12:00", activity: "자기주도학습" },
+      { period: "점심", time: "12:00 ~ 13:10", activity: "외출 가능", isBreak: true },
+      { period: "4교시", time: "13:10 ~ 14:30", activity: "자기주도학습" },
+      { period: "5교시", time: "14:45 ~ 16:15", activity: "자기주도학습" },
+      { period: "6교시", time: "16:30 ~ 18:00", activity: "자기주도학습" },
+      { period: "저녁", time: "18:10 ~ 19:10", activity: "외출 가능", isBreak: true },
+      { period: "7교시", time: "19:10 ~ 20:40", activity: "자율학습 (희망자)" },
+      { period: "8교시", time: "20:55 ~ 22:00", activity: "자율학습 (희망자)" },
+    ],
+    sunday: [
+      { period: "오전", time: "09:00 ~", activity: "09:00 오픈" },
+      { period: "1-3교시", time: "09:00 ~ 12:00", activity: "자율학습" },
+      { period: "점심", time: "12:00 ~ 13:10", activity: "외출 가능", isBreak: true },
+      { period: "4-6교시", time: "13:10 ~ 18:00", activity: "자율학습" },
+      { period: "종료", time: "18:00", activity: "18시 운영 종료", isBreak: true },
+    ],
   };
 
   const schedule = [
@@ -146,7 +182,7 @@ export default function SchedulePage() {
       <main className="pt-32 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* 페이지 헤더 */}
-          <div className="mb-12 text-center">
+          <div className="mb-8 md:mb-12 text-center">
             <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Campus Life</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               학습시간표
@@ -239,8 +275,69 @@ export default function SchedulePage() {
             </table>
           </div>
 
-          {/* 시간표 */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          {/* 모바일 탭 시간표 */}
+          <div className="md:hidden">
+            {/* 탭 버튼 */}
+            <div className="flex rounded-xl bg-gray-100 p-1 mb-4">
+              <button
+                onClick={() => setActiveTab('weekday')}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${
+                  activeTab === 'weekday'
+                    ? 'bg-sn-green text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                월-금
+              </button>
+              <button
+                onClick={() => setActiveTab('saturday')}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${
+                  activeTab === 'saturday'
+                    ? 'bg-sn-green text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                토요일
+              </button>
+              <button
+                onClick={() => setActiveTab('sunday')}
+                className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${
+                  activeTab === 'sunday'
+                    ? 'bg-red-400 text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                일요일
+              </button>
+            </div>
+
+            {/* 탭 내용 */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <table className="w-full">
+                <thead>
+                  <tr className={activeTab === 'sunday' ? 'bg-red-400 text-white' : 'bg-sn-green text-white'}>
+                    <th className="px-3 py-3 text-center font-semibold text-sm">교시</th>
+                    <th className="px-3 py-3 text-center font-semibold text-sm">시간</th>
+                    <th className="px-3 py-3 text-center font-semibold text-sm">내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mobileSchedule[activeTab].map((item, index) => (
+                    <tr key={index} className={`border-b border-gray-100 ${item.isBreak ? 'bg-gray-50' : ''}`}>
+                      <td className="px-3 py-3 text-center font-medium text-sm">{item.period}</td>
+                      <td className="px-3 py-3 text-center text-gray-600 text-sm">{item.time}</td>
+                      <td className={`px-3 py-3 text-center text-sm ${item.isBreak ? 'text-gray-500' : 'text-sn-green font-medium'}`}>
+                        {item.activity}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* 데스크탑 시간표 */}
+          <div className="hidden md:block bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
             <table className="w-full">
               <thead>
                 <tr className="bg-sn-green text-white">
@@ -311,7 +408,7 @@ export default function SchedulePage() {
           </div>
 
           {/* 안내 */}
-          <div className="mt-12 p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">
+          <div className="mt-8 md:mt-12 p-4 md:p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">
             <p className="text-center text-gray-700">
               <span className="font-semibold text-sn-green">※ 시간표는 학원 사정에 따라 변경될 수 있습니다.</span><br />
               <span className="text-sm">자세한 내용은 공지사항을 확인해 주세요.</span>
