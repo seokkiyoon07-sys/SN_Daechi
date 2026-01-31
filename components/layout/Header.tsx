@@ -144,6 +144,9 @@ export default function Header() {
                 <a href="/programs" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   모집요강
                 </a>
+                <a href="/admission/apply" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  온라인 원서접수
+                </a>
                 <a href="/admission/scholarship" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   장학금
                 </a>
@@ -383,9 +386,12 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'admission' ? 'max-h-48 pb-3' : 'max-h-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'admission' ? 'max-h-60 pb-3' : 'max-h-0'}`}>
                   <a href="/programs" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     모집요강
+                  </a>
+                  <a href="/admission/apply" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    온라인 원서접수
                   </a>
                   <a href="/admission/scholarship" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     장학금
