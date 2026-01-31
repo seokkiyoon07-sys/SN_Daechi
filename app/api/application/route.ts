@@ -7,6 +7,7 @@ const JANDI_WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/33175090/15e
 
 interface ApplicationData {
   // 입학정보
+  program: string;
   studentName: string;
   studentBirthDate: string;
   school: string;
@@ -127,6 +128,7 @@ async function appendToGoogleSheets(data: ApplicationData) {
   const values = [
     [
       timestamp,
+      data.program || '-',  // 프로그램 선택
       data.studentName,
       data.studentBirthDate,
       data.school,
@@ -149,7 +151,7 @@ async function appendToGoogleSheets(data: ApplicationData) {
   try {
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'application!A:Q',  // Q열까지 (파일링크 포함)
+      range: 'application!A:R',  // R열까지 (프로그램 추가)
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values,
@@ -172,6 +174,10 @@ async function sendToJandi(data: ApplicationData) {
     body: '📋 새로운 온라인 원서접수가 접수되었습니다!',
     connectColor: '#4CAF50',
     connectInfo: [
+      {
+        title: '📌 프로그램',
+        description: data.program || '미선택',
+      },
       {
         title: '👤 학생 정보',
         description: `이름: ${data.studentName}\n생년월일: ${data.studentBirthDate}\n학교: ${data.school}`,
@@ -238,6 +244,7 @@ export async function POST(request: NextRequest) {
 
       // 데이터 추출
       data = {
+        program: formData.get('program') as string || '',
         studentName: formData.get('studentName') as string || '',
         studentBirthDate: formData.get('studentBirthDate') as string || '',
         school: formData.get('school') as string || '',
