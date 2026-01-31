@@ -17,6 +17,7 @@ interface SubjectScore {
 
 interface FormData {
   // 입학정보
+  program: string;  // 프로그램 선택
   studentName: string;
   studentBirthDate: string;
   school: string;
@@ -56,6 +57,7 @@ interface FormData {
 
 export default function OnlineApplication() {
   const [formData, setFormData] = useState<FormData>({
+    program: '',
     studentName: '',
     studentBirthDate: '',
     school: '',
@@ -174,6 +176,7 @@ export default function OnlineApplication() {
 
       // FormData로 파일과 데이터 전송
       const submitFormData = new FormData();
+      submitFormData.append('program', formData.program);
       submitFormData.append('studentName', formData.studentName);
       submitFormData.append('studentBirthDate', formData.studentBirthDate);
       submitFormData.append('school', formData.school);
@@ -212,6 +215,7 @@ export default function OnlineApplication() {
     }
   };
 
+  const programOptions = ['정규 독학재수반', '정규 재학생반', '프리미엄 수학 관리반'];
   const examTypeOptions = ['2025 수능', '2025 9월 모평', '2025 6월 모평', '2024 수능', '기타'];
   const koreanTypeOptions = ['언어와 매체', '화법과 작문'];
   const mathTypeOptions = ['확률과 통계', '미적분', '기하'];
@@ -287,6 +291,26 @@ export default function OnlineApplication() {
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* 프로그램 선택 */}
+                <div className="sm:col-span-2">
+                  <label htmlFor="program" className="block text-sm font-medium text-gray-700 mb-2">
+                    프로그램 선택 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="program"
+                    name="program"
+                    value={formData.program}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sn-green focus:border-transparent transition-all"
+                  >
+                    <option value="">프로그램을 선택해주세요</option>
+                    {programOptions.map(opt => (
+                      <option key={opt} value={opt}>{opt}</option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* 학생 성명 */}
                 <div>
                   <label htmlFor="studentName" className="block text-sm font-medium text-gray-700 mb-2">
