@@ -1068,6 +1068,15 @@ export default function AcademyMapPage() {
               </span>
             </p>
           </div>
+
+          {/* 면책 조항 */}
+          <div className="mt-6 text-center text-gray-500 text-xs">
+            <p>
+              본 정보는 네이버맵의 정보를 가지고 AI가 공개된 자료를 바탕으로 만들었습니다.<br />
+              잘못된 정보는 본원 메일로 문의해 주시면 바로 수정하겠습니다.<br />
+              <a href="mailto:snacademy@naver.com" className="text-sn-green hover:underline">snacademy@naver.com</a>
+            </p>
+          </div>
         </div>
       </main>
 
