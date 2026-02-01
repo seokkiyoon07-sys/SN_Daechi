@@ -25,11 +25,11 @@ export default function Recruitment() {
           <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-xl p-6 text-white text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <span className="text-2xl">🎉</span>
-              <span className="text-xl font-bold">2~3월 등록 특별 할인</span>
+              <span className="text-xl font-bold">2월 등록 특별 할인</span>
               <span className="text-2xl">🎉</span>
             </div>
             <p className="text-lg font-medium mb-1">첫 달 수강료 <span className="text-yellow-300 font-bold text-2xl">50% OFF</span></p>
-            <p className="text-sm text-white/80">* 2~3월 신규 등록자 한정, 첫 달만 적용</p>
+            <p className="text-sm text-white/80">* 2월 신규 등록자 한정, 첫 달만 적용</p>
           </div>
         </div>
 
