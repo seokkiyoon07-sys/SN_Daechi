@@ -22,8 +22,8 @@ interface StudyAcademy {
 }
 
 // 학원 위치: 대치동 447 (SN고요의숲)
-const ACADEMY_LAT = 37.496898;
-const ACADEMY_LNG = 127.061648;
+const ACADEMY_LAT = 37.496870;
+const ACADEMY_LNG = 127.061649;
 
 // 은마아파트 사거리 (전체화면 지도 중심)
 const EUNMA_CENTER_LAT = 37.4988;
@@ -1072,8 +1072,8 @@ export default function AcademyMapPage() {
           {/* 면책 조항 */}
           <div className="mt-6 text-center text-gray-500 text-xs">
             <p>
-              본 정보는 네이버맵의 정보를 가지고 AI가 공개된 자료를 바탕으로 만들었습니다.<br />
-              잘못된 정보는 본원 메일로 문의해 주시면 바로 수정하겠습니다.<br />
+              본 정보는 네이버 지도에 공개된 자료를 기반으로 AI가 정리한 내용입니다.<br />
+              일부 정보에 오류가 있을 수 있으며, 잘못된 내용은 본원 이메일로 알려주시면 신속히 수정하겠습니다.<br />
               <a href="mailto:snacademy@naver.com" className="text-sn-green hover:underline">snacademy@naver.com</a>
             </p>
           </div>

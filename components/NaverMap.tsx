@@ -86,19 +86,30 @@ interface NaverMapProps {
   markers?: MapMarker[];
   centerLat?: number;
   centerLng?: number;
+  snMarkerLat?: number; // SN고요의숲 마커 위치 (지도 중심과 다를 수 있음)
+  snMarkerLng?: number;
   zoom?: number;
   height?: string;
   onMarkerClick?: (marker: MapMarker) => void;
 }
 
+// SN고요의숲 실제 좌표
+const SN_DEFAULT_LAT = 37.496870;
+const SN_DEFAULT_LNG = 127.061649;
+
 export default function NaverMap({
   markers = [],
-  centerLat = 37.496898, // 대치동 447 기준 좌표
-  centerLng = 127.061648,
+  centerLat = SN_DEFAULT_LAT, // 대치동 447 기준 좌표
+  centerLng = SN_DEFAULT_LNG,
+  snMarkerLat,
+  snMarkerLng,
   zoom = 16,
   height = '400px',
   onMarkerClick,
 }: NaverMapProps) {
+  // SN고요의숲 마커 위치 (별도 지정 없으면 지도 중심 사용)
+  const markerLat = snMarkerLat ?? SN_DEFAULT_LAT;
+  const markerLng = snMarkerLng ?? SN_DEFAULT_LNG;
   const mapRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -285,7 +296,7 @@ export default function NaverMap({
 
       // 학원 위치 마커 (메인 마커) - 가장 나중에 추가하여 항상 위에 표시
       new window.naver.maps.Marker({
-        position: new window.naver.maps.LatLng(centerLat, centerLng),
+        position: new window.naver.maps.LatLng(markerLat, markerLng),
         map: map,
         title: 'SN고요의숲',
         zIndex: 100,
@@ -346,7 +357,7 @@ export default function NaverMap({
               "></div>
             </div>
           `,
-          anchor: { x: 40, y: 80 },
+          anchor: { x: 42, y: 84 },
         },
       });
 
@@ -354,7 +365,7 @@ export default function NaverMap({
       console.error('Map initialization error:', err);
       setError('지도 초기화 중 오류가 발생했습니다.');
     }
-  }, [isLoaded, markers, centerLat, centerLng, zoom, onMarkerClick]);
+  }, [isLoaded, markers, centerLat, centerLng, markerLat, markerLng, zoom, onMarkerClick]);
 
   if (error) {
     return (
