@@ -79,6 +79,7 @@ export interface MapMarker {
   category: string;
   walkTime: number;
   infoContent?: string;
+  priceRange?: string;
 }
 
 interface NaverMapProps {
@@ -170,10 +171,12 @@ export default function NaverMap({
         // 카테고리별 색상 및 아이콘 설정
         const getMarkerStyle = (category: string) => {
           switch (category) {
+            // 교통
             case '지하철':
               return { bg: '#3B82F6', icon: '🚇' };
             case '버스':
               return { bg: '#F97316', icon: '🚌' };
+            // 음식
             case '한식':
               return { bg: '#DC2626', icon: '🍚' };
             case '중식':
@@ -186,6 +189,13 @@ export default function NaverMap({
               return { bg: '#DB2777', icon: '🍜' };
             case '카페':
               return { bg: '#92400E', icon: '☕' };
+            // 학원 유형
+            case '독학관리/독학재수':
+              return { bg: '#10B981', icon: '📚' };
+            case '시대인재':
+              return { bg: '#F59E0B', icon: '🏢' };
+            case '강남대성/두각':
+              return { bg: '#3B82F6', icon: '🏛️' };
             default:
               return { bg: '#6B7280', icon: '🍽️' };
           }
@@ -193,22 +203,40 @@ export default function NaverMap({
 
         const style = getMarkerStyle(markerData.category);
 
+        // 가격 라벨이 있는 경우 마커 위에 표시
+        const priceLabel = markerData.priceRange ? `
+          <div style="
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-shadow: 0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.5);
+          ">${markerData.priceRange}</div>
+        ` : '';
+
         const marker = new window.naver.maps.Marker({
           position: new window.naver.maps.LatLng(markerData.lat, markerData.lng),
           map: map,
           title: markerData.name,
           zIndex: 10,
           icon: {
-            content: `<div style="
-              background: ${style.bg};
-              color: white;
-              padding: 6px 10px;
-              border-radius: 15px;
-              font-size: 11px;
-              font-weight: 600;
-              box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-              white-space: nowrap;
-            ">${style.icon} ${markerData.name}</div>`,
+            content: `<div style="position: relative;">
+              ${priceLabel}
+              <div style="
+                background: ${style.bg};
+                color: white;
+                padding: 6px 10px;
+                border-radius: 15px;
+                font-size: 11px;
+                font-weight: 600;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                white-space: nowrap;
+              ">${style.icon} ${markerData.name}</div>
+            </div>`,
             anchor: { x: 40, y: 30 },
           },
         });
@@ -267,7 +295,19 @@ export default function NaverMap({
               display: flex;
               flex-direction: column;
               align-items: center;
+              position: relative;
             ">
+              <div style="
+                position: absolute;
+                top: -18px;
+                left: 50%;
+                transform: translateX(-50%);
+                color: white;
+                font-size: 10px;
+                font-weight: 700;
+                white-space: nowrap;
+                text-shadow: 0 0 3px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.5);
+              ">80만원</div>
               <div style="
                 width: 40px;
                 height: 40px;
@@ -282,18 +322,27 @@ export default function NaverMap({
                 background: #16A34A;
                 color: white;
                 padding: 4px 10px;
-                border-radius: 6px;
+                border-radius: 6px 6px 0 0;
                 font-size: 11px;
                 font-weight: 600;
                 white-space: nowrap;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
               ">SN고요의숲</div>
               <div style="
+                background: #0F766E;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 0 0 6px 6px;
+                font-size: 9px;
+                font-weight: 500;
+                white-space: nowrap;
+              ">AI특화관</div>
+              <div style="
                 width: 0;
                 height: 0;
                 border-left: 8px solid transparent;
                 border-right: 8px solid transparent;
-                border-top: 8px solid #16A34A;
+                border-top: 8px solid #0F766E;
               "></div>
             </div>
           `,

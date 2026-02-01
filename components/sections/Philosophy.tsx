@@ -249,7 +249,7 @@ export default function Philosophy() {
             <div className="border-l-2 border-gray-400 pl-6 py-2">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">전문가의 도구</h3>
               <p className="text-gray-600 leading-relaxed">
-                AI가 모든 것을 대신하는 것이 아닙니다. AI가 정리한 정밀한 데이터를 바탕으로, 대치동 최고의 전략 담임들이 훨씬 더 깊이 있고 날카로운 입시 컨설팅을 제공합니다.
+                AI가 모든 것을 대신하는 것이 아닙니다. 대치동 최고의 전략 담임들이 입시 컨설팅을 이끌고, 평가원, 교육청 20만 기출문항을 학습한 AI가 정밀한 데이터로 이를 지원합니다.
               </p>
             </div>
 
