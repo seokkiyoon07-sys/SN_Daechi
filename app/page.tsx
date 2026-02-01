@@ -5,7 +5,7 @@ import Philosophy from "@/components/sections/Philosophy";
 
 export const metadata: Metadata = {
   title: "대치 고요의숲 | AI 기반 독학관리학원 - 대치동 재수학원",
-  description: "대치동 최초 AI 기반 독학관리 시스템. SNarGPT와 SNarGen으로 학습의 전 과정을 통합(Full-Stack) 관리합니다. 몰입 환경, 개인 맞춤 학습 리포트, 초개인화된 관리로 성적을 설계합니다. 2~3월 신규등록 50% 할인.",
+  description: "대치동 최초 AI 기반 독학관리 시스템. SNarGPT와 SNarGen으로 학습의 전 과정을 통합(Full-Stack) 관리합니다. 몰입 환경, 개인 맞춤 학습 리포트, 초개인화된 관리로 성적을 설계합니다. 2월 신규등록 50% 할인.",
   keywords: [
     "대치동 독학재수학원",
     "AI 독학관리",

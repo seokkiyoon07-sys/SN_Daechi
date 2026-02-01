@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     description: "대치동 재수학원 완전 정복! 독학관리부터 시대인재, 강남대성까지. 가격, 위치, 특징 한눈에 비교하세요.",
     images: [
       {
-        url: "/image/thumbnail/academy-map-og.png",
+        url: "/image/daechi_map_thumbnail.png",
         width: 1200,
         height: 630,
         alt: "대치 재수학원 가격 지도 - SN고요의숲",
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "대치 재수학원 가격 지도 | 45개 학원 비교",
     description: "대치동 재수학원 가격/위치 완전 정복! 독학관리, 시대인재, 강남대성 한눈에.",
-    images: ["/image/thumbnail/academy-map-og.png"],
+    images: ["/image/daechi_map_thumbnail.png"],
     creator: "@snacademy",
   },
   alternates: {
