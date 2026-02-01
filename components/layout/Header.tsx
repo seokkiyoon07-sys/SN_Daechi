@@ -131,6 +131,9 @@ export default function Header() {
                 <a href="/campus/menu" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   대치동 맛집지도
                 </a>
+                <a href="/campus/academy-map" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
+                  대치 재수학원 가격 지도
+                </a>
               </div>
             </div>
 
@@ -351,7 +354,7 @@ export default function Header() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'campus' ? 'max-h-60 pb-3' : 'max-h-0'}`}>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'campus' ? 'max-h-72 pb-3' : 'max-h-0'}`}>
                   <a href="/facility" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     시설안내
                   </a>
@@ -366,6 +369,9 @@ export default function Header() {
                   </a>
                   <a href="/campus/menu" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     대치동 맛집지도
+                  </a>
+                  <a href="/campus/academy-map" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    대치 재수학원 가격 지도
                   </a>
                 </div>
               </div>
