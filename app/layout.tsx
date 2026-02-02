@@ -93,6 +93,11 @@ export default function RootLayout({
         <OrganizationJsonLd />
         <LocalBusinessJsonLd />
         <WebSiteJsonLd />
+        <script
+          defer
+          data-domain="daechi.snacademy.co.kr"
+          src="https://analytics.snargpt.ai/js/script.file-downloads.hash.outbound-links.pageview-props.tagged-events.js"
+        />
       </head>
       <body suppressHydrationWarning>
         {children}
