@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 
 // 잔디 웹훅 URL
-const JANDI_WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/13116580/11853050951612bffd7a7748a2fab30e';
+const JANDI_WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/33175090/15ebb052652650d7bb2807253ef3c304';
 
 interface ConsultationData {
   name: string;
