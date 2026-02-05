@@ -457,7 +457,7 @@ export default function Philosophy() {
                     <DirectorImagePlaceholder />
                   ) : (
                     <Image
-                      src="/image/jinmo.png"
+                      src="/image/thumbnail/jinmopark1.png"
                       alt="대치 고요의 숲 박진모 원장 - 수학 전문 독학관리"
                       width={288}
                       height={384}
