@@ -27,9 +27,10 @@ interface TeamMember {
   highlight?: string;
   noModal?: boolean;
   imagePosition?: string;
+  imageScale?: number;
 }
 
-const teamMembers: TeamMember[] = [
+const executives: TeamMember[] = [
   {
     name: "윤석기",
     role: "SN 대표",
@@ -75,7 +76,10 @@ const teamMembers: TeamMember[] = [
       "멀리서 자녀를 보내신 부모님의 마음을 압니다. 그 마음을 대신해 곁에 있겠습니다."
     ],
     signature: "엄마같은 마음으로 곁에 있겠습니다."
-  },
+  }
+];
+
+const mentors: TeamMember[] = [
   {
     name: "권도훈",
     role: "SN 대치 멘토 · 서울대 경제학과 정시",
@@ -105,6 +109,70 @@ const teamMembers: TeamMember[] = [
       "**전문 과목**\n수학, 화학"
     ],
     signature: "불확실성을 확신으로, 함께 갑니다."
+  },
+  {
+    name: "유민수",
+    role: "SN 대치 멘토 · 연세대 전기전자공학과",
+    title: "흔들리지 않는 방향을 함께 잡아주는 멘토",
+    image: "/image/thumbnail/yoo_min_soo.png",
+    imageScale: 1.1,
+    highlight: "압박이 아닌 동기부여로, 흔들리지 않는 방향을",
+    content: [
+      "**멘토 철학**\n수험생활은 혼자 싸우는 시간이 길수록, 방향을 잡아줄 누군가가 필요합니다. 열심히 하는데도 성과가 보이지 않을 때 흔들리지 않도록, ==학생의 현재 위치를 객관적으로 짚어주는 멘토==가 되겠습니다.",
+      "**이런 학생에게 추천합니다**\n• \"이해는 되는데 점수가 안 나와요\"라고 느끼는 학생\n• 계획을 세워도 자꾸 무너져서 자신감이 떨어진 학생\n• 열심히는 하는데 공부 방향이 맞는지 확인받고 싶은 학생",
+      "**멘토링 방식**\n**① 사고 과정 복기** — 틀린 문제를 다시 푸는 데서 끝내지 않습니다. 왜 그 선택을 했는지, 어디서 사고가 흔들렸는지를 함께 점검하여 같은 실수가 반복되지 않도록 정리합니다.\n**② 현실적 계획 조정** — 계획이 무너졌을 때 무작정 다시 하라고 하지 않습니다. 계획이 과했는지, 집중이 안 된 이유가 있었는지를 먼저 짚고, ==지킬 수 있는 수준으로 함께 재설계==합니다.\n**③ 사고 습관 만들기** — 오답노트 정리에서 끝나는 공부가 아닌, 일상 속에서도 '왜 틀렸을까'를 계속 떠올리며 사고 습관 자체를 바꾸는 훈련을 합니다. 이것이 제가 입시에 성공할 수 있었던 비결이기도 합니다.",
+      "**전문 과목**\n수학, 물리",
+      "**멘토링 경험**\n학습 압박으로 자신감이 떨어진 중학생에게 작은 성취를 자주 짚어주며 '스스로 할 수 있다'는 감각을 되찾도록 도왔습니다. 또한 성실하지만 모의고사 등급이 오르지 않던 학생에게는 문제 난도를 높여 실전에 필요한 사고 부담을 경험하게 했고, 그 결과 수학 성적이 1등급으로 안정되는 성과를 함께 만들었습니다."
+    ],
+    signature: "압박이 아닌 동기부여로, 흔들리지 않는 방향을 함께 잡아드리겠습니다."
+  },
+  {
+    name: "박찬윤",
+    role: "SN 대치 멘토 · 건국대 수의예과",
+    title: "막막할 때 기댈 수 있는 선배, 끈기 있게 함께 걸어가는 멘토",
+    image: "/image/thumbnail/Park_chan_yoon.png",
+    imageScale: 1.12,
+    highlight: "막막할 때 기댈 수 있는 선배, 끈기 있게 함께",
+    content: [
+      "**멘토 철학**\n수험생활에서 가장 큰 적은 막막함입니다. 저 역시 끝이 보이지 않는 불안 속에서 눈앞의 공부에 집중하며 끈기로 버텨온 경험이 있습니다. 그때 같은 길을 먼저 걸은 선배가 있었다면 훨씬 수월했을 거라 느꼈기에, ==학생들이 기댈 수 있는 멘토==가 되겠습니다.",
+      "**이런 학생에게 추천합니다**\n• 공부는 하고 있는데 방향이 맞는지 불안한 학생\n• 계획을 세워도 자꾸 무너져서 자신감이 떨어진 학생\n• 수시 학생부종합 전형을 준비하는 학생",
+      "**멘토링 방식**\n**① 원인 맞춤 대응** — 계획이 무너졌을 때 심리적 요인인지, 자기객관화 부족인지, 노력 부족인지를 먼저 파악한 뒤 학생에게 맞는 방식으로 지도합니다.\n**② 이해 착각 점검** — \"이해는 되는데 점수가 안 나온다\"는 학생에게는 정말 이해한 것인지부터 확인하고, 과목별 시험 시간 운영 방식까지 함께 점검합니다.\n**③ 오답의 줄글 복기** — 틀린 문제의 사고 과정을 직접 글로 써보게 하여, ==올바른 풀이가 머리에 새겨지도록== 합니다. 같은 실수를 반복하지 않는 것이 핵심입니다.",
+      "**전문 과목**\n영어, 수학",
+      "**멘토링 경험**\n감당할 수 없는 계획을 세워 매번 좌절하던 학생에게 시기별·단계별 순차적 계획 세우기를 도왔습니다. 매일 성취감을 느끼며 학습량을 서서히 늘려갈 수 있도록 지도한 경험이 있습니다."
+    ],
+    signature: "막막할 때 기댈 수 있는 선배, 끈기 있게 함께 걸어가겠습니다."
+  },
+  {
+    name: "유지담",
+    role: "SN 대치 멘토 · 서울대 경제학부",
+    title: "객관적인 조언으로 확신을 만들어주는 멘토",
+    image: "/image/thumbnail/yoo_ji_dam.png",
+    imageScale: 1.12,
+    highlight: "막연한 응원이 아닌, 객관적인 조언을",
+    content: [
+      "**멘토 철학**\n막연한 응원이 아닌, 객관적인 조언을 건네는 멘토가 되겠습니다. 자신의 공부가 맞는 학생에게는 확신을, 개선이 필요한 학생에게는 ==구체적인 대안==을 드리겠습니다.",
+      "**이런 학생에게 추천합니다**\n• \"지금 이렇게 공부해도 되는 걸까?\" 확신이 없는 학생\n• 사고 과정을 점검하고 문제 접근법을 잡고 싶은 학생\n• 수시와 정시를 병행하며 균형을 잡아야 하는 학생",
+      "**멘토링 방식**\n**① 사고 과정 점검** — 점수가 안 나오는 원인은 대부분 사고 과정에 있습니다. 올바른 사고 과정이 자리 잡은 뒤에야 시간 관리 같은 기술이 의미를 갖기에, 문제 접근 방식부터 함께 점검합니다.\n**② 현실적 계획 조정** — 계획을 못 지켰다면 시간을 제대로 쓰지 못한 것인지, 계획이 과했던 것인지를 먼저 구분합니다. ==원인에 따라 학습 의욕을 이끌어내거나 계획을 현실적으로 조정==합니다.\n**③ 내신과 수능의 연결** — 내신 공부를 수능의 방해 요소가 아닌 디딤돌로 활용하는 전략을 안내합니다. 3년간 수능을 중심에 놓되, 내신도 게을리하지 않는 균형 잡힌 학습법을 지도합니다.",
+      "**전문 과목**\n국어, 수학",
+      "**멘토링 경험**\n고등학교 신입생 대상 일대일 멘토링 경험이 있습니다. 고요의 숲에서는 지속적인 상호작용을 통해 학생 개개인의 특성을 고려한 더 구체적인 조언을 드리겠습니다."
+    ],
+    signature: "스스로 공부하는 힘을 키워, 1년의 장기전을 끝까지 함께 뛰겠습니다."
+  },
+  {
+    name: "한유찬",
+    role: "SN 대치 멘토 · 서울대 자유전공학부",
+    title: "현실적인 조언과 따뜻한 응원을 함께 드리는 멘토",
+    image: "/image/thumbnail/han_you_chan.png",
+    imageScale: 1.12,
+    highlight: "현실적인 조언과 따뜻한 응원, 두 가지를 함께",
+    content: [
+      "**멘토 철학**\n단순한 격려에 그치지 않고, 학생이 어디서 어려움을 겪고 있는지 함께 고민하며 개선점을 구체적으로 찾아주는 멘토가 되겠습니다. 동시에 공부 과정에서 지치지 않도록 ==적절한 응원과 지지로 꾸준한 성장==을 돕겠습니다.",
+      "**이런 학생에게 추천합니다**\n• 공부는 열심히 하는데 뭘 고쳐야 할지 모르겠는 학생\n• 시험만 보면 긴장해서 실력 발휘가 안 되는 학생\n• 작은 성취감을 쌓으며 자신감을 키우고 싶은 학생",
+      "**멘토링 방식**\n**① 시험 태도 점검** — \"이해는 되는데 점수가 안 나온다\"는 경우, 시험 상황에서의 긴장과 심리적 부담이 원인인 경우가 많습니다. 문제를 처음 접했을 때의 접근 방식과 끝까지 시도하는 태도를 함께 점검합니다.\n**② 작은 계획부터 차근차근** — 계획을 못 지키는 학생에게 무리한 목표를 강요하지 않습니다. ==실천할 수 있는 작은 계획부터 달성하며 성취감을 쌓아가도록== 돕습니다.\n**③ 개념 중심 학습** — 모든 문제 풀이는 결국 개념에서 시작됩니다. 개념을 정확히 이해한 뒤, 기출문제 분석을 통해 출제 패턴을 반복적으로 익히는 방식으로 지도합니다.",
+      "**전문 과목**\n수학, 화학1",
+      "**멘토링 경험**\n기초가 부족했던 친구를 대상으로 수학 멘토링을 진행한 경험이 있습니다. 중학교 개념부터 다시 잡아야 했기에 쉽지 않았지만, 배우려는 의지가 강한 학생이었기에 최대한 이해하기 쉬운 설명 방법을 고민하며 함께 성장할 수 있었습니다."
+    ],
+    signature: "현실적인 조언과 따뜻한 응원, 두 가지를 함께 드리겠습니다."
   }
 ];
 
@@ -127,26 +195,31 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Team Grid */}
+      {/* 운영진 섹션 */}
       <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8">
-            {teamMembers.map((member, index) => (
+          <div className="mb-12">
+            <p className="text-sm tracking-[0.15em] text-sn-green mb-3">Leadership</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">운영진</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 max-w-3xl">
+            {executives.map((member, index) => (
               <div
                 key={index}
                 onClick={() => !member.noModal && setSelectedMember(member)}
                 className={`group text-left ${member.noModal ? '' : 'cursor-pointer'}`}
               >
-                {/* Profile Card */}
                 <div className="relative aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
                   <Image
                     src={member.image}
                     alt={`${member.name} ${member.role}`}
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                    style={member.imagePosition ? { objectPosition: member.imagePosition } : undefined}
+                    style={{
+                      ...(member.imagePosition ? { objectPosition: member.imagePosition } : {}),
+                      ...(member.imageScale ? { scale: `${member.imageScale}` } : {})
+                    }}
                   />
-                  {/* Hover Overlay */}
                   {!member.noModal && (
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="absolute bottom-4 left-4 right-4">
@@ -155,11 +228,53 @@ export default function Team() {
                     </div>
                   )}
                 </div>
-                {/* Name & Role */}
                 <div className="mt-4">
                   <p className="text-lg font-bold text-gray-900">{member.name}</p>
                   <p className="text-sm text-sn-green">{member.role}</p>
                   <p className="text-xs text-gray-500 mt-1">{member.title}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 멘토 섹션 */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="mb-12">
+            <p className="text-sm tracking-[0.15em] text-sn-green mb-3">Mentors</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900">대학생 멘토</h2>
+            <p className="text-gray-500 mt-2">학생 곁에서 함께 뛰는 SKY·의대 출신 멘토진</p>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 max-w-3xl">
+            {mentors.map((member, index) => (
+              <div
+                key={index}
+                onClick={() => setSelectedMember(member)}
+                className="group cursor-pointer text-left"
+              >
+                <div className="relative aspect-[3/4] bg-gray-100 rounded-xl overflow-hidden shadow-md group-hover:shadow-xl transition-all duration-300">
+                  <Image
+                    src={member.image}
+                    alt={`${member.name} ${member.role}`}
+                    fill
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    style={{
+                      ...(member.imagePosition ? { objectPosition: member.imagePosition } : {}),
+                      ...(member.imageScale ? { scale: `${member.imageScale}` } : {})
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <p className="text-white text-sm font-medium">자세히 보기</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-4">
+                  <p className="text-lg font-bold text-gray-900">{member.name}</p>
+                  <p className="text-sm text-sn-green">{member.role}</p>
+                  <p className="text-xs text-gray-500 mt-1 line-clamp-1">{member.title}</p>
                 </div>
               </div>
             ))}
@@ -200,7 +315,10 @@ export default function Team() {
                       width={224}
                       height={288}
                       className="w-full h-full object-cover object-top"
-                      style={selectedMember.imagePosition ? { objectPosition: selectedMember.imagePosition } : undefined}
+                      style={{
+                        ...(selectedMember.imagePosition ? { objectPosition: selectedMember.imagePosition } : {}),
+                        ...(selectedMember.imageScale ? { scale: `${selectedMember.imageScale}` } : {})
+                      }}
                     />
                   </div>
                   <div className="mt-4 text-center md:text-left">
