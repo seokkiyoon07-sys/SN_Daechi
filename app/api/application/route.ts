@@ -5,6 +5,9 @@ import { Readable } from 'stream';
 // 잔디 웹훅 URL (온라인 원서접수용)
 const JANDI_WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/33175090/15ebb052652650d7bb2807253ef3c304';
 
+// 외부 DB 포워딩 URL
+const STUDENT_WEB_API_URL = process.env.STUDENT_WEB_API_URL;
+
 interface ApplicationData {
   // 입학정보
   program: string;
@@ -223,6 +226,28 @@ async function sendToJandi(data: ApplicationData) {
   }
 }
 
+async function forwardToStudentWeb(data: ApplicationData) {
+  if (!STUDENT_WEB_API_URL) {
+    console.log('STUDENT_WEB_API_URL not configured, skipping forward');
+    return;
+  }
+
+  const response = await fetch(`${STUDENT_WEB_API_URL}/api/application`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Student Web API failed (${response.status}): ${errorText}`);
+  }
+
+  const result = await response.json();
+  console.log('Student Web API forward successful:', result);
+  return result;
+}
+
 export async function POST(request: NextRequest) {
   console.log('=== Application API called ===');
 
@@ -294,15 +319,17 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 병렬로 잔디와 구글 시트에 전송
+    // 병렬로 잔디, 구글 시트, 외부 DB에 전송
     const results = await Promise.allSettled([
       sendToJandi(data),
       appendToGoogleSheets(data),
+      forwardToStudentWeb(data),
     ]);
 
     // 결과 확인
     const jandiResult = results[0];
     const sheetsResult = results[1];
+    const forwardResult = results[2];
 
     if (jandiResult.status === 'rejected') {
       console.error('Jandi webhook failed:', jandiResult.reason);
@@ -318,7 +345,11 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // 둘 다 실패한 경우에만 에러 반환
+    if (forwardResult.status === 'rejected') {
+      console.error('Student Web forward failed:', forwardResult.reason);
+    }
+
+    // 잔디와 시트 둘 다 실패한 경우에만 에러 반환
     if (jandiResult.status === 'rejected' && sheetsResult.status === 'rejected') {
       return NextResponse.json(
         { error: '신청 처리 중 오류가 발생했습니다.' },
@@ -333,6 +364,8 @@ export async function POST(request: NextRequest) {
         jandiStatus: jandiResult.status,
         sheetsStatus: sheetsResult.status,
         sheetsError: sheetsResult.status === 'rejected' ? (sheetsResult.reason as Error).message : null,
+        forwardStatus: forwardResult.status,
+        forwardError: forwardResult.status === 'rejected' ? (forwardResult.reason as Error).message : null,
       }
     });
   } catch (error) {
