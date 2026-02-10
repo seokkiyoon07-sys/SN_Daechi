@@ -66,41 +66,41 @@ export default function SchedulePage() {
   // 모바일용 간단한 시간표 데이터
   const mobileSchedule = {
     weekday: [
-      { period: "1교시", time: "08:00 ~ 08:50", activity: "자기주도학습" },
-      { period: "2교시", time: "09:00 ~ 10:15", activity: "자기주도학습" },
-      { period: "3교시", time: "10:30 ~ 12:00", activity: "자기주도학습" },
-      { period: "점심", time: "12:00 ~ 13:10", activity: "외출 가능", isBreak: true },
-      { period: "4교시", time: "13:10 ~ 14:30", activity: "자기주도학습" },
-      { period: "5교시", time: "14:45 ~ 16:15", activity: "자기주도학습" },
-      { period: "6교시", time: "16:30 ~ 18:00", activity: "자기주도학습" },
-      { period: "저녁", time: "18:10 ~ 19:10", activity: "외출 가능", isBreak: true },
-      { period: "7교시", time: "19:10 ~ 20:40", activity: "자기주도학습" },
-      { period: "8교시", time: "20:55 ~ 22:00", activity: "자기주도학습" },
+      { period: "0교시", time: "08:00 ~ 08:50", activity: "자기주도학습" },
+      { period: "1교시", time: "09:00 ~ 10:15", activity: "자기주도학습" },
+      { period: "2교시", time: "10:30 ~ 11:45", activity: "자기주도학습" },
+      { period: "점심", time: "11:45 ~ 13:00", activity: "외출 가능", isBreak: true },
+      { period: "3교시", time: "13:00 ~ 14:30", activity: "자기주도학습" },
+      { period: "4교시", time: "14:45 ~ 16:15", activity: "자기주도학습" },
+      { period: "5교시", time: "16:30 ~ 17:45", activity: "자기주도학습" },
+      { period: "저녁", time: "17:45 ~ 19:00", activity: "외출 가능", isBreak: true },
+      { period: "6교시", time: "19:00 ~ 20:30", activity: "자기주도학습" },
+      { period: "7교시", time: "20:45 ~ 21:50", activity: "자기주도학습" },
     ],
     saturday: [
-      { period: "1교시", time: "08:00 ~ 08:50", activity: "자기주도학습" },
-      { period: "2교시", time: "09:00 ~ 10:15", activity: "자기주도학습" },
-      { period: "3교시", time: "10:30 ~ 12:00", activity: "자기주도학습" },
-      { period: "점심", time: "12:00 ~ 13:10", activity: "외출 가능", isBreak: true },
-      { period: "4교시", time: "13:10 ~ 14:30", activity: "자기주도학습" },
-      { period: "5교시", time: "14:45 ~ 16:15", activity: "자기주도학습" },
-      { period: "6교시", time: "16:30 ~ 18:00", activity: "자기주도학습" },
-      { period: "저녁", time: "18:10 ~ 19:10", activity: "외출 가능", isBreak: true },
-      { period: "7교시", time: "19:10 ~ 20:40", activity: "자율학습 (희망자)" },
-      { period: "8교시", time: "20:55 ~ 22:00", activity: "자율학습 (희망자)" },
+      { period: "0교시", time: "08:00 ~ 08:50", activity: "자기주도학습" },
+      { period: "1교시", time: "09:00 ~ 10:15", activity: "자기주도학습" },
+      { period: "2교시", time: "10:30 ~ 11:45", activity: "자기주도학습" },
+      { period: "점심", time: "11:45 ~ 13:00", activity: "외출 가능", isBreak: true },
+      { period: "3교시", time: "13:00 ~ 14:30", activity: "자기주도학습" },
+      { period: "4교시", time: "14:45 ~ 16:15", activity: "자기주도학습" },
+      { period: "5교시", time: "16:30 ~ 17:45", activity: "자기주도학습" },
+      { period: "저녁", time: "17:45 ~ 19:00", activity: "외출 가능", isBreak: true },
+      { period: "6교시", time: "19:00 ~ 20:30", activity: "자율학습 (희망자)" },
+      { period: "7교시", time: "20:45 ~ 21:50", activity: "자율학습 (희망자)" },
     ],
     sunday: [
       { period: "오전", time: "09:00 ~", activity: "09:00 오픈" },
-      { period: "1-3교시", time: "09:00 ~ 12:00", activity: "자율학습" },
-      { period: "점심", time: "12:00 ~ 13:10", activity: "외출 가능", isBreak: true },
-      { period: "4-6교시", time: "13:10 ~ 18:00", activity: "자율학습" },
-      { period: "종료", time: "18:00", activity: "18시 운영 종료", isBreak: true },
+      { period: "1-2교시", time: "09:00 ~ 11:45", activity: "자율학습" },
+      { period: "점심", time: "11:45 ~ 13:00", activity: "외출 가능", isBreak: true },
+      { period: "3-5교시", time: "13:00 ~ 17:45", activity: "자율학습" },
+      { period: "종료", time: "17:45", activity: "18시 운영 종료", isBreak: true },
     ],
   };
 
   const schedule = [
     {
-      period: "1교시",
+      period: "0교시",
       time: "08:00 ~ 08:50",
       activity: "자기주도학습\n(지각 및 미입실시 출입통제)",
       sunday: "09:00 오픈\n자율학습\n(학습시 상점부여)",
@@ -109,27 +109,27 @@ export default function SchedulePage() {
       sunRowSpan: 3
     },
     {
-      period: "2교시",
+      period: "1교시",
       time: "09:00 ~ 10:15",
       activity: null,
       sunday: null
     },
     {
-      period: "3교시",
-      time: "10:30 ~ 12:00",
+      period: "2교시",
+      time: "10:30 ~ 11:45",
       activity: null,
       sunday: null
     },
     {
-      period: "점심 시간",
-      time: "12:00 ~ 13:10",
-      activity: "외출 가능 / 휴게실 내 휴대폰 사용 가능",
+      period: "점심시간",
+      time: "11:45 ~ 13:00",
+      activity: "식사 / 휴게실 내 휴대폰 사용 가능",
       isBreak: true,
       colSpan: 3
     },
     {
-      period: "4교시",
-      time: "13:10 ~ 14:30",
+      period: "3교시",
+      time: "13:00 ~ 14:30",
       activity: "자기주도학습\n(지각 및 미입실시 출입통제)",
       sunday: "자율학습\n(학습시 상점부여)",
       rowSpan: 3,
@@ -137,27 +137,27 @@ export default function SchedulePage() {
       sunRowSpan: 3
     },
     {
-      period: "5교시",
+      period: "4교시",
       time: "14:45 ~ 16:15",
       activity: null,
       sunday: null
     },
     {
-      period: "6교시",
-      time: "16:30 ~ 18:00",
+      period: "5교시",
+      time: "16:30 ~ 17:45",
       activity: null,
       sunday: null
     },
     {
-      period: "저녁 시간",
-      time: "18:10 ~ 19:10",
+      period: "저녁시간",
+      time: "17:45 ~ 19:00",
       activity: "외출 가능 / 휴게실 내 휴대폰 사용 가능",
       isBreak: true,
       colSpan: 3
     },
     {
-      period: "7교시",
-      time: "19:10 ~ 20:40",
+      period: "6교시",
+      time: "19:00 ~ 20:30",
       weekday: "자기주도학습\n(지각 및 미입실시 출입통제)",
       saturday: "자율 학습\n(희망자에 한함)",
       sunday: "-\n(18시 운영 종료)",
@@ -166,8 +166,8 @@ export default function SchedulePage() {
       hasSeparate: true
     },
     {
-      period: "8교시",
-      time: "20:55 ~ 22:00",
+      period: "7교시",
+      time: "20:45 ~ 21:50",
       weekday: null,
       saturday: null,
       sunday: null,
@@ -223,53 +223,53 @@ export default function SchedulePage() {
               </thead>
               <tbody>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>1교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>0교시</td>
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>08:00 ~ 08:50</td>
                   <td rowSpan={3} colSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자기주도학습{'\n'}(지각 및 미입실시 출입통제)</td>
                   <td rowSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>09:00 오픈{'\n'}자율학습{'\n'}(학습시 상점부여)</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>2교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>1교시</td>
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>09:00 ~ 10:15</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>3교시</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>10:30 ~ 12:00</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>2교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>10:30 ~ 11:45</td>
                 </tr>
                 <tr style={{ backgroundColor: '#f3f4f6' }}>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>점심 시간</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>12:00 ~ 13:10</td>
-                  <td colSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#666' }}>외출 가능 / 휴게실 내 휴대폰 사용 가능</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>점심시간</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>11:45 ~ 13:00</td>
+                  <td colSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#666' }}>식사 / 휴게실 내 휴대폰 사용 가능</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>4교시</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>13:10 ~ 14:30</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>3교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>13:00 ~ 14:30</td>
                   <td rowSpan={3} colSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자기주도학습{'\n'}(지각 및 미입실시 출입통제)</td>
                   <td rowSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자율학습{'\n'}(학습시 상점부여)</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>5교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>4교시</td>
                   <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>14:45 ~ 16:15</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>6교시</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>16:30 ~ 18:00</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>5교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>16:30 ~ 17:45</td>
                 </tr>
                 <tr style={{ backgroundColor: '#f3f4f6' }}>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>저녁 시간</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>18:10 ~ 19:10</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>저녁시간</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>17:45 ~ 19:00</td>
                   <td colSpan={3} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#666' }}>외출 가능 / 휴게실 내 휴대폰 사용 가능</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>7교시</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>19:10 ~ 20:40</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>6교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>19:00 ~ 20:30</td>
                   <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자기주도학습{'\n'}(지각 및 미입실시 출입통제)</td>
                   <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#1a5e3c', whiteSpace: 'pre-line' }}>자율 학습{'\n'}(희망자에 한함)</td>
                   <td rowSpan={2} style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', color: '#666', whiteSpace: 'pre-line' }}>-{'\n'}(18시 운영 종료)</td>
                 </tr>
                 <tr>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>8교시</td>
-                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>20:55 ~ 22:00</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center', fontWeight: '600' }}>7교시</td>
+                  <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>20:45 ~ 21:50</td>
                 </tr>
               </tbody>
             </table>
