@@ -1,9 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { penaltiesData } from '@/lib/data/penalties';
+
+const ruleImages = [
+  '/image/1_attendance.png',
+  '/image/2_internet_network.png',
+  '/image/3_atmosphere.png',
+  '/image/4_penalty.png',
+];
 
 export default function RulesPage() {
   const [showPenaltyTable, setShowPenaltyTable] = useState(false);
@@ -71,13 +79,13 @@ export default function RulesPage() {
               <div key={index} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   {/* 이미지 영역 */}
-                  <div className="md:w-1/3 bg-gray-100 min-h-[200px] flex items-center justify-center">
-                    <div className="text-center p-6">
-                      <div className="w-16 h-16 bg-sn-green/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span className="text-2xl font-bold text-sn-green">{index + 1}</span>
-                      </div>
-                      <p className="text-sm text-gray-500">이미지 영역</p>
-                    </div>
+                  <div className="md:w-1/3 relative min-h-[240px]">
+                    <Image
+                      src={ruleImages[index]}
+                      alt={section.category}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
 
                   {/* 내용 영역 */}

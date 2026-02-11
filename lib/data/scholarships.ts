@@ -13,6 +13,7 @@ export const scholarshipsData = [
     items: [
       { grade: '의대 출신 재도전', benefit: '수강료 전액 면제' },
       { grade: 'SN독학기숙학원 출신', benefit: '수강료 10% 감면' },
+      { grade: '분당 베스티안 출신', benefit: '수강료 10% 감면' },
     ],
     note: '* 증빙 서류 필요',
   },
