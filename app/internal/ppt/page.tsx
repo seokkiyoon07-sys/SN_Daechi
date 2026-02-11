@@ -5,12 +5,11 @@ import Image from 'next/image';
 import { programsData } from '@/lib/data/programs';
 import { typedScholarshipsData as scholarshipsData } from '@/lib/data/scholarships';
 import { penaltiesData } from '@/lib/data/penalties';
-import { scheduleData } from '@/lib/data/schedule';
 
 export default function AdmissionPPT() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const totalSlides = 21;
+  const totalSlides = 18;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,7 +55,20 @@ export default function AdmissionPPT() {
           zIndex: 10,
         }}
       />
-      {children}
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '1.5rem 1rem',
+          boxSizing: 'border-box',
+          overflow: 'hidden',
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 
@@ -76,7 +88,7 @@ export default function AdmissionPPT() {
 
   const Divider = ({ dark = false }: { dark?: boolean }) => (
     <div
-      className="w-16 h-1 rounded-full my-6"
+      className="w-16 h-1 rounded-full my-3"
       style={{
         background: dark
           ? 'rgba(255,255,255,0.4)'
@@ -143,7 +155,7 @@ export default function AdmissionPPT() {
         <div className="flex-1 flex items-center justify-center px-12">
           <div className="text-left max-w-xl">
             <h1 className="text-4xl md:text-6xl font-black mb-4 text-white" style={{ lineHeight: 1.2 }}>
-              SN독학관리 <span style={{ color: 'var(--mint)' }}>고요의숲</span>
+              SN고요의숲 <span style={{ color: 'var(--mint)' }}>독학재수</span>
             </h1>
             <p className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--mint-dark)' }}>
               AI특화관
@@ -187,282 +199,526 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
-      {/* Slide 1-1: 기존 학습의 구조적 한계 */}
-      <Slide index={2}>
-        <div className="w-full max-w-4xl px-8">
-          <Tag>1-1</Tag>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
-            기존 학습의 구조적 한계
-          </h2>
-          <Divider />
-          <div className="space-y-6 mt-8">
-            {[
-              '사람이 전부 관리할 수 없는 학습 데이터',
-              '넘치는 콘텐츠로 오답은 쌓이지만 "왜 틀리는지"는 남지 않음',
-              '코칭의 일관성 붕괴 (선생님/시간/상황 의존)',
-            ].map((text, idx) => (
-              <div
-                key={idx}
-                className="flex items-start gap-4 p-5 rounded-xl"
-                style={{ backgroundColor: idx === 1 ? 'var(--mint-light)' : 'white', border: '1px solid var(--gray-light)' }}
-              >
-                <span className="text-2xl" style={{ color: 'var(--accent-teal)' }}>✗</span>
-                <p className="text-lg" style={{ color: 'var(--text-dark)' }}>{text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Slide>
-
-      {/* Slide 1-2: 결론 */}
+      {/* Slide 1-2: 생활시간표 */}
       <Slide index={3}>
-        <div className="w-full max-w-4xl px-8 text-center">
-          <Tag>1-2 결론</Tag>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
-            이제 경쟁력은<br />
-            공부량 + <span style={{ color: 'var(--accent-teal)' }}>&apos;지능형 피드백 구조&apos;</span>
+        <div className="w-full max-w-7xl px-8">
+          <Tag>1-2</Tag>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
+            생활시간표
           </h2>
           <Divider />
-          <div className="mt-8 p-8 rounded-2xl" style={{ backgroundColor: 'var(--green-deep)' }}>
-            <p className="text-xl text-white mb-2">그래서 우리는</p>
-            <p className="text-2xl font-bold" style={{ color: 'var(--mint)' }}>
-              👉 AI + 독학 관리 시스템을 구현하였습니다.
-            </p>
+
+          {/* 시간표 테이블 */}
+          <div className="mt-6 rounded-xl overflow-hidden shadow-lg" style={{ border: '2px solid var(--gray-light)' }}>
+            <table className="w-full text-center text-lg" style={{ backgroundColor: 'white', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 font-bold border-b text-base" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '12%' }}>교시</th>
+                  <th className="py-3 px-4 font-bold border-b text-base" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '18%' }}>시간</th>
+                  <th className="py-3 px-4 font-bold border-b text-base" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '35%' }}>월 - 금</th>
+                  <th className="py-3 px-4 font-bold border-b text-base" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '17%', borderRight: '2px solid var(--gray-light)' }}>토</th>
+                  <th className="py-3 px-4 font-bold border-b text-base" style={{ backgroundColor: '#fecaca', color: 'var(--text-dark)', width: '18%' }}>일</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* 0교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>0교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>08:00 ~ 08:50</td>
+                  <td className="py-3 px-4 text-base" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
+                    <div className="font-medium text-lg">자기주도학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
+                  </td>
+                  <td className="py-3 px-4 text-base" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle', borderRight: '2px solid var(--gray-light)' }}>
+                    <div className="font-medium text-lg">자기주도학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
+                  </td>
+                  <td className="py-3 px-4 text-base" rowSpan={3} style={{ color: 'var(--text-dark)', verticalAlign: 'middle' }}>
+                    <div className="font-medium text-base" style={{ color: 'var(--accent-teal)' }}>09:00 오픈</div>
+                    <div className="font-medium text-lg">자율학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--accent-teal)' }}>(학습시 상점부여)</div>
+                  </td>
+                </tr>
+                {/* 1교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>1교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>09:00 ~ 10:15</td>
+                </tr>
+                {/* 2교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>2교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>10:30 ~ 11:45</td>
+                </tr>
+                {/* 점심 시간 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)', backgroundColor: 'var(--mint-light)' }}>
+                  <td className="py-3 px-4 text-base font-bold" style={{ color: 'var(--green-deep)' }}>점심 시간</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>11:45 ~ 13:00</td>
+                  <td className="py-3 px-4 text-base" colSpan={3} style={{ color: 'var(--text-dark)' }}>
+                    외출 가능 / 휴게실 내 휴대폰 사용 가능
+                  </td>
+                </tr>
+                {/* 3교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>3교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>13:00 ~ 14:30</td>
+                  <td className="py-3 px-4 text-base" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
+                    <div className="font-medium text-lg">자기주도학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
+                  </td>
+                  <td className="py-3 px-4 text-base" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle', borderRight: '2px solid var(--gray-light)' }}>
+                    <div className="font-medium text-lg">자기주도학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
+                  </td>
+                  <td className="py-3 px-4 text-base" rowSpan={3} style={{ color: 'var(--text-dark)', verticalAlign: 'middle' }}>
+                    <div className="font-medium text-lg">자율학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--accent-teal)' }}>(학습시 상점부여)</div>
+                  </td>
+                </tr>
+                {/* 4교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>4교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>14:45 ~ 16:15</td>
+                </tr>
+                {/* 5교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>5교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>16:30 ~ 17:45</td>
+                </tr>
+                {/* 저녁 시간 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)', backgroundColor: 'var(--mint-light)' }}>
+                  <td className="py-3 px-4 text-base font-bold" style={{ color: 'var(--green-deep)' }}>저녁 시간</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>17:45 ~ 19:00</td>
+                  <td className="py-3 px-4 text-base" colSpan={3} style={{ color: 'var(--text-dark)' }}>
+                    외출 가능 / 휴게실 내 휴대폰 사용 가능
+                  </td>
+                </tr>
+                {/* 6교시 */}
+                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>6교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>19:00 ~ 20:30</td>
+                  <td className="py-3 px-4 text-base" rowSpan={2} style={{ color: 'var(--green-deep)', verticalAlign: 'middle', borderRight: '2px solid var(--gray-light)' }}>
+                    <div className="font-medium text-lg">자기주도학습</div>
+                    <div className="text-base mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
+                  </td>
+                  <td className="py-3 px-4 text-base" rowSpan={2} style={{ color: 'var(--text-muted)', verticalAlign: 'middle', borderRight: '2px solid var(--gray-light)' }}>
+                    <div className="font-medium text-lg">자율 학습</div>
+                    <div className="text-base mt-1">(희망자에 한함)</div>
+                  </td>
+                  <td className="py-3 px-4 text-base" rowSpan={2} style={{ color: 'var(--text-muted)', verticalAlign: 'middle' }}>
+                    <div className="font-medium text-lg">-</div>
+                    <div className="text-base mt-1">(18시 운영 종료)</div>
+                  </td>
+                </tr>
+                {/* 7교시 */}
+                <tr>
+                  <td className="py-3 px-4 text-base font-medium" style={{ color: 'var(--text-dark)' }}>7교시</td>
+                  <td className="py-3 px-4 text-base" style={{ color: 'var(--text-muted)' }}>20:45 ~ 21:50</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </Slide>
 
-      {/* Slide 2: Intelligence - Title */}
-      <Slide index={4} dark>
-        <div className="text-center px-8 max-w-4xl">
-          <Tag dark>Section 2</Tag>
-          <h1 className="text-4xl md:text-5xl font-black mb-6 text-white" style={{ lineHeight: 1.3 }}>
-            Intelligence
-          </h1>
-          <p className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--mint)' }}>
-            학생의 합격을 위해 14시간 함께하는<br />
-            &apos;박사급 디지털 멘토단&apos;
-          </p>
-          <Divider dark />
-          <p className="text-lg" style={{ color: 'rgba(255,255,255,0.7)' }}>
-            해결책의 핵심 엔진
-          </p>
-        </div>
-      </Slide>
-
-      {/* Slide 2-1: AI를 쓰는 게 아니라 설계한다 */}
-      <Slide index={5}>
-        <div className="w-full max-w-4xl px-8">
-          <Tag>2-1</Tag>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
-            AI를 쓰는 게 아니라, <span style={{ color: 'var(--accent-teal)' }}>&apos;설계&apos;</span>한다
-          </h2>
-          <Divider />
-          <div className="grid grid-cols-3 gap-4 mt-8">
-            <div className="p-6 rounded-xl text-center" style={{ backgroundColor: '#fff0f0', border: '1px solid #fecaca' }}>
-              <p className="text-2xl mb-2">❌</p>
-              <p className="font-medium" style={{ color: '#b91c1c' }}>검색 AI</p>
-            </div>
-            <div className="p-6 rounded-xl text-center" style={{ backgroundColor: '#fff0f0', border: '1px solid #fecaca' }}>
-              <p className="text-2xl mb-2">❌</p>
-              <p className="font-medium" style={{ color: '#b91c1c' }}>문제풀이 AI</p>
-            </div>
-            <div className="p-6 rounded-xl text-center" style={{ backgroundColor: 'var(--mint-light)', border: '2px solid var(--mint-dark)' }}>
-              <p className="text-2xl mb-2">⭕</p>
-              <p className="font-semibold" style={{ color: 'var(--green-deep)' }}>사고과정·학습행동을<br />분석하는 AI</p>
-            </div>
-          </div>
-        </div>
-      </Slide>
-
-      {/* Slide 2-2: 디지털 멘토단의 역할 */}
-      <Slide index={6}>
-        <div className="w-full max-w-5xl px-8">
-          {/* Title */}
-          <Tag>2-2</Tag>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
-            디지털 멘토단의 역할
+      {/* Slide 1-1: 목차 */}
+      <Slide index={2}>
+        <div className="w-full max-w-5xl px-6">
+          <Tag>목차</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center" style={{ color: 'var(--text-dark)' }}>
+            입학 안내
           </h2>
           <Divider />
 
-          {/* MacBook Frame with Image */}
-          <div className="flex justify-center mt-4 mb-4">
-            <div className="rounded-xl overflow-hidden shadow-2xl" style={{ backgroundColor: '#1e1e1e', width: '700px' }}>
-              {/* Window Title Bar */}
-              <div className="flex items-center gap-2 px-4 py-2" style={{ backgroundColor: '#2d2d2d' }}>
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#ff5f57' }} />
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#febc2e' }} />
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#28c840' }} />
-                <span className="ml-3 text-xs text-gray-400">SNarGPT</span>
-              </div>
-              {/* Window Content */}
-              <div className="relative" style={{ aspectRatio: '16/9' }}>
-                <Image
-                  src="/image/snargpt1.png"
-                  alt="SNarGPT 화면"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Feature Cards */}
-          <div className="grid grid-cols-4 gap-3">
-            {[
-              { icon: '🎯', title: '개념 이해 수준 판단', desc: 'AI가 생성한 퀴즈로 각 개념 이해 수준 판단' },
-              { icon: '🔍', title: '오답 패턴 분석', desc: '학생의 오답데이터와 질문내역을 기반으로 오답 패턴 분석' },
-              { icon: '🧠', title: '사고 단계 추적', desc: '학습데이터를 바탕으로 학생의 사고로직, 취약점 파악' },
-              { icon: '📊', title: '온라인 학습량 자동 측정', desc: '고요의숲 공간에서 학습 시 온라인 학습량 자동 측정' },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="p-3 rounded-xl text-center"
-                style={{ backgroundColor: 'white', border: '1px solid var(--gray-light)' }}
-              >
-                <span className="text-2xl block mb-2">{item.icon}</span>
-                <p className="text-sm font-bold mb-1" style={{ color: 'var(--text-dark)' }}>{item.title}</p>
-                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Slide>
-
-      {/* Slide 2-3: 사람과 AI의 역할 분리 */}
-      <Slide index={7}>
-        <div className="w-full max-w-5xl px-8">
-          <Tag>2-3</Tag>
-          <h2 className="text-3xl md:text-4xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
-            사람과 AI의 역할 분리
-          </h2>
-          <Divider />
-          <div className="grid grid-cols-2 gap-8 mt-8">
-            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'var(--mint-light)', border: '2px solid var(--mint-dark)' }}>
-              <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--green-deep)' }}>🤖 AI</h3>
-              <ul className="space-y-3">
-                {['24시간 관찰', '퀴즈와 질문으로 학생의 사고로직 수집', '누적 데이터 분석 (장기기억 탑재)', '편향 없는 피드백'].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-2" style={{ color: 'var(--text-dark)' }}>
-                    <span style={{ color: 'var(--mint-dark)' }}>•</span> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'white', border: '1px solid var(--gray-light)' }}>
-              <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--green-deep)' }}>👤 사람 (멘토/원장)</h3>
-              <ul className="space-y-3">
-                {['해석', '동기 설계', '방향 조정'].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-2" style={{ color: 'var(--text-dark)' }}>
-                    <span style={{ color: 'var(--accent-teal)' }}>•</span> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 p-4 rounded-xl text-center" style={{ backgroundColor: 'var(--green-deep)' }}>
-            <p className="text-lg font-semibold text-white">
-              👉 AI는 판단을 돕고, 사람은 결정을 한다
-            </p>
-          </div>
-        </div>
-      </Slide>
-
-      {/* Slide 2-4: 학습 프로그램 */}
-      <Slide index={8}>
-        <div className="w-full max-w-5xl px-8">
-          <Tag>2-4</Tag>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
-            학습 프로그램
-          </h2>
-          <Divider />
-
-          <div className="mt-4 grid grid-cols-3 gap-4">
-            {/* 학습상담 */}
-            <div className="p-5 rounded-2xl flex flex-col" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+          {/* 목차 그리드 */}
+          <div className="grid grid-cols-2 gap-4 mt-6">
+            {/* 생활 관리 */}
+            <div className="p-6 rounded-2xl transition-all hover:scale-105" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--green-deep)' }}>
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-3xl">📋</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>생활 관리</h3>
+              </div>
+              <ul className="space-y-1.5 ml-16">
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 생활시간표</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 출결 관리</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 벌점 제도</li>
+              </ul>
+            </div>
+
+            {/* 학습 관리 */}
+            <div className="p-6 rounded-2xl transition-all hover:scale-105" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">📚</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>학습 관리</h3>
+              </div>
+              <ul className="space-y-1.5 ml-16">
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• AI 학습 시스템</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 학습 프로그램</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 맞춤 상담</li>
+              </ul>
+            </div>
+
+            {/* 시설 안내 */}
+            <div className="p-6 rounded-2xl transition-all hover:scale-105" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">🏢</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>시설 안내</h3>
+              </div>
+              <ul className="space-y-1.5 ml-16">
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 학습 환경</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 편의 시설</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 안전 관리</li>
+              </ul>
+            </div>
+
+            {/* FAQ */}
+            <div className="p-6 rounded-2xl transition-all hover:scale-105" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">❓</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>FAQ</h3>
+              </div>
+              <ul className="space-y-1.5 ml-16">
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 자주 묻는 질문</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 수강료 안내</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 장학금 제도</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Slide>
+
+      {/* Slide 1-3: 생활 규정 */}
+      <Slide index={4}>
+        <div className="w-full max-w-6xl px-6">
+          <Tag>1-3</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: 'var(--text-dark)' }}>
+            생활 규정
+          </h2>
+          <Divider />
+
+          {/* 규정 그리드 */}
+          <div className="grid grid-cols-2 gap-4 mt-4">
+            {/* 학습 집중 관리 */}
+            <div className="p-4 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
                   <span className="text-xl">📚</span>
                 </div>
-                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>학습상담</h3>
+                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>학습 집중 관리</h3>
               </div>
-              <div className="space-y-3">
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--mint-light)' }}>
-                  <p className="font-bold text-sm" style={{ color: 'var(--green-deep)' }}>박진모 원장의 수학 클리닉</p>
-                </div>
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--bg-cream)', border: '1px solid var(--gray-light)' }}>
-                  <p className="font-medium text-sm" style={{ color: 'var(--text-dark)' }}>메디컬, SKY 조교와 주 1회 상담</p>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(학습리포트 + 대면상담)</p>
-                </div>
-              </div>
-              <div className="mt-auto pt-3">
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--bg-cream)', border: '1px solid var(--gray-light)' }}>
-                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>조교와의 상담 내용은 모두 기록하며 해당 내용 모두 AI에게 학습시킵니다.</p>
-                </div>
-              </div>
+              <ul className="space-y-1.5 text-xs">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>교시 운영:</strong> 종으로 교시 시작/종료 알림</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>잡담 금지:</strong> 학습실 내 대화 금지</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>친목 금지:</strong> 개인 학습 집중을 위한 친목 활동 제한</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>이동 제한:</strong> 교시 중 이동 금지 (쉬는 시간만 이동 허용)</span>
+                </li>
+              </ul>
             </div>
 
-            {/* 모의고사 */}
-            <div className="p-5 rounded-2xl flex flex-col" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--green-deep)' }}>
-                  <span className="text-xl">📝</span>
+            {/* 출입 통제 */}
+            <div className="p-4 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-xl">🚪</span>
                 </div>
-                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>모의고사</h3>
+                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>출입 통제</h3>
               </div>
-              <div className="space-y-3">
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--mint-light)' }}>
-                  <p className="font-bold text-sm" style={{ color: 'var(--green-deep)' }}>더프 모의고사</p>
-                </div>
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--bg-cream)', border: '1px solid var(--gray-light)' }}>
-                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>이감, 한수 모의고사 신청 가능</p>
-                </div>
-              </div>
-              <div className="mt-auto pt-3">
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--bg-cream)', border: '1px solid var(--gray-light)' }}>
-                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>고요의숲에서 치룬 모든 모의고사의 오답은 학생 개인 AI에게 모두 학습시킵니다.</p>
-                </div>
-              </div>
+              <ul className="space-y-1.5 text-xs">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>외출 제한:</strong> 점심/저녁 시간에만 외출 가능</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>교시 중 출입 통제:</strong> 지각 및 미입실 시 출입 차단</span>
+                </li>
+              </ul>
             </div>
 
-            {/* AI 프로그램 */}
-            <div className="p-5 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--green-deep)' }}>
-                  <span className="text-xl">🤖</span>
+            {/* 디지털 관리 */}
+            <div className="p-4 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-xl">📱</span>
                 </div>
-                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>AI 프로그램</h3>
+                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>디지털 관리</h3>
               </div>
-              <div className="space-y-3">
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--mint-light)' }}>
-                  <p className="font-bold text-sm" style={{ color: 'var(--green-deep)' }}>SNarGPT 수능 전용 AI</p>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(매월 30,000 마나 충전)</p>
+              <ul className="space-y-1.5 text-xs">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>핸드폰 수거:</strong> 등원시 수거, 점심/저녁/하원시 불출</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>인터넷 방화벽:</strong> 인강 사이트만 접속 가능 (학습 외 사이트 차단)</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>소통/민원/건의사항:</strong> SN portal 을 통해 처리</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 관리 감독 */}
+            <div className="p-4 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-xl">👁️</span>
                 </div>
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--mint-light)' }}>
-                  <p className="font-bold text-sm" style={{ color: 'var(--green-deep)' }}>SNarGEN</p>
-                  <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>나만을 위한 창작, 변형문제 출제 가능</p>
-                </div>
-                <div className="p-3 rounded-xl" style={{ backgroundColor: 'var(--bg-cream)', border: '1px solid var(--gray-light)' }}>
-                  <p className="font-medium text-xs mb-1" style={{ color: 'var(--green-deep)' }}>SNarGPT란?</p>
-                  <ul className="text-xs space-y-1" style={{ color: 'var(--text-muted)' }}>
-                    <li>• 수학 풀이 정답률 99.9%</li>
-                    <li>• 평가원, 교육청 수학·국어 전문항 학습</li>
-                    <li>• 장기기억 탑재로 학습 질문·오답 기억 후 피드백</li>
-                    <li>• 멘탈, 건강, 입시 상담까지 가능</li>
-                  </ul>
-                </div>
+                <h3 className="text-lg font-bold" style={{ color: 'var(--green-deep)' }}>관리 감독</h3>
               </div>
+              <ul className="space-y-1.5 text-xs">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>정기 순찰:</strong> 20분 간격 사감 순찰 실시</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>학습 리포트:</strong> 일일 학습량 자동 측정 및 리포트 제공</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>벌점 제도:</strong> 규정 위반 시 벌점 부여</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>강제 퇴원:</strong> 벌점 누적 시 학부모 상담 및 퇴원 조치</span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* 하단 공통 안내 */}
-          <div className="mt-4 p-3 rounded-xl text-center" style={{ backgroundColor: 'var(--mint-light)', border: '1px solid var(--mint-dark)' }}>
-            <p className="text-sm" style={{ color: 'var(--green-deep)' }}>내 학습계획, 오답리포트, 강약점 AI 분석 상시 가능</p>
+          {/* 하단 안내 */}
+          <div className="mt-4 p-3 rounded-xl text-center" style={{ backgroundColor: 'var(--green-deep)' }}>
+            <p className="text-sm font-semibold text-white">
+              👉 체계적인 생활 관리로 <span style={{ color: 'var(--mint)' }}>학습 집중도를 극대화</span>합니다
+            </p>
+          </div>
+        </div>
+      </Slide>
+
+      {/* Slide 1-4-1: 학습 관리 (1/2) */}
+      <Slide index={5}>
+        <div className="w-full max-w-6xl px-6">
+          <Tag>1-4-1</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
+            학습 관리 (1/2)
+          </h2>
+          <Divider />
+
+          {/* 3열 그리드 */}
+          <div className="grid grid-cols-3 gap-6 mt-6">
+            {/* 정기 상담 */}
+            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>정기 상담</h3>
+              </div>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>매주 1:1 맞춤 상담</strong></span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>원장/부원장 상담 30분</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>멘토 상담 30분</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>신청자 대상 AI 교육 실시</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 테스트 관리 */}
+            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">📝</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>테스트 관리</h3>
+              </div>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>체계적 성적 관리</strong></span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>주간 테스트 제공</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>영어 테스트 관리</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>신청 시 무조건 관리</strong></span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 실시간 질문 */}
+            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">💬</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>실시간 질문</h3>
+              </div>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>24시간 학습 지원</strong></span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>언제 어디서나 질문 가능</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>수학, 국어, 사탐, 과탐</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>SNarGPT 구독권 (3만원 상당) 제공</strong></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Slide>
+
+      {/* Slide 1-4-2: 학습 관리 (2/2) */}
+      <Slide index={6}>
+        <div className="w-full max-w-6xl px-6">
+          <Tag>1-4-2</Tag>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
+            학습 관리 (2/2)
+          </h2>
+          <Divider />
+
+          {/* 상단 2열 그리드 */}
+          <div className="grid grid-cols-2 gap-6 mt-6">
+            {/* 모의고사 & 컨텐츠 */}
+            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">📊</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>모의고사 & 컨텐츠</h3>
+              </div>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>실전 대비 완벽 지원</strong></span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>평가원 모의고사</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>매달 서프(SURF) 응시 필수</strong></span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>학원용 오프라인 컨텐츠</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* 학습 리포트 */}
+            <div className="p-6 rounded-2xl" style={{ backgroundColor: 'white', border: '2px solid var(--mint-dark)' }}>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--mint-light)' }}>
+                  <span className="text-2xl">📈</span>
+                </div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>학습 리포트</h3>
+              </div>
+              <ul className="space-y-2 text-sm">
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>자동화된 학습 분석</strong></span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>온라인 일일 학습량 자동 측정</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span>맞춤형 리포트 제공</span>
+                </li>
+                <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                  <span style={{ color: 'var(--mint-dark)' }}>•</span>
+                  <span><strong>학습 패턴 분석 및 피드백</strong></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* 하단 특별 관리 (전체 폭) */}
+          <div className="mt-6 p-6 rounded-2xl" style={{ backgroundColor: 'var(--mint-light)', border: '3px solid var(--green-deep)' }}>
+            <div className="flex items-center gap-4 mb-3">
+              <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: 'var(--green-deep)' }}>
+                <span className="text-3xl">🌟</span>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>시대인재 특별 관리</h3>
+                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>원장님 직접 관리 (수학 특화)</p>
+              </div>
+            </div>
+            <ul className="space-y-2 text-sm ml-18">
+              <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                <span style={{ color: 'var(--green-deep)' }}>•</span>
+                <span>시대인재 컨텐츠 희망자 관리</span>
+              </li>
+              <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                <span style={{ color: 'var(--green-deep)' }}>•</span>
+                <span>시대인재 재학생 중 관리 가능</span>
+              </li>
+              <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
+                <span style={{ color: 'var(--green-deep)' }}>•</span>
+                <span><strong>별도 신청 필요</strong></span>
+              </li>
+            </ul>
+          </div>
+
+          {/* 하단 안내 */}
+          <div className="mt-4 p-4 rounded-xl text-center" style={{ backgroundColor: 'var(--green-deep)' }}>
+            <p className="text-base font-semibold text-white">
+              👉 모든 프로그램은 <span style={{ color: 'var(--mint)' }}>학생 맞춤형</span>으로 제공됩니다
+            </p>
           </div>
         </div>
       </Slide>
 
       {/* Slide 3: Environment - Title */}
-      <Slide index={9} dark>
+      <Slide index={7} dark>
         <div className="text-center px-8 max-w-4xl">
           <Tag dark>Section 3</Tag>
           <h1 className="text-4xl md:text-5xl font-black mb-6 text-white" style={{ lineHeight: 1.3 }}>
@@ -480,7 +736,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 3-1: 고요의 숲 학습 환경 설계 */}
-      <Slide index={10}>
+      <Slide index={8}>
         <div className="w-full max-w-6xl px-8">
           <Tag>3-1</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
@@ -527,7 +783,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 3-2: 고요의 숲 학습 환경 설계 (2) */}
-      <Slide index={11}>
+      <Slide index={9}>
         <div className="w-full max-w-6xl px-8">
           <Tag>3-2</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
@@ -573,129 +829,8 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
-      {/* Slide 3-3: 시간표 */}
-      <Slide index={12}>
-        <div className="w-full max-w-5xl px-8">
-          <Tag>3-3</Tag>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
-            학습 시간표
-          </h2>
-          <Divider />
-
-          {/* 시간표 테이블 */}
-          <div className="mt-4 rounded-xl overflow-hidden shadow-lg" style={{ border: '1px solid var(--gray-light)' }}>
-            <table className="w-full text-center text-sm" style={{ backgroundColor: 'white', borderCollapse: 'collapse' }}>
-              <thead>
-                <tr>
-                  <th className="py-3 px-3 font-bold border-b" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '12%' }}>교시</th>
-                  <th className="py-3 px-3 font-bold border-b" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '18%' }}>시간</th>
-                  <th className="py-3 px-3 font-bold border-b" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '35%' }}>월 - 금</th>
-                  <th className="py-3 px-3 font-bold border-b" style={{ backgroundColor: 'var(--mint-light)', color: 'var(--green-deep)', width: '17%' }}>토</th>
-                  <th className="py-3 px-3 font-bold border-b" style={{ backgroundColor: '#fecaca', color: 'var(--text-dark)', width: '18%' }}>일</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* 1교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>1교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>08:00 ~ 08:50</td>
-                  <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자기주도학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
-                  </td>
-                  <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자기주도학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
-                  </td>
-                  <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--text-dark)', verticalAlign: 'middle' }}>
-                    <div className="font-medium text-xs" style={{ color: 'var(--accent-teal)' }}>09:00 오픈</div>
-                    <div className="font-medium">자율학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--accent-teal)' }}>(학습시 상점부여)</div>
-                  </td>
-                </tr>
-                {/* 2교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>2교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>09:00 ~ 10:15</td>
-                </tr>
-                {/* 3교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>3교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>10:30 ~ 12:00</td>
-                </tr>
-                {/* 점심 시간 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)', backgroundColor: 'var(--mint-light)' }}>
-                  <td className="py-3 px-3 font-bold" style={{ color: 'var(--green-deep)' }}>점심 시간</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>12:00 ~ 13:10</td>
-                  <td className="py-3 px-3" colSpan={3} style={{ color: 'var(--text-dark)' }}>
-                    외출 가능 / 휴게실 내 휴대폰 사용 가능
-                  </td>
-                </tr>
-                {/* 4교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>4교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>13:10 ~ 14:30</td>
-                  <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자기주도학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
-                  </td>
-                  <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자기주도학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
-                  </td>
-                  <td className="py-3 px-3" rowSpan={3} style={{ color: 'var(--text-dark)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자율학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--accent-teal)' }}>(학습시 상점부여)</div>
-                  </td>
-                </tr>
-                {/* 5교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>5교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>14:45 ~ 16:15</td>
-                </tr>
-                {/* 6교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>6교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>16:30 ~ 18:00</td>
-                </tr>
-                {/* 저녁 시간 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)', backgroundColor: 'var(--mint-light)' }}>
-                  <td className="py-3 px-3 font-bold" style={{ color: 'var(--green-deep)' }}>저녁 시간</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>18:10 ~ 19:10</td>
-                  <td className="py-3 px-3" colSpan={3} style={{ color: 'var(--text-dark)' }}>
-                    외출 가능 / 휴게실 내 휴대폰 사용 가능
-                  </td>
-                </tr>
-                {/* 7교시 */}
-                <tr style={{ borderBottom: '1px solid var(--gray-light)' }}>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>7교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>19:10 ~ 20:40</td>
-                  <td className="py-3 px-3" rowSpan={2} style={{ color: 'var(--green-deep)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자기주도학습</div>
-                    <div className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>(지각 및 미입실시 출입통제)</div>
-                  </td>
-                  <td className="py-3 px-3" rowSpan={2} style={{ color: 'var(--text-muted)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">자율 학습</div>
-                    <div className="text-xs mt-1">(희망자에 한함)</div>
-                  </td>
-                  <td className="py-3 px-3" rowSpan={2} style={{ color: 'var(--text-muted)', verticalAlign: 'middle' }}>
-                    <div className="font-medium">-</div>
-                    <div className="text-xs mt-1">(18시 운영 종료)</div>
-                  </td>
-                </tr>
-                {/* 8교시 */}
-                <tr>
-                  <td className="py-3 px-3 font-medium" style={{ color: 'var(--text-dark)' }}>8교시</td>
-                  <td className="py-3 px-3" style={{ color: 'var(--text-muted)' }}>20:55 ~ 22:00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </Slide>
-
-      {/* Slide 3-4: 벌점표 */}
-      <Slide index={13}>
+      {/* Slide 3-3: 벌점표 */}
+      <Slide index={10}>
         <div className="w-full max-w-3xl px-8">
           <Tag>3-4</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
@@ -737,8 +872,8 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
-      {/* Slide 3-5: 생활 */}
-      <Slide index={14}>
+      {/* Slide 3-4: 생활 */}
+      <Slide index={11}>
         <div className="w-full max-w-4xl px-8">
           <Tag>3-5</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
@@ -821,8 +956,8 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
-      {/* Slide 3-6: 수강료 */}
-      <Slide index={15}>
+      {/* Slide 3-5: 수강료 */}
+      <Slide index={12}>
         <div className="w-full max-w-5xl px-8">
           <Tag>Fees</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
@@ -878,8 +1013,8 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
-      {/* Slide 3-7: 장학금 */}
-      <Slide index={16}>
+      {/* Slide 3-6: 장학금 */}
+      <Slide index={13}>
         <div className="w-full max-w-5xl px-8">
           <Tag>Scholarship</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
@@ -921,7 +1056,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 4: Roadmap - Title */}
-      <Slide index={17} dark>
+      <Slide index={14} dark>
         <div className="text-center px-8 max-w-4xl">
           <Tag dark>Section 4</Tag>
           <h1 className="text-4xl md:text-5xl font-black mb-6 text-white" style={{ lineHeight: 1.3 }}>
@@ -938,7 +1073,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 4-1~4: 프로세스 타임라인 */}
-      <Slide index={18}>
+      <Slide index={15}>
         <div className="w-full max-w-5xl px-8">
           <Tag>Roadmap</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
@@ -998,7 +1133,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 6: FAQ */}
-      <Slide index={20}>
+      <Slide index={17}>
         <div className="w-full max-w-4xl px-8 h-full flex flex-col">
           <Tag>FAQ</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--text-dark)' }}>
@@ -1161,7 +1296,7 @@ export default function AdmissionPPT() {
       </Slide>
 
       {/* Slide 5: Closing */}
-      <Slide index={19} dark>
+      <Slide index={16} dark>
         <div className="text-center px-8 max-w-4xl">
           <Tag dark>Closing</Tag>
           <h1 className="text-3xl md:text-4xl font-bold mb-8 text-white" style={{ lineHeight: 1.4 }}>
