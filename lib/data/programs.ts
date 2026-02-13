@@ -30,6 +30,7 @@ export const programsData = [
     originalPrice: "800,000 원",
     discountPrice: "400,000 원",
     discountRate: "50%",
+    discountNote: "2개월차부터 640,000원 (20% 할인)",
     priceLabel: "수강료 안내"
   },
   {
