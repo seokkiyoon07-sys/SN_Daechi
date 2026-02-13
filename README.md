@@ -150,7 +150,13 @@ cd SN-daechi
 
 # 의존성 설치
 npm install
+
+# 환경 변수 설정 (네이버 CAPTCHA)
+cp .env.local.example .env.local
+# .env.local 파일을 열어 네이버 CAPTCHA API 키를 입력하세요
 ```
+
+**네이버 CAPTCHA 설정**: 원서접수 및 상담 신청 폼에 부정클릭 방지를 위한 네이버 CAPTCHA가 적용되어 있습니다. 설정 방법은 [NAVER_CAPTCHA_SETUP.md](./docs/NAVER_CAPTCHA_SETUP.md)를 참고하세요.
 
 ### 개발 서버 실행
 

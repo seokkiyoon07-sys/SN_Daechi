@@ -82,7 +82,7 @@ const executives: TeamMember[] = [
 const mentors: TeamMember[] = [
   {
     name: "권도훈",
-    role: "SN 대치 멘토 · 서울대 경제학과 정시",
+    role: "SN 대치 멘토 · 서울대 경제학부 정시",
     title: "스스로 공부하는 힘을 길러주는 멘토",
     image: "/image/thumbnail/kwandohun.jpg",
     highlight: "Keep going, never give up",
@@ -97,7 +97,7 @@ const mentors: TeamMember[] = [
   },
   {
     name: "이*윤",
-    role: "SN 대치 멘토 · 서울대 재료공학과",
+    role: "SN 대치 멘토 · 재료공학부",
     title: "불확실성을 확신으로 바꿔주는 멘토",
     image: "/image/thumbnail/leeyoon.jpg",
     imagePosition: "42% top",
