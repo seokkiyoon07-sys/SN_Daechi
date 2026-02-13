@@ -97,9 +97,6 @@ export default function Recruitment() {
                         {program.discountPrice}
                         <span className="text-xs text-gray-500 font-normal ml-1">(첫 달)</span>
                       </div>
-                      {program.discountNote && (
-                        <div className="text-sm text-gray-600 mt-1">{program.discountNote}</div>
-                      )}
                     </div>
                   ) : (
                     <div className="text-xl font-bold text-sn-green">
