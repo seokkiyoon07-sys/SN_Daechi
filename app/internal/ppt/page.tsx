@@ -748,17 +748,17 @@ export default function AdmissionPPT() {
           <div className="grid grid-cols-3 gap-6 mt-4">
             {[
               {
-                img: '/image/인테리어/KakaoTalk_20260116_130725297.jpg',
+                img: '/image/facility/study_room_02.jpg',
                 title: '학습실',
                 desc: '시선 분산을 최소화한 1인 집중 부스. 자연광과 조명 밸런스로 눈의 피로를 줄이고, 장시간 몰입이 가능한 환경을 제공합니다.'
               },
               {
-                img: '/image/인테리어/KakaoTalk_20260116_130725297_03 (1).jpg',
+                img: '/image/facility/standing_table.jpg',
                 title: '스탠딩 책상',
                 desc: '장시간 앉아있는 피로를 해소하는 스탠딩 학습 공간. 자세 변화를 통해 집중력을 유지하고 건강한 학습 습관을 형성합니다.'
               },
               {
-                img: '/image/인테리어/KakaoTalk_20260116_130725297_05.jpg',
+                img: '/image/facility/counseling_room.jpg',
                 title: '상담실',
                 desc: '1:1 맞춤 상담을 위한 프라이빗 공간. 원장과의 전략 미팅, 학부모 상담이 이루어지는 핵심 공간입니다.'
               },
@@ -795,7 +795,7 @@ export default function AdmissionPPT() {
           <div className="grid grid-cols-3 gap-6 mt-4">
             {[
               {
-                img: '/image/인테리어/KakaoTalk_20260116_130725297_01.jpg',
+                img: '/image/facility/lecture_room.jpg',
                 title: '강의실',
                 desc: '소규모 그룹 수업과 특강을 위한 최적화된 공간. 집중력을 높이는 조명과 음향 설계로 효과적인 학습을 지원합니다.'
               },
@@ -805,7 +805,7 @@ export default function AdmissionPPT() {
                 desc: '휴식과 재충전을 위한 야외 공간. 자연 속에서 잠시 쉬어가며 다음 학습을 위한 에너지를 충전합니다.'
               },
               {
-                img: '/image/인테리어/KakaoTalk_20260116_130725297_04.jpg',
+                img: '/image/facility/printer_cafe.jpg',
                 title: '프린트 카페',
                 desc: '학습 자료 출력과 간단한 음료를 즐길 수 있는 복합 공간. 편리한 학습 지원 서비스를 제공합니다.'
               },
