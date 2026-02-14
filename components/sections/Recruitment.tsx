@@ -43,7 +43,7 @@ export default function Recruitment() {
             {programs.map((program, index) => (
               <div
                 key={index}
-                className="relative rounded-xl p-6 cursor-pointer transition-all duration-300 bg-white border-2 border-sn-main/20 hover:border-sn-main hover:shadow-lg hover:shadow-sn-main/10 hover:-translate-y-1"
+                className="relative rounded-xl p-6 cursor-pointer transition-all duration-300 bg-white border-2 border-sn-main/20 hover:border-sn-main hover:shadow-lg hover:shadow-sn-main/10 hover:-translate-y-1 flex flex-col"
               >
                 {/* 배지 */}
                 <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 bg-sn-green text-white">
@@ -85,7 +85,7 @@ export default function Recruitment() {
                 </ul>
 
                 {/* 가격 */}
-                <div className="border-t-2 pt-4 mb-4 border-sn-main/20">
+                <div className="border-t-2 pt-4 mb-4 border-sn-main/20 mt-auto">
                   <div className="text-xs text-sn-green font-medium mb-1">수강료 안내</div>
                   {program.discountPrice ? (
                     <div>
