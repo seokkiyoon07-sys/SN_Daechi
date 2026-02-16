@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://daechi.snacademy.co.kr"),
-  title: "대치 고요의 숲 | AI 기반 독학관리학원",
+  title: "대치동 독학재수학원 | SN고요의숲 대치점",
   icons: {
     icon: [
       { url: "/image/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
       { rel: "icon", url: "/image/android-chrome-512x512.png", sizes: "512x512" },
     ],
   },
-  description: "대치동 최초 AI 기반 독학관리 시스템. 몰입 환경, 개인 맞춤 학습 리포트, SNarGPT로 성적을 설계합니다.",
+  description: "AI 학습관리 특화 독학재수관. 공부량·오답·취약단원 분석, 디지털 차단 환경, 수학 원장 클리닉, 국어·수학 상위권 킬러문항 무제한 제공. 대치역 3분거리 재수학원 SN고요의숲",
   keywords: [
     "독학재수학원",
     "대치동 학원",
@@ -57,21 +57,21 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: "https://daechi.snacademy.co.kr",
     siteName: "대치 고요의 숲",
-    title: "대치 고요의 숲 | AI 독학관리의 새로운 기준",
-    description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
+    title: "대치동 독학재수학원 | SN고요의숲 대치점",
+    description: "AI 학습관리 특화 독학재수관. 공부량·오답·취약단원 분석, 디지털 차단 환경, 수학 원장 클리닉, 국어·수학 상위권 킬러문항 무제한 제공. 대치역 3분거리 재수학원 SN고요의숲",
     images: [
       {
         url: "/image/thumbnail/daechi_goyuuiseup.png",
         width: 1200,
         height: 630,
-        alt: "대치 고요의 숲 AI 독학관리학원",
+        alt: "대치동 독학재수학원 SN고요의숲 대치점",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "대치 고요의 숲 | AI 독학관리의 새로운 기준",
-    description: "몰입 환경 + AI 학습 리포트. 대치동 독학관리의 진화.",
+    title: "대치동 독학재수학원 | SN고요의숲 대치점",
+    description: "AI 학습관리 특화 독학재수관. 공부량·오답·취약단원 분석, 디지털 차단 환경, 수학 원장 클리닉, 국어·수학 상위권 킬러문항 무제한 제공. 대치역 3분거리 재수학원 SN고요의숲",
     images: ["/image/thumbnail/daechi_goyuuiseup.png"],
   },
   verification: {
