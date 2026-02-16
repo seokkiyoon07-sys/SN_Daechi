@@ -44,6 +44,7 @@ export default function Header() {
   const sites = [
     { name: 'SN고요의숲(대치)', url: 'https://daechi.snacademy.co.kr' },
     { name: 'SN독학기숙학원', url: 'https://www.snacademy.co.kr' },
+    { name: 'SN베스티안', url: 'https://blog.naver.com/bestinan21' },
     { name: 'SNarGPT', url: 'https://snargpt.ai' },
     { name: 'SN블로그', url: 'https://blog.snacademy.co.kr' }
   ];
