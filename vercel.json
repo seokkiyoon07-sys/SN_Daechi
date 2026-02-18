@@ -1,4 +1,10 @@
 {
   "name": "sn-daechi",
-  "version": 2
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/app/:path*",
+      "destination": "https://sn-student-web.vercel.app/app/:path*"
+    }
+  ]
 }
