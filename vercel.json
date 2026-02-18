@@ -3,6 +3,10 @@
   "version": 2,
   "rewrites": [
     {
+      "source": "/app",
+      "destination": "https://sn-student-web.vercel.app/app"
+    },
+    {
       "source": "/app/:path*",
       "destination": "https://sn-student-web.vercel.app/app/:path*"
     }
