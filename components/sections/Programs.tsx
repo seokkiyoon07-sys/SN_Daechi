@@ -1103,8 +1103,8 @@ export default function Programs() {
                 </svg>
               </div>
               <h4 className="font-bold text-gray-900 mb-2">전화 상담</h4>
-              <a href="tel:02-XXX-XXXX" className="text-sn-green font-medium hover:underline">
-                02-XXX-XXXX
+              <a href="tel:02-557-0301" className="text-sn-green font-medium hover:underline">
+                02-557-0301
               </a>
             </div>
 

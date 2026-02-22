@@ -17,7 +17,7 @@ export default function Footer() {
     ],
     contact: [
       { name: "상담 신청", href: "#contact" },
-      { name: "전화 상담", href: "tel:010-5862-3838" },
+      { name: "전화 상담", href: "tel:02-557-0301" },
       { name: "카카오톡 상담", href: "#kakao" }
     ]
   };
@@ -52,7 +52,7 @@ export default function Footer() {
                 <svg className="w-5 h-5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span className="text-sm">010-5862-3838</span>
+                <span className="text-sm">02-557-0301</span>
               </div>
               <div className="flex items-center">
                 <svg className="w-5 h-5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -134,7 +134,7 @@ export default function Recruitment() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* 전화 상담 */}
-            <a href="tel:010-5862-3838" className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20 block">
+            <a href="tel:02-557-0301" className="text-center p-6 rounded-xl bg-white hover:bg-sn-green/10 hover:shadow-md transition-all duration-300 cursor-pointer border border-sn-main/20 block">
               <div className="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center overflow-hidden">
                 <Image
                   src="/image/phone.png"
@@ -146,7 +146,7 @@ export default function Recruitment() {
               </div>
               <h4 className="font-bold text-gray-900 mb-2">전화 상담</h4>
               <span className="text-sn-green font-medium hover:underline">
-                010-5862-3838
+                02-557-0301
               </span>
             </a>
 

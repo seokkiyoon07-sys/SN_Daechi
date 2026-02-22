@@ -165,7 +165,7 @@ export default function TransportPage() {
                 </svg>
                 <div>
                   <p className="font-medium text-gray-900">전화번호</p>
-                  <a href="tel:010-5862-3838" className="text-sn-green hover:underline text-sm">010-5862-3838</a>
+                  <a href="tel:02-557-0301" className="text-sn-green hover:underline text-sm">02-557-0301</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">

@@ -140,7 +140,7 @@ export default function Scholarship() {
             </li>
             <li className="flex items-start gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-sn-green mt-2 flex-shrink-0"></span>
-              자세한 문의는 <a href="tel:02-501-1234" className="text-sn-green hover:underline">02-501-1234</a>로 연락 바랍니다.
+              자세한 문의는 <a href="tel:02-557-0301" className="text-sn-green hover:underline">02-557-0301</a>로 연락 바랍니다.
             </li>
           </ul>
         </div>
