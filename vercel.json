@@ -9,6 +9,14 @@
     {
       "source": "/app/:path*",
       "destination": "https://sn-student-web.vercel.app/app/:path*"
+    },
+    {
+      "source": "/test",
+      "destination": "https://test-snacademy-seokki-yoons-projects.vercel.app/test"
+    },
+    {
+      "source": "/test/:path*",
+      "destination": "https://test-snacademy-seokki-yoons-projects.vercel.app/test/:path*"
     }
   ]
 }
