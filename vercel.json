@@ -1,4 +1,14 @@
 {
   "name": "sn-daechi",
-  "version": 2
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/test",
+      "destination": "https://test-snacademy-seokki-yoons-projects.vercel.app/test"
+    },
+    {
+      "source": "/test/:path*",
+      "destination": "https://test-snacademy-seokki-yoons-projects.vercel.app/test/:path*"
+    }
+  ]
 }
