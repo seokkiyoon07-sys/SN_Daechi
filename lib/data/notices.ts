@@ -8,6 +8,7 @@ export interface Notice {
   isImportant: boolean;
   image?: string;
   thumbnail?: string;
+  video?: string;
   content: string;
 }
 
@@ -56,5 +57,27 @@ AI는 아이를 대신 공부하지 않습니다.
 조용하지만 가장 단단한 선택지가 열립니다.
 
 ==대치 고요의 숲==`
+  },
+  {
+    id: 2,
+    slug: "daechi-youtube-shorts-intro",
+    title: "대치동에 새로운 독학학원 등장 + AI를 곁들임, 2분 안에 설명해드림",
+    date: "2026.02.24",
+    category: "공지",
+    isImportant: true,
+    thumbnail: "/image/thumbnail/daechi_notice_thunbnail2.png",
+    video: "https://www.youtube.com/embed/HM5YR3vi37w",
+    content: `==대치역 2번출구 4분거리==, 시대인재 등 주요 학원까지 도보 5분
+
+2026년 2월, SN아카데미가 대치동에 새로운 방식의 독학관리 학원을 오픈했습니다.
+이름은 「==SN 고요의숲 대치==」(독학관리 AI 특화관) 입니다.
+
+SN이 자체 제작한 Vertical AI **SNarGPT**를 기반으로, 학생의 공부 습관 형성과 몰입을 돕는 환경을 제공합니다.
+
+## 문의 안내
+
+**홈페이지:** https://daechi.snacademy.co.kr
+**주소:** 서울특별시 강남구 대치동 447 3, 4층
+**등록문의:** 02-557-0301 / snacademy@naver.com`
   }
 ];

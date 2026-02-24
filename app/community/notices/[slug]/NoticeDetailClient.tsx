@@ -6,15 +6,18 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Notice } from "@/lib/data/notices";
 
-// 텍스트 포맷팅 처리 (볼드, 하이라이트)
-function formatText(text: string) {
-  const parts = text.split(/(==.*?==|\*\*.*?\*\*)/g);
+// 텍스트 포맷팅 처리 (볼드, 하이라이트, 링크)
+function formatText(text: string): React.ReactNode[] {
+  const parts = text.split(/(==.*?==|\*\*.*?\*\*|https?:\/\/[^\s]+)/g);
   return parts.map((part, i) => {
     if (part.startsWith('==') && part.endsWith('==')) {
       return <mark key={i} className="bg-yellow-100 px-1 rounded">{part.slice(2, -2)}</mark>;
     }
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
+    }
+    if (part.match(/^https?:\/\//)) {
+      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-sn-green underline hover:text-sn-green/80">{part}</a>;
     }
     return part;
   });
@@ -43,8 +46,21 @@ export default function NoticeDetailClient({ notice }: NoticeDetailClientProps) 
 
           {/* 게시글 */}
           <article className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            {/* 영상 */}
+            {notice.video && (
+              <div className="relative w-full aspect-[9/16] max-w-[360px] mx-auto bg-black">
+                <iframe
+                  src={notice.video}
+                  title={notice.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+            )}
+
             {/* 이미지 */}
-            {notice.image && (
+            {!notice.video && notice.image && (
               <div className="relative w-full aspect-[16/9]">
                 <Image
                   src={notice.image}

@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { noticesData } from "@/lib/data/notices";
 
 export default function NoticesPage() {
-  const notices = noticesData;
+  const notices = [...noticesData].reverse();
 
   return (
     <div className="min-h-screen bg-gray-50">
