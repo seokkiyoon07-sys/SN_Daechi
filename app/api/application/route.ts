@@ -232,7 +232,7 @@ async function forwardToStudentWeb(data: ApplicationData) {
     return;
   }
 
-  const response = await fetch(`${STUDENT_WEB_API_URL}/api/application`, {
+  const response = await fetch(`${STUDENT_WEB_API_URL}/app/api/application`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
