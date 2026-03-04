@@ -348,6 +348,292 @@ export default function AdmissionData() {
     { university: '인천대학교', department: '건설환경공학전공', name: '김*우', highSchool: '구미고', tier: 'excellent', year: '2025', academy: 'SN독학기숙학원 양평점' },
     { university: '인천대학교', department: '동북아국제통상전공', name: '백*민', highSchool: '제주오현고', tier: 'excellent', year: '2025', academy: 'SN독학기숙학원 양평점' },
     { university: '한국항공대학교', department: '스마트드론학과', name: '박*원', highSchool: '동탄중앙고', tier: 'excellent', year: '2025', academy: 'SN독학기숙학원 양평점' },
+
+    // === SN독학기숙학원 실적 ===
+    // 서울대
+    { university: '서울대학교', department: '항공우주공학과', name: '윤도현', highSchool: '신송고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서울대학교', department: '정치외교학부', name: '강서현', highSchool: '부산사대부고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서울대학교', department: '원자핵공학과', name: '김준희', highSchool: '김해수남고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 의예과
+    { university: '조선대학교', department: '의예과', name: '김민조', highSchool: '전남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '조선대학교', department: '의예과', name: '최지웅', highSchool: '호남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '조선대학교', department: '의예과', name: '장성수', highSchool: '대창고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '원광대학교', department: '의예과', name: '최휘찬', highSchool: '군산제일고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '원광대학교', department: '의예과', name: '장성수', highSchool: '대창고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '전남대학교', department: '의예과', name: '김민조', highSchool: '전남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '을지대학교', department: '의예과', name: '최준', highSchool: '세종고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '인제대학교', department: '의예과', name: '김민조', highSchool: '전남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '대구가톨릭대학교', department: '의예과', name: '오유빈', highSchool: '검정고시', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고신대학교', department: '의예과', name: '김지호', highSchool: '', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고신대학교', department: '의예과', name: '오희준', highSchool: '울산대동고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '강원대학교', department: '의예과', name: '정동욱', highSchool: '경포고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 치의예과
+    { university: '전남대학교', department: '치의예과', name: '문종인', highSchool: '순천금당고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '원광대학교', department: '치의예과', name: '김상훈', highSchool: '호남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '단국대학교', department: '치의예과', name: '유정철', highSchool: '공주고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '단국대학교', department: '치의예과', name: '최준', highSchool: '세종고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '조선대학교', department: '치의예과', name: '박건휘', highSchool: '여천고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '조선대학교', department: '치의예과', name: '김상훈', highSchool: '호남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '조선대학교', department: '치의예과', name: '노금정', highSchool: '나주고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 한의예과
+    { university: '동국대학교', department: '한의예과', name: '공서준', highSchool: '효양고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '동국대학교', department: '한의예과', name: '안재우', highSchool: '양천고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '세명대학교', department: '한의예과', name: '유정철', highSchool: '공주고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '세명대학교', department: '한의예과', name: '최준', highSchool: '세종고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '세명대학교', department: '한의예과', name: '조인우', highSchool: '광명북고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '세명대학교', department: '한의예과', name: '안재우', highSchool: '양천고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '원광대학교', department: '한의예과', name: '박건휘', highSchool: '여천고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 약학과
+    { university: '성균관대학교', department: '약학과', name: '오유빈', highSchool: '검정고시', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '조선대학교', department: '약학과', name: '문종인', highSchool: '순천금당고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '순천대학교', department: '약학과', name: '문종인', highSchool: '순천금당고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '대구가톨릭대학교', department: '약학과', name: '강진표', highSchool: '상해한국학교', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '우석대학교', department: '약학과', name: '김상훈', highSchool: '호남고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '약학과', name: '김혜림', highSchool: '거창고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가천대학교', department: '약학과', name: '안재우', highSchool: '양천고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 수의예과
+    { university: '전북대학교', department: '수의예과', name: '문종인', highSchool: '순천금당고', tier: 'medical', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 연세대
+    { university: '연세대학교', department: '사회환경시스템공학부', name: '전하늘', highSchool: '남해해성고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '연세대학교', department: '경영학과', name: '이라윤', highSchool: '양일고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '연세대학교', department: '산업공학과', name: '서인호', highSchool: '선덕고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '연세대학교', department: '응용통계학과', name: '한호겸', highSchool: '중앙고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 고려대
+    { university: '고려대학교', department: '스마트보안학부', name: '박재민', highSchool: '보인고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '경영대학', name: '이라윤', highSchool: '양일고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '경영대학', name: '강서현', highSchool: '부산사대부고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '경영대학', name: '최원석', highSchool: '검정고시', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '경영대학', name: '박준희', highSchool: '해룡고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '국어교육과', name: '오도윤', highSchool: '새롬고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '노어노문학과', name: '김경윤', highSchool: '부산양정고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '경제학과', name: '윤서진', highSchool: 'Cestar HS', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '경제학과', name: '박준하', highSchool: '중동고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '미디어학부', name: '김태호', highSchool: '상문고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '미디어학부', name: '이승혁', highSchool: '검정고시', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '융합에너지공학과', name: '김준희', highSchool: '김해수남고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '신소재공학부', name: '심채원', highSchool: '시흥고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '고려대학교', department: '전기전자공학부', name: '장성수', highSchool: '대창고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // DGIST / GIST / UNIST
+    { university: 'DGIST', department: '반도체공학과', name: '신가림', highSchool: '대전한빛고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: 'DGIST', department: '', name: '노대건', highSchool: '정현고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: 'GIST', department: '', name: '정송윤', highSchool: '광양제철고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: 'UNIST', department: '', name: '노대건', highSchool: '정현고', tier: 'sky', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 서강대
+    { university: '서강대학교', department: '경영학부', name: '이라윤', highSchool: '양일고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서강대학교', department: '경제학과', name: '김준수', highSchool: '부흥고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서강대학교', department: '화공생명공학과', name: '심채원', highSchool: '시흥고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서강대학교', department: 'AI기반자유전공학부', name: '이승혁', highSchool: '검정고시', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서강대학교', department: '사이언스기반자유전공학부', name: '김성민', highSchool: '전북제일고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서강대학교', department: '인문학기반자유전공학부', name: '심재윤', highSchool: '경기광주중앙고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서강대학교', department: '인공지능학과', name: '심재윤', highSchool: '경기광주중앙고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 성균관대
+    { university: '성균관대학교', department: '공학계열', name: '김찬영', highSchool: '병점고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '공학계열', name: '이경원', highSchool: '광주서석고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '공학계열', name: '심채원', highSchool: '시흥고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '공학계열', name: '고기영', highSchool: '서현고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '공학계열', name: '채윤재', highSchool: '부산용인고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '물리학과', name: '신가림', highSchool: '대전한빛고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '글로벌바이오메디컬공학과', name: '정송윤', highSchool: '광양제철고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '양자정보공학과', name: '채윤재', highSchool: '부산용인고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '소프트웨어학과', name: '김민석', highSchool: '고려고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '경영학과', name: '이승혁', highSchool: '검정고시', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '인문과학계열', name: '김도하', highSchool: '주엽고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '글로벌경영학과', name: '윤서진', highSchool: 'Cestar HS', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '자연과학계열', name: '이금찬', highSchool: '경안고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '반도체융합공학과', name: '김준희', highSchool: '김해수남고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '자유전공계열', name: '박재민', highSchool: '보인고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '반도체시스템공학과', name: '김성민', highSchool: '전북제일고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '성균관대학교', department: '반도체시스템공학과', name: '채윤재', highSchool: '부산용인고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 한양대
+    { university: '한양대학교', department: '건축학부', name: '유정철', highSchool: '공주고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '간호학과', name: '이지오', highSchool: '남해해성고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '바이오메디컬공학전공', name: '정송윤', highSchool: '광양제철고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '융합전자공학부', name: '조상연', highSchool: '검정고시', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '융합전자공학부', name: '김성민', highSchool: '전북제일고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '정치외교학과', name: '조현호', highSchool: '건대부고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '산업공학과', name: '배한결', highSchool: '검정고시', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '화학공학과', name: '심채원', highSchool: '시흥고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '관광학부', name: '민지환', highSchool: '거창대성고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '영문학과', name: '김민', highSchool: '진주동명고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '한양인터칼리지학부', name: '정송윤', highSchool: '광양제철고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한양대학교', department: '의류학과', name: '조현준', highSchool: '포항동지고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 교대
+    { university: '공주교육대학교', department: '초등교육과', name: '장진혁', highSchool: '정관고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '공주교육대학교', department: '초등교육과', name: '고병찬', highSchool: '공주고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 사관학교
+    { university: '육군사관학교', department: '', name: '김지호', highSchool: '대진고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '공군사관학교', department: '', name: '이제윤', highSchool: '배재고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 중앙대
+    { university: '중앙대학교', department: '공과대학', name: '박건휘', highSchool: '여천고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '창의ICT공과대학', name: '조상연', highSchool: '검정고시', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '창의ICT공과대학', name: '김지호', highSchool: '대진고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '글로벌금융전공', name: '김도하', highSchool: '주엽고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '소프트웨어학과', name: '윤영진', highSchool: '와부고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '화학공학과', name: '심채원', highSchool: '시흥고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '경영학부', name: '김도하', highSchool: '주엽고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '경영학부', name: '손의준', highSchool: '동탄중앙고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '경영학부', name: '김민석', highSchool: '고려고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '경영학부', name: '김민', highSchool: '진주동명고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '에너지시스템공학부', name: '서범서', highSchool: '군산동고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '중앙대학교', department: '인문대학', name: '조현준', highSchool: '포항동지고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 경희대
+    { university: '경희대학교', department: '경영회계계열', name: '정준석', highSchool: '공주사대부고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '경영회계계열', name: '오유준', highSchool: '경기고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '경영회계계열', name: '이가온', highSchool: '인천광성고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '행정학과', name: '김민준', highSchool: '향일고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '자율전공학부', name: '김상훈', highSchool: '호남고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '자유전공학부', name: '김민석', highSchool: '고려고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '자유전공학부', name: '박채원', highSchool: '오류고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '자유전공학부', name: '조현준', highSchool: '포항동지고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '기계공학부', name: '안호성', highSchool: '검정고시', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '기계공학부', name: '정휘찬', highSchool: '김해임호고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '정치외교학과', name: '김지윤', highSchool: '대송고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '영어영문학과', name: '한재영', highSchool: '광주광덕고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '우주과학과', name: '김현우', highSchool: '정현고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '우주과학과', name: '윤영진', highSchool: '와부고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '전자공학과', name: '추민근', highSchool: '거창대성고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '화학공학과', name: '김단현', highSchool: '한국디지털미디어고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경희대학교', department: '관광·엔터테인먼트학부', name: '문은기', highSchool: '태원고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 한국외대
+    { university: '한국외국어대학교', department: '경제학부', name: '이지석', highSchool: '전곡고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한국외국어대학교', department: '특수외국어(유럽지역)계열', name: '정민영', highSchool: '불당고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 서울시립대
+    { university: '서울시립대학교', department: '화학공학과', name: '윤현준', highSchool: '양명고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서울시립대학교', department: '전자전기컴퓨터공학부', name: '신가림', highSchool: '대전한빛고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서울시립대학교', department: '행정학과', name: '한재영', highSchool: '광주광덕고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '서울시립대학교', department: '국사학과', name: '배형민', highSchool: '오상고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 이화여대
+    { university: '이화여자대학교', department: '과학교육과', name: '박채원', highSchool: '오류고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 건국대
+    { university: '건국대학교', department: 'KU 자유전공학부', name: '명은성', highSchool: '영주영광고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '건국대학교', department: '이과대학자유전공학부', name: '박채원', highSchool: '오류고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '건국대학교', department: '사회환경공학부', name: '김상진', highSchool: '전곡고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '건국대학교', department: '전기전자공학부', name: '최수성', highSchool: '칠원고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '건국대학교', department: '경영학과', name: '이동욱', highSchool: '광주대동고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 동국대
+    { university: '동국대학교', department: '열린전공학부', name: '배형민', highSchool: '오상고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '동국대학교', department: '열린전공학부', name: '한재영', highSchool: '광주광덕고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '동국대학교', department: '의료인공지능학과', name: '김현우', highSchool: '정현고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '동국대학교', department: '경영학부', name: '이지환', highSchool: '태원고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '동국대학교', department: '건축공학부', name: '김단현', highSchool: '한국디지털미디어고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 홍익대
+    { university: '홍익대학교', department: '국어교육과', name: '이윤성', highSchool: '계양고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '홍익대학교', department: '법학과', name: '정민영', highSchool: '불당고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '홍익대학교', department: '자율전공(자연)', name: '조현준', highSchool: '포항동지고', tier: 'top', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 숙명여대
+    { university: '숙명여자대학교', department: '신소재물리학부', name: '박채원', highSchool: '오류고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 국민대
+    { university: '국민대학교', department: '기계공학부', name: '최태훈', highSchool: '영덕고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '국민대학교', department: '인문기술융합학부 자유전공', name: '김정완', highSchool: '가락고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 숭실대
+    { university: '숭실대학교', department: '기계공학부', name: '김정완', highSchool: '가락고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 세종대
+    { university: '세종대학교', department: '공학계열', name: '김남현', highSchool: '배재고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '세종대학교', department: '첨단융합계열', name: '김남', highSchool: '배재고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 단국대
+    { university: '단국대학교', department: '퇴계혁신칼리지', name: '최지호', highSchool: '서울고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '단국대학교', department: '퇴계혁신칼리지', name: 'OOO', highSchool: '안법고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '단국대학교', department: '법학과', name: '길승현', highSchool: '운정고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 광운대
+    { university: '광운대학교', department: '자율전공학부(자연)', name: '김도훈', highSchool: '광양제철고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 가톨릭대
+    { university: '가톨릭대학교', department: '생명공학과', name: '박세은', highSchool: '진성고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가톨릭대학교', department: '자연공학계열', name: '박수민', highSchool: '송도고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가톨릭대학교', department: '자유전공학부', name: '최한서', highSchool: '풍산고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 서울과기대
+    { university: '서울과학기술대', department: 'MSDE', name: '정현우', highSchool: '정현고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 가천대
+    { university: '가천대학교', department: '법과대학', name: '이준규', highSchool: '오송고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가천대학교', department: '반도체대학', name: '정세교', highSchool: '서라벌고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가천대학교', department: '심리학과', name: '정우진', highSchool: '검정고시', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가천대학교', department: '경영학과', name: '한지수', highSchool: '검정고시', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '가천대학교', department: 'AI 인문학부', name: '임해일', highSchool: '백석고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 아주대
+    { university: '아주대학교', department: '심리학과', name: '문성환', highSchool: '검정고시', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '아주대학교', department: '디지털미디어학과', name: '황성환', highSchool: '삼괴고등학교', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '아주대학교', department: '첨단바이오융합대학', name: '김단현', highSchool: '한국디지털미디어고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 인하대
+    { university: '인하대학교', department: '사회인프라공학과', name: '김선중', highSchool: '검정고시', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '인하대학교', department: '데이터사이언스학과', name: '이정훈', highSchool: '대일고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '인하대학교', department: '자연과학융합학부', name: '김태윤', highSchool: '가락고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '인하대학교', department: '체육교육과', name: '이성우', highSchool: '평촌고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 한국항공대
+    { university: '한국항공대학교', department: 'AI자율주행시스템공학과', name: '최한서', highSchool: '풍산고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 부산대
+    { university: '부산대학교', department: '미디어학과', name: '서구원', highSchool: '동천고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '부산대학교', department: '사회복지학과', name: '김태현', highSchool: '신정고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '부산대학교', department: '분자생물학과', name: '곽민성', highSchool: '강원고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '부산대학교', department: '자유전공학부', name: '곽창욱', highSchool: '학성고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '부산대학교', department: '통계학과', name: '최대원', highSchool: '부산대동고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 충북대
+    { university: '충북대학교', department: '건축공학과', name: '전승주', highSchool: '대영고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '충북대학교', department: '지구환경과학과', name: '전승주', highSchool: '대영고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 경북대
+    { university: '경북대학교', department: '행정학부', name: '이우성', highSchool: '김해율하고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '공과대학 자율학부', name: '서건훈', highSchool: '성주고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '섬유시스템공학과', name: '김태현', highSchool: '신정고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '지구시스템과학부', name: '김유성', highSchool: '오산운암고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '식물의학과', name: '김대원', highSchool: '마산중앙고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '화학과', name: '손강민', highSchool: '검정고시', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: '정보컴퓨터교육과', name: '김도훈', highSchool: '광양제철고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '경북대학교', department: 'IT자율학부', name: '최대원', highSchool: '부산대동고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 한국외대(글로벌)
+    { university: '한국외국어대학교(글로벌)', department: '생명공학과', name: '박세은', highSchool: '진성고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '한국외국어대학교(글로벌)', department: '자유전공학부(글로벌)', name: '김도현', highSchool: '면목고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 인천대
+    { university: '인천대학교', department: '전자공학과', name: '홍성훈', highSchool: '시흥고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '인천대학교', department: '신소재공학과', name: '양재모', highSchool: '통영고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 공주대
+    { university: '공주대학교', department: '수학교육과', name: '고병찬', highSchool: '공주고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 동아대
+    { university: '동아대학교', department: '신소재공학과', name: '김민준', highSchool: '성의고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 대구가톨릭대
+    { university: '대구가톨릭대학교', department: '자율전공', name: '김서원', highSchool: '동탄반송고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+
+    // 농협대
+    { university: '농협대학교', department: '', name: '김도훈', highSchool: '광양제철고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
+    { university: '농협대학교', department: '', name: '배형민', highSchool: '오상고', tier: 'excellent', year: '2026', academy: 'SN독학기숙학원 양평점' },
   ];
 
   // 연도 필터 적용
@@ -364,6 +650,45 @@ export default function AdmissionData() {
         if (filter === 'top') return record.tier === 'sky' || record.tier === 'medical' || record.tier === 'top';
         return true;
       });
+
+  // 합격대학 기준 정렬
+  const uniOrder: Record<string, number> = {
+    '서울대학교': 1, '연세대학교': 2, '고려대학교': 3,
+    'KAIST': 4, 'KENTECH': 5, 'DGIST': 6, 'GIST': 7, 'UNIST': 8,
+    '서강대학교': 10, '성균관대학교': 11, '한양대학교': 12,
+    '서울교육대학교': 15, '춘천교육대학교': 15, '공주교육대학교': 15, '진주교육대학교': 15, '한국교원대학교': 15,
+    '경찰대학교': 16, '육군사관학교': 16, '해군사관학교': 16, '공군사관학교': 16,
+    '중앙대학교': 20, '경희대학교': 21, '한국외국어대학교': 22, '서울시립대학교': 23, '이화여자대학교': 24,
+    '홍익대학교': 25, '건국대학교': 30, '동국대학교': 31, '숙명여자대학교': 32, '국민대학교': 33,
+    '숭실대학교': 34, '세종대학교': 35, '단국대학교': 36, '가톨릭대학교': 37, '성신여자대학교': 38,
+    '광운대학교': 39, '명지대학교': 40, '상명대학교': 41, '서울여자대학교': 42, '한국체육대학교': 43,
+    '한국외국어대학교(글로벌)': 44, '아주대학교': 45, '인하대학교': 46, '가천대학교': 47,
+    '한양대학교(에리카)': 48, '서울과학기술대': 49, '서울과기대': 49, '한국항공대학교': 50,
+    '부산대학교': 55, '경북대학교': 56, '전남대학교': 57, '충북대학교': 58, '충남대학교': 59,
+    '인천대학교': 60, '공주대학교': 61, '동아대학교': 62, '대구가톨릭대학교': 63, '농협대학교': 64,
+    '조선대학교': 65, '원광대학교': 66, '을지대학교': 67, '인제대학교': 68,
+    '고신대학교': 69, '강원대학교': 70, '세명대학교': 71, '우석대학교': 72,
+    '순천대학교': 73, '전북대학교': 74, '경상국립대학교': 75, '순천향대학교': 76,
+    '영남대학교': 77, '제주대학교': 78,
+  };
+  const tierOrder: Record<string, number> = { medical: 0, sky: 1, top: 2, excellent: 3 };
+  const medDeptOrder = (d: string) => {
+    if (d.includes('의예과') && !d.includes('치의') && !d.includes('한의') && !d.includes('수의')) return 0;
+    if (d.includes('치의예과')) return 1;
+    if (d.includes('한의예과')) return 2;
+    if (d.includes('약학') || d.includes('약과학')) return 3;
+    if (d.includes('수의')) return 4;
+    return 5;
+  };
+  const sortedData = [...filteredData].sort((a, b) => {
+    const t = (tierOrder[a.tier] ?? 9) - (tierOrder[b.tier] ?? 9);
+    if (t !== 0) return t;
+    if (a.tier === 'medical') {
+      const d = medDeptOrder(a.department) - medDeptOrder(b.department);
+      if (d !== 0) return d;
+    }
+    return (uniOrder[a.university] ?? 99) - (uniOrder[b.university] ?? 99);
+  });
 
   const getTierBadge = (tier: string) => {
     switch (tier) {
@@ -523,7 +848,7 @@ export default function AdmissionData() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.map((record, index) => (
+                  {sortedData.map((record, index) => (
                     <tr
                       key={index}
                       className={`border-b border-gray-100 hover:bg-sn-green/5 transition-colors ${

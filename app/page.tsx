@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Philosophy from "@/components/sections/Philosophy";
+import StudentApp from "@/components/sections/StudentApp";
 
 export const metadata: Metadata = {
   title: "대치동 독학재수학원 | SN고요의숲 대치점",
@@ -48,6 +49,7 @@ export default function Home() {
       <Header />
       <main className="pt-24">
         <Philosophy />
+        <StudentApp />
       </main>
       <Footer />
     </div>

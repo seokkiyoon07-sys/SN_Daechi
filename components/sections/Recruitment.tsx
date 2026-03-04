@@ -20,19 +20,6 @@ export default function Recruitment() {
           </p>
         </div>
 
-        {/* 할인 배너 */}
-        <div className="mb-12 mx-auto" style={{ maxWidth: '1100px' }}>
-          <div className="bg-gradient-to-r from-red-500 to-orange-500 rounded-xl p-6 text-white text-center">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="text-2xl">🎉</span>
-              <span className="text-xl font-bold">2월 등록 특별 할인</span>
-              <span className="text-2xl">🎉</span>
-            </div>
-            <p className="text-lg font-medium mb-1">첫 달 수강료 <span className="text-yellow-300 font-bold text-2xl">50% OFF</span></p>
-            <p className="text-sm text-white/80">* 2월 신규 등록자 한정, 첫 달만 적용</p>
-          </div>
-        </div>
-
         {/* 프로그램 카드 */}
         <div className="mx-auto" style={{ maxWidth: '1100px' }}>
           <div className="flex items-center justify-center gap-3 mb-6">
@@ -87,19 +74,15 @@ export default function Recruitment() {
                 {/* 가격 */}
                 <div className="border-t-2 pt-4 mb-4 border-sn-main/20 mt-auto">
                   <div className="text-xs text-sn-green font-medium mb-1">수강료 안내</div>
-                  {program.discountPrice ? (
+                  {'originalPrice' in program && program.originalPrice ? (
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-sm text-gray-400 line-through">{program.originalPrice}</span>
-                        <span className="px-2 py-0.5 bg-red-500 text-white text-xs font-bold rounded">{program.discountRate}</span>
+                        <span className="px-2 py-0.5 bg-sn-green text-white text-xs font-bold rounded">{program.discountRate}</span>
                       </div>
-                      <div className="text-xl font-bold text-red-500">
-                        {program.discountPrice}
-                        <span className="text-xs text-gray-500 font-normal ml-1">(첫 달)</span>
+                      <div className="text-xl font-bold text-sn-green">
+                        {program.price}
                       </div>
-                      {'discountNote' in program && program.discountNote && (
-                        <div className="text-sm text-gray-600 mt-1">{program.discountNote}</div>
-                      )}
                     </div>
                   ) : (
                     <div className="text-xl font-bold text-sn-green">

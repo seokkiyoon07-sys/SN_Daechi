@@ -35,6 +35,7 @@ import Link from 'next/link';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSiteDropdownOpen, setIsSiteDropdownOpen] = useState(false);
+  const [isStudentDropdownOpen, setIsStudentDropdownOpen] = useState(false);
   const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
 
   const toggleSubmenu = (menuName: string) => {
@@ -233,6 +234,35 @@ export default function Header() {
                       {site.name}
                     </a>
                   ))}
+                </div>
+              )}
+            </div>
+
+            {/* 재원생앱 드롭다운 */}
+            <div className="relative">
+              <button
+                onClick={() => setIsStudentDropdownOpen(!isStudentDropdownOpen)}
+                className="px-4 py-2 text-sm font-medium text-sn-green border border-sn-green rounded-lg hover:bg-sn-green hover:text-white transition-colors"
+              >
+                재원생앱
+              </button>
+
+              {isStudentDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50">
+                  <a
+                    href="https://daechi.snacademy.co.kr/app"
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all"
+                    onClick={() => setIsStudentDropdownOpen(false)}
+                  >
+                    재원생앱
+                  </a>
+                  <a
+                    href="https://daechi.snacademy.co.kr/test"
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all"
+                    onClick={() => setIsStudentDropdownOpen(false)}
+                  >
+                    시험응시
+                  </a>
                 </div>
               )}
             </div>
@@ -470,6 +500,32 @@ export default function Header() {
                       {site.name}
                     </a>
                   ))}
+                </div>
+              </div>
+
+              {/* 재원생앱 */}
+              <div className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleSubmenu('student')}
+                  className="w-full flex items-center justify-between py-4 text-sn-green font-medium"
+                >
+                  <span>재원생앱</span>
+                  <svg
+                    className={`w-5 h-5 text-sn-green transition-transform duration-200 ${expandedMenu === 'student' ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'student' ? 'max-h-24 pb-3' : 'max-h-0'}`}>
+                  <a href="https://daechi.snacademy.co.kr/app" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    재원생앱
+                  </a>
+                  <a href="https://daechi.snacademy.co.kr/test" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    시험응시
+                  </a>
                 </div>
               </div>
 

@@ -11,9 +11,6 @@ export const programsData = [
       "12시간 자습실 이용"
     ],
     price: "800,000 원",
-    originalPrice: "800,000 원",
-    discountPrice: "400,000 원",
-    discountRate: "50%",
     priceLabel: "수강료 안내"
   },
   {
@@ -26,11 +23,9 @@ export const programsData = [
       "전담 멘토 배정",
       "12시간 자습실 이용"
     ],
-    price: "800,000 원",
+    price: "600,000 원",
     originalPrice: "800,000 원",
-    discountPrice: "400,000 원",
-    discountRate: "50%",
-    discountNote: "2개월차부터 600,000원 (25% 할인)",
+    discountRate: "25%",
     priceLabel: "수강료 안내"
   },
   {
@@ -45,9 +40,6 @@ export const programsData = [
       "학부모 상담 서비스"
     ],
     price: "600,000 원",
-    originalPrice: "600,000 원",
-    discountPrice: "300,000 원",
-    discountRate: "50%",
     priceLabel: "수강료 안내"
   }
 ];
