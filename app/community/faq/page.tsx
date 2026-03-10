@@ -7,7 +7,7 @@ export default function FaqPage() {
   const faqs = [
     {
       question: "입학 상담은 어떻게 신청하나요?",
-      answer: "홈페이지 상단의 '상담신청' 버튼을 클릭하시거나, 전화(010-5862-3838)로 문의해 주시면 됩니다. 방문 상담도 가능하며, 사전 예약을 권장드립니다."
+      answer: "홈페이지 상단의 '상담신청' 버튼을 클릭하시거나, 전화(02-557-0301)로 문의해 주시면 됩니다. 방문 상담도 가능하며, 사전 예약을 권장드립니다."
     },
     {
       question: "수업료 납부 방법은 어떻게 되나요?",
@@ -136,7 +136,7 @@ export default function FaqPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="tel:010-5862-3838"
+                  href="tel:02-557-0301"
                   className="inline-flex items-center justify-center px-6 py-3 bg-white text-sn-green font-medium rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -425,7 +425,7 @@ export default function VisitConsultation() {
           <p className="text-gray-600 mb-4">다른 방법으로 상담을 원하시나요?</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="tel:010-5862-3838"
+              href="tel:02-557-0301"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-lg border border-gray-200 hover:border-sn-green hover:bg-sn-green/5 transition-colors"
             >
               <Image src="/image/phone.png" alt="전화" width={24} height={24} />
