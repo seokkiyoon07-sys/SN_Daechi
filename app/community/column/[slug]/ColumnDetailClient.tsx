@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from "@/components/layout/Header";
@@ -12,7 +12,7 @@ function formatText(text: string): React.ReactNode[] {
   const parts = text.split(/(==.*?==|\*\*.*?\*\*|\[.*?\]\(.*?\))/g);
   return parts.map((part, i) => {
     if (part.startsWith('==') && part.endsWith('==')) {
-      return <mark key={i} className="bg-yellow-100 px-1 rounded">{part.slice(2, -2)}</mark>;
+      return <mark key={i} className="bg-transparent font-medium text-gray-900">{part.slice(2, -2)}</mark>;
     }
     if (part.startsWith('**') && part.endsWith('**')) {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
@@ -36,8 +36,17 @@ function formatText(text: string): React.ReactNode[] {
   });
 }
 
+// 요약 포인트 추출 (하이라이트 문장들)
+function extractSummary(content: string): string[] {
+  const matches = content.match(/==([^=]+)==/g);
+  if (!matches) return [];
+  return matches.slice(0, 3).map(m => m.replace(/==/g, ''));
+}
+
 export default function ColumnDetailClient({ column }: { column: Column }) {
   const [showImageModal, setShowImageModal] = useState(false);
+
+  const summaryPoints = useMemo(() => extractSummary(column.content), [column.content]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -132,25 +141,55 @@ export default function ColumnDetailClient({ column }: { column: Column }) {
               </div>
             )}
 
+            {/* 요약 박스 */}
+            {summaryPoints.length > 0 && (
+              <div className="mb-8 p-5 bg-sn-green/5 border border-sn-green/20 rounded-xl">
+                <p className="text-xs font-semibold text-sn-green uppercase tracking-wider mb-3">핵심 요약</p>
+                <ul className="space-y-2">
+                  {summaryPoints.map((point, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                      <span className="text-sn-green font-bold mt-0.5 flex-shrink-0">{i + 1}.</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* 칼럼 본문 */}
             <div className="prose prose-lg max-w-none">
               {column.content.split('\n\n').map((paragraph, index) => {
+                // ## 중제목
                 if (paragraph.startsWith('## ')) {
                   return (
-                    <h2 key={index} className="text-xl font-bold text-gray-900 mt-8 mb-4">
+                    <h2 key={index} className="text-xl font-bold text-gray-900 mt-10 mb-4">
                       {formatText(paragraph.replace('## ', ''))}
                     </h2>
                   );
                 }
-                if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                // ==하이라이트== 단독 단락 → callout 박스
+                if (paragraph.startsWith('==') && paragraph.endsWith('==')) {
                   return (
-                    <p key={index} className="font-semibold text-gray-900 my-4">
-                      {formatText(paragraph.replace(/\*\*/g, ''))}
-                    </p>
+                    <div key={index} className="my-5 pl-4 border-l-4 border-sn-green bg-sn-green/5 py-3 pr-4 rounded-r-lg">
+                      <p className="text-gray-900 font-medium leading-relaxed">
+                        {paragraph.slice(2, -2)}
+                      </p>
+                    </div>
                   );
                 }
+                // **볼드** 단독 단락 (대사/인용문)
+                if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+                  return (
+                    <div key={index} className="my-4 pl-4 border-l-2 border-gray-300">
+                      <p className="text-gray-900 font-semibold italic leading-relaxed">
+                        {paragraph.slice(2, -2)}
+                      </p>
+                    </div>
+                  );
+                }
+                // 일반 단락
                 return (
-                  <p key={index} className="text-gray-700 leading-relaxed my-4 whitespace-pre-line">
+                  <p key={index} className="text-gray-700 leading-relaxed my-2 whitespace-pre-line">
                     {formatText(paragraph)}
                   </p>
                 );

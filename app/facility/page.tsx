@@ -256,7 +256,7 @@ export default function FacilityPage() {
             "냉난방 완비로 쾌적한 학습 환경",
             "CCTV를 통한 학습 관리"
           ],
-          images: ["/image/facility/3Fstudy_room.jpg", "/image/facility/3Fstudy_room1.jpg"],
+          images: ["/image/facility/독서실/3F/2602-00017.jpg", "/image/facility/독서실/3F/2602-00110.jpg", "/image/facility/독서실/3F/2602-09886.jpg"],
           reverseLayout: false
         },
         {
@@ -268,7 +268,7 @@ export default function FacilityPage() {
             "최적의 조명 환경",
             "조용한 학습 분위기"
           ],
-          images: ["/image/facility/4Fstudy_room.jpg", "/image/facility/4FpremiumZone.jpg"],
+          images: ["/image/facility/독서실/4F/2602-09903.jpg", "/image/facility/독서실/4F/2602-09917.jpg", "/image/facility/독서실/4F/2602-09933.jpg"],
           reverseLayout: true
         },
         {
@@ -280,7 +280,7 @@ export default function FacilityPage() {
             "건강한 학습 습관 형성",
             "자유로운 이용 가능"
           ],
-          images: ["/image/facility/standing_table.jpg", "/image/facility/standing_table1.jpg"],
+          images: ["/image/facility/스탠딩/2602-00020.jpg", "/image/facility/스탠딩/2602-00112.jpg"],
           reverseLayout: false
         }
       ]
@@ -294,7 +294,7 @@ export default function FacilityPage() {
         "학부모 상담 가능",
         "편안한 분위기의 인테리어"
       ],
-      images: ["/image/facility/counseling_room.jpg"]
+      images: ["/image/facility/상담실/2602-00156.jpg", "/image/facility/상담실/2602-00175.jpg", "/image/facility/상담실/2602-00205.jpg"]
     },
     {
       name: "프린트 카페",
@@ -305,7 +305,7 @@ export default function FacilityPage() {
         "휴대폰 사용 허용 (지정 시간)",
         "자연 채광으로 밝은 분위기"
       ],
-      images: ["/image/facility/print_cafe.jpg"]
+      images: ["/image/facility/프린트 카페/2602-09980.jpg", "/image/facility/프린트 카페/2602-09982.jpg", "/image/facility/프린트 카페/2602-09990.jpg"]
     },
     {
       name: "강의실",
@@ -316,7 +316,7 @@ export default function FacilityPage() {
         "시간표에 따른 모의고사 진행",
         "성적 분석 및 피드백 제공"
       ],
-      images: ["/image/facility/lectureroom.jpg", "/image/facility/lectureroom2.jpg"]
+      images: ["/image/facility/강의실/2602-00066.jpg", "/image/facility/강의실/2602-00272.jpg", "/image/facility/강의실/2602-09962.jpg"]
     },
     {
       name: "인포메이션",
@@ -327,7 +327,7 @@ export default function FacilityPage() {
         "학원 행정 업무 처리",
         "비상 상황 대응 센터"
       ],
-      images: ["/image/facility/information_room.jpg"]
+      images: ["/image/facility/인포메이션/2602-00122.jpg", "/image/facility/인포메이션/2602-00143.jpg", "/image/facility/인포메이션/2602-00151.jpg"]
     },
     {
       name: "테라스",
