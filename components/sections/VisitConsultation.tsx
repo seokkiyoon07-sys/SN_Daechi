@@ -12,6 +12,7 @@ const generateCaptcha = () => {
 
 interface FormData {
   name: string;
+  gender: string;
   phone: string;
   email: string;
   studentGrade: string;
@@ -23,6 +24,7 @@ interface FormData {
 export default function VisitConsultation() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
+    gender: '',
     phone: '',
     email: '',
     studentGrade: '',
@@ -69,6 +71,7 @@ export default function VisitConsultation() {
         },
         body: JSON.stringify({
           name: formData.name,
+          gender: formData.gender,
           phone: formData.phone,
           email: formData.email,
           studentGrade: formData.studentGrade,
@@ -82,14 +85,10 @@ export default function VisitConsultation() {
       console.log('API Response:', responseData);
 
       if (response.ok) {
-        // 임시: Sheets 실패 시 알림
-        if (responseData.debug?.sheetsStatus === 'rejected') {
-          console.error('Sheets Error:', responseData.debug.sheetsError);
-          alert('구글 시트 저장 실패: ' + responseData.debug.sheetsError);
-        }
         setSubmitStatus('success');
         setFormData({
           name: '',
+          gender: '',
           phone: '',
           email: '',
           studentGrade: '',
@@ -236,6 +235,25 @@ export default function VisitConsultation() {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sn-green focus:border-sn-green transition-colors"
                     placeholder="010-0000-0000"
                   />
+                </div>
+
+                {/* 성별 */}
+                <div>
+                  <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-2">
+                    성별 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    required
+                    value={formData.gender}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sn-green focus:border-sn-green transition-colors"
+                  >
+                    <option value="">선택해주세요</option>
+                    <option value="남">남</option>
+                    <option value="여">여</option>
+                  </select>
                 </div>
 
                 {/* 이메일 */}

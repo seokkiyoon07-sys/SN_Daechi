@@ -15,7 +15,7 @@ export function OrganizationJsonLd() {
       postalCode: '06288',
       addressCountry: 'KR',
     },
-    telephone: '+82-10-5862-3838',
+    telephone: '+82-2-557-0301',
     areaServed: {
       '@type': 'City',
       name: '서울',
@@ -67,7 +67,7 @@ export function LocalBusinessJsonLd() {
     alternateName: 'SN-고요의숲 대치 AI특화관',
     image: 'https://daechi.snacademy.co.kr/image/thumbnail/daechi_goyuuiseup.png',
     url: 'https://daechi.snacademy.co.kr',
-    telephone: '+82-10-5862-3838',
+    telephone: '+82-2-557-0301',
     priceRange: '₩₩₩',
     address: {
       '@type': 'PostalAddress',

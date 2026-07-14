@@ -131,68 +131,32 @@ export default function Philosophy() {
 
   return (
     <div className="bg-white">
-      {/* Section 1: Hero - Minimal Institutional Style */}
+      {/* Section 1: Hero */}
       <section
-        className="relative min-h-[85vh] flex items-center"
+        className="relative min-h-[60vh] sm:min-h-[75vh] lg:min-h-[85vh]"
         aria-labelledby="philosophy-hero-title"
       >
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/image/24.12-03724.jpg"
-            alt="대치 고요의 숲 몰입형 독학관리 학습 공간"
-            fill
-            className="object-cover"
-            priority
-          />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-[#1a1f2e]/85" />
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-24">
-          {/* Badge */}
-          <p
-            id="hero-label"
-            data-animate
-            className={`text-sm tracking-[0.15em] text-gray-500 mb-8 transition-opacity duration-500 ${
-              visibleSections.has('hero-label') ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            관리 철학
-          </p>
-
-          {/* Main Headline */}
-          <h1
-            id="philosophy-hero-title"
-            data-animate
-            className={`text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-relaxed md:leading-loose mb-10 transition-opacity duration-500 delay-100 ${
-              visibleSections.has('philosophy-hero-title') ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            대치 고요의 숲 –
-            <br />
-            <span className="block mt-2 md:mt-4"><span className="text-[#5a7d6a]">AI 기반 지능형 독학관리</span></span>
-          </h1>
-
-          {/* Subtitle */}
-          <p
-            id="hero-subtitle"
-            data-animate
-            className={`text-lg text-gray-400 transition-opacity duration-500 delay-200 ${
-              visibleSections.has('hero-subtitle') ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            SN은 의지에 기대지 않고, 시스템으로 공부를 훈련시킵니다.
-          </p>
-        </div>
-
-        {/* Minimal Scroll Indicator */}
-        <div className="absolute bottom-12 left-6 sm:left-8 lg:left-12 z-10" aria-hidden="true">
-          <div className="flex items-center gap-3 text-gray-500 text-sm">
-            <span className="w-8 h-px bg-gray-600" />
-            <span>Scroll</span>
+        <Image
+          src="/image/homepage_main.png"
+          alt="대치 고요의 숲 AI 기반 지능형 독학관리 학습 공간"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute right-5 top-6 z-10 rotate-[-7deg] sm:right-10 sm:top-10 lg:right-16 lg:top-14">
+          <div className="rounded-md border-4 border-red-600 px-4 py-2 text-center text-red-600 sm:border-[6px] sm:px-6 sm:py-3">
+            <p className="text-xs font-bold tracking-[0.35em] sm:text-sm lg:text-base">
+              남 · 녀
+            </p>
+            <p className="whitespace-nowrap text-2xl font-black leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+              전좌석 마감
+            </p>
           </div>
         </div>
+        <h1 id="philosophy-hero-title" className="sr-only">
+          대치 고요의 숲 - AI 기반 지능형 독학관리
+        </h1>
       </section>
 
       {/* AI 특화관 차별점 섹션 */}

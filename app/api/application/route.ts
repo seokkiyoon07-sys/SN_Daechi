@@ -3,7 +3,7 @@ import { google } from 'googleapis';
 import { Readable } from 'stream';
 
 // 잔디 웹훅 URL (온라인 원서접수용)
-const JANDI_WEBHOOK_URL = 'https://wh.jandi.com/connect-api/webhook/33175090/15ebb052652650d7bb2807253ef3c304';
+const JANDI_WEBHOOK_URL = process.env.JANDI_WEBHOOK_URL;
 
 // 외부 DB 포워딩 URL
 const STUDENT_WEB_API_URL = process.env.STUDENT_WEB_API_URL;
@@ -13,6 +13,7 @@ interface ApplicationData {
   program: string;
   studentName: string;
   studentBirthDate: string;
+  gender: string;
   school: string;
   parentPhone: string;
   parentName: string;
@@ -115,64 +116,11 @@ async function uploadToGoogleDrive(
   }
 }
 
-async function appendToGoogleSheets(data: ApplicationData) {
-  const spreadsheetId = process.env.GOOGLE_SPREADSHEET_ID;
-
-  if (!spreadsheetId) {
-    throw new Error('Google Spreadsheet ID not configured');
-  }
-
-  const auth = getGoogleAuth(['https://www.googleapis.com/auth/spreadsheets']);
-  const sheets = google.sheets({ version: 'v4', auth });
-
-  const now = new Date();
-  const timestamp = now.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
-
-  const values = [
-    [
-      timestamp,
-      data.program || '-',  // 프로그램 선택
-      data.studentName,
-      data.studentBirthDate,
-      data.school,
-      data.parentName,
-      data.parentPhone,
-      data.studentPhone || '-',
-      data.cashReceiptPhone || '-',
-      data.email || '-',
-      data.examType || '-',
-      data.subjects || '-',
-      data.grades || '-',
-      data.scores || '-',
-      data.naesinGrade || '-',
-      data.concerns || '-',
-      data.memo || '-',
-      data.fileUrl || '-',  // 성적표 파일 링크
-    ],
-  ];
-
-  try {
-    await sheets.spreadsheets.values.append({
-      spreadsheetId,
-      range: 'application!A:R',  // R열까지 (프로그램 추가)
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values,
-      },
-    });
-    console.log('Google Sheets append successful (application)');
-  } catch (error) {
-    const e = error as Error & { code?: number; response?: { data?: unknown } };
-    console.error('Google Sheets API error:', {
-      message: e.message,
-      code: e.code,
-      responseData: e.response?.data,
-    });
-    throw error;
-  }
-}
-
 async function sendToJandi(data: ApplicationData) {
+  if (!JANDI_WEBHOOK_URL) {
+    throw new Error('JANDI_WEBHOOK_URL not configured');
+  }
+
   const jandiPayload = {
     body: '📋 새로운 온라인 원서접수가 접수되었습니다!',
     connectColor: '#4CAF50',
@@ -183,7 +131,7 @@ async function sendToJandi(data: ApplicationData) {
       },
       {
         title: '👤 학생 정보',
-        description: `이름: ${data.studentName}\n생년월일: ${data.studentBirthDate}\n학교: ${data.school}`,
+        description: `이름: ${data.studentName}\n성별: ${data.gender}\n생년월일: ${data.studentBirthDate}\n학교: ${data.school}`,
       },
       {
         title: '👨‍👩‍👧 보호자 정보',
@@ -272,6 +220,7 @@ export async function POST(request: NextRequest) {
         program: formData.get('program') as string || '',
         studentName: formData.get('studentName') as string || '',
         studentBirthDate: formData.get('studentBirthDate') as string || '',
+        gender: formData.get('gender') as string || '',
         school: formData.get('school') as string || '',
         parentPhone: formData.get('parentPhone') as string || '',
         parentName: formData.get('parentName') as string || '',
@@ -299,7 +248,7 @@ export async function POST(request: NextRequest) {
     });
 
     // 필수 필드 검증
-    if (!data.studentName || !data.parentPhone || !data.parentName || !data.school || !data.studentBirthDate) {
+    if (!data.studentName || !['남', '여'].includes(data.gender) || !data.parentPhone || !data.parentName || !data.school || !data.studentBirthDate) {
       return NextResponse.json(
         { error: '필수 항목을 모두 입력해주세요.' },
         { status: 400 }
@@ -319,38 +268,25 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 병렬로 잔디, 구글 시트, 외부 DB에 전송
+    // 병렬로 잔디와 외부 DB에 전송
     const results = await Promise.allSettled([
       sendToJandi(data),
-      appendToGoogleSheets(data),
       forwardToStudentWeb(data),
     ]);
 
     // 결과 확인
     const jandiResult = results[0];
-    const sheetsResult = results[1];
-    const forwardResult = results[2];
+    const forwardResult = results[1];
 
     if (jandiResult.status === 'rejected') {
       console.error('Jandi webhook failed:', jandiResult.reason);
-    }
-
-    if (sheetsResult.status === 'rejected') {
-      const error = sheetsResult.reason as Error & { code?: number; status?: number };
-      console.error('Google Sheets failed:', {
-        message: error.message,
-        code: error.code,
-        status: error.status,
-        stack: error.stack,
-      });
     }
 
     if (forwardResult.status === 'rejected') {
       console.error('Student Web forward failed:', forwardResult.reason);
     }
 
-    // 잔디와 시트 둘 다 실패한 경우에만 에러 반환
-    if (jandiResult.status === 'rejected' && sheetsResult.status === 'rejected') {
+    if (jandiResult.status === 'rejected' && forwardResult.status === 'rejected') {
       return NextResponse.json(
         { error: '신청 처리 중 오류가 발생했습니다.' },
         { status: 500 }
@@ -362,8 +298,6 @@ export async function POST(request: NextRequest) {
       fileUrl: data.fileUrl,
       debug: {
         jandiStatus: jandiResult.status,
-        sheetsStatus: sheetsResult.status,
-        sheetsError: sheetsResult.status === 'rejected' ? (sheetsResult.reason as Error).message : null,
         forwardStatus: forwardResult.status,
         forwardError: forwardResult.status === 'rejected' ? (forwardResult.reason as Error).message : null,
       }

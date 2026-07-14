@@ -20,6 +20,7 @@ interface FormData {
   program: string;  // 프로그램 선택
   studentName: string;
   studentBirthDate: string;
+  gender: string;
   school: string;
   parentPhone: string;
   parentName: string;
@@ -60,6 +61,7 @@ export default function OnlineApplication() {
     program: '',
     studentName: '',
     studentBirthDate: '',
+    gender: '',
     school: '',
     parentPhone: '',
     parentName: '',
@@ -179,6 +181,7 @@ export default function OnlineApplication() {
       submitFormData.append('program', formData.program);
       submitFormData.append('studentName', formData.studentName);
       submitFormData.append('studentBirthDate', formData.studentBirthDate);
+      submitFormData.append('gender', formData.gender);
       submitFormData.append('school', formData.school);
       submitFormData.append('parentPhone', formData.parentPhone);
       submitFormData.append('parentName', formData.parentName);
@@ -341,6 +344,25 @@ export default function OnlineApplication() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sn-green focus:border-transparent transition-all"
                   />
+                </div>
+
+                {/* 성별 */}
+                <div>
+                  <label htmlFor="gender" className="block text-sm font-medium text-gray-700 mb-2">
+                    성별 <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sn-green focus:border-transparent transition-all"
+                  >
+                    <option value="">선택해주세요</option>
+                    <option value="남">남</option>
+                    <option value="여">여</option>
+                  </select>
                 </div>
 
                 {/* 출신(소속학교) */}
