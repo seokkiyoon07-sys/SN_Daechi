@@ -37,9 +37,9 @@ export default function AboutPage() {
     },
     {
       number: '02',
-      title: 'AI × Human Intelligence 듀얼 코칭 시스템',
-      content: 'SNarGPT, SNarVIS는 24시간 학습 흐름과 사고 과정을 추적합니다.\n\n대치동 전문 강사진은 그 데이터를 바탕으로 정확한 개입과 피드백을 제공합니다.',
-      highlight: 'AI의 정밀함 + 사람의 통찰이 결합된 구조입니다.',
+      title: 'AI 기반 자기주도학습 지원 시스템',
+      content: 'SNarGPT, SNarVIS가 학습 데이터를 분석해 학습 흐름과 패턴을 보여줍니다.\n\n학생은 AI 리포트를 참고해 자신의 학습 상태를 확인하고, 스스로 계획과 공부 방법을 조정합니다.',
+      highlight: 'AI는 분석을 돕고, 학습의 선택과 실행은 학생이 주도합니다.',
     },
     {
       number: '03',
@@ -57,7 +57,7 @@ export default function AboutPage() {
   const coreValues = [
     {
       title: 'Transparency',
-      description: '학습 진도와 성과를 투명하게 공유하고,\n정기적인 상담으로 방향을 조정합니다.',
+      description: '학습 기록과 분석 결과를 리포트로 제공하여,\n학생이 스스로 학습 흐름을 점검할 수 있도록 돕습니다.',
     },
     {
       title: 'Innovation',
@@ -87,8 +87,8 @@ export default function AboutPage() {
               INTRO
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
-              SN은 &apos;학원&apos;이 아니라<br />
-              <span className="text-sn-green">학습 시스템</span>입니다
+              SN고요의숲은<br />
+              <span className="text-sn-green">관리형 스터디카페</span>입니다
             </h1>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
@@ -97,9 +97,9 @@ export default function AboutPage() {
               </p>
               <p>
                 SN 대치는 여기에<br />
-                대치동 전문 강사진과 밀착 지도,<br />
-                그리고 AI 기반 학습 설계를 결합해<br />
-                학생마다 다른 <span className="text-sn-green font-semibold">&apos;성장 알고리즘&apos;</span>을 완성합니다.
+                집중할 수 있는 자습 공간과<br />
+                AI 기반 학습 도구를 결합해<br />
+                학생이 스스로 <span className="text-sn-green font-semibold">학습 계획과 루틴</span>을 만들어갈 수 있도록 돕습니다.
               </p>
               <p className="text-gray-800 font-medium">
                 우리는<br />
@@ -124,7 +124,7 @@ export default function AboutPage() {
             <div className="flex items-center gap-3 mb-8">
               <span className="w-1.5 h-8 bg-sn-green rounded-full"></span>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Our Mission</h2>
-              <span className="text-gray-400 text-lg">하루를 설계하는 교육</span>
+              <span className="text-gray-400 text-lg">스스로 설계하는 하루</span>
             </div>
             <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
@@ -133,9 +133,9 @@ export default function AboutPage() {
                   AI가 이를 정밀하게 해석합니다.
                 </p>
                 <p>
-                  전문 강사진은 그 데이터를 기반으로 코칭하며,<br />
-                  학생이 하루 12시간 이상 몰입할 수 있도록<br />
-                  시간·루틴·생활 전반을 설계합니다.
+                  학생은 AI 분석 결과를 참고해<br />
+                  자신의 학습 시간과 루틴을 직접 계획하고,<br />
+                  자습 공간에서 자기주도적으로 실천합니다.
                 </p>
                 <p className="text-gray-800 font-medium pt-4 border-t border-gray-200">
                   우리가 만드는 것은<br />
@@ -160,7 +160,7 @@ export default function AboutPage() {
           >
             <div className="flex items-center gap-3 mb-12">
               <span className="w-1.5 h-8 bg-sn-green rounded-full"></span>
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Education Philosophy</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">Learning Philosophy</h2>
               <span className="text-gray-400 text-lg">SN이 작동하는 방식</span>
             </div>
             <div className="space-y-8">
@@ -439,7 +439,7 @@ export default function AboutPage() {
                   href="/programs#contact"
                   className="px-8 py-4 bg-sn-green text-white font-semibold rounded-xl hover:bg-sn-green-dark transition-colors"
                 >
-                  상담 신청하기
+                  이용 상담 신청하기
                 </a>
                 <a
                   href="/about/philosophy"

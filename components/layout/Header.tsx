@@ -6,7 +6,7 @@
  * ============================================
  *
  * 1. THE SYSTEM (또는 AI & 관리)
- *    - 왜 이 학원인가? (AI 특화관, 관리 철학)
+ *    - 왜 이 공간인가? (AI 특화관, 관리 철학)
  *    - 서브: AI특화관, 관리 철학/시스템 소개
  *
  * 2. 성적 변화의 증거
@@ -14,10 +14,10 @@
  *    - 서브: 성공스토리, 입결 데이터
  *
  * 3. 캠퍼스 라이프
- *    - 학원생활 + 시설안내 (학생이 가장 궁금해하는 곳)
+ *    - 이용생활 + 시설안내 (학생이 가장 궁금해하는 곳)
  *    - 서브: 생활관리, 학습시간표, 학사일정, 시설안내
  *
- * 4. 입학 안내
+ * 4. 이용 안내
  *    - 모집요강 + 방문상담 예약 (Action Item)
  *    - 서브: 모집요강, 방문상담 예약
  *
@@ -59,7 +59,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/image/sn-logo.png"
-                alt="대치 고요의 숲 AI 독학관리학원 로고"
+                alt="대치 고요의 숲 AI 관리형 스터디카페 로고"
                 width={40}
                 height={40}
                 className="h-10 w-auto"
@@ -67,7 +67,7 @@ export default function Header() {
               />
               <div className="flex flex-col">
                 <span className="text-lg font-medium text-gray-900">고요의숲 대치</span>
-                <span className="text-xs text-gray-600">독학관리 AI 특화관</span>
+                <span className="text-xs text-gray-600">관리형 스터디카페</span>
               </div>
             </Link>
           </div>
@@ -85,9 +85,6 @@ export default function Header() {
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <a href="/about/ai-center" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   AI특화관
-                </a>
-                <a href="/about/team" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  강사/멘토진
                 </a>
                 <a href="/about" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   About SN
@@ -130,19 +127,16 @@ export default function Header() {
                 <a href="/campus/yearly" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   학사일정
                 </a>
-                <a href="/campus/menu" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  대치동 맛집지도
-                </a>
                 <a href="/campus/academy-map" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  대치 재수학원 가격 지도
+                  주변 학습 공간 가격 지도
                 </a>
               </div>
             </div>
 
-            {/* 4. 입학 안내 드롭다운 */}
+            {/* 4. 이용 안내 드롭다운 */}
             <div className="relative group">
               <a href="/programs" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
-                입학 안내
+                이용 안내
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
               </a>
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
@@ -150,7 +144,7 @@ export default function Header() {
                   모집요강
                 </a>
                 <a href="/admission/apply" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  온라인 원서접수
+                  온라인 이용 신청
                 </a>
                 <a href="/admission/scholarship" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   장학금
@@ -188,12 +182,12 @@ export default function Header() {
              * ============================================
             <div className="relative group">
               <a href="/about" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
-                학원소개
+                공간소개
               </a>
             </div>
             <a href="/programs">모집요강</a>
             <div className="relative group">
-              <a href="/campus">학원생활</a>
+              <a href="/campus">이용생활</a>
             </div>
             <a href="/success-stories">성공스토리</a>
             <a href="/facility">시설안내</a>
@@ -334,9 +328,6 @@ export default function Header() {
                   <a href="/about/ai-center" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     AI특화관
                   </a>
-                  <a href="/about/team" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    강사/멘토진
-                  </a>
                   <a href="/about" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     About SN
                   </a>
@@ -398,22 +389,19 @@ export default function Header() {
                   <a href="/campus/yearly" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     학사일정
                   </a>
-                  <a href="/campus/menu" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    대치동 맛집지도
-                  </a>
                   <a href="/campus/academy-map" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    대치 재수학원 가격 지도
+                    주변 학습 공간 가격 지도
                   </a>
                 </div>
               </div>
 
-              {/* 4. 입학 안내 */}
+              {/* 4. 이용 안내 */}
               <div className="border-b border-gray-100">
                 <button
                   onClick={() => toggleSubmenu('admission')}
                   className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
                 >
-                  <span>입학 안내</span>
+                  <span>이용 안내</span>
                   <svg
                     className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'admission' ? 'rotate-180' : ''}`}
                     fill="none"
@@ -428,7 +416,7 @@ export default function Header() {
                     모집요강
                   </a>
                   <a href="/admission/apply" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    온라인 원서접수
+                    온라인 이용 신청
                   </a>
                   <a href="/admission/scholarship" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     장학금

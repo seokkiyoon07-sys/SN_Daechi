@@ -170,9 +170,9 @@ function AcademyMapJsonLd() {
             "@type": "ListItem",
             "position": 1,
             "item": {
-              "@type": "EducationalOrganization",
+              "@type": "LocalBusiness",
               "name": "SN고요의숲",
-              "description": "AI 기반 독학관리 프리미엄 학원",
+              "description": "AI 기반 관리형 스터디카페",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "대치동 447",
@@ -215,7 +215,7 @@ function AcademyMapJsonLd() {
             "name": "대치동 독학재수 학원 추천해주세요",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "대치동 독학재수/독학관리 학원으로는 SN고요의숲(AI특화, 80만원), 수능선배(79만원), 이투스247(70~85만원), 메이드존(65만원) 등이 있습니다. 각 학원별 특징과 가격을 비교해보시기 바랍니다."
+              "text": "관리형 스터디카페 SN고요의숲(AI특화, 80만원)과 주변 독학재수/독학관리 학원인 수능선배(79만원), 이투스247(70~85만원), 메이드존(65만원) 등이 있습니다. 각 학원별 특징과 가격을 비교해보시기 바랍니다."
             }
           }
         ]
@@ -233,7 +233,7 @@ function AcademyMapJsonLd() {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "학원생활",
+            "name": "이용생활",
             "item": "https://daechi.snacademy.co.kr/campus"
           },
           {

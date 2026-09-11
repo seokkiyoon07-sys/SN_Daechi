@@ -261,7 +261,7 @@ export default function Programs() {
                               <span className="text-xl">🏫</span>
                               <span className={`text-xs font-semibold ${
                                 snargptView === 'school' ? 'text-orange-400' : 'text-gray-300 group-hover:text-orange-400'
-                              }`}>학원생활 예시</span>
+                              }`}>이용생활 예시</span>
                             </div>
                           </button>
                         </div>

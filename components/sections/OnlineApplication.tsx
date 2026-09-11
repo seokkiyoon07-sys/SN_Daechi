@@ -16,7 +16,7 @@ interface SubjectScore {
 }
 
 interface FormData {
-  // 입학정보
+  // 이용 신청 정보
   program: string;  // 프로그램 선택
   studentName: string;
   studentBirthDate: string;
@@ -218,7 +218,7 @@ export default function OnlineApplication() {
     }
   };
 
-  const programOptions = ['정규 독학재수반', '정규 재학생반', '프리미엄 수학 관리반'];
+  const programOptions = ['N수생 관리형 이용권', '재학생 관리형 이용권', '프리미엄 학습관리 이용권'];
   const examTypeOptions = ['2025 수능', '2025 9월 모평', '2025 6월 모평', '2024 수능', '기타'];
   const koreanTypeOptions = ['언어와 매체', '화법과 작문'];
   const mathTypeOptions = ['확률과 통계', '미적분', '기하'];
@@ -249,7 +249,7 @@ export default function OnlineApplication() {
               Online Application
             </span>
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
-              온라인 원서접수
+              온라인 이용 신청
             </h1>
             <p className="text-gray-300 max-w-2xl mx-auto">
               학생 정보와 성적을 입력해 주시면
@@ -287,10 +287,10 @@ export default function OnlineApplication() {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* 입학정보 */}
+            {/* 이용 신청 정보 */}
             <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
               <h2 className="text-xl font-bold text-gray-900 mb-6 pb-4 border-b border-gray-200">
-                입학정보
+                이용 신청 정보
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -641,7 +641,7 @@ export default function OnlineApplication() {
                 </div>
                 <ul className="mt-3 space-y-1 text-xs text-gray-500">
                   <li>• 입소 조건에 해당되는 성적표를 업로드 해주세요.</li>
-                  <li>• 입력한 성적과 등록한 성적표가 다른 경우, 입학 취소가 될 수 있습니다. (선행반은 성적표 첨부 제외)</li>
+                  <li>• 입력한 성적과 등록한 성적표가 다른 경우, 이용 신청 취소가 될 수 있습니다. (선행반은 성적표 첨부 제외)</li>
                   <li>• 파일 이름은 &quot;전형 / 학교 / 이름&quot;을 기재해주세요. (ex&gt; 재도전반 / 에스엔고등학교 / 홍길동 )</li>
                 </ul>
               </div>
@@ -744,15 +744,15 @@ export default function OnlineApplication() {
               <div className="bg-gray-50 p-4 rounded-lg mb-4 max-h-40 overflow-y-auto text-sm text-gray-600">
                 <p className="mb-2 font-medium">개인정보 수집 및 이용 동의</p>
                 <p className="mb-2">
-                  SN-고요의숲 대치(이하 &apos;학원&apos;)은 원서접수를 위해 아래와 같이 개인정보를 수집·이용합니다.
+                  SN-고요의숲 대치(이하 &apos;스터디카페&apos;)는 이용 신청을 위해 아래와 같이 개인정보를 수집·이용합니다.
                 </p>
                 <ul className="list-disc pl-5 space-y-1">
                   <li>수집항목: 학생 성명, 생년월일, 학교, 연락처, 보호자 정보, 이메일, 성적정보</li>
-                  <li>수집목적: 입학 상담 및 원서접수 처리, 학원 운영</li>
+                  <li>수집목적: 이용 상담 및 이용 신청 처리, 스터디카페 운영</li>
                   <li>보유기간: 수집일로부터 1년 (목적 달성 시 즉시 파기)</li>
                 </ul>
                 <p className="mt-2">
-                  위 개인정보 수집·이용에 동의하지 않으실 수 있으나, 미동의 시 원서접수가 제한됩니다.
+                  위 개인정보 수집·이용에 동의하지 않으실 수 있으나, 미동의 시 이용 신청이 제한됩니다.
                 </p>
               </div>
               <label className="flex items-center gap-3 cursor-pointer">

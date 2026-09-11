@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://daechi.snacademy.co.kr"),
-  title: "대치동 독학재수학원 | SN고요의숲 대치점",
+  title: "대치동 관리형 스터디카페 | SN고요의숲 대치점",
   icons: {
     icon: [
       { url: "/image/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
       { rel: "icon", url: "/image/android-chrome-512x512.png", sizes: "512x512" },
     ],
   },
-  description: "AI 학습관리 특화 독학재수관. 공부량·오답·취약단원 분석, 디지털 차단 환경, 수학 원장 클리닉, 국어·수학 상위권 킬러문항 무제한 제공. 대치역 3분거리 재수학원 SN고요의숲",
+  description: "대치동 관리형 스터디카페 SN고요의숲. 집중할 수 있는 자습 공간, 출결·생활관리, AI 학습 도구와 학습 리포트로 자기주도학습을 지원합니다. 대치역 인근 SN고요의숲 대치점.",
   keywords: [
-    "독학재수학원",
-    "대치동 학원",
+    "관리형 스터디카페",
+    "대치동 스터디카페",
     "AI 학습",
     "SNarGPT",
     "수능 AI",
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     "오답 관리",
     "독학관리",
     "SN고요의숲",
-    "재수학원",
-    "대치학원"
+    "관리형 스터디카페",
+    "대치 스터디카페"
   ],
   authors: [{ name: "대치 고요의 숲" }],
   creator: "대치 고요의 숲",
@@ -57,21 +57,21 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     url: "https://daechi.snacademy.co.kr",
     siteName: "대치 고요의 숲",
-    title: "대치동 독학재수학원 | SN고요의숲 대치점",
-    description: "AI 학습관리 특화 독학재수관. 공부량·오답·취약단원 분석, 디지털 차단 환경, 수학 원장 클리닉, 국어·수학 상위권 킬러문항 무제한 제공. 대치역 3분거리 재수학원 SN고요의숲",
+    title: "대치동 관리형 스터디카페 | SN고요의숲 대치점",
+    description: "대치동 관리형 스터디카페 SN고요의숲. 집중할 수 있는 자습 공간, 출결·생활관리, AI 학습 도구와 학습 리포트로 자기주도학습을 지원합니다. 대치역 인근 SN고요의숲 대치점.",
     images: [
       {
         url: "/image/thumbnail/daechi_goyuuiseup.png",
         width: 1200,
         height: 630,
-        alt: "대치동 독학재수학원 SN고요의숲 대치점",
+        alt: "대치동 관리형 스터디카페 SN고요의숲 대치점",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "대치동 독학재수학원 | SN고요의숲 대치점",
-    description: "AI 학습관리 특화 독학재수관. 공부량·오답·취약단원 분석, 디지털 차단 환경, 수학 원장 클리닉, 국어·수학 상위권 킬러문항 무제한 제공. 대치역 3분거리 재수학원 SN고요의숲",
+    title: "대치동 관리형 스터디카페 | SN고요의숲 대치점",
+    description: "대치동 관리형 스터디카페 SN고요의숲. 집중할 수 있는 자습 공간, 출결·생활관리, AI 학습 도구와 학습 리포트로 자기주도학습을 지원합니다. 대치역 인근 SN고요의숲 대치점.",
     images: ["/image/thumbnail/daechi_goyuuiseup.png"],
   },
   verification: {

@@ -52,7 +52,7 @@ export default function SchedulePage() {
         </div>
         ${printContent.innerHTML}
         <div class="footer">
-          <p>※ 시간표는 학원 사정에 따라 변경될 수 있습니다.</p>
+          <p>※ 시간표는 운영 사정에 따라 변경될 수 있습니다.</p>
         </div>
       </body>
       </html>
@@ -410,7 +410,7 @@ export default function SchedulePage() {
           {/* 안내 */}
           <div className="mt-8 md:mt-12 p-4 md:p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">
             <p className="text-center text-gray-700">
-              <span className="font-semibold text-sn-green">※ 시간표는 학원 사정에 따라 변경될 수 있습니다.</span><br />
+              <span className="font-semibold text-sn-green">※ 시간표는 운영 사정에 따라 변경될 수 있습니다.</span><br />
               <span className="text-sm">자세한 내용은 공지사항을 확인해 주세요.</span>
             </p>
           </div>

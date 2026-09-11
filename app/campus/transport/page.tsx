@@ -146,7 +146,7 @@ export default function TransportPage() {
             </p>
           </div>
 
-          {/* 학원 정보 */}
+          {/* 공간 정보 */}
           <div className="bg-white rounded-xl border border-gray-200 p-6 mb-8">
             <div className="grid md:grid-cols-3 gap-6">
               <div className="flex items-start gap-3">

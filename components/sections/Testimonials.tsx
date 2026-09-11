@@ -11,7 +11,7 @@ export default function Testimonials() {
       name: "이○○",
       university: "연세대학교 경제학부 합격",
       year: "2024",
-      content: "재수를 결심하고 SN독학재수학원을 선택한 것이 최고의 결정이었습니다. 멘토 선생님의 세심한 관리로 성적이 크게 올랐습니다.",
+      content: "재수를 결심하고 SN고요의숲을 선택한 것이 최고의 결정이었습니다. 멘토 선생님의 세심한 관리로 성적이 크게 올랐습니다.",
       rating: 5
     },
     {
@@ -53,7 +53,7 @@ export default function Testimonials() {
             합격생 후기
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            SN독학재수학원과 함께 꿈을 이룬 학생들의 생생한 이야기
+            SN고요의숲과 함께 꿈을 이룬 학생들의 생생한 이야기
           </p>
         </div>
 

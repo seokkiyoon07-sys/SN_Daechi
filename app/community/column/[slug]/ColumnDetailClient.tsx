@@ -109,7 +109,7 @@ export default function ColumnDetailClient({ column }: { column: Column }) {
                 </button>
                 <div>
                   <p className="font-semibold text-gray-900">{column.author}</p>
-                  <p className="text-sm text-gray-500">고요의 숲 총 원장</p>
+                  <p className="text-sm text-gray-500">고요의 숲 총괄 센터장</p>
                 </div>
               </div>
             )}

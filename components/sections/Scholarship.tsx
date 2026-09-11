@@ -128,7 +128,7 @@ export default function Scholarship() {
           <ul className="space-y-3 text-gray-300">
             <li className="flex items-start gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-sn-green mt-2 flex-shrink-0"></span>
-              장학금은 입학 상담 시 신청 가능합니다.
+              장학금은 이용 상담 시 신청 가능합니다.
             </li>
             <li className="flex items-start gap-3">
               <span className="w-1.5 h-1.5 rounded-full bg-sn-green mt-2 flex-shrink-0"></span>

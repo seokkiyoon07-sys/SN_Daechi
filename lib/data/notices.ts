@@ -35,7 +35,7 @@ export const noticesData: Notice[] = [
 더 가르치기보다,
 ==더 깊이 몰입할 수 있는 환경==을 만들기로.
 
-## SN독학관리 학원에서 만든 대치 고요의 숲은
+## 관리형 스터디카페 SN고요의숲 대치점은
 
 수업보다 **사고 과정**을 중시하고
 관리보다 **자기 통제력**을 키우며
@@ -61,15 +61,14 @@ AI는 아이를 대신 공부하지 않습니다.
   {
     id: 2,
     slug: "daechi-youtube-shorts-intro",
-    title: "대치동에 새로운 독학학원 등장 + AI를 곁들임, 2분 안에 설명해드림",
+    title: "AI와 함께하는 대치동 관리형 스터디카페, SN고요의숲",
     date: "2026.02.24",
     category: "공지",
     isImportant: true,
-    thumbnail: "/image/thumbnail/daechi_notice_thunbnail2.png",
-    video: "https://www.youtube.com/embed/HM5YR3vi37w",
+    thumbnail: "/image/homepage_main.png",
     content: `==대치역 2번출구 4분거리==, 시대인재 등 주요 학원까지 도보 5분
 
-2026년 2월, SN아카데미가 대치동에 새로운 방식의 독학관리 학원을 오픈했습니다.
+SN고요의숲 대치점은 AI 학습 도구와 생활관리를 결합한 관리형 스터디카페로 운영합니다.
 이름은 「==SN 고요의숲 대치==」(독학관리 AI 특화관) 입니다.
 
 SN이 자체 제작한 Vertical AI **SNarGPT**를 기반으로, 학생의 공부 습관 형성과 몰입을 돕는 환경을 제공합니다.
@@ -131,8 +130,7 @@ AI 프로그램은 매일 다른 문제, 다른 단원을 배치하여 학생이
     date: "2026.03.10",
     category: "공지",
     isImportant: true,
-    thumbnail: "/image/thumbnail/thumbnail_whydaechi.jpg",
-    video: "https://www.youtube.com/embed/r-U3Kxtw6kI",
+    thumbnail: "/image/homepage_main.png",
     content: `## 1. 대한민국 교육의 메카, 대치동의 본질
 
 대치동은 단순히 학원이 많은 곳이 아닙니다. 1,600개의 학원이 오직 수험생의 니즈를 충족시키기 위해 진화해온 =='수험생 중심의 생태계'==입니다.
@@ -150,8 +148,8 @@ AI 프로그램은 매일 다른 문제, 다른 단원을 배치하여 학생이
 
 ## 4. 결론: 환경이 결과를 만듭니다
 
-학원에 여러분을 맞추지 마십시오. 여러분의 동선과 정보, 그리고 몰입에 맞춰진 SN의 시스템을 이용하십시오.
-==대치동의 인프라를 누리며 시간 낭비 없이 수능 대박을 꿈꾸는 곳==, 지금 바로 SN 독학기숙학원의 대치 거점인 고요의숲에서 시작하십시오.
+자신에게 맞는 학습 공간을 선택하세요. 여러분의 동선과 정보, 그리고 몰입에 맞춰진 SN의 시스템을 이용하십시오.
+==대치동의 인프라를 누리며 시간 낭비 없이 수능 대박을 꿈꾸는 곳==, 지금 바로 관리형 스터디카페 SN고요의숲 대치점에서 시작하십시오.
 
 ## 문의 안내
 

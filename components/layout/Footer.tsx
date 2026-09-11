@@ -1,14 +1,14 @@
 export default function Footer() {
   const footerLinks = {
     about: [
-      { name: "학원 소개", href: "#about" },
+      { name: "공간 소개", href: "#about" },
       { name: "오시는 길", href: "#location" },
       { name: "시설 안내", href: "#facilities" }
     ],
     programs: [
-      { name: "정규 독학재수반", href: "#programs" },
-      { name: "프리미엄 관리반", href: "#programs" },
-      { name: "N수생 특별반", href: "#programs" }
+      { name: "N수생 관리형 이용권", href: "#programs" },
+      { name: "프리미엄 학습관리 이용권", href: "#programs" },
+      { name: "재학생 관리형 이용권", href: "#programs" }
     ],
     support: [
       { name: "공지사항", href: "/news" },
@@ -27,16 +27,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* 상단 영역 */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-8 md:mb-12">
-          {/* 학원 정보 */}
+          {/* 공간 정보 */}
           <div className="lg:col-span-2">
             <div className="mb-3 md:mb-4">
               <h3 className="text-xl md:text-2xl font-bold text-white">
                 SN-고요의숲 대치
               </h3>
-              <p className="text-sm text-gray-400">독학관리</p>
+              <p className="text-sm text-gray-400">관리형 스터디카페</p>
             </div>
             <p className="hidden md:block text-gray-400 mb-6 leading-relaxed">
-              대치동 최고의 독학재수학원에서
+              대치동 최고의 관리형 스터디카페에서
               <br />
               여러분의 꿈을 현실로 만들어드립니다.
             </p>
@@ -60,18 +60,12 @@ export default function Footer() {
                 </svg>
                 <span className="text-sm">snacademy@naver.com</span>
               </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span className="text-sm">학원 등록 번호: 제15267호</span>
-              </div>
             </div>
           </div>
 
           {/* 링크 섹션들 - 데스크탑에서만 표시 */}
           <div className="hidden lg:block">
-            <h4 className="text-white font-semibold mb-4">학원 안내</h4>
+            <h4 className="text-white font-semibold mb-4">이용 안내</h4>
             <ul className="space-y-2">
               {footerLinks.about.map((link, index) => (
                 <li key={index}>
@@ -128,7 +122,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0">
             {/* 저작권 */}
             <div className="text-xs md:text-sm text-gray-500">
-              © 2024 SN독학재수학원 대치점. All rights reserved.
+              © 2024 SN고요의숲 대치점. All rights reserved.
             </div>
 
             {/* 소셜 미디어 */}

@@ -13,10 +13,10 @@ export default function Recruitment() {
         <div className="text-center mb-8">
           <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Recruitment</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            모집요강
+            이용권 안내
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            학생의 상황과 목표에 맞는 <span className="text-sn-green font-semibold">최적의 프로그램</span>을 선택하세요
+            학생부터 일반인까지, 이용 목적에 맞는 <span className="text-sn-green font-semibold">이용권</span>을 선택하세요
           </p>
         </div>
 
@@ -24,13 +24,13 @@ export default function Recruitment() {
         <div className="mx-auto" style={{ maxWidth: '1100px' }}>
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="w-1.5 h-6 bg-sn-green rounded-full"></span>
-            <h3 className="text-2xl font-bold text-gray-900">프로그램 선택</h3>
+            <h3 className="text-2xl font-bold text-gray-900">이용권 선택</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {programs.map((program, index) => (
               <div
                 key={index}
-                className="relative rounded-xl p-6 cursor-pointer transition-all duration-300 bg-white border-2 border-sn-main/20 hover:border-sn-main hover:shadow-lg hover:shadow-sn-main/10 hover:-translate-y-1 flex flex-col"
+                className="relative rounded-xl p-6 transition-all duration-300 bg-white border-2 border-sn-main/20 hover:border-sn-main hover:shadow-lg hover:shadow-sn-main/10 hover:-translate-y-1 flex flex-col"
               >
                 {/* 배지 */}
                 <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-3 bg-sn-green text-white">
@@ -73,7 +73,7 @@ export default function Recruitment() {
 
                 {/* 가격 */}
                 <div className="border-t-2 pt-4 mb-4 border-sn-main/20 mt-auto">
-                  <div className="text-xs text-sn-green font-medium mb-1">수강료 안내</div>
+                  <div className="text-xs text-sn-green font-medium mb-1">{program.priceLabel}</div>
                   {'originalPrice' in program && program.originalPrice ? (
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -93,10 +93,10 @@ export default function Recruitment() {
 
                 {/* CTA 버튼 */}
                 <a
-                  href="#contact"
+                  href={program.ctaHref}
                   className="block w-full py-2 px-4 rounded-lg text-center font-medium text-sm transition-all bg-sn-green text-white hover:bg-sn-green-dark"
                 >
-                  상담 신청하기
+                  {program.ctaLabel}
                 </a>
               </div>
             ))}
@@ -104,14 +104,14 @@ export default function Recruitment() {
         </div>
 
         {/* 상담 신청 섹션 */}
-        <div id="contact" className="mt-12 mx-auto bg-white rounded-2xl p-8 shadow-lg border-2 border-sn-main/20" style={{ maxWidth: '900px' }}>
-          <div className="text-center mb-8">
+        <div id="program-inquiry" className="scroll-mt-28 mt-12 mx-auto bg-white rounded-2xl p-8 shadow-lg border-2 border-sn-main/20" style={{ maxWidth: '900px' }}>
+          <div id="contact" className="scroll-mt-28 text-center mb-8">
             <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Contact</span>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               상담 신청하기
             </h3>
             <p className="text-gray-600">
-              프로그램에 대한 자세한 상담이 필요하신가요? 아래 연락처로 문의해주세요.
+              이용권 구매, 일일권 이용 가능 여부, 교습소 연계 관리는 아래 연락처로 문의해주세요.
             </p>
           </div>
 

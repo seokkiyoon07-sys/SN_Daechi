@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const ogImage = column.ogImage || column.thumbnail || '/image/OGimage.png';
+  const ogImage = column.ogImage || column.thumbnail || '/image/homepage_main.png';
 
   const canonicalUrl = `https://daechi.snacademy.co.kr/community/column/${slug}`;
 

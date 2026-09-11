@@ -947,12 +947,12 @@ export default function AcademyMapPage() {
                       <span className="px-2 py-1 bg-sn-green/10 text-sn-green text-xs rounded font-medium">1:1 맞춤 관리</span>
                     </div>
                     <p className="text-gray-600 text-sm mb-4">
-                      AI 기반 학습 분석과 체계적인 독학관리를 제공하는 프리미엄 독학재수 학원입니다.
+                      AI 학습 도구와 체계적인 생활관리를 제공하는 관리형 스터디카페입니다.
                     </p>
                     <div className="flex items-center gap-6">
                       <div className="text-center">
                         <p className="text-2xl font-bold text-sn-green">80만원</p>
-                        <p className="text-xs text-gray-500">월 수강료</p>
+                        <p className="text-xs text-gray-500">월 이용료</p>
                       </div>
                       <div className="text-center">
                         <p className="text-sm text-gray-600">서울 강남구 대치동 447</p>
@@ -1061,10 +1061,10 @@ export default function AcademyMapPage() {
           {/* 안내 */}
           <div className="mt-12 p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">
             <p className="text-center text-gray-700">
-              <span className="font-semibold text-sn-green">학원 정보 안내</span><br />
+              <span className="font-semibold text-sn-green">학원·스터디카페 정보 안내</span><br />
               <span className="text-sm">
-                이 페이지는 대치동 주변 독학관리 및 독학재수 학원 정보를 제공합니다.<br />
-                정확한 비용과 프로그램은 각 학원에 직접 문의해주세요.
+                이 페이지는 대치동 주변 독학관리·독학재수 학원 및 스터디카페 정보를 제공합니다.<br />
+                정확한 비용과 프로그램, 이용 안내는 각 학원 및 스터디카페에 직접 문의해주세요.
               </span>
             </p>
           </div>

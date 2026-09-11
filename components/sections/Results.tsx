@@ -37,7 +37,7 @@ export default function Results() {
             검증된 합격 실적
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            숫자로 증명하는 SN독학재수학원의 경쟁력
+            숫자로 증명하는 SN고요의숲의 경쟁력
           </p>
         </div>
 

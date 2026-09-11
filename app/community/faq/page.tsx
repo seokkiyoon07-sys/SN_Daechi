@@ -6,12 +6,12 @@ import Footer from "@/components/layout/Footer";
 export default function FaqPage() {
   const faqs = [
     {
-      question: "입학 상담은 어떻게 신청하나요?",
+      question: "이용 상담은 어떻게 신청하나요?",
       answer: "홈페이지 상단의 '상담신청' 버튼을 클릭하시거나, 전화(02-557-0301)로 문의해 주시면 됩니다. 방문 상담도 가능하며, 사전 예약을 권장드립니다."
     },
     {
-      question: "수업료 납부 방법은 어떻게 되나요?",
-      answer: "수업료는 매월 25일 자동이체 또는 카드결제로 납부하실 수 있습니다. 자세한 내용은 상담 시 안내드립니다."
+      question: "이용료 납부 방법은 어떻게 되나요?",
+      answer: "이용료는 매월 25일 자동이체 또는 카드결제로 납부하실 수 있습니다. 자세한 내용은 상담 시 안내드립니다."
     },
     {
       question: "자습실(몰입존) 이용 시간은 어떻게 되나요?",
@@ -19,7 +19,7 @@ export default function FaqPage() {
     },
     {
       question: "AI 학습 시스템은 어떻게 이용하나요?",
-      answer: "입학 후 개인 계정이 발급되며, SNarGPT와 SNarVIS 등 모든 AI 학습 도구를 무료로 이용하실 수 있습니다. 사용법은 오리엔테이션에서 안내드립니다."
+      answer: "이용 등록 후 개인 계정이 발급되며, SNarGPT와 SNarVIS 등 모든 AI 학습 도구를 무료로 이용하실 수 있습니다. 사용법은 오리엔테이션에서 안내드립니다."
     },
     {
       question: "AI특화관, 말뿐인 마케팅 아닌가요? 무엇이 다른가요?",
@@ -28,17 +28,10 @@ export default function FaqPage() {
     },
     {
       question: "중도 환불이 가능한가요?",
-      answer: "네, 가능합니다. 「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 별표 4에 따른 환불 규정이 적용됩니다.",
-      hasRefundTable: true
+      answer: "중도 해지 및 환불은 이용권 종류와 이용 내역을 확인한 뒤 안내드립니다. 적용되는 이용약관과 환불 기준은 이용 신청 전 데스크(02-557-0301)에 문의해 주세요."
     }
   ];
 
-  const refundData = [
-    { period: '수업 시작 전', refund: '전액 환불' },
-    { period: '총 교습시간 1/3 경과 전', refund: '납부액의 2/3 환불' },
-    { period: '총 교습시간 1/2 경과 전', refund: '납부액의 1/2 환불' },
-    { period: '총 교습시간 1/2 경과 후', refund: '환불 불가' },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -92,31 +85,6 @@ export default function FaqPage() {
                           <p className="text-gray-600 text-sm">AI가 모든 것을 대신하는 것이 아닙니다. AI가 정리한 정밀한 데이터를 바탕으로, 대치동 최고의 전략 담임들이 훨씬 더 깊이 있고 날카로운 입시 컨설팅을 제공합니다.</p>
                         </div>
                         <p className="text-gray-700 text-sm mt-3 pt-3 border-t border-gray-200">기술은 거들 뿐, 본질은 학생의 성적 향상입니다. 고요의숲은 AI라는 가장 강력한 도구를 제대로 쓸 줄 아는 유일한 학습 공간입니다.</p>
-                      </div>
-                    )}
-                    {faq.hasRefundTable && (
-                      <div className="mt-4">
-                        <table className="w-full border-collapse rounded-lg overflow-hidden">
-                          <thead>
-                            <tr className="bg-sn-green text-white">
-                              <th className="px-4 py-2 text-left text-sm font-semibold">수업 진행 기준</th>
-                              <th className="px-4 py-2 text-right text-sm font-semibold">환불 금액</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {refundData.map((row, ri) => (
-                              <tr key={ri} className={ri % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                                <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200">{row.period}</td>
-                                <td className={`px-4 py-2 text-sm text-right font-semibold border-t border-gray-200 ${ri === 3 ? 'text-gray-400' : 'text-sn-green'}`}>{row.refund}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        <div className="mt-3 space-y-1 text-xs text-gray-500">
-                          <p>• 환불 사유 발생일로부터 5일 이내 환불 처리</p>
-                          <p>• 환불 신청은 행정실로 문의해 주세요</p>
-                        </div>
-                        <p className="mt-2 text-xs text-gray-400">※ 법적 근거: 학원의 설립·운영 및 과외교습에 관한 법률 제18조, 동법 시행령 별표 4</p>
                       </div>
                     )}
                   </div>

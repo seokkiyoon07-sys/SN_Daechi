@@ -24,7 +24,7 @@ export default function News() {
     {
       category: "이벤트",
       date: "2023.12.28",
-      title: "겨울방학 특강 프로그램 안내",
+      title: "겨울방학 집중 자습 이용 안내",
       description: "취약 과목 집중 보완을 위한 특별 프로그램이 진행됩니다.",
       tag: "진행중"
     }
@@ -39,7 +39,7 @@ export default function News() {
             공지사항 & 소식
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            최신 입시 정보와 학원 소식을 확인하세요
+            최신 입시 정보와 스터디카페 소식을 확인하세요
           </p>
         </div>
 

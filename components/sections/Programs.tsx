@@ -74,7 +74,7 @@ export default function Programs() {
   const programs = [
     {
       badge: "인기",
-      title: "정규 독학재수반",
+      title: "N수생 관리형 이용권",
       description: "완벽한 학습 환경과 체계적인 관리 시스템",
       features: [
         "개인별 맞춤 학습 플랜",
@@ -83,12 +83,12 @@ export default function Programs() {
         "24시간 자습실 이용"
       ],
       price: "800,000 원",
-      priceLabel: "수강료 안내"
+      priceLabel: "이용료 안내"
     },
     {
       badge: "추천",
-      title: "프리미엄 수학 관리반",
-      description: "대치 박진모 원장의 전담 관리로 확실한 성적 향상",
+      title: "프리미엄 학습관리 이용권",
+      description: "대치 박진모 센터장의 전담 관리로 확실한 성적 향상",
       features: [
         "1:1 개인 맞춤 케어",
         "매일 학습 진도 체크",
@@ -96,7 +96,7 @@ export default function Programs() {
         "학부모 상담 서비스"
       ],
       price: "750,000 원 + 300,000 원",
-      priceLabel: "수강료 안내"
+      priceLabel: "이용료 안내"
     }
   ];
 
@@ -107,7 +107,7 @@ export default function Programs() {
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Programs</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            대치동 독학재수학원 모집요강
+            대치동 관리형 스터디카페 모집요강
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             학생의 상황과 목표에 맞는 <span className="text-sn-green font-semibold">최적의 프로그램</span>을 선택하세요
@@ -262,7 +262,7 @@ export default function Programs() {
                             <span className="text-xl">🏫</span>
                             <span className={`text-xs font-semibold ${
                               snargptView === 'school' ? 'text-orange-400' : 'text-gray-300 group-hover:text-orange-400'
-                            }`}>학원생활 예시</span>
+                            }`}>이용생활 예시</span>
                           </div>
                         </button>
                       </div>
@@ -1064,7 +1064,7 @@ export default function Programs() {
 
                 {/* 가격 */}
                 <div className="border-t-2 pt-4 mb-4 border-sn-main/20">
-                  <div className="text-xs text-sn-green font-medium mb-1">수강료 안내</div>
+                  <div className="text-xs text-sn-green font-medium mb-1">이용료 안내</div>
                   <div className="text-xl font-bold text-sn-green">
                     {program.price}
                   </div>
@@ -1087,7 +1087,7 @@ export default function Programs() {
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Contact</span>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              대치동 독학관리학원 무료 상담
+              대치동 관리형 스터디카페 무료 상담
             </h3>
             <p className="text-gray-600">
               프로그램에 대한 자세한 상담이 필요하신가요? 아래 연락처로 문의해주세요.

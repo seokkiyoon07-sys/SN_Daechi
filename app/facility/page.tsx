@@ -308,8 +308,8 @@ export default function FacilityPage() {
       images: ["/image/facility/프린트 카페/2602-09980.jpg", "/image/facility/프린트 카페/2602-09982.jpg", "/image/facility/프린트 카페/2602-09990.jpg"]
     },
     {
-      name: "강의실",
-      description: "실전모의고사 실",
+      name: "모의고사실",
+      description: "실전 모의고사를 위한 자습 공간",
       features: [
         "실제 수능과 동일한 환경",
         "정숙한 시험 분위기",
@@ -320,11 +320,11 @@ export default function FacilityPage() {
     },
     {
       name: "인포메이션",
-      description: "학원 운영 및 학생 관리를 위한 공간",
+      description: "스터디카페 운영 및 학생 관리를 위한 공간",
       features: [
         "출결 관리 시스템 운영",
         "학부모 연락 및 상담 접수",
-        "학원 행정 업무 처리",
+        "스터디카페 운영 업무 처리",
         "비상 상황 대응 센터"
       ],
       images: ["/image/facility/인포메이션/2602-00122.jpg", "/image/facility/인포메이션/2602-00143.jpg", "/image/facility/인포메이션/2602-00151.jpg"]

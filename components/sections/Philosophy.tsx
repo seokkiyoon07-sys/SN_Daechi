@@ -32,9 +32,9 @@ export default function Philosophy() {
   const comparisonData = [
     { category: '학습 콘텐츠', general: '시중 교재 및 고정된 문제 은행', sn: '사고 구조 기반으로 창작된 맞춤형 문항' },
     { category: '오답 관리', general: '틀린 문제 다시 풀어보기', sn: '오답 로직 분석 후 유사 원리 무한 생성' },
-    { category: '관리 시스템', general: '조교 중심의 단순 감독', sn: '원장 + SNARVIS(AI비서) + SNarLink(데이터)' },
+    { category: '관리 시스템', general: '조교 중심의 단순 감독', sn: '센터장 + SNARVIS(AI비서) + SNarLink(데이터)' },
     { category: '피드백', general: '출결 및 단순 진도 보고', sn: 'AI 데이터 리포트 기반 전략적 학습 교정' },
-    { category: '목표', general: '"학원에 머문 시간" 확보', sn: '"사고 로직 교정 및 실질적 성적 향상"' }
+    { category: '목표', general: '"공간에 머문 시간" 확보', sn: '"사고 로직 교정 및 실질적 성적 향상"' }
   ];
 
   // 비교표 애니메이션 - 한 번만 실행되도록 가드 추가
@@ -81,7 +81,7 @@ export default function Philosophy() {
       subtitle: '',
       content: "SNarGPT는 한 명의 학생을 위해 움직이는 'AI 전문가 팀'입니다. 문제를 만드는 SNarGen, 수학을 푸는 SNarGo, 24시간 챙겨주는 SNarVIS가 팀이 되어 우리 아이의 성적을 책임집니다.",
       highlight: "한 명의 학생을 위한 AI 전문가 팀",
-      detail: "대치동 최고 수준의 과외를 언제 어디서나 받는 효과. AI가 학생의 사고 로직을 분석하고, 약점을 정확히 짚어냅니다.",
+      detail: "언제 어디서나 활용할 수 있는 AI 자기주도학습 도구. AI가 학생의 사고 로직을 분석하고, 약점을 정확히 짚어냅니다.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -109,7 +109,7 @@ export default function Philosophy() {
     {
       number: '04',
       title: '휴먼–AI 하이브리드 케어',
-      content: '분당에서 연 250명의 성공을 만들어온 수학 강사 출신 원장님의 날카로운 직관과,\nAI 비서(SNARVIS), 학습 데이터 링크(SNarLink),\n그리고 현장을 밀착 지원하는 대학생 멘토 시스템이 결합되어\n학생을 입체적으로 케어합니다.',
+      content: '분당에서 연 250명의 성공을 만들어온 수학 강사 출신 센터장님의 날카로운 직관과,\nAI 비서(SNARVIS), 학습 데이터 링크(SNarLink),\n그리고 현장을 밀착 지원하는 대학생 멘토 시스템이 결합되어\n학생을 입체적으로 케어합니다.',
       highlight: "'완벽한 하이브리드 관리'를 실현합니다.",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -119,13 +119,13 @@ export default function Philosophy() {
     }
   ];
 
-  // 원장 이미지 placeholder 컴포넌트
+  // 센터장 이미지 placeholder 컴포넌트
   const DirectorImagePlaceholder = () => (
     <div className="text-white text-center flex flex-col items-center justify-center h-full">
       <svg className="w-20 h-20 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
       </svg>
-      <span className="text-sm opacity-50">원장 사진</span>
+      <span className="text-sm opacity-50">센터장 사진</span>
     </div>
   );
 
@@ -138,7 +138,7 @@ export default function Philosophy() {
       >
         <Image
           src="/image/homepage_main.png"
-          alt="대치 고요의 숲 AI 기반 지능형 독학관리 학습 공간"
+          alt="대치 고요의 숲 관리형 스터디카페"
           fill
           className="object-cover object-center"
           priority
@@ -155,9 +155,14 @@ export default function Philosophy() {
           </div>
         </div>
         <h1 id="philosophy-hero-title" className="sr-only">
-          대치 고요의 숲 - AI 기반 지능형 독학관리
+          대치 고요의 숲 - 관리형 스터디카페
         </h1>
       </section>
+
+      <div className="bg-sn-green px-4 py-5 text-center text-white">
+        <p className="text-lg sm:text-2xl font-semibold">SN고요의숲 대치 · 관리형 스터디카페</p>
+        <p className="mt-2 text-sm sm:text-base text-white/90">집중을 위한 자습 공간, 출결·생활관리, AI 학습 도구</p>
+      </div>
 
       {/* AI 특화관 차별점 섹션 */}
       <section className="bg-[#f8f9fa]" aria-labelledby="ai-difference-title">
@@ -348,12 +353,12 @@ export default function Philosophy() {
             ref={tableRef}
             className="border-t border-gray-200"
             role="table"
-            aria-label="SN과 일반 학원 비교표"
+            aria-label="SN과 일반 스터디카페 비교표"
           >
             {/* Table Header */}
             <div className="grid grid-cols-3 border-b border-gray-200" role="row">
               <div className="py-4 text-sm text-gray-500" role="columnheader">구분</div>
-              <div className="py-4 text-sm text-gray-500 text-center" role="columnheader">일반 관리형 학원</div>
+              <div className="py-4 text-sm text-gray-500 text-center" role="columnheader">일반 스터디카페</div>
               <div className="py-4 text-sm text-[#4a6b5a] text-center font-medium" role="columnheader">
                 SN 데이터 트레이닝
                 <span className="block text-xs font-normal text-gray-400">(SNarGPT 기반)</span>
@@ -391,7 +396,7 @@ export default function Philosophy() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/image/24.12-03681.jpg"
-            alt="대치동 독학재수학원 자습실 내부"
+            alt="대치동 관리형 스터디카페 자습실 내부"
             fill
             className="object-cover"
           />
@@ -409,7 +414,7 @@ export default function Philosophy() {
           >
             {/* Badge */}
             <p className="text-sm tracking-[0.15em] text-gray-500 mb-8">
-              원장 인사말
+              센터장 인사말
             </p>
 
             {/* Layout: Image + Content */}
@@ -422,7 +427,7 @@ export default function Philosophy() {
                   ) : (
                     <Image
                       src="/image/thumbnail/jinmopark1.png"
-                      alt="대치 고요의 숲 박진모 원장 - 수학 전문 독학관리"
+                      alt="대치 고요의 숲 박진모 센터장 - 수학 전문 독학관리"
                       width={288}
                       height={384}
                       className="w-full h-full object-cover object-top grayscale"
@@ -432,7 +437,7 @@ export default function Philosophy() {
                 </div>
                 <figcaption className="mt-4">
                   <p className="text-white font-medium">박진모</p>
-                  <p className="text-gray-500 text-sm">SN 대치 원장</p>
+                  <p className="text-gray-500 text-sm">SN 대치 센터장</p>
                 </figcaption>
               </figure>
 
@@ -459,7 +464,7 @@ export default function Philosophy() {
                     단순히 앉아만 있는 관리는 끝났습니다.
                   </p>
                   <p className="text-white font-medium">
-                    시간을 관리하는 학원과, 사고를 훈련하는 학원은 결과가 다릅니다.
+                    몰입할 수 있는 공간과 꾸준한 생활관리로 자기주도학습을 돕겠습니다.
                   </p>
                 </div>
 
@@ -477,7 +482,7 @@ export default function Philosophy() {
       <section className="py-16 bg-sn-green" aria-labelledby="cta-title">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 id="cta-title" className="text-2xl md:text-3xl font-bold text-white mb-4">
-            대치동 독학관리학원, 무료 상담 신청
+            대치동 관리형 스터디카페, 무료 상담 신청
           </h2>
           <p className="text-white/80 mb-8">
             무료 학습 상담을 통해 우리 아이에게 맞는 관리 시스템을 확인하세요

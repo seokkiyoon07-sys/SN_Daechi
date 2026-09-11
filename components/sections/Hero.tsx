@@ -274,14 +274,14 @@ export default function Hero() {
               활용하여 사람이 학습을 완성시킵니다.
             </h2>
 
-            {/* 원장 소개 */}
+            {/* 센터장 소개 */}
             <div className="max-w-2xl mx-auto mb-12">
               <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl border border-sn-main/20">
                 {/* 인물 사진 */}
                 <div className="relative h-[280px] md:h-[350px]">
                   <Image
                     src="/image/director-park.png"
-                    alt="대치 고요의 숲 박진모 원장 - 수학 전문 독학관리"
+                    alt="대치 고요의 숲 박진모 센터장 - 수학 전문 독학관리"
                     fill
                     className="object-cover object-top"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -296,7 +296,7 @@ export default function Hero() {
                       분당 지역 수학의 신화를 쓴
                     </p>
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
-                      박진모 원장
+                      박진모 센터장
                     </h3>
                   </div>
                 </div>
@@ -316,7 +316,7 @@ export default function Hero() {
                   </div>
                   <div className="p-4 text-center">
                     <h3 className="text-lg font-bold text-gray-900 mb-2">수학특화관</h3>
-                    <p className="text-sm text-gray-700 leading-relaxed">박진모 원장의 수학 컨설팅 및 특강 (일부 유료)</p>
+                    <p className="text-sm text-gray-700 leading-relaxed">박진모 센터장의 자기주도학습 계획 및 생활관리 상담</p>
                   </div>
                 </div>
 

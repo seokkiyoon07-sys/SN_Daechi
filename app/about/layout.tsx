@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "SN소개 | 대치 고요의 숲",
-  description: "SN 대치 고요의 숲을 소개합니다. AI 기반 학습 시스템과 전문 강사진이 함께하는 독학관리학원입니다.",
+  description: "SN 대치 고요의 숲을 소개합니다. 집중할 수 있는 자습 공간과 AI 학습 도구로 자기주도학습을 지원하는 관리형 스터디카페입니다.",
   openGraph: {
     title: "SN소개 | 대치 고요의 숲",
-    description: "AI와 데이터로 설계하는 학습 시스템. 대치동 독학관리의 새로운 기준.",
+    description: "AI 학습 리포트로 스스로 계획하고 실천하는 자기주도학습. 대치동 관리형 스터디카페 SN고요의숲.",
   },
 };
 

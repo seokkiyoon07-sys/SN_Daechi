@@ -1,12 +1,12 @@
 export function OrganizationJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'EducationalOrganization',
-    name: '대치 고요의 숲',
+    '@type': 'LocalBusiness',
+    name: 'SN고요의숲 대치 관리형 스터디카페',
     alternateName: ['SN대치', 'SN-고요의숲 대치', '고요의숲 AI특화관'],
     url: 'https://daechi.snacademy.co.kr',
     logo: 'https://daechi.snacademy.co.kr/image/SN_logo_green.svg',
-    description: '대치동 최초 AI 기반 독학관리 시스템. 학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐입니다. SNarGPT, SNarGen, SNarVIS로 초개인화된 관리를 제공합니다.',
+    description: '대치동 관리형 스터디카페. 자습 공간과 출결·생활관리, AI 학습 도구를 제공합니다. 학습의 전 과정을 AI 시스템으로 통합(Full-Stack)한 곳은 오직 SN뿐입니다. SNarGPT, SNarGen, SNarVIS로 초개인화된 관리를 제공합니다.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '대치동 447',
@@ -26,24 +26,24 @@ export function OrganizationJsonLd() {
     knowsAbout: ['AI 학습 관리', '독학재수', '수능 준비', '오답 분석', '개인 맞춤 학습'],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: '독학관리 프로그램',
+      name: '관리형 스터디카페 이용 서비스',
       itemListElement: [
         {
-          '@type': 'Course',
-          name: '독학재수반',
+          '@type': 'Service',
+          name: 'N수생 관리형 이용권',
           description: 'AI 기반 개인 맞춤 독학관리 프로그램',
           provider: {
-            '@type': 'EducationalOrganization',
-            name: '대치 고요의 숲',
+            '@type': 'LocalBusiness',
+            name: 'SN고요의숲 대치 관리형 스터디카페',
           },
         },
         {
-          '@type': 'Course',
-          name: '현역반',
+          '@type': 'Service',
+          name: '재학생 관리형 이용권',
           description: '현역 학생을 위한 AI 독학관리 프로그램',
           provider: {
-            '@type': 'EducationalOrganization',
-            name: '대치 고요의 숲',
+            '@type': 'LocalBusiness',
+            name: 'SN고요의숲 대치 관리형 스터디카페',
           },
         },
       ],
@@ -63,7 +63,7 @@ export function LocalBusinessJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': 'https://daechi.snacademy.co.kr/#localbusiness',
-    name: '대치 고요의 숲',
+    name: 'SN고요의숲 대치 관리형 스터디카페',
     alternateName: 'SN-고요의숲 대치 AI특화관',
     image: 'https://daechi.snacademy.co.kr/image/thumbnail/daechi_goyuuiseup.png',
     url: 'https://daechi.snacademy.co.kr',
@@ -115,7 +115,7 @@ export function WebSiteJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: '대치 고요의 숲',
+    name: 'SN고요의숲 대치 관리형 스터디카페',
     url: 'https://daechi.snacademy.co.kr',
     potentialAction: {
       '@type': 'SearchAction',

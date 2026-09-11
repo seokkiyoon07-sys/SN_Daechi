@@ -4,19 +4,19 @@ import Footer from "@/components/layout/Footer";
 import OnlineApplication from "@/components/sections/OnlineApplication";
 
 export const metadata: Metadata = {
-  title: "온라인 원서접수 | SN-고요의숲 대치",
-  description: "SN-고요의숲 대치 온라인 원서접수 페이지입니다. 간편하게 입학 상담을 신청하세요.",
+  title: "온라인 이용 신청 | SN-고요의숲 대치",
+  description: "SN-고요의숲 대치 온라인 이용 신청 페이지입니다. 간편하게 이용 상담을 신청하세요.",
   keywords: [
-    "온라인 원서접수",
-    "입학 신청",
-    "대치동 학원",
-    "재수학원 입학",
+    "온라인 이용 신청",
+    "이용 신청",
+    "대치동 스터디카페",
+    "관리형 스터디카페 입학",
     "독학재수",
-    "SN대치 입학"
+    "SN대치 이용 신청"
   ],
   openGraph: {
-    title: "온라인 원서접수 | SN-고요의숲 대치",
-    description: "SN-고요의숲 대치 온라인 원서접수",
+    title: "온라인 이용 신청 | SN-고요의숲 대치",
+    description: "SN-고요의숲 대치 온라인 이용 신청",
     url: "https://daechi.snacademy.co.kr/admission/apply",
   },
 };

@@ -42,18 +42,8 @@ export default function CampusPage() {
       )
     },
     {
-      title: "대치동 맛집지도",
-      description: "학원 근처 추천 맛집 정보",
-      href: "/campus/menu",
-      icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      )
-    },
-    {
-      title: "대치 재수학원 가격 지도",
-      description: "대치동 주변 독학관리, 독학재수 학원 정보",
+      title: "주변 학습 공간 가격 지도",
+      description: "대치동 주변 독학관리, 관리형 스터디카페 정보",
       href: "/campus/academy-map",
       icon: (
         <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,7 +64,7 @@ export default function CampusPage() {
           <div className="mb-12 text-center">
             <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Campus Life</span>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              학원생활
+              이용생활
             </h1>
             <p className="text-lg text-gray-600">
               SN 고요의숲 대치에서의 하루를 안내합니다

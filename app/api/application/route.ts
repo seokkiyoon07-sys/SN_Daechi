@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { google } from 'googleapis';
 import { Readable } from 'stream';
 
-// 잔디 웹훅 URL (온라인 원서접수용)
+// 잔디 웹훅 URL (온라인 이용 신청용)
 const JANDI_WEBHOOK_URL = process.env.JANDI_WEBHOOK_URL;
 
 // 외부 DB 포워딩 URL
 const STUDENT_WEB_API_URL = process.env.STUDENT_WEB_API_URL;
 
 interface ApplicationData {
-  // 입학정보
+  // 이용 신청 정보
   program: string;
   studentName: string;
   studentBirthDate: string;
@@ -122,7 +122,7 @@ async function sendToJandi(data: ApplicationData) {
   }
 
   const jandiPayload = {
-    body: '📋 새로운 온라인 원서접수가 접수되었습니다!',
+    body: '📋 새로운 온라인 이용 신청이 접수되었습니다!',
     connectColor: '#4CAF50',
     connectInfo: [
       {

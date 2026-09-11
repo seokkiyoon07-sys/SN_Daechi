@@ -25,7 +25,7 @@ export default function RulesPage() {
       category: "출결 관리",
       items: [
         "등원시간: 08:00 까지",
-        "2중 체크인 시스템: RFID 카드 태그, SNarlink 접속 로그 → 학원DB, 학부모님께 카톡 알림",
+        "2중 체크인 시스템: RFID 카드 태그, SNarlink 접속 로그 → 이용자DB, 학부모님께 카톡 알림",
         "20분 단위 학습 체크"
       ]
     },
@@ -41,7 +41,7 @@ export default function RulesPage() {
     {
       category: "면학 분위기",
       items: [
-        "사감선생님이 매 20분마다 순찰"
+        "상주관리 직원이 매 20분마다 순찰"
       ]
     },
     {
@@ -123,7 +123,7 @@ export default function RulesPage() {
           {/* 안내 문구 */}
           <div className="mt-12 p-6 bg-sn-green/10 rounded-xl border border-sn-green/30">
             <p className="text-center text-gray-700">
-              위 규칙을 준수하지 않을 경우, <span className="font-semibold text-sn-green">경고 → 학부모 상담 → 퇴원 조치</span>가 진행될 수 있습니다.
+              위 규칙을 준수하지 않을 경우, <span className="font-semibold text-sn-green">경고 → 학부모 상담 → 퇴실조치</span>가 진행될 수 있습니다.
             </p>
           </div>
         </div>
@@ -168,7 +168,7 @@ export default function RulesPage() {
             {/* 모달 푸터 */}
             <div className="px-6 py-4 bg-sn-green/10 border-t border-sn-green/30">
               <p className="text-sm text-gray-700 text-center">
-                벌점 누적 시 학부모 상담 및 퇴원 조치가 진행될 수 있습니다.
+                벌점 누적 시 학부모 상담 및 퇴실조치가 진행될 수 있습니다.
               </p>
             </div>
           </div>

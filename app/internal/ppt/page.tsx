@@ -325,7 +325,7 @@ export default function AdmissionPPT() {
         <div className="w-full max-w-5xl px-6">
           <Tag>목차</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center" style={{ color: 'var(--text-dark)' }}>
-            입학 안내
+            이용 안내
           </h2>
           <Divider />
 
@@ -386,7 +386,7 @@ export default function AdmissionPPT() {
               </div>
               <ul className="space-y-1.5 ml-16">
                 <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 자주 묻는 질문</li>
-                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 수강료 안내</li>
+                <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 이용료 안내</li>
                 <li className="text-sm" style={{ color: 'var(--text-muted)' }}>• 장학금 제도</li>
               </ul>
             </div>
@@ -488,7 +488,7 @@ export default function AdmissionPPT() {
               <ul className="space-y-1.5 text-xs">
                 <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
                   <span style={{ color: 'var(--mint-dark)' }}>•</span>
-                  <span><strong>정기 순찰:</strong> 20분 간격 사감 순찰 실시</span>
+                  <span><strong>정기 순찰:</strong> 20분 간격 상주관리 직원 순찰 실시</span>
                 </li>
                 <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
                   <span style={{ color: 'var(--mint-dark)' }}>•</span>
@@ -500,7 +500,7 @@ export default function AdmissionPPT() {
                 </li>
                 <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
                   <span style={{ color: 'var(--mint-dark)' }}>•</span>
-                  <span><strong>강제 퇴원:</strong> 벌점 누적 시 학부모 상담 및 퇴원 조치</span>
+                  <span><strong>강제 퇴실:</strong> 벌점 누적 시 학부모 상담 및 퇴실조치</span>
                 </li>
               </ul>
             </div>
@@ -541,7 +541,7 @@ export default function AdmissionPPT() {
                 </li>
                 <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
                   <span style={{ color: 'var(--mint-dark)' }}>•</span>
-                  <span>원장/부원장 상담 30분</span>
+                  <span>센터장/부센터장 상담 30분</span>
                 </li>
                 <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
                   <span style={{ color: 'var(--mint-dark)' }}>•</span>
@@ -647,7 +647,7 @@ export default function AdmissionPPT() {
                 </li>
                 <li className="flex items-start gap-2" style={{ color: 'var(--text-dark)' }}>
                   <span style={{ color: 'var(--mint-dark)' }}>•</span>
-                  <span>학원용 오프라인 컨텐츠</span>
+                  <span>자습용 오프라인 콘텐츠</span>
                 </li>
               </ul>
             </div>
@@ -689,7 +689,7 @@ export default function AdmissionPPT() {
               </div>
               <div>
                 <h3 className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>시대인재 특별 관리</h3>
-                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>원장님 직접 관리 (수학 특화)</p>
+                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>센터장님 직접 관리 (수학 특화)</p>
               </div>
             </div>
             <ul className="space-y-2 text-sm ml-18">
@@ -760,7 +760,7 @@ export default function AdmissionPPT() {
               {
                 img: '/image/facility/counseling_room.jpg',
                 title: '상담실',
-                desc: '1:1 맞춤 상담을 위한 프라이빗 공간. 원장과의 전략 미팅, 학부모 상담이 이루어지는 핵심 공간입니다.'
+                desc: '1:1 맞춤 상담을 위한 프라이빗 공간. 센터장과의 전략 미팅, 학부모 상담이 이루어지는 핵심 공간입니다.'
               },
             ].map((item, idx) => (
               <div key={idx} className="rounded-xl overflow-hidden shadow-lg" style={{ backgroundColor: 'white' }}>
@@ -797,7 +797,7 @@ export default function AdmissionPPT() {
               {
                 img: '/image/facility/lecture_room.jpg',
                 title: '강의실',
-                desc: '소규모 그룹 수업과 특강을 위한 최적화된 공간. 집중력을 높이는 조명과 음향 설계로 효과적인 학습을 지원합니다.'
+                desc: '실전 모의고사와 집중 자습을 위한 공간. 조용한 환경에서 자기주도학습을 지원합니다.'
               },
               {
                 img: '/image/인테리어/KakaoTalk_20260116_130725297_02.jpg',
@@ -866,7 +866,7 @@ export default function AdmissionPPT() {
               벌점 부여시 학부모님께 문자가 전송됩니다.
             </p>
             <p className="text-sm" style={{ color: 'var(--green-deep)' }}>
-              벌점 누적 시 학부모 상담 및 퇴원 조치가 진행될 수 있습니다.
+              벌점 누적 시 학부모 상담 및 퇴실조치가 진행될 수 있습니다.
             </p>
           </div>
         </div>
@@ -900,16 +900,16 @@ export default function AdmissionPPT() {
               </div>
             </div>
 
-            {/* 2. 사감 순찰 */}
+            {/* 2. 상주관리 직원 순찰 */}
             <div className="p-5 rounded-xl" style={{ backgroundColor: 'white', border: '1px solid var(--gray-light)' }}>
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--green-deep)' }}>
                   <span className="text-white font-bold">2</span>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--green-deep)' }}>사감 순찰</h3>
+                  <h3 className="text-lg font-bold mb-2" style={{ color: 'var(--green-deep)' }}>상주관리 직원 순찰</h3>
                   <p className="text-sm" style={{ color: 'var(--text-dark)' }}>
-                    매 30분 기준으로 사감 순찰 및 IT에 기록
+                    매 30분 기준으로 상주관리 직원 순찰 및 IT에 기록
                   </p>
                 </div>
               </div>
@@ -956,14 +956,14 @@ export default function AdmissionPPT() {
         </div>
       </Slide>
 
-      {/* Slide 3-5: 수강료 */}
+      {/* Slide 3-5: 이용료 */}
       <Slide index={12}>
         <div className="w-full max-w-5xl px-8">
           <Tag>Fees</Tag>
           <h2 className="text-2xl md:text-3xl font-bold mb-8" style={{ color: 'var(--text-dark)' }}>
-            수강료 안내
+            이용료 안내
           </h2>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {programsData.map((program, idx) => (
               <div
                 key={idx}
@@ -999,7 +999,7 @@ export default function AdmissionPPT() {
                   ))}
                 </ul>
                 <div className="pt-4 border-t" style={{ borderColor: 'var(--gray-light)' }}>
-                  <p className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>월 수강료</p>
+                  <p className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>{program.priceLabel}</p>
                   <p className="text-xl font-bold" style={{ color: 'var(--green-deep)' }}>
                     {program.price}
                   </p>
@@ -1008,7 +1008,7 @@ export default function AdmissionPPT() {
             ))}
           </div>
           <p className="text-center text-sm mt-6" style={{ color: 'var(--text-muted)' }}>
-            * 자세한 수강료 문의는 상담 시 안내드립니다
+            * 자세한 이용료 문의는 상담 시 안내드립니다
           </p>
         </div>
       </Slide>
@@ -1148,8 +1148,8 @@ export default function AdmissionPPT() {
               },
               {
                 q: 'Q2. 그럼 선생님 수업은 없는 건가요?',
-                a: '독학 베이스로 운영됩니다. 수학 수업은 있지만 목적이 다릅니다.',
-                list: ['시간을 채우는 수업 ❌', '개념 정리 + 사고 구조를 잡아주는 수업 ⭕'],
+                a: '관리형 스터디카페로 운영하며, 자습 공간과 출결·생활관리, AI 학습 도구를 제공합니다.',
+                list: ['자기주도학습을 위한 자습 공간', '출결·생활관리와 AI 학습 도구 활용'],
               },
               {
                 q: 'Q3. 독학이면 학생이 느슨해지지 않나요?',
@@ -1161,7 +1161,7 @@ export default function AdmissionPPT() {
                 q: 'Q4. 이미 학원을 다니고 있는데, 병행이 가능한가요?',
                 a: '학생 상황에 따라 단과 외출이 가능합니다.',
                 list: ['시대인재 등 학원 수업 + 고요의 숲 독학', '과목별 병행 / 특정 기간 집중 관리'],
-                note: '입학 전 진단에서 가장 효율적인 조합을 제안드립니다.',
+                note: '이용 전 상담에서 가장 효율적인 조합을 제안드립니다.',
               },
               {
                 q: 'Q5. SNarGPT랑 ChatGPT, Gemini는 뭐가 다른가요?',
@@ -1203,18 +1203,7 @@ export default function AdmissionPPT() {
               },
               {
                 q: 'Q6. 중도 환불이 가능한가요?',
-                a: '네, 가능합니다. 「학원의 설립·운영 및 과외교습에 관한 법률 시행령」 별표 4에 따른 환불 규정이 적용됩니다.',
-                refundTable: [
-                  { period: '수업 시작 전', refund: '전액 환불' },
-                  { period: '총 교습시간 1/3 경과 전', refund: '납부액의 2/3 환불' },
-                  { period: '총 교습시간 1/2 경과 전', refund: '납부액의 1/2 환불' },
-                  { period: '총 교습시간 1/2 경과 후', refund: '환불 불가' },
-                ],
-                list: [
-                  '환불 사유 발생일로부터 5일 이내 환불 처리',
-                  '환불 신청은 행정실로 문의해 주세요',
-                ],
-                note: '※ 법적 근거: 학원의 설립·운영 및 과외교습에 관한 법률 제18조, 동법 시행령 별표 4',
+                a: '중도 해지 및 환불은 이용권 종류와 이용 내역을 확인한 뒤 안내드립니다. 적용되는 이용약관과 환불 기준은 이용 신청 전 데스크(02-557-0301)에 문의해 주세요.',
               },
             ].map((faq, idx) => (
               <div
@@ -1232,26 +1221,6 @@ export default function AdmissionPPT() {
                 {openFaq === idx && (
                   <div className="px-4 pb-4 overflow-y-auto" style={{ maxHeight: '50vh' }}>
                     <p className="text-sm mb-3" style={{ color: 'var(--text-dark)' }}>{faq.a}</p>
-                    {faq.refundTable && (
-                      <div className="mb-3 rounded-lg overflow-hidden" style={{ border: '1px solid var(--gray-light)' }}>
-                        <table className="w-full text-sm">
-                          <thead>
-                            <tr style={{ backgroundColor: 'var(--mint-dark)', color: 'white' }}>
-                              <th className="px-3 py-2 text-left font-semibold">수업 진행 기준</th>
-                              <th className="px-3 py-2 text-right font-semibold">환불 금액</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {faq.refundTable.map((row: { period: string; refund: string }, ri: number) => (
-                              <tr key={ri} style={{ backgroundColor: ri % 2 === 0 ? 'white' : 'var(--bg-cream)', borderTop: '1px solid var(--gray-light)' }}>
-                                <td className="px-3 py-2" style={{ color: 'var(--text-dark)' }}>{row.period}</td>
-                                <td className="px-3 py-2 text-right font-semibold" style={{ color: ri === 3 ? 'var(--text-muted)' : 'var(--green-deep)' }}>{row.refund}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
                     {faq.list && (
                       <div className="text-sm space-y-1 mb-2" style={{ color: 'var(--text-muted)' }}>
                         {faq.list.map((item: string, i: number) => <p key={i}>• {item}</p>)}
