@@ -1,10 +1,25 @@
 'use client';
 
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 import { programsData } from '@/lib/data/programs';
+import BusinessRoom from './BusinessRoom';
+
+const DayPassSeats = dynamic(() => import('./DayPassSeats'), { ssr: false });
 
 export default function Recruitment() {
   const programs = programsData;
+  const [seatProgram, setSeatProgram] = useState<string | null>(null);
+  useEffect(() => {
+    const openFromHash = () => {
+      const program = programsData.find((item) => item.ctaHref === '/programs' + window.location.hash);
+      if (program?.ctaHref.startsWith('/programs#day-pass-')) setSeatProgram(program.title);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
+  }, []);
 
   return (
     <section id="recruitment" className="py-24 bg-gray-50">
@@ -16,7 +31,7 @@ export default function Recruitment() {
             이용권 안내
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            학생부터 일반인까지, 이용 목적에 맞는 <span className="text-sn-green font-semibold">이용권</span>을 선택하세요
+            월간·일일 이용권 중 <span className="text-sn-green font-semibold">종일·오후</span>를 선택하세요
           </p>
         </div>
 
@@ -39,7 +54,7 @@ export default function Recruitment() {
 
                 {/* 제목 */}
                 <h4 className="text-lg font-bold mb-2 text-gray-900">
-                  {program.title}
+                  {program.ctaHref.startsWith('/programs#day-pass-') ? <button type="button" onClick={() => setSeatProgram(program.title)} className="text-left hover:text-sn-green hover:underline">{program.title}</button> : program.title}
                 </h4>
 
                 {/* 설명 */}
@@ -74,34 +89,30 @@ export default function Recruitment() {
                 {/* 가격 */}
                 <div className="border-t-2 pt-4 mb-4 border-sn-main/20 mt-auto">
                   <div className="text-xs text-sn-green font-medium mb-1">{program.priceLabel}</div>
-                  {'originalPrice' in program && program.originalPrice ? (
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm text-gray-400 line-through">{program.originalPrice}</span>
-                        <span className="px-2 py-0.5 bg-sn-green text-white text-xs font-bold rounded">{program.discountRate}</span>
-                      </div>
-                      <div className="text-xl font-bold text-sn-green">
-                        {program.price}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="text-xl font-bold text-sn-green">
-                      {program.price}
-                    </div>
-                  )}
+                  <div className="text-xl font-bold text-sn-green">
+                    {program.price}
+                  </div>
                 </div>
 
                 {/* CTA 버튼 */}
-                <a
-                  href={program.ctaHref}
-                  className="block w-full py-2 px-4 rounded-lg text-center font-medium text-sm transition-all bg-sn-green text-white hover:bg-sn-green-dark"
-                >
-                  {program.ctaLabel}
-                </a>
+                {program.ctaHref.startsWith('/programs#day-pass-') ? (
+                  <button type="button" onClick={() => setSeatProgram(program.title)}
+                    className="block w-full py-2 px-4 rounded-lg text-center font-medium text-sm transition-all bg-sn-green text-white hover:bg-sn-green-dark">
+                    {program.ctaLabel}
+                  </button>
+                ) : (
+                  <a href={program.ctaHref} className="block w-full py-2 px-4 rounded-lg text-center font-medium text-sm transition-all bg-sn-green text-white hover:bg-sn-green-dark">
+                    {program.ctaLabel}
+                  </a>
+                )}
               </div>
             ))}
           </div>
         </div>
+
+        {seatProgram && <DayPassSeats title={seatProgram} onClose={() => setSeatProgram(null)} />}
+
+        <BusinessRoom />
 
         {/* 상담 신청 섹션 */}
         <div id="program-inquiry" className="scroll-mt-28 mt-12 mx-auto bg-white rounded-2xl p-8 shadow-lg border-2 border-sn-main/20" style={{ maxWidth: '900px' }}>
@@ -111,7 +122,7 @@ export default function Recruitment() {
               상담 신청하기
             </h3>
             <p className="text-gray-600">
-              이용권 구매, 일일권 이용 가능 여부, 교습소 연계 관리는 아래 연락처로 문의해주세요.
+              이용권 구매와 일일권 이용 가능 여부는 아래 연락처로 문의해주세요.
             </p>
           </div>
 
