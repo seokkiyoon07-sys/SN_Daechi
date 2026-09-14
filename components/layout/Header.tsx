@@ -18,8 +18,8 @@
  *    - 서브: 생활관리, 학습시간표, 학사일정, 시설안내
  *
  * 4. 이용 안내
- *    - 모집요강 + 방문상담 예약 (Action Item)
- *    - 서브: 모집요강, 방문상담 예약
+ *    - 이용권 안내 + 방문상담 예약 (Action Item)
+ *    - 서브: 이용권 안내, 방문상담 예약
  *
  * 5. 인사이트
  *    - 컬럼 + 공지사항 (전문성을 보여주는 곳)
@@ -141,7 +141,7 @@ export default function Header() {
               </a>
               <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-44 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 <a href="/programs" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
-                  모집요강
+                  이용권 안내
                 </a>
                 <a href="/admission/apply" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green transition-all text-center">
                   온라인 이용 신청
@@ -185,7 +185,7 @@ export default function Header() {
                 공간소개
               </a>
             </div>
-            <a href="/programs">모집요강</a>
+            <a href="/programs">이용권 안내</a>
             <div className="relative group">
               <a href="/campus">이용생활</a>
             </div>
@@ -413,7 +413,7 @@ export default function Header() {
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${expandedMenu === 'admission' ? 'max-h-60 pb-3' : 'max-h-0'}`}>
                   <a href="/programs" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
-                    모집요강
+                    이용권 안내
                   </a>
                   <a href="/admission/apply" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     온라인 이용 신청

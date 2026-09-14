@@ -1,3 +1,5 @@
+import { programsData } from '@/lib/data/programs';
+
 export function OrganizationJsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -27,26 +29,15 @@ export function OrganizationJsonLd() {
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: '관리형 스터디카페 이용 서비스',
-      itemListElement: [
-        {
-          '@type': 'Service',
-          name: 'N수생 관리형 이용권',
-          description: 'AI 기반 개인 맞춤 독학관리 프로그램',
-          provider: {
-            '@type': 'LocalBusiness',
-            name: 'SN고요의숲 대치 관리형 스터디카페',
-          },
+      itemListElement: programsData.map(program => ({
+        '@type': 'Service',
+        name: program.title,
+        description: program.description,
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'SN고요의숲 대치 관리형 스터디카페',
         },
-        {
-          '@type': 'Service',
-          name: '재학생 관리형 이용권',
-          description: '현역 학생을 위한 AI 독학관리 프로그램',
-          provider: {
-            '@type': 'LocalBusiness',
-            name: 'SN고요의숲 대치 관리형 스터디카페',
-          },
-        },
-      ],
+      })),
     },
   }
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { programsData } from '@/lib/data/programs';
 
 // 랜덤 숫자 생성 함수
 const generateCaptcha = () => {
@@ -218,7 +219,7 @@ export default function OnlineApplication() {
     }
   };
 
-  const programOptions = ['N수생 관리형 이용권', '재학생 관리형 이용권', '프리미엄 학습관리 이용권'];
+  const programOptions = programsData.map(program => program.title);
   const examTypeOptions = ['2025 수능', '2025 9월 모평', '2025 6월 모평', '2024 수능', '기타'];
   const koreanTypeOptions = ['언어와 매체', '화법과 작문'];
   const mathTypeOptions = ['확률과 통계', '미적분', '기하'];

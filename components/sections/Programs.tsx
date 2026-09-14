@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { programsData } from '@/lib/data/programs';
 import 'katex/dist/katex.min.css';
 import katex from 'katex';
 
@@ -71,34 +72,7 @@ export default function Programs() {
     }
   ];
 
-  const programs = [
-    {
-      badge: "인기",
-      title: "N수생 관리형 이용권",
-      description: "완벽한 학습 환경과 체계적인 관리 시스템",
-      features: [
-        "개인별 맞춤 학습 플랜",
-        "주간/월간 성적 분석",
-        "전담 멘토 배정",
-        "24시간 자습실 이용"
-      ],
-      price: "800,000 원",
-      priceLabel: "이용료 안내"
-    },
-    {
-      badge: "추천",
-      title: "프리미엄 학습관리 이용권",
-      description: "대치 박진모 센터장의 전담 관리로 확실한 성적 향상",
-      features: [
-        "1:1 개인 맞춤 케어",
-        "매일 학습 진도 체크",
-        "실시간 질의응답",
-        "학부모 상담 서비스"
-      ],
-      price: "750,000 원 + 300,000 원",
-      priceLabel: "이용료 안내"
-    }
-  ];
+  const programs = programsData;
 
   return (
     <section id="programs" className="py-24 bg-gray-50">
@@ -107,10 +81,10 @@ export default function Programs() {
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-1.5 bg-sn-green text-white text-sm font-medium rounded-full mb-4">Programs</span>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            대치동 관리형 스터디카페 모집요강
+            대치동 관리형 스터디카페 이용권 안내
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            학생의 상황과 목표에 맞는 <span className="text-sn-green font-semibold">최적의 프로그램</span>을 선택하세요
+            월간·일일 이용권 중 종일·오후를 선택해 <span className="text-sn-green font-semibold">학습 일정에 맞게</span> 이용하세요
           </p>
         </div>
 
@@ -1015,7 +989,7 @@ export default function Programs() {
         <div className="mx-auto" style={{ maxWidth: '900px' }}>
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="w-1.5 h-6 bg-sn-green rounded-full"></span>
-            <h3 className="text-2xl font-bold text-gray-900">프로그램 선택</h3>
+            <h3 className="text-2xl font-bold text-gray-900">이용권 선택</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {programs.map((program, index) => (
@@ -1072,10 +1046,10 @@ export default function Programs() {
 
                 {/* CTA 버튼 */}
                 <a
-                  href="#contact"
+                  href={program.ctaHref}
                   className="block w-full py-2 px-4 rounded-lg text-center font-medium text-sm transition-all bg-sn-green text-white hover:bg-sn-green-dark"
                 >
-                  상담 신청하기
+                  {program.ctaLabel}
                 </a>
               </div>
             ))}

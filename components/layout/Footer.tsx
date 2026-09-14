@@ -1,3 +1,5 @@
+import { programsData } from '@/lib/data/programs';
+
 export default function Footer() {
   const footerLinks = {
     about: [
@@ -5,11 +7,7 @@ export default function Footer() {
       { name: "오시는 길", href: "#location" },
       { name: "시설 안내", href: "#facilities" }
     ],
-    programs: [
-      { name: "N수생 관리형 이용권", href: "#programs" },
-      { name: "프리미엄 학습관리 이용권", href: "#programs" },
-      { name: "재학생 관리형 이용권", href: "#programs" }
-    ],
+    programs: programsData.map(program => ({ name: program.title, href: '/programs' })),
     support: [
       { name: "공지사항", href: "/news" },
       { name: "합격 후기", href: "/testimonials" },
