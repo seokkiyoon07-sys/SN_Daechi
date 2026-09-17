@@ -92,8 +92,8 @@ export default function Header() {
               </div>
             </div>
 
-            {/* 2. 성적 변화의 증거 드롭다운 */}
-            <div className="relative group">
+            {/* 2. 성적 변화의 증거 드롭다운 (임시 숨김) */}
+            <div className="hidden relative group">
               <a href="/results/data" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
                 성적 변화의 증거
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
@@ -334,8 +334,8 @@ export default function Header() {
                 </div>
               </div>
 
-              {/* 2. 성적 변화의 증거 */}
-              <div className="border-b border-gray-100">
+              {/* 2. 성적 변화의 증거 (임시 숨김) */}
+              <div className="hidden border-b border-gray-100">
                 <button
                   onClick={() => toggleSubmenu('results')}
                   className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
