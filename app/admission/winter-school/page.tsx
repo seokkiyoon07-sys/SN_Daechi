@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/admission/winter-school" },
   openGraph: {
     title: "프리윈터 & 2027 윈터스쿨 모집안내 | SN고요의숲 대치",
-    description: "겨울의 차이는 12월에 시작됩니다. 예비고1~고3 프리윈터 & 윈터스쿨 사전모집",
+    description: "12월에는 학습 습관과 계획을 준비하는 프리윈터스쿨, 1~2월에는 겨울방학 집중 학습을 이어가는 2027 윈터스쿨.",
     url: "https://daechi.snacademy.co.kr/admission/winter-school",
   },
 };
@@ -27,8 +27,8 @@ export default function WinterSchoolPage() {
     <section className={styles["hero"]} aria-labelledby="title">
       <p className={styles["eyebrow"]}>2026 PRE-WINTER · 2027 WINTER SCHOOL</p>
       <span className={styles["badge"]}>예비고1 ~ 고3 사전모집</span>
-      <h1 id="title">겨울의 차이는,<br /><span>12월에 시작됩니다.</span></h1>
-      <p className={styles["hero-lead"]}>프리윈터 & 윈터스쿨<br />기말고사 이후, 1월 윈터스쿨 전까지.<br /><strong>이 한 달이 겨울방학의 공부를 바꿉니다.</strong></p>
+      <h1 id="title">겨울 공부의 준비부터,<br /><span>새 학기 전 완성까지.</span></h1>
+      <p className={styles["hero-lead"]}>프리윈터스쿨 & 2027 윈터스쿨<br />12월에는 공부 습관과 계획을 준비하고,<br /><strong>1~2월에는 겨울방학 학습에 집중합니다.</strong></p>
       <p className={styles["hero-copy"]}>대치동 단과 수업과 자습의 균형.<br />양평 SN독학기숙학원의 10년 독학 관리 시스템을<br />대치 SN고요의숲에서 만나세요.</p>
       <div className={styles["hero-footer"]}><span>매일의 학습 성과</span><span>단과 맞춤 스케줄</span><span>자정까지 집중</span></div>
     </section>
@@ -40,8 +40,9 @@ export default function WinterSchoolPage() {
 
     <section className={styles["section"]} aria-labelledby="prewinter">
       <p className={styles["label"]}>PRE-WINTER</p>
-      <h2 id="prewinter">한 달 먼저, 단단하게.</h2>
-      <div className={styles["period"]}><div><small>2026년 프리윈터 운영 기간</small><strong>12.01 (화) — 12.31 (목)</strong></div><span className={styles["pill"]}>한 달 완성</span></div>
+      <h2 id="prewinter">프리윈터스쿨<br />겨울방학을 준비하는 12월.</h2>
+      <p className={styles["intro"]}>본격적인 겨울방학 학습에 앞서 규칙적인 등원과 자습 습관을 만드는 준비 과정입니다. 학교 일정과 단과 수업에 맞춰 공부 시간을 확보하고, 겨울방학에 이어갈 과목별 학습 계획을 세웁니다.</p>
+      <div className={styles["period"]}><div><small>2026년 프리윈터스쿨 운영 기간</small><strong>12.01 (화) — 12.31 (목)</strong></div><span className={styles["pill"]}>학습 습관 · 계획 준비</span></div>
       <div className={styles["benefits"]}>
         <div className={styles["benefit"]}><span className={styles["number"]}>BENEFIT 01</span><strong>이용료 <em>20% 할인</em></strong><p>프리윈터 기간에만 적용</p></div>
         <div className={styles["benefit"]}><span className={styles["number"]}>BENEFIT 02</span><strong>로열석 우선권</strong><p>2027 윈터스쿨 로열석<br />우선 선점권 부여</p></div>
@@ -50,7 +51,8 @@ export default function WinterSchoolPage() {
 
     <section className={styles["section"]} aria-labelledby="winter-period">
       <p className={styles["label"]}>2027 WINTER SCHOOL</p>
-      <h2 id="winter-period">윈터스쿨 운영 기간</h2>
+      <h2 id="winter-period">2027 윈터스쿨<br />새 학기를 준비하는 겨울방학 집중 학습.</h2>
+      <p className={styles["intro"]}>1~2월 겨울방학 동안 단과 수업과 관리형 자습을 병행하며 과목별 학습 계획을 실천하는 집중 과정입니다. 매일의 학습 상태와 과제 이행을 점검하고, 부족한 개념과 오답을 보완하며 새 학기를 준비합니다.</p>
       <div className={styles["period"]}>
         <div><small>2027년 윈터스쿨</small><strong>1월 1일 — 2월 27일</strong></div>
       </div>
@@ -83,7 +85,7 @@ export default function WinterSchoolPage() {
       <p className={styles["intro"]}>SN고요의숲 대치점의 일곱 가지 학습 관리.</p>
       <article className={styles["feature"]}><span className={styles["index"]}>01</span><div><h3>매일 눈에 보이는 성과<br />‘일일 수학 4제’ & 더블 클리닉</h3><p>매일 등원 즉시 엄선된 수학 4문항을 풀고 당일 채점합니다. 플래너 확인을 넘어, 매일의 성취도를 쌓아갑니다.</p><div className={styles["clinic"]}><div><strong>1차 · SN AI 튜터</strong>SN AI 튜터로 스스로 오답의 원리를 분석합니다.</div><div><strong>2차 · 원장 1:1 클리닉</strong>해결되지 않은 고난도 문항은 원장 비대면 심층 클리닉으로 마무리합니다.</div></div></div></article>
       <article className={styles["feature"]}><span className={styles["index"]}>02</span><div><h3>대치 단과 맞춤형 스케줄 관리</h3><p>SN 포털로 시대인재, 두각 등 외부 단과 수업 일정을 연동합니다.</p><ul><li>단과 과제에 필요한 시간까지 학습 계획에 반영</li><li>이동 동선과 자습 시간을 고려한 1:1 학습 플랜</li></ul></div></article>
-      <article className={styles["feature"]}><span className={styles["index"]}>03</span><div><h3>실제 공부하는 집중</h3><p>단순 착석 여부를 넘어, 과목별 인강과 자습의 균형을 살핍니다.</p><ul><li>당사 개발 SNarlink 네트워크 방화벽 — 학습 목적 외 접속을 AI가 실시간 탐지 / 차단</li><li>20분 단위 학습 상태 기록·관리</li><li>과목별 학습 시간 및 인강·자습 밸런스 점검</li><li>양평 본원의 10년 노하우로 주간 학습 이행도 체크</li></ul></div></article>
+      <article className={styles["feature"]}><span className={styles["index"]}>03</span><div><h3>실제 공부하는 집중</h3><p>단순 착석 여부를 넘어, 과목별 인강과 자습의 균형을 살핍니다.</p><ul><li>하루 <strong>12시간 이상의 학습량 확보</strong></li><li>당사 개발 SNarlink 네트워크 방화벽 — 학습 목적 외 접속을 AI가 실시간 탐지 / 차단</li><li>20분 단위 학습 상태 기록·관리</li><li>과목별 학습 시간 및 인강·자습 밸런스 점검</li><li>양평 본원의 10년 노하우로 주간 학습 이행도 체크</li></ul></div></article>
       <article className={styles["feature"]}><span className={styles["index"]}>04</span><div><h3>철저한 생활 관리와 집중 환경</h3><ul><li>등원 즉시 휴대폰·전자기기 의무 수거 및 순찰 관리</li><li>RFID 카드 태그 기반 실시간 입·퇴실 학부모 알림 문자</li><li>남녀 분리 전용 열람실과 정숙한 면학 분위기</li></ul></div></article>
       <article className={styles["feature"]}><span className={styles["index"]}>05</span><div><h3>오래 공부할수록 느껴지는 공간의 차이</h3><ul><li>장시간 학습에 맞춘 초대형 와이드 데스크</li><li>시디즈 정품 체어</li><li>초미세먼지 차단 환기 시스템과 집중을 위한 공조 환경</li></ul></div></article>
       <article className={styles["feature"]}><span className={styles["index"]}>06</span><div><h3>역대 수능·평가원 10만 문항 DB 탑재:<br />생각하는 수능 AI ‘SNarGPT’</h3><ul><li>10만 개 기출 빅데이터 기반, 질의응답 대기 시간 0분의 24시간 실시간 케어</li><li>답만 베끼는 단순 AI가 아닌, 학생 스스로 답을 찾게 유도하는 <strong>‘단계별 힌팅 시스템’</strong></li><li>오답 즉시 동일 출제 원리를 가진 <strong>‘유사 기출 문항 자동 클리닉’</strong> 연계</li><li>범용 챗GPT의 수식 계산 오류(환각)를 원천 차단한 수능 특화 AI 솔루션</li></ul></div></article>
