@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about/philosophy',
     '/about/ai-center',
     '/programs',
+    '/admission/winter-school',
     '/admission/scholarship',
     '/admission/visit',
     '/results',

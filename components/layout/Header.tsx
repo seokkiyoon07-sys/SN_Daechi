@@ -133,6 +133,20 @@ export default function Header() {
               </div>
             </div>
 
+            <div className="relative group">
+              <Link href="/admission/winter-school" className="relative whitespace-nowrap text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
+                모집안내
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-sn-green to-sn-green-light group-hover:w-full transition-all duration-300"></span>
+              </Link>
+              <div className="absolute left-1/2 -translate-x-1/2 pt-2 w-44 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200">
+                <div className="bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
+                  <Link href="/admission/winter-school" className="block px-4 py-3 text-sm text-gray-700 hover:bg-sn-green/10 hover:text-sn-green focus:bg-sn-green/10 transition-all text-center">
+                    2027 윈터스쿨
+                  </Link>
+                </div>
+              </div>
+            </div>
+
             {/* 4. 이용 안내 드롭다운 */}
             <div className="relative group">
               <a href="/programs" className="relative text-gray-700 hover:text-sn-green hover:font-semibold transition-colors">
@@ -392,6 +406,26 @@ export default function Header() {
                   <a href="/campus/academy-map" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
                     주변 학습 공간 가격 지도
                   </a>
+                </div>
+              </div>
+
+              <div className="border-b border-gray-100">
+                <button
+                  type="button"
+                  onClick={() => toggleSubmenu('recruitment')}
+                  aria-expanded={expandedMenu === 'recruitment'}
+                  aria-controls="mobile-recruitment-menu"
+                  className="w-full flex items-center justify-between py-4 text-gray-900 font-medium"
+                >
+                  <span>모집안내</span>
+                  <svg aria-hidden="true" className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedMenu === 'recruitment' ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div id="mobile-recruitment-menu" hidden={expandedMenu !== 'recruitment'} className="pb-3">
+                  <Link href="/admission/winter-school" className="block py-2 pl-4 text-gray-600 hover:text-sn-green transition-colors" onClick={() => setIsMenuOpen(false)}>
+                    2027 윈터스쿨
+                  </Link>
                 </div>
               </div>
 
