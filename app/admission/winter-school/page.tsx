@@ -72,11 +72,16 @@ export default function WinterSchoolPage() {
       <p className={styles["label"]}>STUDY HOURS</p>
       <h2 id="hours">하루의 끝까지, 흔들림 없이.</h2>
       <table className={styles["hours"]} aria-label="운영 시간"><tbody>
-        <tr><th scope="row">방학 기간 평일</th><td>오전 8시 — 자정 (24:00)</td></tr>
-        <tr><th scope="row">주말 · 공휴일</th><td>오전 8시 — 자정 (24:00)</td></tr>
+        <tr><th scope="row">방학 기간 평일 · 토요일</th><td>오전 8시 — 자정 (24:00)</td></tr>
+        <tr><th scope="row">일요일 · 공휴일</th><td>오전 9시 — 자정 (24:00)</td></tr>
         <tr><th scope="row">학기 중 평일</th><td>오후 2시 — 자정 (24:00)</td></tr>
       </tbody></table>
-      <p className={styles["note"]}>단과 수업 이후에도 충분한 자습 시간을 확보할 수 있도록 자정까지 운영합니다.</p>
+      <div className={styles.attendanceNotice}>
+        <h3>방학 중 의무 학습 안내</h3>
+        <p><strong>평일 · 토요일 오전 8시 의무 입실<br />일요일 · 공휴일 오전 9시 의무 입실<br />오후 10시까지 의무 학습</strong></p>
+        <p>단, 학원 단과 시간표와 겹치는 시간은 의무 입실·학습 대상에서 제외됩니다.</p>
+      </div>
+      <p className={styles["note"]}>방학 중 의무 학습은 오후 10시까지이며, 이후에도 자습할 수 있도록 자정까지 운영합니다.</p>
     </section>
 
     <section className={styles["section"]} aria-labelledby="features">
